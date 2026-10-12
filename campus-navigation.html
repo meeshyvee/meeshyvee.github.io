@@ -1007,6 +1007,154 @@ body{color:var(--ink)}
 .pl-type{display:flex}
 .pl-row .task-due{text-align:right}
 @media (max-width:640px){.pl-head{display:none}.pl-row{grid-template-columns:28px minmax(0,1fr) 64px}.pl-type{display:none}}
+/* collapse button straddles the menu's right edge, freeing vertical space */
+.side{padding-top:18px}
+.side-top,.side.is-min .side-top{position:absolute;top:14px;right:-20px;margin:0;z-index:12}
+.side-toggle{width:40px;height:40px;background:var(--surface);box-shadow:0 2px 8px rgba(15,23,42,.08)}
+.side-sec:first-of-type{padding-right:24px}
+.side .side-sec{padding-right:28px}
+.side.is-min{padding-top:18px}
+
+/* K-5 sound toggle, pinned to the bottom of the menu */
+.k5-sound{position:sticky;bottom:16px;margin-top:auto;display:flex;align-items:center;gap:10px;width:100%;padding:10px 12px;border-radius:18px;border:2px solid var(--line);background:var(--surface);text-align:left;color:var(--ink)}
+.k5-sound:hover{background:var(--hover)}
+.k5-sound-icon{width:44px;height:44px;flex-shrink:0;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;background:var(--prim-slate-100);color:var(--prim-slate-600)}
+.k5-sound.is-on .k5-sound-icon{background:var(--color-accent-color-3-lighter);color:var(--color-accent-color-3-darker)}
+.k5-sound-text{display:flex;flex-direction:column;line-height:1.15;flex:1}
+.k5-sound-label{font-family:var(--display);font-weight:800;font-size:15px}
+.k5-sound-state{font-size:13px;font-weight:700;color:var(--muted)}
+.k5-sound-track{width:40px;height:24px;flex-shrink:0;border-radius:99px;background:var(--prim-slate-300);padding:3px;display:flex}
+.k5-sound-track span{width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .15s;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.k5-sound.is-on .k5-sound-track{background:var(--color-accent-color-4-dark)}
+.k5-sound.is-on .k5-sound-track span{transform:translateX(16px)}
+.side.is-min .k5-sound{flex-direction:column;padding:8px 4px;gap:4px;border-radius:16px}
+.side.is-min .k5-sound-text,.side.is-min .k5-sound-track{display:none}
+.side.is-min .k5-sound[data-tip]:hover::after,.side.is-min .k5-sound[data-tip]:focus-visible::after{content:attr(data-tip);position:absolute;left:calc(100% + 12px);top:50%;transform:translateY(-50%);white-space:nowrap;padding:6px 10px;border-radius:var(--tooltip-tooltip-corner);background:var(--tooltip-tooltip-dark-bg);color:var(--tooltip-tooltip-dark-text);font-size:13px;font-weight:600;z-index:30;pointer-events:none}
+.side .k5-sound{position:sticky}
+/* K-5 collapsed menu: keep icons clear of the edge-mounted collapse button */
+.side.is-min:has(.k5-nav){flex:0 0 104px;padding:18px 30px 18px 10px}
+.side.is-min .k5-item{width:64px;padding:2px}
+.side.is-min .k5-icon{width:60px;height:60px}
+.side.is-min .k5-sound{width:64px}
+
+/* YouTube Kids-style view switcher */
+.yk-tabs{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:4px 0}
+.yk-tab{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:150px;padding:14px 22px 12px;border-radius:26px;border:3px solid transparent;background:var(--surface);color:var(--ink);box-shadow:0 4px 0 var(--prim-slate-200);transition:transform .15s,box-shadow .15s}
+.yk-tab:hover{transform:translateY(-2px)}
+.yk-icon{width:72px;height:72px;border-radius:22px;display:inline-flex;align-items:center;justify-content:center;background:var(--prim-slate-100);color:var(--prim-slate-600);transition:background .15s,color .15s}
+.yk-label{font-family:var(--display);font-weight:900;font-size:18px}
+.yk-tab.tab-classes.is-on{border-color:var(--prim-admin-blue-400);box-shadow:0 6px 0 var(--prim-admin-blue-400)}
+.yk-tab.tab-classes.is-on .yk-icon{background:var(--prim-admin-blue-500);color:#fff}
+.yk-tab.tab-calendar.is-on{border-color:var(--color-accent-color-2-base);box-shadow:0 6px 0 var(--color-accent-color-2-base)}
+.yk-tab.tab-calendar.is-on .yk-icon{background:var(--color-accent-color-2-dark);color:#fff}
+
+/* K-5 calendar */
+.k5-cal{display:flex;flex-direction:column;gap:18px}
+.k5-days{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.k5-dayb{display:flex;flex-direction:column;align-items:center;gap:2px;padding:14px 6px 12px;border-radius:22px;border:3px solid transparent;background:var(--surface);box-shadow:0 4px 0 var(--prim-slate-200)}
+.k5-dayb-d{font-weight:800;font-size:15px;color:var(--muted)}
+.k5-dayb-n{font-family:var(--display);font-weight:900;font-size:30px;line-height:1.1}
+.k5-dayb-today{font-size:12px;font-weight:900;color:var(--color-accent-color-2-darker);background:var(--color-accent-color-2-lighter);padding:1px 10px;border-radius:99px}
+.k5-dayb-dots{display:flex;gap:4px;height:8px;margin-top:4px}
+.k5-dayb-dots i{width:8px;height:8px;border-radius:50%}
+.dot-live{background:var(--prim-admin-blue-500)}.dot-todo{background:var(--color-accent-color-3-base)}.dot-event{background:var(--color-accent-color-4-dark)}
+.k5-dayb.is-on{border-color:var(--color-accent-color-2-base);box-shadow:0 6px 0 var(--color-accent-color-2-base);background:var(--color-accent-color-2-subtle)}
+.k5-agenda{display:flex;flex-direction:column;gap:12px}
+.k5-ag{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:16px 18px;border-radius:22px;background:var(--surface);border:2px solid var(--line)}
+.k5-ag.is-ended{opacity:.6}
+.k5-ag-icon{width:56px;height:56px;border-radius:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.kind-live .k5-ag-icon{background:var(--prim-admin-blue-100);color:var(--prim-admin-blue-800)}
+.kind-todo .k5-ag-icon{background:var(--color-accent-color-3-lighter);color:var(--color-accent-color-3-darker)}
+.kind-todo .k5-ag-icon svg path{fill:var(--color-accent-color-3-base);stroke:var(--color-accent-color-3-dark)}
+.kind-event .k5-ag-icon{background:var(--color-accent-color-4-lighter);color:var(--color-accent-color-4-darker)}
+.k5-ag-time{font-size:14px;font-weight:800;color:var(--muted)}
+.k5-ag-title{font-family:var(--display);font-weight:900;font-size:20px;line-height:1.2}
+.k5-ag-sub{font-size:15px;color:var(--ink-2)}
+.k5-ag-done{font-weight:800;color:var(--muted)}
+.k5-play.sm{min-height:46px;padding:10px 20px;font-size:16px;margin-top:0;--subject-ink:var(--color-accent-color-3-darker)}
+
+/* 6-12 My School flyout */
+.nav-fly-wrap{position:relative}
+.nav-fly-caret{margin-left:auto;color:var(--muted);display:inline-flex}
+.side.is-min .nav-fly-caret{display:none}
+.nav-fly{position:absolute;left:calc(100% + 8px);top:-8px;width:240px;padding:8px;border-radius:var(--r-menu);background:var(--dropdown-menu-dropdown-menu-bg);border:1px solid var(--line);box-shadow:var(--shadow);z-index:40;display:flex;flex-direction:column;gap:2px}
+.nav-fly::before{content:"";position:absolute;left:-12px;top:0;bottom:0;width:12px}
+.nav-fly-h{padding:6px 10px 8px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.nav-fly-item{display:flex;align-items:center;gap:10px;min-height:42px;padding:8px 10px;border:0;border-radius:var(--r-menu-item);background:transparent;text-align:left;font-size:15px;color:var(--ink-2)}
+.nav-fly-item:hover,.nav-fly-item:focus-visible,.nav-fly-item.is-on{background:var(--dropdown-menu-dropdown-menu-item-hover);color:var(--ink)}
+.nav-fly-all{margin-top:4px;border-top:1px solid var(--line);border-radius:0 0 var(--r-menu-item) var(--r-menu-item);color:var(--link);font-weight:700;font-size:14px}
+
+/* My School page */
+.school{max-width:1100px}
+.school-hero{display:flex;align-items:center;gap:16px}
+.school-mark{width:64px;height:64px;border-radius:18px;background:var(--brand-blue);color:#fff;font-family:var(--display);font-weight:900;font-size:30px;display:inline-flex;align-items:center;justify-content:center}
+.school-cols{display:grid;grid-template-columns:minmax(0,3fr) minmax(280px,2fr);gap:20px;align-items:start}
+@media (max-width:900px){.school-cols{grid-template-columns:minmax(0,1fr)}}
+.nl-title{margin:0;font-family:var(--display);font-weight:800;font-size:22px}
+.nl-item{padding:14px 0;border-top:1px solid var(--line);margin-top:12px}
+.nl-item h4{margin:0 0 4px;font-size:16px}
+.nl-item p{color:var(--ink-2);max-width:65ch}
+.ev-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.ev-list li{display:flex;gap:12px;align-items:flex-start}
+.ev-date{flex-shrink:0;min-width:74px;padding:4px 8px;border-radius:8px;background:var(--brand-blue-soft);color:var(--brand-blue-ink);font-size:13px;font-weight:800;text-align:center}
+.helpers{display:flex;flex-direction:column;gap:12px}
+.helper{display:flex;align-items:center;gap:12px}
+.dept-grid{display:flex;flex-direction:column;gap:8px}
+.dept-card{display:flex;align-items:center;gap:12px;width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--surface);text-align:left;color:var(--ink)}
+.dept-card:hover{background:var(--hover)}
+.dept-card .grow{display:flex;flex-direction:column}
+.dept-icon{width:40px;height:40px;flex-shrink:0;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;background:var(--brand-blue-soft);color:var(--brand-blue)}
+.dept-icon.lg{width:60px;height:60px;border-radius:16px}
+.dept-person{padding:12px;border-radius:12px;background:var(--surface-2)}
+.school.is-k5 .nl-item p,.school.is-k5 .ev-list .muted-sm{font-size:16px}
+.school.is-k5 .nl-item h4{font-size:18px}
+
+/* live session pop-ups */
+.live-dot{width:8px;height:8px;border-radius:50%;background:currentColor;display:inline-block;animation:livepulse 1.4s ease-in-out infinite}
+@keyframes livepulse{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes popup{from{opacity:0;transform:translate(var(--tx,0),16px)}to{opacity:1;transform:translate(var(--tx,0),0)}}
+.live-bar{--tx:-50%;position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:55;width:min(620px,calc(100% - 32px));display:flex;align-items:center;gap:14px;padding:10px 10px 10px 14px;border-radius:16px;background:var(--tooltip-tooltip-dark-bg);color:#fff;box-shadow:0 14px 36px rgba(15,23,42,.3);animation:popup .3s ease-out}
+.live-bar-tag{display:inline-flex;align-items:center;gap:7px;flex-shrink:0;padding:4px 10px;border-radius:99px;font-size:12px;font-weight:800;background:var(--prim-admin-blue-500);color:#fff}
+.live-bar.is-live .live-bar-tag{background:var(--color-accent-color-2-base);color:var(--color-accent-color-2-darker)}
+.live-bar-text{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+.live-bar-text strong{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.live-bar-text span{font-size:13px;color:var(--prim-slate-300)}
+.live-bar-x{color:var(--prim-slate-300)}
+.live-bar-x:hover{background:rgba(255,255,255,.1);color:#fff}
+.k5-pop{position:fixed;right:20px;bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:55;width:min(340px,calc(100% - 40px));padding:18px;border-radius:26px;background:var(--surface);border:3px solid var(--prim-admin-blue-300);box-shadow:0 8px 0 var(--prim-admin-blue-300),0 20px 40px rgba(15,23,42,.18);animation:popup .35s cubic-bezier(.2,1.4,.4,1)}
+.k5-pop.is-live{border-color:var(--color-accent-color-2-base);box-shadow:0 8px 0 var(--color-accent-color-2-base),0 20px 40px rgba(15,23,42,.18)}
+.k5-pop-x{position:absolute;top:10px;right:10px;width:32px;height:32px;border:0;border-radius:50%;background:var(--prim-slate-100);color:var(--prim-slate-600);display:inline-flex;align-items:center;justify-content:center}
+.k5-pop-top{display:flex;gap:14px;align-items:center;padding-right:24px}
+.k5-pop-tag{display:inline-flex;align-items:center;gap:7px;padding:3px 12px;border-radius:99px;font-size:13px;font-weight:900;background:var(--prim-admin-blue-100);color:var(--prim-admin-blue-800)}
+.k5-pop.is-live .k5-pop-tag{background:var(--color-accent-color-2-lighter);color:var(--color-accent-color-2-darker)}
+.k5-pop-title{font-family:var(--display);font-weight:900;font-size:20px;line-height:1.2;margin-top:6px}
+.k5-pop-sub{font-size:15px;color:var(--ink-2)}
+.k5-pop-actions{display:flex;gap:8px;align-items:center;margin-top:16px}
+.k5-pop-actions .btn-accent{flex:1}
+.toast{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+@media (prefers-reduced-motion:reduce){.live-bar,.k5-pop{animation:none}.live-dot{animation:none}}
+
+/* K-5 quest map */
+.k5-quest{padding:22px 24px 8px;border-radius:28px;background:linear-gradient(180deg,var(--color-accent-color-4-subtle),var(--surface) 70%);border:2px solid var(--line);overflow:hidden}
+.k5-quest-head{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.quest-map{margin:4px -8px 0}
+.quest-map svg{display:block;overflow:visible}
+.quest-road{fill:none;stroke:var(--color-accent-color-1-light);stroke-width:26;stroke-linecap:round}
+.quest-dash{fill:none;stroke:#fff;stroke-width:3;stroke-dasharray:2 12;stroke-linecap:round}
+.quest-done{fill:none;stroke:var(--color-accent-color-4-base);stroke-width:26;stroke-linecap:round;opacity:.85}
+.quest-dot{fill:#fff;stroke:var(--node);stroke-width:4}
+.quest-node.is-done .quest-dot{fill:var(--node);stroke:#fff}
+.quest-star{fill:#fff;stroke:none}
+.quest-num{font-family:var(--display);font-weight:900;font-size:15px;fill:var(--node-ink)}
+.quest-ring{fill:none;stroke:var(--node);stroke-width:3;opacity:.5;animation:qpulse 1.6s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes qpulse{0%{transform:scale(.8);opacity:.7}100%{transform:scale(1.25);opacity:0}}
+.quest-finish-bg{fill:var(--color-accent-color-3-lighter);stroke:var(--color-accent-color-3-base);stroke-width:4}
+.quest-finish.is-done .quest-finish-bg{fill:var(--color-accent-color-3-base)}
+.quest-flag{fill:var(--color-accent-color-2-base);stroke:var(--color-accent-color-2-darker);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.quest-me{transition:transform .8s cubic-bezier(.3,1.3,.5,1)}
+.quest-me-ring{fill:#fff;stroke:var(--color-primary-base);stroke-width:3;filter:drop-shadow(0 3px 4px rgba(15,23,42,.25))}
+.quest-me-pin{fill:var(--color-primary-base)}
+@media (prefers-reduced-motion:reduce){.quest-me{transition:none}.quest-ring{animation:none}}
 
 </style>
 </head>
@@ -1432,6 +1580,34 @@ const GRAD_PLAN = {
     "Take the PSAT this fall to practice for college entrance tests."
   ]
 };
+const SCHOOL = {
+  newsletter: {
+    title: "Primavera Monthly: October",
+    date: "Posted Thu, Oct 1",
+    from: "Dr. Rivera, Principal",
+    items: [
+      { h: "A note from Dr. Rivera", t: "Fall is off to a great start. Thank you, families, for keeping students logged in and on track. Attendance is up 6% from last year." },
+      { h: "Spirit Week is Oct 19\u201323", t: "Each day has a theme: pajama day, team colors, crazy hair, throwback, and school colors. Join live lessons dressed up!" },
+      { h: "Family tech night", t: "Learn how to use Campus with your student on Tue, Oct 27 at 6 PM. Bring your questions." }
+    ]
+  },
+  events: [
+    { date: "Oct 15", title: "Picture day", note: "Join your photo time from the link your teacher sends." },
+    { date: "Oct 19\u201323", title: "Spirit Week", note: "A fun dress-up theme every day." },
+    { date: "Oct 26\u201330", title: "Fall state testing", note: "Grades 3 and up. Your testing time will be posted soon." },
+    { date: "Oct 30", title: "Costume parade (live)", note: "Show off your costume on camera at 1 PM." }
+  ],
+  helpers: [
+    { name: "Dr. Rivera", role: "Principal", initials: "DR" },
+    { name: "Ms. Lopez", role: "Counselor", initials: "ML" },
+    { name: "Mrs. Patel", role: "Librarian", initials: "MP" }
+  ]
+};
+const DEPTS = [
+  { id: "counseling", name: "Counseling", lead: "Ms. Lopez", initials: "ML", hours: "Mon\u2013Fri, 8 AM\u20134 PM", desc: "Help with classes, college and career plans, and anything that feels hard right now.", primary: "Book a time", secondary: "Send a message", icon: "M12 20s-7-4.4-7-9.5A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.5C19 15.6 12 20 12 20z" },
+  { id: "registrar", name: "Registrar", lead: "Mrs. Tran", initials: "MT", hours: "Mon\u2013Fri, 7:30 AM\u20134:30 PM", desc: "Enrollment, schedule changes, withdrawals, address updates, and student records.", primary: "Start a request", secondary: "Send a message", icon: "M4 7h16v13H4z M9 7V4h6v3 M4 12h16" },
+  { id: "transcripts", name: "Transcripts", lead: "Records office", initials: "RO", hours: "Requests processed in 2\u20133 school days", desc: "Request an official transcript for colleges, scholarships, or a new school, or view your unofficial transcript any time.", primary: "Request a transcript", secondary: "View unofficial transcript", icon: "M6 3h9l4 4v14H6z M14 3v5h5 M9 12h7 M9 16h7" }
+];
 const { useState, useEffect, useRef } = React;
 const fmt = (m) => {
   m = Math.floor(m);
@@ -1495,6 +1671,7 @@ const I = {
   doc: "M6 3h8l4 4v14H6z M14 3v4h4",
   mega: "M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z M15 9a4 4 0 0 1 0 6 M18 6a8 8 0 0 1 0 12",
   bell: "M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9 M10 21h4",
+  school: "M3 21h18 M5 21V9l7-5 7 5v12 M9.5 21v-5h5v5 M10 10.5h4",
   grad: "M2 9l10-5 10 5-10 5z M6 11v5c3 2.5 9 2.5 12 0v-5 M22 9v6",
   sliders: "M4 6h10 M18 6h2 M4 12h4 M12 12h8 M4 18h12 M20 18h0 M14 4v4 M8 10v4 M16 16v4"
 };
@@ -1511,7 +1688,8 @@ const CLASSES_ICON = "M4 4h7v7H4z M13 4h7v7h-7z M4 13h7v7H4z M13 13h7v7h-7z";
 const STAR = "M12 2.8l2.8 5.7 6.3.9-4.6 4.4 1.1 6.3L12 17.1l-5.6 3 1.1-6.3L2.9 9.4l6.3-.9z";
 const Star = ({ on, size = 18 }) => /* @__PURE__ */ React.createElement("svg", { width: size, height: size, viewBox: "0 0 24 24", "aria-hidden": "true", className: `star${on ? " is-on" : ""}` }, /* @__PURE__ */ React.createElement("path", { d: STAR }));
 const TeacherFace = ({ size = 40 }) => /* @__PURE__ */ React.createElement("svg", { width: size, height: size, viewBox: "0 0 48 48", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("circle", { cx: "24", cy: "24", r: "24", fill: "#B1E7E6" }), /* @__PURE__ */ React.createElement("path", { d: "M9 30c0-13 6-20 15-20s15 7 15 20c-2 0-3-1-4-3H13c-1 2-2 3-4 3z", fill: "#5C3A21" }), /* @__PURE__ */ React.createElement("circle", { cx: "24", cy: "25", r: "11", fill: "#F2C9A0" }), /* @__PURE__ */ React.createElement("path", { d: "M13 23c3-6 8-8 14-8 4 0 7 2 8 6-6 1-14 0-22 2z", fill: "#5C3A21" }), /* @__PURE__ */ React.createElement("circle", { cx: "20", cy: "26", r: "1.6", fill: "#2E1F1C" }), /* @__PURE__ */ React.createElement("circle", { cx: "28", cy: "26", r: "1.6", fill: "#2E1F1C" }), /* @__PURE__ */ React.createElement("path", { d: "M20.5 30.5c2 2 5 2 7 0", stroke: "#2E1F1C", strokeWidth: "1.6", fill: "none", strokeLinecap: "round" }), /* @__PURE__ */ React.createElement("path", { d: "M12 48c1-7 6-11 12-11s11 4 12 11z", fill: "#0CA3A1" }));
-const HOMEROOM_ICON = "M3 11l9-7 9 7 M5 9.5V20h14V9.5 M9.5 20v-4.5a2.5 2.5 0 0 1 5 0V20";
+const KidAvatar = ({ size = 48 }) => /* @__PURE__ */ React.createElement("svg", { width: size, height: size, viewBox: "0 0 48 48", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("circle", { cx: "24", cy: "24", r: "24", fill: "#E0CEED" }), /* @__PURE__ */ React.createElement("circle", { cx: "11", cy: "17", r: "6", fill: "#3B2416" }), /* @__PURE__ */ React.createElement("circle", { cx: "37", cy: "17", r: "6", fill: "#3B2416" }), /* @__PURE__ */ React.createElement("path", { d: "M12 26c0-9 5.5-14 12-14s12 5 12 14v6H12z", fill: "#3B2416" }), /* @__PURE__ */ React.createElement("circle", { cx: "24", cy: "26", r: "10", fill: "#C98E62" }), /* @__PURE__ */ React.createElement("path", { d: "M14 23c2-6 6-8 10-8s9 2 10 7c-5-3-14-3-20 1z", fill: "#3B2416" }), /* @__PURE__ */ React.createElement("circle", { cx: "20.5", cy: "27", r: "1.5", fill: "#1E293B" }), /* @__PURE__ */ React.createElement("circle", { cx: "27.5", cy: "27", r: "1.5", fill: "#1E293B" }), /* @__PURE__ */ React.createElement("path", { d: "M20.5 31c2 1.8 5 1.8 7 0", stroke: "#1E293B", strokeWidth: "1.6", fill: "none", strokeLinecap: "round" }), /* @__PURE__ */ React.createElement("circle", { cx: "17.5", cy: "30", r: "1.6", fill: "#F4A6A0", opacity: ".7" }), /* @__PURE__ */ React.createElement("circle", { cx: "30.5", cy: "30", r: "1.6", fill: "#F4A6A0", opacity: ".7" }), /* @__PURE__ */ React.createElement("path", { d: "M13 48c1.5-6 5.5-9 11-9s9.5 3 11 9z", fill: "#8F5CB4" }));
+const HOMEROOM_ICON = "M10 4h11v10H10z M13 8h5 M13 11h3 M5.5 9.6a2.3 2.3 0 1 0 0-4.6a2.3 2.3 0 0 0 0 4.6z M2.5 21v-5.5a3 3 0 0 1 3-3h1.2l4.3-2.8 M8.5 21v-6.5";
 function Timeline({ sessions, now, from, to, ppm, minH, onJoin }) {
   const H = (to - from) * ppm;
   const hours = [];
@@ -1596,6 +1774,35 @@ function App() {
   const [campusOpen, setCampusOpen] = useState(true);
   const [k5done, setK5done] = useState({});
   const [calDay, setCalDay] = useState("Mon");
+  const [sound, setSound] = useState(true);
+  const [k5tab, setK5tab] = useState("classes");
+  const [k5day, setK5day] = useState("Mon");
+  const [deptId, setDeptId] = useState("counseling");
+  const [schoolHover, setSchoolHover] = useState(false);
+  const [liveDismissed, setLiveDismissed] = useState({});
+  const audioRef = useRef(null);
+  const chime = (notes = [784, 1047]) => {
+    try {
+      const Ctx = window.AudioContext || window.webkitAudioContext;
+      if (!Ctx) return;
+      const ctx = audioRef.current || (audioRef.current = new Ctx());
+      notes.forEach((f, i) => {
+        const o = ctx.createOscillator();
+        const g = ctx.createGain();
+        const t = ctx.currentTime + i * 0.12;
+        o.type = "sine";
+        o.frequency.value = f;
+        g.gain.setValueAtTime(1e-4, t);
+        g.gain.exponentialRampToValueAtTime(0.18, t + 0.02);
+        g.gain.exponentialRampToValueAtTime(1e-4, t + 0.35);
+        o.connect(g);
+        g.connect(ctx.destination);
+        o.start(t);
+        o.stop(t + 0.4);
+      });
+    } catch (e) {
+    }
+  };
   const [liked, setLiked] = useState({});
   const [bell, setBell] = useState(false);
   const [skipped, setSkipped] = useState([]);
@@ -1642,6 +1849,13 @@ function App() {
   remaining.forEach((a) => by[a.status].push(a));
   const todaySessions = empty ? [] : D.today;
   const other = empty ? [] : D.otherSessions;
+  const liveCand = screen === "room" ? null : todaySessions.find((s) => now >= s.start - 10 && now < s.end && !liveDismissed[`${org}:${s.id}:${now >= s.start ? "live" : "soon"}`]);
+  const livePhase = liveCand ? now >= liveCand.start ? "live" : "soon" : null;
+  const liveKey = liveCand ? `${org}:${liveCand.id}:${livePhase}` : "";
+  const dismissLive = () => setLiveDismissed({ ...liveDismissed, [liveKey]: true });
+  useEffect(() => {
+    if (liveKey && O.id === "k5" && sound) chime([523, 659, 784]);
+  }, [liveKey]);
   const openAssignment = (a) => {
     setOpenId(a.id);
     setDraft("");
@@ -1682,6 +1896,7 @@ function App() {
     setOrg(id);
     setScreen("home");
     setK5done({});
+    setSideMin(id === "k5");
     setTab("all");
     setSessTab("today");
     setPlayer(null);
@@ -1717,8 +1932,8 @@ function App() {
   else if (nextS) parts.push(`next live session at ${fmt(nextS.start)}`);
   const summary = parts.join(", ");
   const greet = now < 720 ? "Good morning" : now < 1020 ? "Good afternoon" : "Good evening";
-  const navActive = { home: "home", assignment: "home", courses: "courses", course: "courses", week: "week", sessions: "week", room: "week", grad: "grad", stub }[screen];
-  const NAV = [["home", "Home"], ["week", "Calendar"], ["attendance", "Attendance"], ["grad", "Graduation plan"], ["counseling", "Counseling"]];
+  const navActive = { home: "home", assignment: "home", courses: "courses", course: "courses", week: "week", sessions: "week", room: "week", grad: "grad", school: "school", dept: "school", stub }[screen];
+  const NAV = [["home", "Home"], ["week", "Calendar"], ["attendance", "Attendance"], ["grad", "Graduation plan"], ["school", "My School"]];
   const navGo = (id) => {
     if (id === "attendance" || id === "messages" || id === "counseling") {
       setStub(id);
@@ -1768,7 +1983,23 @@ function App() {
   } }, "Profile"), /* @__PURE__ */ React.createElement("button", { className: "pop-item", onClick: () => go("prefs") }, "Communication preferences"), /* @__PURE__ */ React.createElement("button", { className: "pop-item muted", onClick: () => {
     setAcctMenu(false);
     say("Sign out isn\u2019t wired up in this prototype");
-  } }, "Sign out")))), /* @__PURE__ */ React.createElement("div", { className: "shell" }, /* @__PURE__ */ React.createElement("aside", { className: `side${sideMin ? " is-min" : ""}` }, /* @__PURE__ */ React.createElement("div", { className: "side-top" }, /* @__PURE__ */ React.createElement("button", { className: "icon-btn side-toggle", "data-tip": sideMin ? "Expand menu" : "Collapse menu", "aria-label": sideMin ? "Expand menu" : "Collapse menu", "aria-expanded": !sideMin, onClick: () => setSideMin(!sideMin) }, /* @__PURE__ */ React.createElement(Icon, { d: sideMin ? "M20 4v16 M4 12h11 M11 7l5 5-5 5" : "M4 4v16 M20 12H9 M13 7l-5 5 5 5", size: 20, sw: 1.9 }))), O.id === "k5" ? /* @__PURE__ */ React.createElement("nav", { "aria-label": "Main", className: "k5-nav" }, /* @__PURE__ */ React.createElement("button", { className: `k5-item${screen === "home" ? " is-active" : ""}`, style: { "--subject": "var(--prim-admin-blue-400)", "--subject-soft": "var(--prim-admin-blue-100)", "--subject-ink": "var(--prim-admin-blue-800)" }, "data-tip": "Learning", "aria-label": sideMin ? "Learning" : void 0, "aria-current": screen === "home" ? "page" : void 0, onClick: () => go("home") }, /* @__PURE__ */ React.createElement("span", { className: "k5-icon" }, /* @__PURE__ */ React.createElement(Icon, { d: CLASSES_ICON, size: 34, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "k5-label" }, "Learning")), /* @__PURE__ */ React.createElement("button", { className: `k5-item${screen === "homeroom" ? " is-active" : ""}`, style: { "--subject": "var(--color-secondary-base)", "--subject-soft": "var(--color-secondary-subtle)", "--subject-ink": "var(--color-secondary-darker)" }, "data-tip": "Homeroom", "aria-label": sideMin ? "Homeroom" : void 0, "aria-current": screen === "homeroom" ? "page" : void 0, onClick: () => go("homeroom") }, /* @__PURE__ */ React.createElement("span", { className: "k5-icon" }, /* @__PURE__ */ React.createElement(Icon, { d: HOMEROOM_ICON, size: 34, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "k5-label" }, "Homeroom"))) : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("nav", { "aria-label": "Campus", className: "side-nav is-first" }, /* @__PURE__ */ React.createElement("button", { className: "side-sec", "aria-expanded": campusOpen, "aria-controls": "side-campus", onClick: () => setCampusOpen(!campusOpen) }, /* @__PURE__ */ React.createElement("span", { className: "side-h" }, "Campus"), /* @__PURE__ */ React.createElement("span", { className: `side-chev${campusOpen ? " is-open" : ""}`, "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: I.chev, size: 16, sw: 2.2 }))), (campusOpen || sideMin) && /* @__PURE__ */ React.createElement("div", { className: "nav-list", id: "side-campus" }, NAV.map(([id, label]) => /* @__PURE__ */ React.createElement("button", { key: id, "data-tip": label, "aria-label": sideMin ? label : void 0, className: `nav-item${navActive === id ? " is-active" : ""}`, "aria-current": navActive === id ? "page" : void 0, onClick: () => navGo(id) }, /* @__PURE__ */ React.createElement(Icon, { d: I[id] }), /* @__PURE__ */ React.createElement("span", { className: "nav-label" }, label))))), /* @__PURE__ */ React.createElement("section", { className: "side-courses" }, /* @__PURE__ */ React.createElement("button", { className: "side-sec", "aria-expanded": coursesOpen, "aria-controls": "side-courses", onClick: () => setCoursesOpen(!coursesOpen) }, /* @__PURE__ */ React.createElement("span", { className: "side-h" }, "Quick launch"), /* @__PURE__ */ React.createElement("span", { className: `side-chev${coursesOpen ? " is-open" : ""}`, "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: I.chev, size: 16, sw: 2.2 }))), (coursesOpen || sideMin) && /* @__PURE__ */ React.createElement("div", { className: "launchers", id: "side-courses" }, D.courses.map((c) => {
+  } }, "Sign out")))), /* @__PURE__ */ React.createElement("div", { className: "shell" }, /* @__PURE__ */ React.createElement("aside", { className: `side${sideMin ? " is-min" : ""}` }, /* @__PURE__ */ React.createElement("div", { className: "side-top" }, /* @__PURE__ */ React.createElement("button", { className: "icon-btn side-toggle", "data-tip": sideMin ? "Expand menu" : "Collapse menu", "aria-label": sideMin ? "Expand menu" : "Collapse menu", "aria-expanded": !sideMin, onClick: () => setSideMin(!sideMin) }, /* @__PURE__ */ React.createElement(Icon, { d: sideMin ? "M20 4v16 M4 12h11 M11 7l5 5-5 5" : "M4 4v16 M20 12H9 M13 7l-5 5 5 5", size: 20, sw: 1.9 }))), O.id === "k5" ? /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("nav", { "aria-label": "Main", className: "k5-nav" }, /* @__PURE__ */ React.createElement("button", { className: `k5-item${screen === "home" ? " is-active" : ""}`, style: { "--subject": "var(--prim-admin-blue-400)", "--subject-soft": "var(--prim-admin-blue-100)", "--subject-ink": "var(--prim-admin-blue-800)" }, "data-tip": "Learning", "aria-label": sideMin ? "Learning" : void 0, "aria-current": screen === "home" ? "page" : void 0, onClick: () => go("home") }, /* @__PURE__ */ React.createElement("span", { className: "k5-icon" }, /* @__PURE__ */ React.createElement(Icon, { d: CLASSES_ICON, size: 34, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "k5-label" }, "Learning")), /* @__PURE__ */ React.createElement("button", { className: `k5-item${screen === "homeroom" ? " is-active" : ""}`, style: { "--subject": "var(--color-secondary-base)", "--subject-soft": "var(--color-secondary-subtle)", "--subject-ink": "var(--color-secondary-darker)" }, "data-tip": "Homeroom", "aria-label": sideMin ? "Homeroom" : void 0, "aria-current": screen === "homeroom" ? "page" : void 0, onClick: () => go("homeroom") }, /* @__PURE__ */ React.createElement("span", { className: "k5-icon" }, /* @__PURE__ */ React.createElement(Icon, { d: HOMEROOM_ICON, size: 34, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "k5-label" }, "Homeroom")), /* @__PURE__ */ React.createElement("button", { className: `k5-item${screen === "school" ? " is-active" : ""}`, style: { "--subject": "var(--color-accent-color-3-base)", "--subject-soft": "var(--color-accent-color-3-lighter)", "--subject-ink": "var(--color-accent-color-3-darker)" }, "data-tip": "My School", "aria-label": sideMin ? "My School" : void 0, "aria-current": screen === "school" ? "page" : void 0, onClick: () => go("school") }, /* @__PURE__ */ React.createElement("span", { className: "k5-icon" }, /* @__PURE__ */ React.createElement(Icon, { d: I.school, size: 34, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "k5-label" }, "My School"))), /* @__PURE__ */ React.createElement("button", { role: "switch", "aria-checked": sound, className: `k5-sound${sound ? " is-on" : ""}`, "data-tip": sound ? "Sound is on" : "Sound is off", "aria-label": "Sound", onClick: () => {
+    const v = !sound;
+    setSound(v);
+    if (v) chime([660, 880]);
+  } }, /* @__PURE__ */ React.createElement("span", { className: "k5-sound-icon" }, /* @__PURE__ */ React.createElement(Icon, { d: sound ? "M4 9v6h4l5 4V5L8 9z M16 9a4 4 0 0 1 0 6 M19 6a8 8 0 0 1 0 12" : "M4 9v6h4l5 4V5L8 9z M17 9.5l5 5 M22 9.5l-5 5", size: 26, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "k5-sound-text" }, /* @__PURE__ */ React.createElement("span", { className: "k5-sound-label" }, "Sound"), /* @__PURE__ */ React.createElement("span", { className: "k5-sound-state" }, sound ? "On" : "Off")), /* @__PURE__ */ React.createElement("span", { className: "k5-sound-track", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("span", null)))) : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("nav", { "aria-label": "Campus", className: "side-nav is-first" }, /* @__PURE__ */ React.createElement("button", { className: "side-sec", "aria-expanded": campusOpen, "aria-controls": "side-campus", onClick: () => setCampusOpen(!campusOpen) }, /* @__PURE__ */ React.createElement("span", { className: "side-h" }, "Campus"), /* @__PURE__ */ React.createElement("span", { className: `side-chev${campusOpen ? " is-open" : ""}`, "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: I.chev, size: 16, sw: 2.2 }))), (campusOpen || sideMin) && /* @__PURE__ */ React.createElement("div", { className: "nav-list", id: "side-campus" }, NAV.map(([id, label]) => id === "school" ? /* @__PURE__ */ React.createElement("div", { key: id, className: "nav-fly-wrap", onMouseEnter: () => setSchoolHover(true), onMouseLeave: () => setSchoolHover(false), onFocus: () => setSchoolHover(true), onBlur: (e) => {
+    if (!e.currentTarget.contains(e.relatedTarget)) setSchoolHover(false);
+  } }, /* @__PURE__ */ React.createElement("button", { "aria-label": sideMin ? label : void 0, "aria-haspopup": "true", "aria-expanded": schoolHover, className: `nav-item${navActive === id ? " is-active" : ""}`, "aria-current": navActive === id ? "page" : void 0, onClick: () => {
+    setSchoolHover(false);
+    go("school");
+  } }, /* @__PURE__ */ React.createElement(Icon, { d: I.school }), /* @__PURE__ */ React.createElement("span", { className: "nav-label" }, label), /* @__PURE__ */ React.createElement("span", { className: "nav-fly-caret", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: "M9 6l6 6-6 6", size: 16, sw: 2 }))), schoolHover && /* @__PURE__ */ React.createElement("div", { className: "nav-fly", role: "menu", "aria-label": "My School departments" }, /* @__PURE__ */ React.createElement("div", { className: "nav-fly-h" }, "My School"), /* @__PURE__ */ React.createElement("button", { role: "menuitem", className: `nav-fly-item${screen === "school" ? " is-on" : ""}`, onClick: () => {
+    setSchoolHover(false);
+    go("school");
+  } }, /* @__PURE__ */ React.createElement(Icon, { d: I.mega, size: 18 }), /* @__PURE__ */ React.createElement("span", null, "Announcements")), DEPTS.map((dp) => /* @__PURE__ */ React.createElement("button", { key: dp.id, role: "menuitem", className: `nav-fly-item${screen === "dept" && deptId === dp.id ? " is-on" : ""}`, onClick: () => {
+    setDeptId(dp.id);
+    setSchoolHover(false);
+    go("dept");
+  } }, /* @__PURE__ */ React.createElement(Icon, { d: dp.icon, size: 18 }), /* @__PURE__ */ React.createElement("span", null, dp.name))))) : /* @__PURE__ */ React.createElement("button", { key: id, "data-tip": label, "aria-label": sideMin ? label : void 0, className: `nav-item${navActive === id ? " is-active" : ""}`, "aria-current": navActive === id ? "page" : void 0, onClick: () => navGo(id) }, /* @__PURE__ */ React.createElement(Icon, { d: I[id] }), /* @__PURE__ */ React.createElement("span", { className: "nav-label" }, label))))), /* @__PURE__ */ React.createElement("section", { className: "side-courses" }, /* @__PURE__ */ React.createElement("button", { className: "side-sec", "aria-expanded": coursesOpen, "aria-controls": "side-courses", onClick: () => setCoursesOpen(!coursesOpen) }, /* @__PURE__ */ React.createElement("span", { className: "side-h" }, "Quick launch"), /* @__PURE__ */ React.createElement("span", { className: `side-chev${coursesOpen ? " is-open" : ""}`, "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: I.chev, size: 16, sw: 2.2 }))), (coursesOpen || sideMin) && /* @__PURE__ */ React.createElement("div", { className: "launchers", id: "side-courses" }, D.courses.map((c) => {
     const p = PLAYER[c.id];
     return /* @__PURE__ */ React.createElement("button", { key: c.id, className: "launcher", "data-tip": `${c.name}: ${gradeText(c.grade)}`, style: subj(p), onClick: () => launch(c), "aria-label": `Open ${c.name}. Current grade ${gradeText(c.grade)}.` }, /* @__PURE__ */ React.createElement("span", { className: "subject-tile grade-tile", "data-grade-tip": c.grade ? c.grade.split(", ")[1] : "Not graded yet", "aria-hidden": "true" }, c.grade ? c.grade.split(", ")[0] : ""), /* @__PURE__ */ React.createElement("span", { className: "launcher-text" }, /* @__PURE__ */ React.createElement("span", { className: "launcher-name" }, c.name)), /* @__PURE__ */ React.createElement("span", { className: "launcher-play", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: I.play, size: 14, sw: 2 })));
   }))))), /* @__PURE__ */ React.createElement("main", { className: "main" }, /* @__PURE__ */ React.createElement("div", { className: "wrap" }, screen === "home" && O.id === "k5" && (() => {
@@ -1782,7 +2013,21 @@ function App() {
     const stars = (empty ? 0 : 9) + done;
     const nextLive = todaySessions.find((s) => now < s.end);
     const nls = nextLive && sessionState(nextLive, now);
-    return /* @__PURE__ */ React.createElement("div", { className: "stack-20 k5-home" }, /* @__PURE__ */ React.createElement("div", { className: "k5-hello" }, /* @__PURE__ */ React.createElement(TeacherFace, { size: 64 }), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("h1", { className: "k5-h1" }, greet, ", ", O.first, "!"), /* @__PURE__ */ React.createElement("p", { className: "k5-sub" }, total === 0 ? "No activities yet. Check back soon!" : done === total ? "You finished everything today. Amazing!" : `You\u2019ve done ${done} of ${total} activities today. Keep going!`)), /* @__PURE__ */ React.createElement("div", { className: "star-pill", "aria-label": `${stars} stars this week` }, /* @__PURE__ */ React.createElement(Star, { on: true, size: 26 }), /* @__PURE__ */ React.createElement("strong", null, stars), /* @__PURE__ */ React.createElement("span", null, "stars"))), total > 0 && /* @__PURE__ */ React.createElement("div", { className: "k5-day", "aria-label": `Today\u2019s progress: ${done} of ${total}` }, /* @__PURE__ */ React.createElement("span", { className: "k5-day-label" }, "Today\u2019s goal"), /* @__PURE__ */ React.createElement("div", { className: "k5-day-track" }, /* @__PURE__ */ React.createElement("span", { style: { width: done / total * 100 + "%" } })), /* @__PURE__ */ React.createElement("span", { className: "k5-day-n" }, done, "/", total)), nextLive && /* @__PURE__ */ React.createElement("div", { className: `k5-live is-${nls.key}` }, /* @__PURE__ */ React.createElement(TeacherFace, { size: 44 }), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "k5-live-when" }, nls.key === "live" ? "Happening now" : nls.key === "soon" ? `In ${Math.ceil(nextLive.start - now)} minutes` : `Later today at ${fmt(nextLive.start)}`), /* @__PURE__ */ React.createElement("div", { className: "k5-live-title" }, nextLive.title, " with ", nextLive.host)), nls.canJoin ? /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent btn-lg", onClick: () => join(nextLive) }, "Join class") : /* @__PURE__ */ React.createElement("span", { className: "k5-live-wait" }, "See you there!")), /* @__PURE__ */ React.createElement("div", { className: "k5-grid" }, subjects.map(({ c, p, items, done: d }) => {
+    return /* @__PURE__ */ React.createElement("div", { className: "stack-20 k5-home" }, (() => {
+      const acts = subjects.flatMap(({ c, p, items }) => items.map((x) => ({ ...x, fam: p.fam, cname: c.name }))).sort((x, y) => (y.isDone ? 1 : 0) - (x.isDone ? 1 : 0));
+      const W = 1e3, H = 200, padX = 56, n = acts.length;
+      const pts = Array.from({ length: n + 1 }, (_, i) => ({ x: padX + i * (W - padX * 2) / Math.max(n, 1), y: 118 + 42 * Math.sin(i * 0.95) }));
+      const seg = (from, to) => pts.slice(from, to + 1).reduce((d, p, i, arr) => {
+        if (i === 0) return `M${p.x} ${p.y}`;
+        const q = arr[i - 1];
+        const dx = (p.x - q.x) / 2;
+        return `${d} C${q.x + dx} ${q.y} ${p.x - dx} ${p.y} ${p.x} ${p.y}`;
+      }, "");
+      const at = Math.min(done, n);
+      const me = pts[at] || pts[0];
+      const finish = pts[n];
+      return /* @__PURE__ */ React.createElement("section", { className: "k5-quest", "aria-labelledby": "quest-h" }, /* @__PURE__ */ React.createElement("div", { className: "k5-quest-head" }, /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("h1", { id: "quest-h", className: "k5-h1" }, greet, ", ", O.first, "!"), /* @__PURE__ */ React.createElement("p", { className: "k5-sub" }, total === 0 ? "No activities yet. Check back soon!" : done === total ? "You reached the finish! Amazing work today." : `You\u2019re on step ${done + 1} of ${total}. Keep going!`)), /* @__PURE__ */ React.createElement("div", { className: "star-pill", "aria-label": `${stars} stars this week` }, /* @__PURE__ */ React.createElement(Star, { on: true, size: 26 }), /* @__PURE__ */ React.createElement("strong", null, stars), /* @__PURE__ */ React.createElement("span", null, "stars"))), n > 0 && /* @__PURE__ */ React.createElement("div", { className: "quest-map", role: "img", "aria-label": `Today\u2019s path: ${done} of ${total} activities done` }, /* @__PURE__ */ React.createElement("svg", { viewBox: `0 0 ${W} ${H}`, width: "100%", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("path", { d: seg(0, n), className: "quest-road" }), /* @__PURE__ */ React.createElement("path", { d: seg(0, n), className: "quest-dash" }), at > 0 && /* @__PURE__ */ React.createElement("path", { d: seg(0, at), className: "quest-done" }), acts.map((x, i) => /* @__PURE__ */ React.createElement("g", { key: x.id, className: `quest-node${x.isDone ? " is-done" : ""}${i === at ? " is-next" : ""}`, style: { "--node": `var(--color-${x.fam}-base)`, "--node-ink": `var(--color-${x.fam}-darker)` } }, /* @__PURE__ */ React.createElement("title", null, `${x.cname}: ${x.t}${x.isDone ? " (done)" : ""}`), i === at && /* @__PURE__ */ React.createElement("circle", { cx: pts[i].x, cy: pts[i].y, r: "24", className: "quest-ring" }), /* @__PURE__ */ React.createElement("circle", { cx: pts[i].x, cy: pts[i].y, r: "17", className: "quest-dot" }), x.isDone ? /* @__PURE__ */ React.createElement("path", { d: STAR, transform: `translate(${pts[i].x - 11} ${pts[i].y - 11}) scale(.92)`, className: "quest-star" }) : /* @__PURE__ */ React.createElement("text", { x: pts[i].x, y: pts[i].y + 5, textAnchor: "middle", className: "quest-num" }, i + 1))), /* @__PURE__ */ React.createElement("g", { className: `quest-finish${done === total ? " is-done" : ""}`, transform: `translate(${finish.x} ${finish.y})` }, /* @__PURE__ */ React.createElement("circle", { r: "26", className: "quest-finish-bg" }), /* @__PURE__ */ React.createElement("path", { d: "M-8 12V-14 M-8-14h17l-5 7 5 7H-8", className: "quest-flag" })), /* @__PURE__ */ React.createElement("g", { className: "quest-me", style: { transform: `translate(${me.x}px, ${me.y - 52}px)` } }, /* @__PURE__ */ React.createElement("path", { d: "M0 40 L-8 26 H8 Z", className: "quest-me-pin" }), /* @__PURE__ */ React.createElement("circle", { r: "27", className: "quest-me-ring" }), /* @__PURE__ */ React.createElement("foreignObject", { x: "-24", y: "-24", width: "48", height: "48" }, /* @__PURE__ */ React.createElement(KidAvatar, { size: 48 }))))));
+    })(), nextLive && /* @__PURE__ */ React.createElement("div", { className: `k5-live is-${nls.key}` }, /* @__PURE__ */ React.createElement(TeacherFace, { size: 44 }), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "k5-live-when" }, nls.key === "live" ? "Happening now" : nls.key === "soon" ? `In ${Math.ceil(nextLive.start - now)} minutes` : `Later today at ${fmt(nextLive.start)}`), /* @__PURE__ */ React.createElement("div", { className: "k5-live-title" }, nextLive.title, " with ", nextLive.host)), nls.canJoin ? /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent btn-lg", onClick: () => join(nextLive) }, "Join class") : /* @__PURE__ */ React.createElement("span", { className: "k5-live-wait" }, "See you there!")), /* @__PURE__ */ React.createElement("div", { className: "yk-tabs", role: "tablist", "aria-label": "Learning views" }, /* @__PURE__ */ React.createElement("button", { role: "tab", "aria-selected": k5tab === "classes", className: `yk-tab tab-classes${k5tab === "classes" ? " is-on" : ""}`, onClick: () => setK5tab("classes") }, /* @__PURE__ */ React.createElement("span", { className: "yk-icon" }, /* @__PURE__ */ React.createElement(Icon, { d: CLASSES_ICON, size: 36, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "yk-label" }, "My Classes")), /* @__PURE__ */ React.createElement("button", { role: "tab", "aria-selected": k5tab === "calendar", className: `yk-tab tab-calendar${k5tab === "calendar" ? " is-on" : ""}`, onClick: () => setK5tab("calendar") }, /* @__PURE__ */ React.createElement("span", { className: "yk-icon" }, /* @__PURE__ */ React.createElement(Icon, { d: I.week, size: 36, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "yk-label" }, "My Calendar"))), k5tab === "classes" && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", { className: "k5-grid" }, subjects.map(({ c, p, items, done: d }) => {
       const all = items.length > 0 && d === items.length;
       return /* @__PURE__ */ React.createElement("section", { key: c.id, className: `k5-card${all ? " is-done" : ""}`, style: subj(p), "aria-labelledby": `k5c-${c.id}` }, /* @__PURE__ */ React.createElement("div", { className: "k5-card-top" }, /* @__PURE__ */ React.createElement("span", { className: "k5-card-icon" }, /* @__PURE__ */ React.createElement(Icon, { d: K5_ICON[c.id], size: 40, sw: 2 })), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("h2", { id: `k5c-${c.id}`, className: "k5-card-h" }, c.name), /* @__PURE__ */ React.createElement("div", { className: "k5-stars", "aria-label": `${d} of ${items.length} done` }, items.map((x) => /* @__PURE__ */ React.createElement(Star, { key: x.id, on: x.isDone, size: 22 })))), all && /* @__PURE__ */ React.createElement("span", { className: "k5-badge" }, "All done!")), /* @__PURE__ */ React.createElement("div", { className: "k5-bar" }, /* @__PURE__ */ React.createElement("span", { style: { width: items.length ? d / items.length * 100 + "%" : 0 } })), /* @__PURE__ */ React.createElement("ul", { className: "k5-acts" }, items.map((x) => /* @__PURE__ */ React.createElement("li", { key: x.id }, /* @__PURE__ */ React.createElement("button", { className: `k5-act${x.isDone ? " is-done" : ""}`, onClick: () => {
         if (x.isDone) return;
@@ -1792,8 +2037,21 @@ function App() {
         }
         setK5done({ ...k5done, [key(x.id)]: true });
         say("You earned a star!");
+        if (sound) chime();
       } }, /* @__PURE__ */ React.createElement("span", { className: "k5-check", "aria-hidden": "true" }, x.isDone && /* @__PURE__ */ React.createElement(Icon, { d: I.check, size: 16, sw: 3 })), /* @__PURE__ */ React.createElement("span", { className: "grow" }, x.t), !x.isDone && /* @__PURE__ */ React.createElement("span", { className: "k5-go", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: I.play, size: 14, sw: 2 })))))), /* @__PURE__ */ React.createElement("button", { className: "btn k5-play", onClick: () => launch(c) }, /* @__PURE__ */ React.createElement(Icon, { d: I.play, size: 16, sw: 2 }), " Let\u2019s go!"));
-    })));
+    }))), k5tab === "calendar" && (() => {
+      const dayItems = (d) => empty ? [] : [
+        ...d === "Mon" ? D.today.map((s) => ({ k: s.id, kind: "live", time: fmt(s.start), sort: s.start, title: s.title, sub: `with ${s.host}`, s })) : D.otherSessions.filter((s) => s.when === "week" && s.day === d).map((s) => ({ k: s.id, kind: "live", time: s.time.split("\u2013")[0], sort: 0, title: s.title, sub: `with ${s.host}` })),
+        ...remaining.filter((x) => x.day === d).map((x) => ({ k: x.id, kind: "todo", time: d === "Mon" ? "due today" : `due ${{ Tue: "Tuesday", Wed: "Wednesday", Thu: "Thursday", Fri: "Friday" }[d]}`, sort: 2e3, title: x.title, sub: x.courseName, a: x })),
+        ...D.events.filter((e) => e.day === d).map((e) => ({ k: e.title, kind: "event", time: e.time, sort: -1, title: e.title, sub: "At school" }))
+      ].sort((x, y) => x.sort - y.sort);
+      const items = dayItems(k5day);
+      const KIND = { live: { label: "Live class", icon: I.sessions }, todo: { label: "To do", icon: STAR }, event: { label: "School event", icon: "M5 21V4 M5 4h11l-2 4 2 4H5" } };
+      return /* @__PURE__ */ React.createElement("div", { className: "k5-cal" }, /* @__PURE__ */ React.createElement("div", { className: "k5-days", role: "tablist", "aria-label": "Pick a day" }, DAYS.map(([d, date], i) => /* @__PURE__ */ React.createElement("button", { key: d, role: "tab", "aria-selected": k5day === d, className: `k5-dayb${k5day === d ? " is-on" : ""}`, onClick: () => setK5day(d) }, /* @__PURE__ */ React.createElement("span", { className: "k5-dayb-d" }, ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"][i].slice(0, 3)), /* @__PURE__ */ React.createElement("span", { className: "k5-dayb-n" }, date), i === 0 && /* @__PURE__ */ React.createElement("span", { className: "k5-dayb-today" }, "Today"), /* @__PURE__ */ React.createElement("span", { className: "k5-dayb-dots", "aria-hidden": "true" }, dayItems(d).slice(0, 4).map((x) => /* @__PURE__ */ React.createElement("i", { key: x.k, className: `dot-${x.kind}` })))))), /* @__PURE__ */ React.createElement("div", { className: "k5-agenda" }, items.map((it) => {
+        const st = it.s && sessionState(it.s, now);
+        return /* @__PURE__ */ React.createElement("div", { key: it.k, className: `k5-ag kind-${it.kind}${st && st.key === "ended" ? " is-ended" : ""}` }, /* @__PURE__ */ React.createElement("span", { className: "k5-ag-icon", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: KIND[it.kind].icon, size: 28, sw: 2 })), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "k5-ag-time" }, KIND[it.kind].label, ", ", it.time), /* @__PURE__ */ React.createElement("div", { className: "k5-ag-title" }, it.title), /* @__PURE__ */ React.createElement("div", { className: "k5-ag-sub" }, it.sub)), st && st.canJoin && /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent btn-lg", onClick: () => join(it.s) }, "Join class"), st && st.key === "ended" && /* @__PURE__ */ React.createElement("span", { className: "k5-ag-done" }, "All done"), it.a && /* @__PURE__ */ React.createElement("button", { className: "btn k5-play sm", onClick: () => openAssignment(it.a) }, /* @__PURE__ */ React.createElement(Icon, { d: I.play, size: 14, sw: 2 }), " Start"));
+      }), !items.length && /* @__PURE__ */ React.createElement("div", { className: "state-box center" }, /* @__PURE__ */ React.createElement("p", null, "Nothing planned this day. Enjoy!"))));
+    })());
   })(), screen === "homeroom" && /* @__PURE__ */ React.createElement("div", { className: "homeroom" }, /* @__PURE__ */ React.createElement("div", { className: "hr-head" }, /* @__PURE__ */ React.createElement(TeacherFace, { size: 72 }), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("h1", { className: "k5-h1" }, "Ms. Greene\u2019s Homeroom"), /* @__PURE__ */ React.createElement("p", { className: "k5-sub" }, O.grade, " at ", O.name))), /* @__PURE__ */ React.createElement("div", { className: "hr-feed" }, HOMEROOM_POSTS.map((post) => {
     const on = !!liked[key(post.id)];
     return /* @__PURE__ */ React.createElement("article", { key: post.id, className: "hr-post" }, /* @__PURE__ */ React.createElement("div", { className: "hr-post-top" }, /* @__PURE__ */ React.createElement(TeacherFace, { size: 40 }), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("strong", null, "Ms. Greene"), /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, post.time)), /* @__PURE__ */ React.createElement("span", { className: `hr-kind kind-${post.kind.split(" ")[0].toLowerCase()}` }, post.kind)), /* @__PURE__ */ React.createElement("p", { className: "hr-text" }, post.text), /* @__PURE__ */ React.createElement("button", { className: `hr-like${on ? " is-on" : ""}`, "aria-pressed": on, onClick: () => setLiked({ ...liked, [key(post.id)]: !on }) }, /* @__PURE__ */ React.createElement(Icon, { d: "M12 20s-7-4.4-7-9.5A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.5C19 15.6 12 20 12 20z", size: 18, sw: 2 }), on ? "You liked this" : "Like", " ", /* @__PURE__ */ React.createElement("span", { className: "hr-n" }, post.likes + (on ? 1 : 0))));
@@ -1892,7 +2150,24 @@ function App() {
       setStub("messages");
       go("stub");
     } }, "Send a message"))))));
-  })(), screen === "stub" && /* @__PURE__ */ React.createElement("div", { className: "narrow" }, /* @__PURE__ */ React.createElement("h1", { className: "h1 mb-16" }, STUBS[stub].title), /* @__PURE__ */ React.createElement("section", { className: "card dashed pad-28" }, /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, "Covered by ", STUBS[stub].prd), /* @__PURE__ */ React.createElement("p", { className: "mt-8" }, STUBS[stub].body), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline mt-16", onClick: () => go("home") }, "Back to home")))))), launching && /* @__PURE__ */ React.createElement("div", { className: "launch-overlay", role: "status", style: subj(PLAYER[launching.id]) }, /* @__PURE__ */ React.createElement("span", { className: "subject-tile xl" }, PLAYER[launching.id].tile), /* @__PURE__ */ React.createElement("div", { className: "strong lg" }, "Opening ", launching.name), /* @__PURE__ */ React.createElement("div", { className: "launch-bar" }, /* @__PURE__ */ React.createElement("span", null))), /* @__PURE__ */ React.createElement("div", { className: "proto" }, proto && /* @__PURE__ */ React.createElement("div", { className: "proto-panel", role: "dialog", "aria-label": "Prototype controls" }, /* @__PURE__ */ React.createElement("div", { className: "proto-h" }, "Prototype controls"), /* @__PURE__ */ React.createElement("div", { className: "label" }, "Data scenario"), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [["normal", "Normal"], ["outage", "Player API outage"], ["empty", "Empty new term"]].map(([id, l]) => /* @__PURE__ */ React.createElement("button", { key: id, className: mode === id ? "is-on" : "", "aria-pressed": mode === id, onClick: () => setMode(id) }, l))), /* @__PURE__ */ React.createElement("div", { className: "label mt-12" }, "Clock: ", fmt(now)), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [[0, "Paused"], [1, "Real time"], [10, "10\xD7"], [60, "60\xD7"]].map(([v, l]) => /* @__PURE__ */ React.createElement("button", { key: l, className: speed === v ? "is-on" : "", "aria-pressed": speed === v, onClick: () => setSpeed(v) }, l))), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm mt-12", onClick: () => setNow(595) }, "Reset clock to 9:55 AM")), /* @__PURE__ */ React.createElement("button", { className: "proto-btn", "aria-expanded": proto, onClick: () => setProto(!proto) }, /* @__PURE__ */ React.createElement(Icon, { d: I.sliders, size: 18 }), " Prototype")), toast && /* @__PURE__ */ React.createElement("div", { className: "toast", role: "status", "aria-live": "polite" }, toast));
+  })(), screen === "school" && /* @__PURE__ */ React.createElement("div", { className: `stack-20 school${O.id === "k5" ? " is-k5" : ""}` }, /* @__PURE__ */ React.createElement("div", { className: "school-hero" }, /* @__PURE__ */ React.createElement("span", { className: "school-mark" }, O.mark), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("h1", { className: O.id === "k5" ? "k5-h1" : "h1" }, "My School"), /* @__PURE__ */ React.createElement("p", { className: "lede" }, O.id === "k5" ? "Primavera Online School" : "Announcements and news from Primavera Online School"))), /* @__PURE__ */ React.createElement("div", { className: "school-cols" }, /* @__PURE__ */ React.createElement("section", { className: "card newsletter", "aria-labelledby": "nl-h" }, /* @__PURE__ */ React.createElement("div", { className: "card-head" }, /* @__PURE__ */ React.createElement("h2", { id: "nl-h", className: "h2" }, "School newsletter"), /* @__PURE__ */ React.createElement("span", { className: "fresh" }, SCHOOL.newsletter.date)), /* @__PURE__ */ React.createElement("h3", { className: "nl-title" }, SCHOOL.newsletter.title), /* @__PURE__ */ React.createElement("p", { className: "muted-sm" }, "From ", SCHOOL.newsletter.from), SCHOOL.newsletter.items.map((n) => /* @__PURE__ */ React.createElement("div", { key: n.h, className: "nl-item" }, /* @__PURE__ */ React.createElement("h4", null, n.h), /* @__PURE__ */ React.createElement("p", null, n.t)))), /* @__PURE__ */ React.createElement("div", { className: "stack-20" }, /* @__PURE__ */ React.createElement("section", { className: "card", "aria-labelledby": "ev-h" }, /* @__PURE__ */ React.createElement("div", { className: "card-head" }, /* @__PURE__ */ React.createElement("h2", { id: "ev-h", className: "h2" }, "Coming up")), /* @__PURE__ */ React.createElement("ul", { className: "ev-list" }, SCHOOL.events.map((e) => /* @__PURE__ */ React.createElement("li", { key: e.title }, /* @__PURE__ */ React.createElement("span", { className: "ev-date" }, e.date), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "strong" }, e.title), /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, e.note)))))), O.id === "k5" ? /* @__PURE__ */ React.createElement("section", { className: "card", "aria-labelledby": "hp-h" }, /* @__PURE__ */ React.createElement("div", { className: "card-head" }, /* @__PURE__ */ React.createElement("h2", { id: "hp-h", className: "h2" }, "School helpers")), /* @__PURE__ */ React.createElement("div", { className: "helpers" }, SCHOOL.helpers.map((h) => /* @__PURE__ */ React.createElement("div", { key: h.name, className: "helper" }, /* @__PURE__ */ React.createElement("span", { className: "avatar" }, h.initials), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "strong" }, h.name), /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, h.role)))))) : /* @__PURE__ */ React.createElement("section", { className: "card", "aria-labelledby": "dp-h" }, /* @__PURE__ */ React.createElement("div", { className: "card-head" }, /* @__PURE__ */ React.createElement("h2", { id: "dp-h", className: "h2" }, "Departments")), /* @__PURE__ */ React.createElement("div", { className: "dept-grid" }, DEPTS.map((dp) => /* @__PURE__ */ React.createElement("button", { key: dp.id, className: "dept-card", onClick: () => {
+    setDeptId(dp.id);
+    go("dept");
+  } }, /* @__PURE__ */ React.createElement("span", { className: "dept-icon" }, /* @__PURE__ */ React.createElement(Icon, { d: dp.icon, size: 20 })), /* @__PURE__ */ React.createElement("span", { className: "grow" }, /* @__PURE__ */ React.createElement("span", { className: "strong" }, dp.name), /* @__PURE__ */ React.createElement("span", { className: "muted-sm dept-lead" }, dp.lead)), /* @__PURE__ */ React.createElement(Icon, { d: "M9 6l6 6-6 6", size: 16, sw: 2 })))))))), screen === "dept" && (() => {
+    const dp = DEPTS.find((x) => x.id === deptId) || DEPTS[0];
+    return /* @__PURE__ */ React.createElement("div", { className: "narrow stack-16" }, /* @__PURE__ */ React.createElement("nav", { className: "crumbs", "aria-label": "Breadcrumb" }, /* @__PURE__ */ React.createElement("button", { className: "link-btn", onClick: () => go("school") }, "My School"), /* @__PURE__ */ React.createElement("span", { "aria-hidden": "true" }, "/"), /* @__PURE__ */ React.createElement("span", null, dp.name)), /* @__PURE__ */ React.createElement("section", { className: "card pad-24 stack-16" }, /* @__PURE__ */ React.createElement("div", { className: "row-wrap align-center" }, /* @__PURE__ */ React.createElement("span", { className: "dept-icon lg" }, /* @__PURE__ */ React.createElement(Icon, { d: dp.icon, size: 28 })), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("h1", { className: "h1" }, dp.name), /* @__PURE__ */ React.createElement("p", { className: "lede" }, dp.hours))), /* @__PURE__ */ React.createElement("p", { className: "measure" }, dp.desc), /* @__PURE__ */ React.createElement("div", { className: "row-wrap align-center dept-person" }, /* @__PURE__ */ React.createElement("span", { className: "avatar" }, dp.initials), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "strong" }, dp.lead), /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, dp.name))), /* @__PURE__ */ React.createElement("div", { className: "row-wrap" }, /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent", onClick: () => say(`${dp.primary} would open here, inside Campus`) }, dp.primary), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline", onClick: () => {
+      if (dp.secondary === "Send a message") {
+        setStub("messages");
+        go("stub");
+      } else say(`${dp.secondary} would open here, inside Campus`);
+    } }, dp.secondary))));
+  })(), screen === "stub" && /* @__PURE__ */ React.createElement("div", { className: "narrow" }, /* @__PURE__ */ React.createElement("h1", { className: "h1 mb-16" }, STUBS[stub].title), /* @__PURE__ */ React.createElement("section", { className: "card dashed pad-28" }, /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, "Covered by ", STUBS[stub].prd), /* @__PURE__ */ React.createElement("p", { className: "mt-8" }, STUBS[stub].body), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline mt-16", onClick: () => go("home") }, "Back to home")))))), launching && /* @__PURE__ */ React.createElement("div", { className: "launch-overlay", role: "status", style: subj(PLAYER[launching.id]) }, /* @__PURE__ */ React.createElement("span", { className: "subject-tile xl" }, PLAYER[launching.id].tile), /* @__PURE__ */ React.createElement("div", { className: "strong lg" }, "Opening ", launching.name), /* @__PURE__ */ React.createElement("div", { className: "launch-bar" }, /* @__PURE__ */ React.createElement("span", null))), /* @__PURE__ */ React.createElement("div", { className: "proto" }, proto && /* @__PURE__ */ React.createElement("div", { className: "proto-panel", role: "dialog", "aria-label": "Prototype controls" }, /* @__PURE__ */ React.createElement("div", { className: "proto-h" }, "Prototype controls"), /* @__PURE__ */ React.createElement("div", { className: "label" }, "Data scenario"), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [["normal", "Normal"], ["outage", "Player API outage"], ["empty", "Empty new term"]].map(([id, l]) => /* @__PURE__ */ React.createElement("button", { key: id, className: mode === id ? "is-on" : "", "aria-pressed": mode === id, onClick: () => setMode(id) }, l))), /* @__PURE__ */ React.createElement("div", { className: "label mt-12" }, "Clock: ", fmt(now)), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [[0, "Paused"], [1, "Real time"], [10, "10\xD7"], [60, "60\xD7"]].map(([v, l]) => /* @__PURE__ */ React.createElement("button", { key: l, className: speed === v ? "is-on" : "", "aria-pressed": speed === v, onClick: () => setSpeed(v) }, l))), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm mt-12", onClick: () => setNow(595) }, "Reset clock to 9:55 AM")), /* @__PURE__ */ React.createElement("button", { className: "proto-btn", "aria-expanded": proto, onClick: () => setProto(!proto) }, /* @__PURE__ */ React.createElement(Icon, { d: I.sliders, size: 18 }), " Prototype")), liveCand && (O.id === "k5" ? /* @__PURE__ */ React.createElement("aside", { className: `k5-pop is-${livePhase}`, role: "status", "aria-live": "polite", key: liveKey }, /* @__PURE__ */ React.createElement("button", { className: "k5-pop-x", "aria-label": "Close", onClick: dismissLive }, /* @__PURE__ */ React.createElement(Icon, { d: I.x, size: 16, sw: 2.4 })), /* @__PURE__ */ React.createElement("div", { className: "k5-pop-top" }, /* @__PURE__ */ React.createElement(TeacherFace, { size: 56 }), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "k5-pop-tag" }, /* @__PURE__ */ React.createElement("span", { className: "live-dot" }), livePhase === "live" ? "Live now!" : `Starting in ${Math.ceil(liveCand.start - now)} min`), /* @__PURE__ */ React.createElement("div", { className: "k5-pop-title" }, liveCand.title), /* @__PURE__ */ React.createElement("div", { className: "k5-pop-sub" }, "with ", liveCand.host))), /* @__PURE__ */ React.createElement("div", { className: "k5-pop-actions" }, /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent btn-lg", onClick: () => {
+    dismissLive();
+    join(liveCand);
+  } }, "Join class"), /* @__PURE__ */ React.createElement("button", { className: "btn btn-ghost", onClick: dismissLive }, "Maybe later"))) : /* @__PURE__ */ React.createElement("aside", { className: `live-bar is-${livePhase}`, role: "status", "aria-live": "polite", key: liveKey }, /* @__PURE__ */ React.createElement("span", { className: "live-bar-tag" }, /* @__PURE__ */ React.createElement("span", { className: "live-dot" }), livePhase === "live" ? "Live now" : `Starts in ${Math.ceil(liveCand.start - now)} min`), /* @__PURE__ */ React.createElement("div", { className: "grow live-bar-text" }, /* @__PURE__ */ React.createElement("strong", null, liveCand.title), /* @__PURE__ */ React.createElement("span", null, liveCand.host, ", ", fmtRange(liveCand.start, liveCand.end))), /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent btn-sm", onClick: () => {
+    dismissLive();
+    join(liveCand);
+  } }, "Join"), /* @__PURE__ */ React.createElement("button", { className: "icon-btn sm live-bar-x", "aria-label": "Dismiss", onClick: dismissLive }, /* @__PURE__ */ React.createElement(Icon, { d: I.x, size: 16, sw: 2.2 })))), toast && /* @__PURE__ */ React.createElement("div", { className: "toast", role: "status", "aria-live": "polite" }, toast));
 }
 ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(App, null));
 
