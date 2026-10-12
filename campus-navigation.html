@@ -1,0 +1,1901 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Campus Student Home (Grades 6-12) Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800;6..12,900&display=swap" rel="stylesheet">
+<style>
+/* Generated from Teacher_tokens.json (+ Slate and admin-blue primitives from Default_tokens.json) */
+:root{
+  --buttons-button-primary-background:#8F5CB4;
+  --buttons-button-primary-outline:#8F5CB4;
+  --buttons-button-primary-hover:#7E4BA3;
+  --buttons-button-primary-hover-outline:#7E4BA3;
+  --buttons-button-primary-text:#FFFFFF;
+  --buttons-button-secondary-background:#25BDBB;
+  --buttons-button-secondary-outline:#25BDBB;
+  --buttons-button-secondary-hover:#0CA3A1;
+  --buttons-button-secondary-hover-outline:#0CA3A1;
+  --buttons-button-secondary-text:#FFFFFF;
+  --buttons-button-outline-outline:#CBD5E1;
+  --buttons-button-outline-hover:#F1F5F9;
+  --buttons-button-outline-hover-outline:#CBD5E1;
+  --buttons-button-outline-text:#334155;
+  --buttons-button-outline-text-active:#334155;
+  --buttons-button-disabled-background:#E2E8F0;
+  --buttons-button-disabled-outline:#E2E8F0;
+  --buttons-button-disabled-text:#94A3B8;
+  --buttons-button-no-outline-hover:#F1F5F9;
+  --buttons-button-no-outline-text:#334155;
+  --buttons-button-no-outline-text-disabled:#94A3B8;
+  --buttons-button-icononly-background:#FFFFFF;
+  --buttons-button-icononly-outline:#CBD5E1;
+  --buttons-button-icononly-hover:#F1F5F9;
+  --buttons-button-icononly-hover-outline:#CBD5E1;
+  --buttons-button-icononly-text:#334155;
+  --buttons-button-primary-corner:9999px;
+  --color-primary-subtle:#E0CEED;
+  --color-primary-lighter:#D0B4E4;
+  --color-primary-light:#BF98DA;
+  --color-primary-base:#A976CE;
+  --color-primary-dark:#8F5CB4;
+  --color-primary-darker:#1D0042;
+  --color-secondary-subtle:#DAF4F4;
+  --color-secondary-lighter:#B1E7E6;
+  --color-secondary-light:#88DBDA;
+  --color-secondary-base:#25BDBB;
+  --color-secondary-dark:#0CA3A1;
+  --color-secondary-darker:#00312F;
+  --color-neutral-100:#FFFFFF;
+  --color-neutral-200:#F5F5F5;
+  --color-neutral-300:#D4D4D4;
+  --color-neutral-400:#A3A3A3;
+  --color-neutral-500:#525252;
+  --color-neutral-600:#404040;
+  --color-neutral-700:#262626;
+  --color-neutral-800:#0A0A0A;
+  --color-accent-color-1-subtle:#F9F6F3;
+  --color-accent-color-1-lighter:#F1EBE3;
+  --color-accent-color-1-light:#E4D8CC;
+  --color-accent-color-1-base:#CEB7A3;
+  --color-accent-color-1-dark:#BA977D;
+  --color-accent-color-1-darker:#2E1F1C;
+  --color-accent-color-2-subtle:#FEF1EF;
+  --color-accent-color-2-lighter:#FCCEC6;
+  --color-accent-color-2-light:#FAA393;
+  --color-accent-color-2-base:#F87760;
+  --color-accent-color-2-dark:#DE5D46;
+  --color-accent-color-2-darker:#390000;
+  --color-accent-color-3-subtle:#FFF7E5;
+  --color-accent-color-3-lighter:#FFE3A3;
+  --color-accent-color-3-light:#FFCA52;
+  --color-accent-color-3-base:#FFBD26;
+  --color-accent-color-3-dark:#E59700;
+  --color-accent-color-3-darker:#260000;
+  --color-accent-color-4-subtle:#EFFBF6;
+  --color-accent-color-4-lighter:#AAE7CE;
+  --color-accent-color-4-light:#97E2C2;
+  --color-accent-color-4-base:#65D4A5;
+  --color-accent-color-4-dark:#4BBA8B;
+  --color-accent-color-4-darker:#002700;
+  --color-accent-color-5-subtle:#E7F6F9;
+  --color-accent-color-5-lighter:#AAE0E9;
+  --color-accent-color-5-light:#60C5D6;
+  --color-accent-color-5-base:#37B6CC;
+  --color-accent-color-5-dark:#008FA9;
+  --color-accent-color-5-darker:#001D37;
+  --color-accent-color-6-subtle:#FFF0F1;
+  --color-accent-color-6-lighter:#FFDEE0;
+  --color-accent-color-6-light:#FFC1C5;
+  --color-accent-color-6-base:#FFA4AA;
+  --color-accent-color-6-dark:#E58A90;
+  --color-accent-color-6-darker:#260000;
+  --color-disabled:#D4D4D4;
+  --foregrounds-and-backgrounds-foreground-color-light:#A3A3A3;
+  --foregrounds-and-backgrounds-foreground-color-dark:#475569;
+  --foregrounds-and-backgrounds-background-color-lighter:#FFFFFF;
+  --foregrounds-and-backgrounds-background-color-light:#FFFFFF;
+  --foregrounds-and-backgrounds-background-color-medium:#F1F5F9;
+  --foregrounds-and-backgrounds-background-color-dark:#1E293B;
+  --alert-error-light:#FEE8E4;
+  --alert-error-base:#DE5D46;
+  --alert-error-dark:#6C0000;
+  --alert-warning-light:#FFF2D4;
+  --alert-warning-base:#FFBD26;
+  --alert-warning-dark:#520400;
+  --alert-success-light:#C7EFDF;
+  --alert-success-base:#7CDAB2;
+  --alert-success-dark:#002700;
+  --alert-info-light:#D7F0F5;
+  --alert-info-base:#37B6CC;
+  --alert-info-dark:#001D37;
+  --alert-announce-light:#E0CEED;
+  --alert-announce-base:#B182D2;
+  --alert-announce-dark:#1D0042;
+  --alert-alert-corner:16px;
+  --typography-text-base:#1E293B;
+  --typography-text-disabled:#CBD5E1;
+  --typography-text-light:#FFFFFF;
+  --typography-text-link:#007E98;
+  --typography-text-link-hover:#004D67;
+  --typography-text-link-visited:#7E4BA3;
+  --typography-text-muted:#64748B;
+  --typography-text-success:#FFFFFF;
+  --typography-text-error:#FFFFFF;
+  --typography-text-warning:#FFFFFF;
+  --toggle-toggle-text-base:#64748B;
+  --toggle-toggle-text-light:#FFFFFF;
+  --toggle-toggle-text-disabled:#94A3B8;
+  --toggle-track-default-outline:#CBD5E1;
+  --toggle-toggle-active-bg:#A976CE;
+  --toggle-toggle-active-border:#A976CE;
+  --toggle-toggle-hover-bg:#8F5CB4;
+  --toggle-toggle-hover-border:#8F5CB4;
+  --toggle-thumb-default:#A976CE;
+  --toggle-thumb-hover:#8F5CB4;
+  --toggle-thumb-labled-default:#DE5D46;
+  --toggle-thumb-labled-hover:#CD4C35;
+  --toggle-thumb-active:#FFFFFF;
+  --input-text-base:#404040;
+  --input-text-disabled:#D4D4D4;
+  --input-text-light:#FFFFFF;
+  --input-text-link:#007E98;
+  --input-text-link-visited:#7E4BA3;
+  --input-text-muted:#64748B;
+  --input-input-corner:9999px;
+  --input-bg-default:#F8FAFC;
+  --input-bg-hover:#F1F5F9;
+  --input-bg-disabled:#F8FAFC;
+  --input-bg-focus:#E2E8F0;
+  --input-bg-error:#FEF1EF;
+  --input-border-default:#94A3B8;
+  --input-border-hover:#64748B;
+  --input-border-focus:#475569;
+  --input-border-default:#E2E8F0;
+  --input-border-hover:#64748B;
+  --input-border-disabled:#CBD5E1;
+  --input-error:#DE5D46;
+  --input-default:#1E293B;
+  --input-disabled:#CBD5E1;
+  --input-accent:#475569;
+  --input-error:#DE5D46;
+  --input-helper:#1E293B;
+  --input-default:#1E293B;
+  --input-disabled:#CBD5E1;
+  --input-error:#DE5D46;
+  --corners-corner-xs:2px;
+  --corners-corner-sm:4px;
+  --corners-corner-md:6px;
+  --corners-corner-lg:8px;
+  --corners-corner-xl:12px;
+  --corners-corner-2xl:16px;
+  --corners-corner-full:9999px;
+  --corners-corner-none:0px;
+  --corners-corner-3xl:24px;
+  --corners-corner-4xl:32px;
+  --card-card-corner:16px;
+  --card-card-bg:#FFFFFF;
+  --card-card-outline:#FFFFFF;
+  --progress-bar-progress-track:#E2E8F0;
+  --progress-bar-progress-track-border:#FFFFFF;
+  --progress-bar-progress-bar:#FFBD26;
+  --progress-bar-progress-bar-text:#737373;
+  --dropdown-menu-dropdown-menu-bg:#FFFFFF;
+  --dropdown-menu-dropdown-menu-text:#1E293B;
+  --dropdown-menu-dropdown-menu-item-hover:#E2E8F0;
+  --dropdown-menu-dropdown-menu-item-bg:#FFFFFF;
+  --dropdown-menu-dropdown-menu-item-corner:4px;
+  --dropdown-menu-dropdown-menu-corner:8px;
+  --checkbox-checkbox-bg:#FFFFFF;
+  --checkbox-checkbox-outline:#CBD5E1;
+  --checkbox-checkbox-active-bg:#4BBA8B;
+  --checkbox-checkbox-active-icon:#F9F6F3;
+  --radial-radial-bg:#FFFFFF;
+  --radial-radial-outline:#CBD5E1;
+  --radial-radial-active-bg:#4BBA8B;
+  --modal-modal-bg:#FFFFFF;
+  --modal-modal-corner:16px;
+  --modal-modal-outline:#FFFFFF;
+  --modal-modal-corner-mobile:12px;
+  --tooltip-tooltip-light-bg:#F1F5F9;
+  --tooltip-tooltip-dark-bg:#1E293B;
+  --tooltip-tooltip-light-text:#1E293B;
+  --tooltip-tooltip-dark-text:#FFFFFF;
+  --tooltip-tooltip-corner:8px;
+  --tag-tag-bg:#FFCA52;
+  --tag-tag-outline:#FFFFFF;
+  --tag-tag-hover-bg:#F1F5F9;
+  --tag-tag-hover-outline:#FFFFFF;
+  --tag-tag-text:#1E293B;
+  --tag-tag-corner:9999px;
+  --label-label-corner:4px;
+  --label-label-brown-bg:#E4D8CC;
+  --label-label-brown-hover-bg:#F1EBE3;
+  --label-label-brown-text:#2E1F1C;
+  --label-label-red-bg:#FAA393;
+  --label-label-red-hover-bg:#FCCEC6;
+  --label-label-red-text:#390000;
+  --label-label-yellow-bg:#FFE3A3;
+  --label-label-yellow-hover-bg:#FFF7E5;
+  --label-label-yellow-text:#260000;
+  --label-label-green-bg:#AAE7CE;
+  --label-label-green-hover-bg:#EFFBF6;
+  --label-label-green-text:#002700;
+  --label-label-blue-bg:#AAE0E9;
+  --label-label-blue-hover-bg:#E7F6F9;
+  --label-label-blue-text:#001D37;
+  --label-label-purple-bg:#D0B4E4;
+  --label-label-purple-hover-bg:#E0CEED;
+  --label-label-purple-text:#1D0042;
+  --label-label-pink-bg:#FFC1C5;
+  --label-label-pink-hover-bg:#FFDEE0;
+  --label-label-pink-text:#260000;
+  --label-label-context-menu-bg:#FFFFFF;
+  --label-label-context-menu-hover-bg:#F1EBE3;
+  --label-label-context-menu-text:#1E293B;
+  --label-label-context-menu-icon:#4BBA8B;
+  --label-label-context-menu-corner:4px;
+  --table-table-bg:#FFFFFF;
+  --table-table-text:#1E293B;
+  --table-table-icon:#1E293B;
+  --table-table-row-alternate:#F1F5F9;
+  --table-table-corner:4px;
+  --effects-inner-shad-base:#FFFFFF;
+  --effects-drop-shad-base:#FFFFFF;
+  --border-border-light:#FFFFFF;
+  --border-border-dark:#FFFFFF;
+  --user-circle-user-circle-corner:9999px;
+  --user-circle-user-circle-font:#FFFFFF;
+  --user-circle-user-circle-primary:#A976CE;
+  --user-circle-user-circle-border-primary:#A976CE;
+  --user-circle-user-circle-secondary:#25BDBB;
+  --user-circle-user-circle-border-secondary:#25BDBB;
+  --user-circle-user-circle-accent-4:#65D4A5;
+  --user-circle-user-circle-border-accent-4:#65D4A5;
+  --user-circle-user-circle-accent-5:#37B6CC;
+  --user-circle-user-circle-border-accent-5:#37B6CC;
+  --user-circle-user-circle-accent-3:#FFBD26;
+  --user-circle-user-circle-border-accent-3:#FFBD26;
+  --user-circle-user-circle-accent-6:#FFA4AA;
+  --user-circle-user-circle-border-accent-6:#FFA4AA;
+  --user-circle-user-circle-accent-2:#F87760;
+  --user-circle-user-circle-border-accent-2:#F87760;
+  --user-circle-user-circle-accent-1:#CEB7A3;
+  --user-circle-user-circle-border-accent-1:#CEB7A3;
+  --prim-slate-0:#FFFFFF;
+  --prim-slate-50:#F8FAFC;
+  --prim-slate-100:#F1F5F9;
+  --prim-slate-200:#E2E8F0;
+  --prim-slate-300:#CBD5E1;
+  --prim-slate-400:#94A3B8;
+  --prim-slate-500:#64748B;
+  --prim-slate-600:#475569;
+  --prim-slate-700:#334155;
+  --prim-slate-800:#1E293B;
+  --prim-slate-900:#0F172A;
+  --prim-slate-950:#020617;
+  --prim-admin-blue-50:#EFF6FF;
+  --prim-admin-blue-100:#DBEAFE;
+  --prim-admin-blue-200:#BFDBFE;
+  --prim-admin-blue-300:#93C5FD;
+  --prim-admin-blue-400:#60A5FA;
+  --prim-admin-blue-500:#3B82F6;
+  --prim-admin-blue-600:#2563EB;
+  --prim-admin-blue-700:#1D4ED8;
+  --prim-admin-blue-800:#1E40AF;
+  --prim-admin-blue-900:#1E3A8A;
+  --prim-admin-blue-950:#172554;
+}
+
+/* App roles mapped onto the Teacher tokens (slate neutral base) */
+:root{
+  --accent:var(--buttons-button-primary-background);
+  --accent-hover:var(--buttons-button-primary-hover);
+  --accent-soft:var(--color-primary-subtle);
+  --accent-ink:var(--color-primary-darker);
+  --link:var(--typography-text-link);
+  --link-hover:var(--typography-text-link-hover);
+  --bg:var(--prim-slate-50);
+  --surface:var(--card-card-bg);
+  --surface-2:var(--input-solid-bg-default);
+  --surface-3:var(--foregrounds-and-backgrounds-background-color-medium);
+  --hover:var(--buttons-button-outline-hover);
+  --line:var(--prim-slate-200);
+  --line-2:var(--buttons-button-outline-outline);
+  --ink:var(--typography-text-base);
+  --ink-2:var(--buttons-button-outline-text);
+  --muted:var(--typography-text-muted);
+  --muted-2:var(--typography-text-muted);
+  --select-bg:var(--foregrounds-and-backgrounds-background-color-dark);
+  --select-ink:var(--typography-text-light);
+  --nav-on-bg:var(--prim-slate-100);
+  --nav-on-ink:var(--prim-slate-900);
+  --hero-from:var(--prim-admin-blue-50);
+  --hero-to:var(--prim-slate-50);
+  --brand-blue:var(--prim-admin-blue-500);
+  --brand-blue-soft:var(--prim-admin-blue-50);
+  --brand-blue-line:var(--prim-admin-blue-200);
+  --brand-blue-ink:var(--prim-admin-blue-900);
+  --live:var(--color-accent-color-2-base);--live-ink:var(--color-accent-color-2-darker);--now:var(--color-accent-color-2-dark);
+  --shadow:0 12px 32px rgba(15,23,42,.12);
+  --r-card:var(--card-card-corner);--r-btn:var(--buttons-button-primary-corner);--r-input:var(--input-input-corner);
+  --r-label:var(--label-label-corner);--r-tag:var(--tag-tag-corner);--r-menu:var(--dropdown-menu-dropdown-menu-corner);
+  --r-menu-item:var(--dropdown-menu-dropdown-menu-item-corner);--r-avatar:var(--user-circle-user-circle-corner);--r-alert:var(--alert-alert-corner);
+  --display:'Nunito Sans','Avenir Next','Segoe UI',system-ui,sans-serif;
+  --body:'Nunito Sans','Avenir Next','Segoe UI',system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:var(--prim-slate-950);--surface:var(--prim-slate-900);--surface-2:var(--prim-slate-800);--surface-3:var(--prim-slate-800);--hover:var(--prim-slate-800);
+    --line:var(--prim-slate-800);--line-2:var(--prim-slate-700);--ink:var(--prim-slate-50);--ink-2:var(--prim-slate-200);--muted:var(--prim-slate-400);--muted-2:var(--prim-slate-400);
+    --select-bg:var(--prim-slate-100);--select-ink:var(--prim-slate-900);--nav-on-bg:var(--prim-slate-800);--nav-on-ink:var(--prim-slate-50);
+    --hero-from:#16224A;--hero-to:var(--prim-slate-900);--brand-blue-soft:#16224A;--brand-blue-line:var(--prim-admin-blue-800);--brand-blue-ink:var(--prim-admin-blue-100);
+    --link:var(--color-accent-color-5-light);--link-hover:var(--color-accent-color-5-lighter);
+    --shadow:0 12px 32px rgba(0,0,0,.5);color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:var(--prim-slate-950);--surface:var(--prim-slate-900);--surface-2:var(--prim-slate-800);--surface-3:var(--prim-slate-800);--hover:var(--prim-slate-800);
+  --line:var(--prim-slate-800);--line-2:var(--prim-slate-700);--ink:var(--prim-slate-50);--ink-2:var(--prim-slate-200);--muted:var(--prim-slate-400);--muted-2:var(--prim-slate-400);
+  --select-bg:var(--prim-slate-100);--select-ink:var(--prim-slate-900);--nav-on-bg:var(--prim-slate-800);--nav-on-ink:var(--prim-slate-50);
+  --hero-from:#16224A;--hero-to:var(--prim-slate-900);--brand-blue-soft:#16224A;--brand-blue-line:var(--prim-admin-blue-800);--brand-blue-ink:var(--prim-admin-blue-100);
+  --link:var(--color-accent-color-5-light);--link-hover:var(--color-accent-color-5-lighter);
+  --shadow:0 12px 32px rgba(0,0,0,.5);color-scheme:dark;
+}
+
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+p{margin:0}
+img{max-width:100%}
+
+/* type */
+.h1{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(28px,3.2vw,38px);line-height:1.15;letter-spacing:-.02em}
+.h2{margin:0;font-family:var(--display);font-weight:800;font-size:14px;line-height:1.3;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.h3{margin:0 0 6px;font-size:16px;font-weight:700}
+.lede{margin-top:6px;color:var(--muted)}
+.strong{font-weight:650;font-weight:600}
+.lg{font-size:17px}
+.muted{color:var(--muted)}
+.muted-sm{font-size:13px;color:var(--muted)}
+.muted-xs{font-size:12px;color:var(--muted);margin-top:4px}
+.fresh{font-size:12px;color:var(--muted-2)}
+.label{display:block;font-size:13px;font-weight:700;color:var(--ink-2);margin-bottom:6px;padding:0}
+.measure{max-width:68ch;color:var(--ink-2)}
+.tone-ok{color:var(--alert-success-dark)}.tone-warn{color:var(--typography-text-warning)}.tone-danger{color:var(--alert-error-dark)}
+
+/* utilities */
+.grow{flex:1;min-width:0}
+.spacer{flex:1 1 0}
+.stack-8{display:flex;flex-direction:column;gap:8px}
+.stack-12{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.stack-14{display:flex;flex-direction:column;gap:14px}
+.stack-16{display:flex;flex-direction:column;gap:16px}
+.stack-18{display:flex;flex-direction:column;gap:18px}
+.stack-20{display:flex;flex-direction:column;gap:20px}
+.row-wrap{display:flex;flex-wrap:wrap;gap:10px}
+.row-wrap.center{justify-content:center}
+.align-center{align-items:center;gap:18px}
+.mt-8{margin-top:8px}.mt-10{margin-top:10px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}
+.mb-12{margin-bottom:12px}.mb-16{margin-bottom:16px}.mb-20{margin-bottom:20px}
+.pad-8{padding:8px 4px}.pad-14{padding:14px 0}
+.narrow{max-width:800px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 18px;border-radius:var(--r-btn);border:1px solid transparent;font-weight:650;font-weight:600;line-height:1.2;text-decoration:none}
+.btn-sm{min-height:40px;padding:6px 14px;font-size:14px}
+.btn-accent{background:var(--accent);color:var(--buttons-button-primary-text);font-weight:700}
+.btn-accent:hover{background:var(--accent-hover)}
+.btn-subject{background:var(--subject-ink,var(--accent));color:var(--typography-text-light);font-weight:700}
+.btn-subject:hover{filter:brightness(1.25)}
+.btn-outline{background:var(--surface);border-color:var(--line-2);color:var(--ink-2)}
+.btn-outline:hover{background:var(--hover)}
+.btn-ghost{background:transparent;color:var(--ink-2)}
+.btn-danger{background:var(--alert-error-dark);color:var(--typography-text-light);font-weight:700}
+.btn-join{min-height:32px;padding:3px 16px;border-radius:var(--r-btn);background:var(--accent);color:var(--buttons-button-primary-text);font-weight:700;font-size:14px}
+.btn-ghost-inv{background:transparent;color:inherit;border-color:rgba(255,255,255,.35);min-height:40px;padding:6px 14px;font-size:14px}
+.link-btn{border:0;background:transparent;padding:6px 0;font-weight:600;font-size:14px;color:var(--link)}
+.link-btn:hover{color:var(--link-hover);text-decoration:underline}
+.icon-btn{width:44px;height:44px;border:0;border-radius:10px;background:transparent;color:var(--ink-2);display:inline-flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
+.icon-btn:hover{background:var(--hover)}
+.icon-btn .dot{position:absolute;top:9px;right:9px;width:9px;height:9px;border-radius:50%;background:var(--now);border:2px solid var(--surface)}
+.avatar{width:44px;height:44px;border-radius:var(--r-avatar);border:0;background:var(--brand-blue);color:var(--user-circle-user-circle-font);font-weight:700;font-size:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.avatar.xl{width:84px;height:84px;font-size:28px;border-radius:calc(var(--r-avatar)*2)}
+
+/* header */
+.topbar{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;padding:12px 24px;background:var(--surface);border-bottom:1px solid var(--line);position:relative;z-index:10}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-mark{width:36px;height:36px;border-radius:var(--r-avatar);font-family:var(--display);font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center}
+.brand-text{display:flex;flex-direction:column;line-height:1.15}
+.brand-name{font-family:var(--display);font-weight:700;font-size:17px}
+.brand-org{font-size:12px;color:var(--muted)}
+.pop-wrap{position:relative}
+.pop{position:absolute;top:calc(100% + 8px);background:var(--dropdown-menu-dropdown-menu-bg);border:1px solid var(--line);border-radius:var(--r-menu);box-shadow:var(--shadow);padding:6px;display:flex;flex-direction:column;gap:2px;z-index:20}
+.pop-left{left:0;width:290px}
+.pop-right{right:0;width:250px}
+.pop-org{display:flex;align-items:center;gap:12px;width:100%;min-height:52px;padding:8px 10px;border:0;border-radius:var(--r-menu-item);background:transparent;text-align:left}
+.pop-org:hover,.pop-org.is-current{background:var(--dropdown-menu-dropdown-menu-item-hover)}
+.pop-org-text{display:flex;flex-direction:column;flex:1;line-height:1.3}
+.pop-org-text span{font-size:12px;color:var(--muted)}
+.org-mark{width:32px;height:32px;border-radius:var(--r-avatar);font-weight:700;display:flex;align-items:center;justify-content:center}
+.pop-who{padding:10px 12px;border-bottom:1px solid var(--line);margin-bottom:4px;display:flex;flex-direction:column}
+.pop-who span{font-size:13px;color:var(--muted)}
+.pop-item{min-height:44px;padding:8px 12px;border:0;border-radius:var(--r-menu-item);background:transparent;text-align:left}
+.pop-item:hover{background:var(--dropdown-menu-dropdown-menu-item-hover)}
+.pop-item.muted{color:var(--muted)}
+
+/* shell */
+.shell{display:flex;flex-wrap:wrap;align-items:stretch;min-height:calc(100vh - 66px)}
+.side{flex:1 1 220px;max-width:100%;background:var(--surface);border-right:1px solid var(--line);padding:24px 16px;display:flex;flex-direction:column;gap:22px}
+.main{flex:999 1 560px;min-width:0;padding:24px 28px 96px}
+.wrap{max-width:1140px;margin:0 auto}
+.side-h{margin:0 10px 4px;font-family:var(--display);font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.side-sub{margin:0 10px 10px;font-size:12px;color:var(--muted)}
+
+/* course launchers */
+.launchers{display:flex;flex-direction:column;gap:2px;margin-top:8px}
+.launcher .subject-tile{width:32px;height:32px;font-size:12px;border-radius:9px}
+.launcher-play{width:26px!important;height:26px!important}
+.launcher{display:flex;align-items:center;gap:10px;width:100%;padding:6px 8px;border-radius:12px;border:1px solid transparent;background:transparent;text-align:left;transition:border-color .15s,box-shadow .15s,transform .15s}
+.launcher:hover{background:var(--hover);border-color:var(--line)}
+.launcher:hover .launcher-play{background:var(--subject-ink);color:var(--typography-text-light)}
+.subject-tile{width:40px;height:40px;flex-shrink:0;border-radius:11px;background:var(--subject-soft);color:var(--subject-ink);font-family:var(--display);font-weight:700;font-size:15px;display:inline-flex;align-items:center;justify-content:center;letter-spacing:.02em}
+.subject-tile.sm{width:30px;height:30px;font-size:12px;border-radius:8px}
+.subject-tile.lg{width:64px;height:64px;font-size:22px;border-radius:16px}
+.subject-tile.xl{width:88px;height:88px;font-size:30px;border-radius:22px}
+.launcher-text{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.launcher-name{font-weight:800;font-size:14px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.launcher-lesson{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.launcher-bar{display:block;height:4px;border-radius:99px;background:var(--progress-bar-progress-track);overflow:hidden;margin-top:3px}
+.launcher-bar span{display:block;height:100%;background:var(--progress-bar-progress-bar);border-radius:99px}
+.launcher-play{width:30px;height:30px;flex-shrink:0;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:var(--subject-ink);background:var(--subject-soft);transition:background .15s,color .15s}
+.launcher-play svg{margin-left:2px;fill:currentColor}
+
+/* nav */
+.side-nav{display:flex;flex-direction:column;gap:2px;padding-top:20px;border-top:1px solid var(--line)}
+.side-nav .side-h{margin-bottom:8px}
+.nav-item{display:flex;align-items:center;gap:12px;width:100%;min-height:44px;padding:10px 12px;border:0;border-radius:10px;background:transparent;text-align:left;font-size:15px;font-weight:500;color:var(--ink-2)}
+.nav-item:hover{background:var(--hover)}
+.nav-item.is-active{background:var(--nav-on-bg);color:var(--nav-on-ink);font-weight:800}
+
+/* cards */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:20px}
+.card.pad-24{padding:24px}.card.pad-28{padding:28px}.card.pad-32{padding:32px}
+.card.dashed{border-style:dashed;border-color:var(--line-2)}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:-20px -20px 16px;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--surface-2);border-radius:var(--r-card) var(--r-card) 0 0}
+.list-card{padding:4px 20px}
+.cols{display:grid;grid-template-columns:minmax(0,3fr) minmax(270px,1fr);gap:20px;align-items:start}
+@media (max-width:980px){.cols{grid-template-columns:minmax(0,1fr)}}
+.col-main{min-width:0;display:flex;flex-direction:column;gap:20px}
+.col-side{min-width:0;display:flex;flex-direction:column;gap:20px}
+
+/* broadcast */
+.broadcast{display:flex;gap:14px;align-items:flex-start;padding:16px 14px 16px 18px;border-radius:var(--r-alert);background:var(--brand-blue-soft);border:1px solid var(--brand-blue-line);color:var(--ink)}
+.broadcast-icon{width:36px;height:36px;flex-shrink:0;border-radius:var(--r-avatar);background:var(--brand-blue);color:#fff;display:flex;align-items:center;justify-content:center}
+.broadcast-from{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-blue-ink)}
+.broadcast-title{font-weight:700;font-size:16px;margin-top:1px}
+.broadcast-body{color:var(--ink-2)}
+.broadcast .icon-btn:hover{background:var(--brand-blue-line)}
+
+/* chips & tabs */
+.chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{display:inline-flex;align-items:center;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:2px 9px;border-radius:var(--r-label);line-height:1.5;white-space:nowrap}
+.chip-danger{background:var(--label-label-red-bg);color:var(--label-label-red-text)}
+.chip-warn{background:var(--label-label-yellow-bg);color:var(--label-label-yellow-text)}
+.chip-ok{background:var(--label-label-green-bg);color:var(--label-label-green-text)}
+.chip-neutral{background:var(--prim-slate-100);color:var(--prim-slate-700)}
+.chip-quiz{background:var(--label-label-purple-bg);color:var(--label-label-purple-text)}
+.chip-info{background:var(--label-label-blue-bg);color:var(--label-label-blue-text)}
+.chip-exam{background:var(--tooltip-tooltip-dark-bg);color:var(--typography-text-light)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px}
+.tab{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:6px 14px;border-radius:var(--r-tag);border:1px solid var(--line-2);background:var(--surface);font-size:14px;font-weight:600;color:var(--ink-2)}
+.tab.is-on{background:var(--select-bg);border-color:var(--select-bg);color:var(--select-ink)}
+.tab-n{min-width:22px;padding:0 6px;border-radius:99px;font-size:12px;line-height:20px;text-align:center;background:var(--surface-3);color:var(--ink)}
+.tab.is-on .tab-n{background:var(--prim-slate-600);color:var(--prim-slate-0)}
+
+/* work */
+.group{margin-top:18px}
+.group-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.work-row{display:flex;align-items:center;gap:14px;width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:var(--r-card);background:var(--surface);text-align:left}
+.work-row:hover{border-color:var(--line-2);background:var(--surface-2)}
+.work-main{flex:1;min-width:0}
+.work-title-line{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.work-title{font-weight:600}
+.work-meta{font-size:13px;color:var(--muted);margin-top:4px}
+.work-side{text-align:right;flex-shrink:0}
+.work-due{font-size:13px;font-weight:700}
+.work-cta{font-size:13px;font-weight:700;color:var(--link);margin-top:2px}
+.grade-row{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:var(--r-card);background:var(--surface-2)}
+.grade-pill{width:72px;flex-shrink:0;text-align:center;padding:6px 4px;border-radius:var(--r-label);font-weight:700;font-size:11px;line-height:1.2;background:var(--prim-slate-100);color:var(--prim-slate-700)}
+.grade-pill.is-graded{font-size:17px;background:var(--alert-success-light);color:var(--alert-success-dark)}
+.state-box{margin-top:6px;padding:18px;border-radius:var(--r-card);background:var(--surface-2);color:var(--muted);display:flex;gap:14px;align-items:flex-start}
+.state-box.center{flex-direction:column;align-items:center;text-align:center;gap:4px}
+.state-box strong{color:var(--ink);display:block}
+.state-box p{margin:2px 0 0}
+.warnbox{background:var(--alert-warning-light);color:var(--alert-warning-dark);border:0;border-radius:var(--r-alert)}
+.warnbox strong{color:var(--alert-warning-dark)}
+.warnbox .btn{margin-top:12px}
+
+/* timeline */
+.tl{position:relative;margin:8px 0 6px}
+.tl-rail{position:absolute;left:56px;top:0;bottom:0;width:2px;background:var(--line)}
+.tl-rail-past{position:absolute;left:56px;top:0;width:2px;background:var(--prim-slate-400);transition:height 1s linear}
+.tl-hour{position:absolute;left:0;right:0;height:0;border-top:1px dashed var(--line)}
+.tl-hour span{position:absolute;top:-9px;left:0;width:48px;font-size:11px;font-weight:600;color:var(--muted);background:var(--surface);text-align:right;padding-right:4px}
+.tl-block{position:absolute;left:68px;right:0;display:flex;flex-direction:column;gap:1px;padding:9px 10px 9px 12px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);overflow:hidden;transition:opacity .4s,border-color .3s,background .3s}
+.tl-dot{position:absolute;left:-17px;top:14px;width:10px;height:10px;border-radius:50%;background:var(--surface);border:2px solid var(--line-2)}
+.tl-block{overflow:visible}
+.tl-b-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:4px;min-height:30px}
+.tl-b-title{flex-shrink:0;font-weight:700;font-size:14px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl-b-meta{flex-shrink:0;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.tl-badge{font-size:11px;font-weight:700;padding:1px 8px;border-radius:var(--r-label);background:var(--neutral-bg);color:var(--neutral);white-space:nowrap}
+.tl-block.is-next{border-color:var(--brand-blue-line)}
+.tl-block.is-next .tl-dot{border-color:var(--brand-blue)}
+.tl-block.is-soon{background:var(--brand-blue-soft);border-color:var(--brand-blue-line)}
+.tl-badge.is-soon{background:var(--prim-admin-blue-100);color:var(--prim-admin-blue-900)}
+.tl-block.is-live{background:var(--color-accent-color-2-subtle);border-color:var(--live);box-shadow:0 0 0 3px var(--color-accent-color-2-lighter)}
+.tl-block.is-live .btn-join{background:var(--accent)}
+.tl-block.is-live .tl-dot{background:var(--live);border-color:var(--live);animation:pulse 1.6s ease-out infinite}
+.tl-badge.is-live{background:var(--live);color:var(--live-ink)}
+.tl-block.is-ended{opacity:.55}
+.tl-block.is-ended .tl-dot{background:var(--prim-slate-400);border-color:var(--prim-slate-400)}
+.tl-badge.is-ended{background:transparent;color:var(--muted);padding-right:0}
+.tl-now{position:absolute;left:44px;right:-6px;height:0;border-top:2px solid var(--now);z-index:3;transition:top 1s linear;pointer-events:none}
+.tl-now::before{content:"";position:absolute;left:7px;top:-7px;width:12px;height:12px;border-radius:50%;background:var(--now);box-shadow:0 0 0 4px var(--color-accent-color-2-lighter)}
+.tl-now-label{position:absolute;left:-44px;top:-11px;font-size:11px;font-weight:700;color:var(--live-ink);background:var(--live);border-radius:6px;padding:1px 5px;white-space:nowrap}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--color-accent-color-2-light)}100%{box-shadow:0 0 0 10px transparent}}
+
+/* attendance */
+.att-week{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.att-day{text-align:center;padding:8px 2px;border-radius:var(--r-label);background:var(--surface-2);color:var(--muted);display:flex;flex-direction:column}
+.att-day strong{font-size:12px}
+.att-day span{font-size:11px}
+.att-day.is-present{background:var(--alert-success-light);color:var(--alert-success-dark)}
+
+/* assignment */
+.crumbs{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);flex-wrap:wrap}
+.file-row{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:var(--r-card);background:var(--surface-2);border:1px solid var(--line)}
+.input{width:100%;padding:11px 16px;border-radius:var(--r-card);border:1px solid var(--input-solid-border-default);background:var(--input-solid-bg-default);color:var(--input-text-default);font-size:15px;resize:vertical}
+.input:hover{border-color:var(--input-solid-border-hover);background:var(--input-solid-bg-hover)}
+.input:focus{border-color:var(--input-solid-border-focus);background:var(--input-solid-bg-focus);outline:none}
+.input::placeholder{color:var(--input-text-muted)}
+.select{max-width:380px;min-height:44px;border-radius:var(--r-input)}
+.fs{border:0;padding:0;margin:0}
+.success-mark{width:52px;height:52px;border-radius:50%;background:var(--alert-success-light);color:var(--alert-success-dark);display:flex;align-items:center;justify-content:center}
+.next-box{width:100%;max-width:580px;padding:14px 16px;border-radius:var(--r-card);background:var(--surface-2)}
+.next-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:6px;flex-wrap:wrap}
+
+/* courses */
+.course-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.course-card{display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:var(--r-card);border:1px solid var(--line);background:var(--surface)}
+.course-card-top{display:flex;gap:12px;align-items:center}
+.kv{display:flex;justify-content:space-between;gap:10px;font-size:14px}
+.bar{height:8px;border-radius:99px;background:var(--progress-bar-progress-track);overflow:hidden}
+.bar span{display:block;height:100%;border-radius:99px;background:var(--progress-bar-progress-bar)}
+.course-hero{display:flex;flex-wrap:wrap;gap:20px;align-items:center}
+.course-hero .bar{max-width:420px}
+.grade-box{padding:14px 18px;border-radius:var(--r-card);background:var(--surface-2);text-align:center;min-width:150px}
+.grade-big{font-size:22px;font-weight:700;margin-top:2px}
+.continue{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+
+/* week */
+.page-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:18px}
+.scroll-x{overflow-x:auto;padding-bottom:6px}
+.week-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;min-width:860px}
+.week-col{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:12px;min-height:380px;display:flex;flex-direction:column;gap:8px}
+.week-col.is-today{border-color:var(--brand-blue);border-width:2px;padding:11px}
+.week-col-head{display:flex;align-items:baseline;gap:8px;padding:2px 4px 8px;border-bottom:1px solid var(--line)}
+.today-pill{margin-left:auto;font-size:11px;font-weight:700;padding:1px 8px;border-radius:var(--r-label);background:var(--brand-blue);color:#fff}
+.week-item{display:flex;flex-direction:column;gap:2px;width:100%;padding:10px;border:0;border-radius:var(--r-label);text-align:left;font-size:14px}
+.week-item:hover{filter:brightness(.96)}
+.week-item-kind{font-size:11px;font-weight:700}
+.week-item-title{font-weight:600;line-height:1.3}
+
+/* sessions list */
+.sess-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding:16px 0;border-bottom:1px solid var(--line)}
+.sess-row:last-child{border-bottom:0}
+.sess-when{width:150px;flex-shrink:0;display:flex;flex-direction:column}
+
+/* room */
+.stage{aspect-ratio:16/9;width:100%;max-height:70vh;border-radius:var(--r-card);background:var(--foregrounds-and-backgrounds-background-color-dark);color:var(--typography-text-light);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.stage-avatar{width:96px;height:96px;border-radius:calc(var(--r-avatar)*2);background:var(--user-circle-user-circle-primary);color:var(--user-circle-user-circle-font);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:700}
+
+/* toggles */
+.toggle-chip{min-height:40px;padding:6px 14px;border-radius:var(--r-tag);border:1px solid var(--line-2);background:var(--surface);font-size:14px;font-weight:600;color:var(--ink-2)}
+.toggle-chip.is-on{background:var(--select-bg);border-color:var(--select-bg);color:var(--select-ink)}
+.pref-row{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.pref-head{font-size:13px;font-weight:700;color:var(--muted);padding:12px 0}
+.pref-col{width:64px;display:flex;justify-content:center;flex-shrink:0}
+.switch{width:48px;height:28px;border-radius:99px;border:1px solid var(--toggle-track-default-outline);padding:2px;background:var(--color-neutral-200);display:flex}
+.switch span{width:22px;height:22px;border-radius:50%;background:var(--toggle-thumb-default);transition:transform .15s}
+.switch:hover span{background:var(--toggle-thumb-hover)}
+.switch.is-on{background:var(--toggle-toggle-active-bg);border-color:var(--toggle-toggle-active-border)}
+.switch.is-on:hover{background:var(--toggle-toggle-hover-bg);border-color:var(--toggle-toggle-hover-border)}
+.switch.is-on span,.switch.is-on:hover span{background:var(--toggle-thumb-active)}
+.switch.is-on span{transform:translateX(20px)}
+
+/* launch overlay */
+.launch-overlay{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:var(--subject-ink);color:var(--typography-text-light);animation:fadein .2s ease-out}
+.launch-overlay .subject-tile{background:var(--subject);color:var(--subject-ink)}
+.launch-bar{width:200px;height:4px;border-radius:99px;background:rgba(255,255,255,.25);overflow:hidden}
+.launch-bar span{display:block;height:100%;width:0;background:#fff;animation:load .7s ease-out forwards}
+@keyframes load{to{width:100%}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+
+/* player */
+.player{min-height:100vh;background:var(--bg);display:flex;flex-direction:column}
+.player-bar{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;padding:10px 20px;background:var(--subject-ink);color:var(--typography-text-light)}
+.player-bar-title{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:17px;flex:1}
+.player-bar-title .subject-tile{background:var(--subject);color:var(--subject-ink)}
+.player-bar-progress{font-size:13px;opacity:.9}
+.player-body{display:flex;flex-wrap:wrap;flex:1;align-items:flex-start}
+.player-outline{flex:1 1 260px;max-width:100%;padding:20px 14px;display:flex;flex-direction:column;gap:4px}
+.outline-head{font-family:var(--display);font-weight:700;padding:0 10px 8px}
+.outline-item{display:flex;align-items:center;gap:10px;min-height:44px;padding:8px 10px;border:0;border-radius:10px;background:transparent;text-align:left;font-size:14px;color:var(--ink-2)}
+.outline-item:hover{background:var(--hover)}
+.outline-item.is-current{background:var(--subject-soft);color:var(--subject-ink);color:var(--ink);font-weight:700}
+.outline-mark{width:24px;height:24px;border-radius:50%;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:2px solid var(--line-2);color:var(--muted)}
+.outline-mark.is-done{background:var(--subject-ink);border-color:var(--subject-ink);color:var(--typography-text-light)}
+.outline-item.is-current .outline-mark{border-color:var(--subject-ink);color:var(--subject-ink)}
+.player-content{flex:999 1 520px;min-width:0;padding:32px 32px 80px}
+.player-content>*{max-width:760px}
+.player-outline{border-right:1px solid var(--line);align-self:stretch}
+.player-h1{margin:0 0 14px;font-family:var(--display);font-size:clamp(26px,3.4vw,36px);line-height:1.15;letter-spacing:-.02em}
+.player-lead{font-size:18px;line-height:1.65;max-width:62ch;color:var(--ink-2)}
+.check-card{margin-top:28px;padding:22px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line)}
+.check-h{margin:0;font-size:15px;font-weight:700;color:var(--muted)}
+.check-q{margin-top:6px;font-size:17px;font-weight:600}
+.check-opts{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.opt{min-height:48px;padding:10px 14px;border-radius:var(--r-btn);border:1px solid var(--line-2);background:var(--surface);text-align:left;font-size:15px}
+.opt:hover{border-color:var(--subject-ink);background:var(--hover)}
+.opt.is-right{background:var(--alert-success-light);border-color:var(--alert-success-base);color:var(--alert-success-dark);font-weight:700}
+.opt.is-wrong{background:var(--alert-error-light);border-color:var(--alert-error-base);color:var(--alert-error-dark)}
+.check-fb{margin-top:12px;font-weight:700}
+.player-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+
+/* prototype controls */
+.proto{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.proto-btn{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:6px 14px;border-radius:99px;border:1px solid var(--line-2);background:var(--surface);box-shadow:var(--shadow);font-size:13px;font-weight:700;color:var(--ink-2)}
+.proto-panel{width:300px;max-width:calc(100vw - 32px);padding:16px;border-radius:14px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
+.proto-h{font-family:var(--display);font-weight:700;margin-bottom:10px}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{min-height:36px;padding:4px 10px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);font-size:13px;font-weight:600;color:var(--ink-2)}
+.seg button.is-on{background:var(--select-bg);border-color:var(--select-bg);color:var(--select-ink)}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);max-width:calc(100% - 32px);padding:12px 18px;border-radius:var(--tooltip-tooltip-corner);background:var(--tooltip-tooltip-dark-bg);color:var(--tooltip-tooltip-dark-text);font-weight:600;box-shadow:var(--shadow);z-index:60}
+
+@media (max-width:640px){
+  .main{padding:18px 16px 96px}
+  .topbar{padding:10px 14px}
+  .player-content{padding:24px 18px 80px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+.circle-primary{background:var(--brand-blue);color:#fff}
+.circle-secondary{background:var(--user-circle-user-circle-secondary);color:var(--color-secondary-darker)}
+.work-due.tone-danger{color:var(--alert-error-dark)}
+.work-due.tone-warn{color:var(--alert-warning-dark)}
+.work-due.tone-neutral{color:var(--ink)}
+body{color:var(--ink)}
+
+.hero{padding:32px 32px 28px;border-radius:20px;background:linear-gradient(135deg,var(--hero-from),var(--hero-to));border:1px solid var(--line)}
+.hero-eyebrow{font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.hero .lede{color:var(--ink-2);font-size:16px}
+.main{background:var(--bg)}
+
+.feed{display:flex;flex-direction:column;gap:8px}
+.feed-item{display:flex;gap:10px;align-items:flex-start;padding:12px 6px 10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--surface)}
+.feed-icon{width:28px;height:28px;flex-shrink:0;border-radius:50%;display:inline-flex;align-items:center;justify-content:center}
+.kind-announce .feed-icon{background:var(--brand-blue-soft);color:var(--brand-blue)}
+.kind-feedback .feed-icon{background:var(--label-label-green-bg);color:var(--label-label-green-text)}
+.kind-reminder .feed-icon{background:var(--label-label-yellow-bg);color:var(--label-label-yellow-text)}
+.feed-meta{font-size:12px;color:var(--muted)}
+.feed-title{font-weight:700;font-size:14px;line-height:1.35;margin-top:1px}
+.feed-body{font-size:13px;color:var(--ink-2);margin-top:2px}
+.feed-actions{display:flex;flex-wrap:wrap;gap:0 14px;margin-top:2px}
+.feed-actions .link-btn{font-size:13px;padding:4px 0}
+.muted-link{color:var(--muted)}
+.icon-btn.sm{width:36px;height:36px}
+.feed-more{align-self:flex-start;font-size:13px}
+.feed-body{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+/* announcements carousel */
+.ann{display:flex;gap:16px;align-items:flex-start;padding:18px 14px 14px 20px;border-radius:var(--r-card);background:var(--brand-blue-soft);border:1px solid var(--brand-blue-line)}
+.ann-icon{width:44px;height:44px;flex-shrink:0;border-radius:12px;background:var(--brand-blue);color:#fff;display:inline-flex;align-items:center;justify-content:center}
+.ann-slide{animation:annIn .35s ease-out}
+@keyframes annIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
+.ann-meta{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-blue-ink)}
+.ann-title{font-size:18px;font-weight:800;margin-top:2px}
+.ann-body{color:var(--ink-2);margin-top:2px}
+.ann-dots{display:flex;gap:2px;margin-top:8px;margin-left:-10px}
+.ann-dot{width:28px;height:28px;border:0;background:transparent;display:inline-flex;align-items:center;justify-content:center;padding:0}
+.ann-dot span{width:8px;height:8px;border-radius:99px;background:var(--brand-blue-line);transition:width .2s}
+.ann-dot.is-on span{width:22px;background:var(--brand-blue)}
+.ann-ctrls{display:flex;gap:2px;flex-shrink:0}
+.ann .icon-btn:hover{background:var(--brand-blue-line)}
+.ann-min{display:flex;align-items:center;gap:10px;padding:6px 8px 6px 14px;border-radius:var(--r-card);background:var(--brand-blue-soft);border:1px solid var(--brand-blue-line);font-size:14px}
+.ann-min-icon{color:var(--brand-blue);display:inline-flex}
+.ann-min .icon-btn:hover{background:var(--brand-blue-line)}
+@media (max-width:640px){.ann{flex-wrap:wrap}.ann-ctrls{width:100%;justify-content:flex-end}}
+
+/* up next */
+.upnext{border-radius:var(--r-card);padding:20px;background:linear-gradient(135deg,var(--subject-soft),var(--surface) 70%);border:1px solid var(--line);margin-bottom:22px}
+.upnext-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-bottom:12px}
+.upnext-label{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--subject-ink)}
+.upnext-why{font-size:13px;color:var(--ink-2)}
+.upnext-body{display:flex;gap:16px;align-items:flex-start}
+.upnext-title{margin:8px 0 4px;font-size:22px;font-weight:800;line-height:1.25;letter-spacing:-.01em}
+.upnext-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.upnext .btn-accent{padding:10px 22px}
+
+/* rest list */
+.rest-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.rest-title{margin:0;font-size:15px;font-weight:800}
+.task-list{display:flex;flex-direction:column;gap:6px}
+.task{display:flex;align-items:center;gap:12px;width:100%;padding:10px 10px 10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);text-align:left;transition:background .15s,border-color .15s}
+.task:hover{background:var(--hover);border-color:var(--line-2)}
+.task:hover .task-go{color:var(--ink);transform:translateX(2px)}
+.task .subject-tile{width:36px;height:36px;font-size:13px;border-radius:10px}
+.task-main{display:flex;flex-direction:column}
+.task-title{font-weight:700;line-height:1.3}
+.task-meta{font-size:13px;color:var(--muted)}
+.task-due{font-size:13px;font-weight:800;min-width:64px;text-align:right}
+.due-danger{color:var(--alert-error-dark)}.due-warn{color:var(--alert-warning-dark)}.due-neutral{color:var(--ink-2)}
+.task-go{color:var(--muted);display:inline-flex;transition:transform .15s}
+@media (max-width:640px){.task .chip{display:none}}
+
+/* bell */
+.bell-pop{width:380px;max-width:calc(100vw - 24px);max-height:70vh;overflow:auto;padding:8px}
+.bell-head{display:flex;justify-content:space-between;align-items:baseline;padding:8px 10px 10px;border-bottom:1px solid var(--line);margin-bottom:4px}
+.bell-sec{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:10px 10px 4px}
+.bell-item{display:flex;gap:10px;align-items:flex-start;padding:10px;border-radius:var(--r-menu-item)}
+.bell-item:hover{background:var(--hover)}
+.bell-item .grade-pill{width:60px}
+.bell-empty{padding:12px 10px}
+
+/* grade band switcher */
+.band-k{font-weight:600;color:var(--muted);margin-right:2px}
+.band-mark{min-width:44px;height:32px;padding:0 6px;border-radius:8px;background:var(--brand-blue-soft);color:var(--brand-blue-ink);font-weight:800;font-size:13px;display:inline-flex;align-items:center;justify-content:center}
+
+/* collapsible sidebar */
+.side{position:relative;z-index:6;gap:14px;transition:flex-basis .2s ease}
+.side-top{display:flex;justify-content:flex-end;margin:-12px -4px -6px}
+.side-toggle{width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:var(--surface)}
+.side-sec{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:36px;padding:4px 10px 4px 0;border:0;background:transparent;border-radius:8px;text-align:left}
+.side-sec:hover{background:var(--hover)}
+.side-sec .side-h{margin:0 10px}
+.side-chev{color:var(--muted);display:inline-flex;transform:rotate(-90deg);transition:transform .15s}
+.side-chev.is-open{transform:rotate(0)}
+.side-nav{padding-top:14px}
+.nav-list{display:flex;flex-direction:column;gap:2px;margin-top:6px}
+.side.is-min{flex:0 0 76px;padding:20px 12px;align-items:center}
+.side.is-min .side-top{margin:-8px 0 0;justify-content:center}
+.side.is-min .side-sec{display:none}
+.side.is-min section,.side.is-min .side-nav{width:100%}
+.side.is-min .launchers{margin-top:0;align-items:center}
+.side.is-min .launcher{width:48px;height:48px;padding:0;justify-content:center}
+.side.is-min .launcher .subject-tile{width:36px;height:36px;font-size:13px}
+.side.is-min .launcher-text,.side.is-min .launcher-play,.side.is-min .nav-label{display:none}
+.side.is-min .side-nav{padding-top:12px;align-items:center}
+.side.is-min .nav-list{align-items:center;margin-top:0}
+.side.is-min .nav-item{width:48px;height:48px;padding:0;justify-content:center}
+.side [data-tip]{position:relative}
+.side.is-min [data-tip]:hover::after,.side.is-min [data-tip]:focus-visible::after,.side-toggle:hover::after,.side-toggle:focus-visible::after{
+  content:attr(data-tip);position:absolute;left:calc(100% + 12px);top:50%;transform:translateY(-50%);
+  white-space:nowrap;padding:6px 10px;border-radius:var(--tooltip-tooltip-corner);background:var(--tooltip-tooltip-dark-bg);color:var(--tooltip-tooltip-dark-text);
+  font-size:13px;font-weight:600;line-height:1.3;box-shadow:var(--shadow);pointer-events:none;z-index:30}
+.side:not(.is-min) .side-toggle:hover::after,.side:not(.is-min) .side-toggle:focus-visible::after{left:auto;right:calc(100% + 10px)}
+
+/* compact greeting */
+.greet{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;padding:0 4px}
+.greet-h{margin:0;font-family:var(--display);font-weight:800;font-size:22px;line-height:1.2;letter-spacing:-.01em}
+.greet-sub{color:var(--muted);font-size:14px}
+
+/* up next banner */
+.upnext{position:relative;overflow:hidden;border-radius:20px;padding:26px 28px 24px;margin:0;background:linear-gradient(120deg,var(--subject-soft) 0%,var(--surface) 78%);border:1px solid var(--line)}
+.upnext::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:var(--subject-soft);opacity:.55;pointer-events:none}
+.upnext>*{position:relative;z-index:1}
+.upnext-top{margin-bottom:16px}
+.upnext-label{font-size:13px}
+.upnext-count{order:3;margin-left:auto;font-size:13px;font-weight:700;color:var(--muted)}
+.upnext-tile{width:76px;height:76px;font-size:26px;border-radius:20px}
+.upnext-title{margin:8px 0 4px;font-family:var(--display);font-weight:800;font-size:clamp(24px,2.6vw,30px);line-height:1.15;letter-spacing:-.015em}
+.upnext-sub{font-size:15px;color:var(--ink-2)}
+.upnext-body{gap:20px;align-items:center}
+.upnext-actions{margin-top:20px}
+.btn-lg{min-height:50px;padding:12px 26px;font-size:16px}
+.col-main{gap:20px}
+
+/* narrow (1/4) timeline */
+.col-side .tl-rail,.col-side .tl-rail-past{left:42px}
+.col-side .tl-hour span{width:36px;font-size:10.5px}
+.col-side .tl-block{left:54px;padding:8px 8px 8px 10px}
+.col-side .tl-dot{left:-17px}
+.col-side .tl-now{left:30px}
+.col-side .tl-now-label{left:-30px;font-size:10.5px;padding:1px 4px}
+.col-side .tl-b-foot{gap:6px}
+.col-side .tl-badge{font-size:10.5px;padding:1px 6px}
+.col-side .btn-join{padding:2px 12px;min-height:30px;font-size:13px}
+.col-side .card{padding:16px}
+.col-side .card-head{margin:-16px -16px 12px;padding:12px 16px;flex-wrap:nowrap}
+
+/* K-5 subject navigation */
+.brand{border:0;background:transparent;padding:4px 6px 4px 0;border-radius:10px;text-align:left}
+.k5-nav{display:flex;flex-direction:column;gap:10px;align-items:stretch}
+.k5-item{display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;padding:12px 8px 10px;border:2px solid transparent;border-radius:20px;background:transparent;transition:background .15s,border-color .15s,transform .15s}
+.k5-item:hover{background:var(--subject-soft);transform:translateY(-1px)}
+.k5-item:focus-visible{border-color:var(--subject-ink);outline:none}
+.k5-item.is-active{background:var(--subject-soft);border-color:var(--subject)}
+.k5-icon{width:76px;height:76px;border-radius:24px;display:inline-flex;align-items:center;justify-content:center;background:var(--subject-soft);color:var(--subject-ink);box-shadow:inset 0 -4px 0 var(--subject)}
+.k5-item:hover .k5-icon{background:var(--surface)}
+.k5-label{font-family:var(--display);font-weight:800;font-size:17px;line-height:1.2;color:var(--ink)}
+.k5-divider{height:1px;background:var(--line);margin:6px 8px}
+.side:has(.k5-nav){flex:0 0 180px}
+.side.is-min:has(.k5-nav){flex:0 0 96px}
+.side.is-min .k5-label{display:none}
+.side.is-min .k5-item{padding:6px}
+.side.is-min .k5-icon{width:60px;height:60px;border-radius:18px}
+.brand{display:flex;align-items:center;gap:10px}
+
+/* 6-12: Campus links first */
+.side-nav.is-first{padding-top:0;border-top:0}
+.side-courses{padding-top:14px;border-top:1px solid var(--line)}
+.side.is-min .side-courses{padding-top:12px}
+
+/* K-5 teacher icon */
+.k5-teacher{padding:0;overflow:hidden;background:var(--subject-soft)}
+.k5-teacher svg{width:68px;height:68px}
+
+/* K-5 Classes home */
+.k5-home{max-width:1100px}
+.k5-hello{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.k5-h1{margin:0;font-family:var(--display);font-weight:900;font-size:clamp(28px,3.4vw,36px);line-height:1.1;letter-spacing:-.01em}
+.k5-sub{font-size:17px;color:var(--ink-2);margin-top:4px}
+.star-pill{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;background:var(--color-accent-color-3-subtle);border:2px solid var(--color-accent-color-3-light);font-size:15px;color:var(--color-accent-color-3-darker)}
+.star-pill strong{font-size:24px;font-weight:900;line-height:1}
+.star path{fill:var(--prim-slate-200);stroke:var(--prim-slate-300);stroke-width:1.2;stroke-linejoin:round}
+.star.is-on path{fill:var(--color-accent-color-3-base);stroke:var(--color-accent-color-3-dark)}
+.k5-day{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:18px;background:var(--surface);border:1px solid var(--line)}
+.k5-day-label{font-weight:800;font-size:15px}
+.k5-day-track{flex:1;height:16px;border-radius:99px;background:var(--prim-slate-100);overflow:hidden;box-shadow:inset 0 1px 2px rgba(15,23,42,.08)}
+.k5-day-track span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--color-accent-color-4-base),var(--color-accent-color-4-dark));transition:width .4s ease}
+.k5-day-n{font-weight:900;font-size:18px;min-width:44px;text-align:right}
+.k5-live{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 18px;border-radius:18px;background:var(--brand-blue-soft);border:1px solid var(--brand-blue-line)}
+.k5-live.is-live{background:var(--color-accent-color-2-subtle);border-color:var(--color-accent-color-2-light)}
+.k5-live-when{font-size:14px;font-weight:700;color:var(--brand-blue-ink)}
+.k5-live.is-live .k5-live-when{color:var(--color-accent-color-2-darker)}
+.k5-live-title{font-size:18px;font-weight:800}
+.k5-live-wait{font-weight:700;color:var(--muted)}
+.k5-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.k5-card{display:flex;flex-direction:column;gap:14px;padding:22px;border-radius:28px;background:var(--subject-soft);border:3px solid transparent;box-shadow:0 6px 0 var(--subject);transition:transform .15s}
+.k5-card:hover{transform:translateY(-2px)}
+.k5-card.is-done{border-color:var(--subject)}
+.k5-card-top{display:flex;align-items:center;gap:14px}
+.k5-card-icon{width:72px;height:72px;border-radius:22px;background:var(--surface);color:var(--subject-ink);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 3px 0 var(--subject)}
+.k5-card-h{margin:0;font-family:var(--display);font-weight:900;font-size:26px;line-height:1.1;color:var(--subject-ink)}
+.k5-stars{display:flex;gap:3px;margin-top:6px}
+.k5-badge{align-self:flex-start;padding:4px 12px;border-radius:999px;background:var(--surface);color:var(--subject-ink);font-weight:900;font-size:13px}
+.k5-bar{height:14px;border-radius:99px;background:var(--surface);overflow:hidden}
+.k5-bar span{display:block;height:100%;border-radius:99px;background:var(--subject-ink);transition:width .4s ease}
+.k5-acts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.k5-act{display:flex;align-items:center;gap:12px;width:100%;min-height:48px;padding:8px 12px;border:0;border-radius:14px;background:var(--surface);text-align:left;font-size:15px;font-weight:700;color:var(--ink)}
+.k5-act:hover{box-shadow:0 0 0 2px var(--subject)}
+.k5-act.is-done{background:transparent;color:var(--subject-ink);cursor:default;box-shadow:none}
+.k5-check{width:26px;height:26px;flex-shrink:0;border-radius:50%;border:2.5px solid var(--subject);display:inline-flex;align-items:center;justify-content:center;background:var(--surface)}
+.k5-act.is-done .k5-check{background:var(--subject-ink);border-color:var(--subject-ink);color:#fff}
+.k5-go{color:var(--subject-ink);display:inline-flex}
+.k5-go svg{fill:currentColor}
+.k5-play{align-self:flex-start;min-height:52px;padding:12px 26px;font-size:18px;font-weight:900;background:var(--subject-ink);color:#fff;border-radius:999px;box-shadow:0 4px 0 color-mix(in srgb,var(--subject-ink) 60%,#000)}
+.k5-play svg{fill:currentColor}
+.k5-play:hover{filter:brightness(1.2)}
+
+/* Homeroom */
+.homeroom{max-width:760px}
+.hr-head{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.hr-feed{display:flex;flex-direction:column;gap:16px}
+.hr-post{padding:20px;border-radius:22px;background:var(--surface);border:1px solid var(--line)}
+.hr-post-top{display:flex;align-items:center;gap:12px}
+.hr-kind{padding:4px 12px;border-radius:999px;font-size:13px;font-weight:800;background:var(--prim-slate-100);color:var(--prim-slate-700)}
+.hr-kind.kind-morning{background:var(--color-accent-color-3-lighter);color:var(--color-accent-color-3-darker)}
+.hr-kind.kind-shout-out{background:var(--color-accent-color-6-lighter);color:var(--color-accent-color-6-darker)}
+.hr-kind.kind-reminder{background:var(--brand-blue-soft);color:var(--brand-blue-ink)}
+.hr-text{font-size:18px;line-height:1.55;margin:14px 0 12px}
+.hr-like{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:6px 16px;border-radius:999px;border:2px solid var(--line);background:var(--surface);font-weight:800;color:var(--ink-2)}
+.hr-like.is-on{border-color:var(--color-accent-color-6-base);background:var(--color-accent-color-6-subtle);color:var(--color-accent-color-6-darker)}
+.hr-like.is-on svg{fill:var(--color-accent-color-6-base)}
+.hr-n{font-weight:700;color:var(--muted)}
+.k5-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:820px){.k5-grid{grid-template-columns:minmax(0,1fr)}}
+.k5-play{margin-top:auto}
+
+/* Quick launch: grade + course progress */
+.launcher-row{display:flex;align-items:baseline;justify-content:space-between;gap:8px;min-width:0}
+.launcher-grade{flex-shrink:0;font-size:12.5px;font-weight:800;color:var(--ink)}
+.launcher-grade.is-none{font-weight:600;color:var(--muted);font-size:11.5px}
+.launcher-prog{display:block;height:4px;border-radius:99px;background:var(--prim-slate-100);overflow:hidden;margin-top:6px}
+.launcher-prog span{display:block;height:100%;border-radius:99px;background:var(--subject)}
+.launcher{align-items:center}
+
+/* Quick launch, two clean lines: name / grade + progress */
+.launcher-text{gap:3px}
+.launcher-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.25}
+.launcher-meta{display:flex;align-items:center;gap:8px;min-width:0}
+.launcher-meta .launcher-grade{font-size:12px;font-weight:700;color:var(--ink-2);white-space:nowrap}
+.launcher-meta .launcher-grade.is-none{font-weight:600;color:var(--muted);font-size:12px}
+.launcher-meta .launcher-prog{flex:1;margin-top:0;height:4px;min-width:24px}
+.launcher-play{width:28px!important;height:28px!important;background:transparent!important;color:var(--muted)!important}
+.launcher:hover .launcher-play,.launcher:focus-visible .launcher-play{background:var(--subject-ink)!important;color:#fff!important}
+
+/* grade tiles in Quick launch */
+.grade-tile{position:relative;font-size:14px;letter-spacing:0}
+.launcher .grade-tile{width:36px;height:36px;font-size:14px}
+.grade-tile:hover::after{content:attr(data-grade-tip);position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);white-space:nowrap;padding:5px 9px;border-radius:var(--tooltip-tooltip-corner);background:var(--tooltip-tooltip-dark-bg);color:var(--tooltip-tooltip-dark-text);font-family:var(--body);font-size:12px;font-weight:700;box-shadow:var(--shadow);z-index:30;pointer-events:none}
+.side.is-min .grade-tile:hover::after{display:none}
+
+/* graduation plan */
+.grad{max-width:1100px}
+.grad-hero{display:flex;flex-direction:column;gap:16px}
+.grad-nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+@media (max-width:700px){.grad-nums{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.grad-big{font-family:var(--display);font-weight:900;font-size:34px;line-height:1.1}
+.grad-prog-n{color:var(--prim-admin-blue-600)}
+.grad-bar{display:flex;height:16px;border-radius:99px;background:var(--prim-slate-100);overflow:hidden}
+.grad-bar.sm{height:8px;margin-top:8px}
+.seg-earned{background:var(--color-accent-color-4-dark)}
+.seg-prog{background:var(--prim-admin-blue-300)}
+.seg-left{background:var(--prim-slate-200)}
+.grad-legend{display:flex;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--muted)}
+.grad-legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.grad-cols{display:grid;grid-template-columns:minmax(0,3fr) minmax(260px,2fr);gap:20px;align-items:start}
+@media (max-width:900px){.grad-cols{grid-template-columns:minmax(0,1fr)}}
+.grad-card-head{margin:-4px -20px 4px}
+.req-row{padding:14px 0;border-bottom:1px solid var(--line)}
+.req-row:last-child{border-bottom:0}
+.req-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.next-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.next-steps li{display:flex;gap:10px;align-items:flex-start;color:var(--ink-2)}
+.ns-dot{width:8px;height:8px;border-radius:50%;background:var(--prim-admin-blue-500);margin-top:8px;flex-shrink:0}
+
+/* Live today calendar strip */
+.cal-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;margin:0 0 10px}
+.cal-day{display:flex;flex-direction:column;align-items:center;gap:1px;padding:6px 0 5px;border-radius:12px;border:1px solid transparent;background:transparent;color:var(--ink-2)}
+.cal-day:hover{background:var(--hover)}
+.cal-d{font-size:11px;font-weight:700;color:var(--muted)}
+.cal-n{font-size:16px;font-weight:800;line-height:1.2}
+.cal-dots{display:flex;gap:3px;height:5px}
+.cal-dots i{width:5px;height:5px;border-radius:50%;background:var(--prim-admin-blue-400)}
+.cal-day.is-today .cal-n{color:var(--prim-admin-blue-600)}
+.cal-day.is-on{background:var(--select-bg);border-color:var(--select-bg);color:var(--select-ink)}
+.cal-day.is-on .cal-d,.cal-day.is-on .cal-n{color:var(--select-ink)}
+.cal-day.is-on .cal-dots i{background:var(--prim-admin-blue-200)}
+.day-list{display:flex;flex-direction:column;gap:8px}
+.day-item{display:flex;flex-direction:column;gap:3px;width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--surface);text-align:left}
+.day-item:hover{background:var(--hover)}
+.day-item-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:2px}
+.cal-all{width:100%;margin-top:12px}
+.cal-strip{margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.cal-sessions{margin-top:32px;scroll-margin-top:16px}
+.cal-sec-h{margin:0 0 14px;font-family:var(--display);font-weight:800;font-size:22px}
+
+/* Up next spans the full width */
+/* playlist list */
+.task-list{gap:2px!important}
+.pl-head{display:grid;grid-template-columns:36px minmax(0,1fr) 110px 84px;gap:12px;padding:0 12px 8px;margin-bottom:4px;border-bottom:1px solid var(--line);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pl-head span:last-child{text-align:right}
+.pl-row{display:grid!important;grid-template-columns:36px minmax(0,1fr) 110px 84px;gap:12px;align-items:center;width:100%;padding:8px 12px!important;border:0!important;border-radius:12px!important;background:transparent!important;text-align:left}
+.pl-row:hover,.pl-row:focus-visible{background:var(--hover)!important}
+.pl-num{position:relative;display:flex;align-items:center;justify-content:center;height:36px;font-size:15px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+.pl-play{position:absolute;inset:0;display:none;align-items:center;justify-content:center;color:var(--ink)}
+.pl-play svg{fill:currentColor}
+.pl-row:hover .pl-n,.pl-row:focus-visible .pl-n{display:none}
+.pl-row:hover .pl-play,.pl-row:focus-visible .pl-play{display:flex}
+.pl-track{display:flex;align-items:center;gap:12px;min-width:0}
+.pl-track .subject-tile{width:40px;height:40px;border-radius:10px}
+.pl-track .task-main{display:flex;flex-direction:column;min-width:0}
+.pl-track .task-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pl-type{display:flex}
+.pl-row .task-due{text-align:right}
+@media (max-width:640px){.pl-head{display:none}.pl-row{grid-template-columns:28px minmax(0,1fr) 64px}.pl-type{display:none}}
+
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script>
+const ORGS = {
+  k5: { id: "k5", band: "K-5", name: "Primavera", mark: "P", circle: "primary", student: "Maya Torres", first: "Maya", initials: "MT", grade: "Grade 4", sub: "Maya Torres, Grade 4", weights: false },
+  g68: { id: "g68", band: "6-8", name: "Primavera", mark: "P", circle: "primary", student: "Leo Park", first: "Leo", initials: "LP", grade: "Grade 7", sub: "Leo Park, Grade 7", weights: true },
+  g912: { id: "g912", band: "6-12", name: "Primavera", mark: "P", circle: "primary", student: "Jordan Reyes", first: "Jordan", initials: "JR", grade: "Grade 10", sub: "Jordan Reyes, Grade 10", weights: true }
+};
+const PLAYER = {
+  ela4: {
+    tile: "EN",
+    fam: "accent-color-2",
+    lessons: ["2.1 Story elements", "2.2 Characters", "2.3 Setting", "2.4 Problem and solution", "2.5 Retell the story"],
+    start: 2,
+    intro: "The setting is where and when a story happens. Authors use describing words to help you picture it, like a dark forest at night or a busy city in the morning.",
+    q: "Which of these tells you the setting?",
+    options: ["\u201CSam was brave.\u201D", "\u201CIt was a snowy morning in the mountains.\u201D", "\u201CThe end.\u201D"],
+    answer: 1
+  },
+  math4: {
+    tile: "MA",
+    fam: "primary",
+    lessons: ["3.1 Equal groups", "3.2 Multiplying by 5", "3.3 Multiplying by 6", "3.4 Arrays", "3.5 Word problems"],
+    start: 2,
+    intro: "Multiplying by 6 is the same as making 6 equal groups. If you know 5 groups, just add one more group to find 6 groups.",
+    q: "What is 6 \xD7 4?",
+    options: ["20", "24", "28"],
+    answer: 1
+  },
+  sci4: {
+    tile: "SC",
+    fam: "accent-color-4",
+    lessons: ["1.1 Living things", "1.2 What plants need", "1.3 Plant parts", "1.4 How seeds grow", "1.5 Plant review"],
+    start: 2,
+    intro: "Plants have roots, a stem, leaves, and sometimes flowers. Roots drink water from the soil, and leaves use sunlight to make food.",
+    q: "Which plant part takes in water from the soil?",
+    options: ["Leaves", "Roots", "Flowers"],
+    answer: 1
+  },
+  ss4: {
+    tile: "SS",
+    fam: "accent-color-3",
+    lessons: ["2.1 Maps and globes", "2.2 Arizona\u2019s regions", "2.3 The desert", "2.4 Mountains and plateaus", "2.5 Regions review"],
+    start: 1,
+    intro: "Arizona has three main land regions: the Colorado Plateau, the mountain region, and the Basin and Range desert region. Each one has different weather, plants, and animals.",
+    q: "Which region is mostly desert?",
+    options: ["Basin and Range", "Colorado Plateau", "The ocean"],
+    answer: 0
+  },
+  art4: {
+    tile: "AR",
+    fam: "accent-color-6",
+    lessons: ["1.1 Lines", "1.2 Shapes", "1.3 Primary colors", "1.4 Mixing colors", "1.5 My color wheel"],
+    start: 3,
+    intro: "Red, yellow, and blue are primary colors. When you mix two of them together, you make a new secondary color.",
+    q: "What color do you get when you mix blue and yellow?",
+    options: ["Purple", "Orange", "Green"],
+    answer: 2
+  },
+  ela7: {
+    tile: "EL",
+    fam: "accent-color-2",
+    lessons: ["2.1 What makes a narrative", "2.2 Point of view", "2.3 Dialogue", "2.4 Pacing", "2.5 Revising your draft"],
+    start: 2,
+    intro: "Dialogue moves a story forward and shows who a character is. Start a new paragraph each time the speaker changes, and keep tags like \u201Cshe said\u201D simple.",
+    q: "When should you start a new paragraph in dialogue?",
+    options: ["Every sentence", "When the speaker changes", "Only at the end"],
+    answer: 1
+  },
+  math7: {
+    tile: "M7",
+    fam: "primary",
+    lessons: ["2.1 Ratios", "2.2 Unit rates", "2.3 Proportions", "2.4 Percent", "2.5 Unit 2 review"],
+    start: 2,
+    intro: "A proportion says two ratios are equal. To check, cross-multiply: if a/b = c/d, then a \xD7 d should equal b \xD7 c.",
+    q: "Is 2/3 = 8/12 a true proportion?",
+    options: ["Yes", "No", "Not enough information"],
+    answer: 0
+  },
+  sci7: {
+    tile: "LS",
+    fam: "accent-color-4",
+    lessons: ["1.3 Microscopes", "1.4 Cell theory", "1.5 Plant and animal cells", "1.6 Lab: Cell diagram", "1.7 Unit 1 review"],
+    start: 2,
+    intro: "Plant and animal cells both have a nucleus, cytoplasm, and a cell membrane. Only plant cells have a cell wall and chloroplasts.",
+    q: "Which part is found only in plant cells?",
+    options: ["Nucleus", "Cell membrane", "Chloroplast"],
+    answer: 2
+  },
+  ss7: {
+    tile: "AZ",
+    fam: "accent-color-3",
+    lessons: ["3.1 Early peoples", "3.2 Spanish missions", "3.3 Territorial Arizona", "3.4 Statehood in 1912", "3.5 Unit 3 review"],
+    start: 2,
+    intro: "Arizona became a U.S. territory in 1863. Mining, railroads, and ranching brought new settlers during the territorial years before statehood in 1912.",
+    q: "In what year did Arizona become a state?",
+    options: ["1863", "1912", "1950"],
+    answer: 1
+  },
+  pe7: {
+    tile: "PE",
+    fam: "accent-color-1",
+    lessons: ["2.1 Warm-ups", "2.2 Heart rate", "2.3 Building endurance", "2.4 Fitness log", "2.5 Goal check"],
+    start: 1,
+    intro: "Your heart rate tells you how hard your body is working. Count your pulse for 15 seconds and multiply by 4 to find beats per minute.",
+    q: "You count 30 beats in 15 seconds. What is your heart rate?",
+    options: ["60", "90", "120"],
+    answer: 2
+  },
+  code7: {
+    tile: "CD",
+    fam: "secondary",
+    lessons: ["1.1 What is code?", "1.2 Sequences", "1.3 Loops", "1.4 Events", "1.5 Build a game"],
+    start: 2,
+    intro: "A loop repeats a set of steps. Instead of writing \u201Cmove forward\u201D ten times, you can tell the computer to repeat it ten times.",
+    q: "Why use a loop?",
+    options: ["To repeat steps", "To delete code", "To change colors"],
+    answer: 0
+  },
+  eng: {
+    tile: "EN",
+    fam: "accent-color-2",
+    lessons: ["7.1 Setting the scene", "7.2 Character and conflict", "7.3 Turning points", "7.4 Writing about change", "7.5 Chapter 7 review"],
+    start: 1,
+    intro: "A character\u2019s conflict can be internal (a struggle within themselves) or external (against another person, society, or nature). As you read Chapter 7, notice which kind of conflict pushes each character to change.",
+    q: "A character torn between loyalty to a friend and telling the truth is facing\u2026",
+    options: ["An external conflict", "An internal conflict", "No conflict at all"],
+    answer: 1
+  },
+  alg: {
+    tile: "A2",
+    fam: "primary",
+    lessons: ["4.1 Simplifying rational expressions", "4.2 Multiplying and dividing", "4.3 Adding rational expressions", "4.4 Complex fractions", "4.5 Solving rational equations"],
+    start: 2,
+    intro: "To add rational expressions, rewrite each one over a common denominator, then add the numerators. Factor every denominator first so you can find the least common denominator.",
+    q: "What is the least common denominator of 1/x and 1/(x + 2)?",
+    options: ["x + 2", "x(x + 2)", "2x"],
+    answer: 1
+  },
+  bio: {
+    tile: "BI",
+    fam: "accent-color-4",
+    lessons: ["3.3 Energy in cells", "3.4 Proteins", "3.5 Enzymes and reaction rate", "3.6 Lab: Enzyme activity", "3.7 Unit 3 review"],
+    start: 2,
+    intro: "Enzymes are proteins that speed up chemical reactions. Each enzyme has an ideal temperature. Too much heat changes its shape, so it can no longer bind to its substrate.",
+    q: "What usually happens to an enzyme at a very high temperature?",
+    options: ["It works faster forever", "It changes shape and stops working", "It turns into a substrate"],
+    answer: 1
+  },
+  his: {
+    tile: "WH",
+    fam: "accent-color-3",
+    lessons: ["4.4 The Haitian Revolution", "4.5 Sim\xF3n Bol\xEDvar", "4.6 Latin American independence", "4.7 Unit 4 review", "Unit 4 exam"],
+    start: 2,
+    intro: "Between 1808 and 1826, most of Spain\u2019s American colonies won independence. Leaders like Sim\xF3n Bol\xEDvar and Jos\xE9 de San Mart\xEDn drew on Enlightenment ideas and on the American and Haitian revolutions.",
+    q: "Which earlier revolution inspired independence movements in Latin America?",
+    options: ["The Haitian Revolution", "The Industrial Revolution", "The Glorious Revolution"],
+    answer: 0
+  },
+  spa: {
+    tile: "ES",
+    fam: "accent-color-5",
+    lessons: ["4.5 Repaso", "5.1 El pret\xE9rito", "5.2 Verbos irregulares", "5.3 En el pasado", "5.4 Conversaci\xF3n"],
+    start: 1,
+    intro: "Use the preterite (el pret\xE9rito) for actions completed in the past. Regular -ar verbs take the endings -\xE9, -aste, -\xF3, -amos, -aron.",
+    q: "Yo ___ (hablar) con mi amiga ayer.",
+    options: ["hablo", "habl\xE9", "habl\xF3"],
+    answer: 1
+  },
+  pho: {
+    tile: "PH",
+    fam: "accent-color-6",
+    lessons: ["1.1 Your camera", "1.2 Light", "1.3 Focus", "1.4 Rule of thirds", "1.5 Portfolio"],
+    start: 3,
+    intro: "The rule of thirds divides a frame into a 3 \xD7 3 grid. Placing your subject along those lines, or where they cross, usually feels more balanced than centering it.",
+    q: "Where does the rule of thirds suggest placing your subject?",
+    options: ["Exactly in the center", "Along a grid line or intersection", "In a corner"],
+    answer: 1
+  },
+  csp: {
+    tile: "CS",
+    fam: "secondary",
+    lessons: ["3.1 Variables", "3.2 Lists and iteration", "3.3 Procedures", "3.4 Parameters", "3.5 Create Task prep"],
+    start: 1,
+    intro: "A list stores many values under one name. A loop lets your program repeat the same steps for every item in the list instead of writing them out one by one.",
+    q: "Why pair a loop with a list?",
+    options: ["To repeat steps for every item", "To delete the list", "To rename variables"],
+    answer: 0
+  },
+  hlt: {
+    tile: "HW",
+    fam: "accent-color-1",
+    lessons: ["2.4 Nutrition basics", "3.1 Why sleep matters", "3.2 Stress and the body", "3.3 Coping strategies", "Module 3 check"],
+    start: 1,
+    intro: "Teens need about 8 to 10 hours of sleep a night. Sleep helps memory, mood, and focus: it is when your brain files away what you learned that day.",
+    q: "About how much sleep do teens need each night?",
+    options: ["5\u20136 hours", "8\u201310 hours", "12\u201314 hours"],
+    answer: 1
+  }
+};
+const DATA = {
+  g912: {
+    courses: [
+      { id: "eng", name: "English 10", teacher: "Ms. Alvarez", grade: "A-, 91%", progress: 46 },
+      { id: "alg", name: "Algebra II", teacher: "Mr. Chen", grade: "B, 84%", progress: 41 },
+      { id: "bio", name: "Biology", teacher: "Dr. Okafor", grade: "B+, 88%", progress: 38 },
+      { id: "his", name: "World History", teacher: "Ms. Patel", grade: "A, 94%", progress: 50 },
+      { id: "spa", name: "Spanish II", teacher: "Sr. Ruiz", grade: "B+, 87%", progress: 44 },
+      { id: "pho", name: "Digital Photography", teacher: "Mr. Hale", grade: null, progress: 12 }
+    ],
+    assignments: [
+      { id: "a1", title: "Unit 3 Lab Report: Enzyme Activity", course: "bio", type: "Lab", weight: 8, status: "pastdue", due: "Was due Fri, Oct 9", dueShort: "Fri, Oct 9", day: null, instructions: "Write up your enzyme activity lab using the template. Include your hypothesis, a data table, a graph of reaction rate vs. temperature, and a 150\u2013250 word conclusion." },
+      { id: "a2", title: "Quiz 4.2: Rational Expressions", course: "alg", type: "Quiz", weight: 5, status: "today", due: "Due today, 11:59 PM", dueShort: "11:59 PM", day: "Mon", instructions: "10 questions, 30 minutes. One retake is allowed and your higher score counts." },
+      { id: "a3", title: "Chapter 7 Reading Response", course: "eng", type: "Assignment", weight: 2, status: "today", due: "Due today, 11:59 PM", dueShort: "11:59 PM", day: "Mon", instructions: "Read Chapter 7 and write about 200 words: which character changes the most, and what causes the change? Use one quote as evidence." },
+      { id: "a4", title: "Vocabulary Set 5", course: "spa", type: "Assignment", weight: 1, status: "week", due: "Due Wed, Oct 14", dueShort: "Wed", day: "Wed", instructions: "Complete the 20-word matching set, then use five of the words in original sentences." },
+      { id: "a5", title: "Unit 4 Exam: Age of Revolutions", course: "his", type: "Exam", weight: 15, status: "week", due: "Due Thu, Oct 15", dueShort: "Thu", day: "Thu", instructions: "Covers lessons 4.1\u20134.6: 40 multiple-choice questions and 2 short answers. Review session Wednesday at 1:00 PM." },
+      { id: "a6", title: "Portfolio: Rule of Thirds", course: "pho", type: "Project", weight: 10, status: "week", due: "Due Fri, Oct 16", dueShort: "Fri", day: "Fri", instructions: "Submit five original photos that use the rule of thirds, each with a one-sentence caption." }
+    ],
+    graded: [
+      { id: "g1", title: "Essay: The Crucible", course: "eng", result: "92%", graded: true, note: "Feedback from Ms. Alvarez" },
+      { id: "g2", title: "Quiz 4.1: Simplifying Expressions", course: "alg", result: "78%", graded: true, note: "Retake open until Oct 16" },
+      { id: "g3", title: "Unit 3 Quiz: Cell Energy", course: "bio", result: "Not graded yet", graded: false, note: "Submitted Thu, Oct 8" }
+    ],
+    today: [
+      { id: "s1", title: "Algebra II Live Help", host: "Mr. Chen", course: "alg", start: 600, end: 645 },
+      { id: "s2", title: "Biology Lab Q&A", host: "Dr. Okafor", course: "bio", start: 690, end: 720 },
+      { id: "s3", title: "Homeroom Check-in", host: "Ms. Alvarez", course: null, start: 780, end: 800 },
+      { id: "s4", title: "Spanish II Conversation Lab", host: "Sr. Ruiz", course: "spa", start: 870, end: 900 },
+      { id: "s5", title: "Photography Critique Circle", host: "Mr. Hale", course: "pho", start: 930, end: 975 }
+    ],
+    otherSessions: [
+      { id: "s6", title: "Biology Lab Review", host: "Dr. Okafor", time: "11:00\u201311:40 AM", day: "Tue", dateLabel: "Tue, Oct 13", when: "week", status: "Accepted" },
+      { id: "s7", title: "World History Exam Review", host: "Ms. Patel", time: "1:00\u20131:45 PM", day: "Wed", dateLabel: "Wed, Oct 14", when: "week", status: "Accepted" },
+      { id: "s8", title: "English 10 Writing Workshop", host: "Ms. Alvarez", time: "10:30\u201311:15 AM", day: "Thu", dateLabel: "Thu, Oct 15", when: "week", status: "Invited" },
+      { id: "s9", title: "Algebra II: Unit 5 Kickoff", host: "Mr. Chen", time: "10:00\u201310:45 AM", dateLabel: "Mon, Oct 19", when: "upcoming", status: "Accepted" },
+      { id: "s10", title: "College & Career Info Night", host: "School Counseling", time: "6:00\u20137:00 PM", dateLabel: "Tue, Oct 20", when: "upcoming", status: "Invited" },
+      { id: "s11", title: "Biology Lab Review", host: "Dr. Okafor", time: "11:00\u201311:40 AM", dateLabel: "Fri, Oct 9", when: "past", status: "Attended" },
+      { id: "s12", title: "Algebra II Live Help", host: "Mr. Chen", time: "10:00\u201310:45 AM", dateLabel: "Thu, Oct 8", when: "past", status: "Attended" },
+      { id: "s13", title: "Homeroom Check-in", host: "Ms. Alvarez", time: "1:00\u20131:20 PM", dateLabel: "Wed, Oct 7", when: "past", status: "Missed" }
+    ],
+    events: [
+      { day: "Wed", title: "Optional PSAT practice test", time: "9:00 AM" },
+      { day: "Fri", title: "PSAT registration closes", time: "All day" }
+    ],
+    broadcasts: [
+      { id: "b1", title: "PSAT registration closes Friday, Oct 16", body: "Grade 10 and 11 students: reserve your testing seat with your counselor by Friday." },
+      { id: "b2", title: "Fall state testing is Oct 26\u201330", body: "Your testing site and time will be posted here by Oct 19." }
+    ],
+    notices: [
+      { id: "n1", kind: "feedback", time: "8:40 AM", title: "Ms. Alvarez left feedback on Essay: The Crucible", body: "Strong thesis. Tighten your second paragraph before the final draft.", course: "eng", actionLabel: "Open course" },
+      { id: "n2", kind: "reminder", time: "8:00 AM", title: "Quiz 4.1 retake closes Friday", body: "Your higher score counts.", course: "alg", actionLabel: "Open course" }
+    ],
+    attendance: { today: "Recorded present today at 8:02 AM", lastWeek: "5 of 5 days present last week" }
+  },
+  g68: {
+    courses: [
+      { id: "ela7", name: "ELA 7", teacher: "Mr. Brooks", grade: "B+, 88%", progress: 40 },
+      { id: "math7", name: "Math 7", teacher: "Ms. Ruiz", grade: "B, 83%", progress: 37 },
+      { id: "sci7", name: "Life Science", teacher: "Dr. Hale", grade: "A-, 90%", progress: 42 },
+      { id: "ss7", name: "Arizona History", teacher: "Ms. Vega", grade: "A, 95%", progress: 45 },
+      { id: "pe7", name: "PE & Health", teacher: "Coach Diaz", grade: null, progress: 30 },
+      { id: "code7", name: "Coding Elective", teacher: "Mr. Kim", grade: "A, 96%", progress: 25 }
+    ],
+    assignments: [
+      { id: "m1", title: "Narrative Essay: First Draft", course: "ela7", type: "Assignment", weight: 6, status: "pastdue", due: "Was due Thu, Oct 8", dueShort: "Thu, Oct 8", day: null, instructions: "Write a 1\u20132 page true story about a time you tried something new. Include dialogue and a clear beginning, middle, and end." },
+      { id: "m2", title: "Proportions Quiz", course: "math7", type: "Quiz", weight: 5, status: "today", due: "Due today, 11:59 PM", dueShort: "11:59 PM", day: "Mon", instructions: "8 questions, 20 minutes. You can use your notes." },
+      { id: "m3", title: "Lab: Plant and Animal Cell Diagram", course: "sci7", type: "Lab", weight: 8, status: "today", due: "Due today, 11:59 PM", dueShort: "11:59 PM", day: "Mon", instructions: "Label both cells using the virtual microscope, then list three ways they are different." },
+      { id: "m4", title: "Territorial Arizona Timeline", course: "ss7", type: "Project", weight: 10, status: "week", due: "Due Wed, Oct 14", dueShort: "Wed", day: "Wed", instructions: "Place eight events from 1863 to 1912 on a timeline, with one sentence about why each one mattered." },
+      { id: "m5", title: "Unit 2 Test: Ratios and Rates", course: "math7", type: "Exam", weight: 15, status: "week", due: "Due Thu, Oct 15", dueShort: "Thu", day: "Thu", instructions: "25 questions covering lessons 2.1\u20132.4. Review session Wednesday at 1:00 PM." },
+      { id: "m6", title: "Fitness Log: Week 7", course: "pe7", type: "Assignment", weight: 2, status: "week", due: "Due Fri, Oct 16", dueShort: "Fri", day: "Fri", instructions: "Log 30 minutes of activity on four days this week, with your heart rate after each one." }
+    ],
+    graded: [
+      { id: "mg1", title: "Point of View Quiz", course: "ela7", result: "90%", graded: true, note: "Feedback from Mr. Brooks" },
+      { id: "mg2", title: "Unit Rates Practice", course: "math7", result: "76%", graded: true, note: "Retake open until Oct 16" },
+      { id: "mg3", title: "Microscope Lab", course: "sci7", result: "Not graded yet", graded: false, note: "Submitted Fri, Oct 9" }
+    ],
+    today: [
+      { id: "ms1", title: "Math 7 Live Lesson", host: "Ms. Ruiz", course: "math7", start: 600, end: 640 },
+      { id: "ms2", title: "Science Lab Walkthrough", host: "Dr. Hale", course: "sci7", start: 690, end: 720 },
+      { id: "ms3", title: "Advisory Check-in", host: "Mr. Brooks", course: null, start: 780, end: 800 },
+      { id: "ms4", title: "Coding Club", host: "Mr. Kim", course: "code7", start: 900, end: 945 }
+    ],
+    otherSessions: [
+      { id: "ms5", title: "Arizona History Discussion", host: "Ms. Vega", time: "11:00\u201311:40 AM", day: "Tue", dateLabel: "Tue, Oct 13", when: "week", status: "Accepted" },
+      { id: "ms6", title: "Math 7 Test Review", host: "Ms. Ruiz", time: "1:00\u20131:45 PM", day: "Wed", dateLabel: "Wed, Oct 14", when: "week", status: "Accepted" },
+      { id: "ms7", title: "Writing Workshop", host: "Mr. Brooks", time: "10:30\u201311:15 AM", day: "Thu", dateLabel: "Thu, Oct 15", when: "week", status: "Invited" },
+      { id: "ms8", title: "Science Fair Kickoff", host: "Dr. Hale", time: "2:00\u20132:45 PM", dateLabel: "Tue, Oct 20", when: "upcoming", status: "Invited" },
+      { id: "ms9", title: "Math 7 Live Lesson", host: "Ms. Ruiz", time: "10:00\u201310:40 AM", dateLabel: "Fri, Oct 9", when: "past", status: "Attended" },
+      { id: "ms10", title: "Advisory Check-in", host: "Mr. Brooks", time: "1:00\u20131:20 PM", dateLabel: "Wed, Oct 7", when: "past", status: "Missed" }
+    ],
+    events: [
+      { day: "Thu", title: "Picture day", time: "All day" },
+      { day: "Fri", title: "Science fair sign-ups close", time: "All day" }
+    ],
+    broadcasts: [
+      { id: "mb1", title: "Science fair sign-ups close Friday, Oct 16", body: "Grades 6\u20138: pick a topic with your science teacher and sign up by Friday." },
+      { id: "mb2", title: "Picture day is Thursday, Oct 15", body: "Join your scheduled photo slot from the link your advisory teacher sends." }
+    ],
+    notices: [
+      { id: "mn1", kind: "feedback", time: "8:30 AM", title: "Mr. Brooks left feedback on Point of View Quiz", body: "Nice work spotting first person. Review question 6.", course: "ela7", actionLabel: "Open course" },
+      { id: "mn2", kind: "reminder", time: "8:00 AM", title: "Unit Rates retake closes Friday", body: "Your higher score counts.", course: "math7", actionLabel: "Open course" }
+    ],
+    attendance: { today: "Recorded present today at 8:04 AM", lastWeek: "5 of 5 days present last week" }
+  },
+  k5: {
+    courses: [
+      { id: "ela4", name: "English", teacher: "Ms. Greene", grade: "On track", progress: 44 },
+      { id: "ss4", name: "Social Studies", teacher: "Ms. Greene", grade: "On track", progress: 30 },
+      { id: "sci4", name: "Science", teacher: "Mr. Ortiz", grade: "Great work", progress: 36 },
+      { id: "math4", name: "Math", teacher: "Ms. Greene", grade: "On track", progress: 40 }
+    ],
+    assignments: [
+      { id: "e1", title: "Spelling Words: Week 6", course: "ela4", type: "Assignment", weight: 2, status: "pastdue", due: "Was due Fri, Oct 9", dueShort: "Fri, Oct 9", day: null, instructions: "Practice your 12 spelling words, then type each one in a sentence." },
+      { id: "e2", title: "Math Facts: Multiplying by 6", course: "math4", type: "Quiz", weight: 3, status: "today", due: "Due today", dueShort: "Today", day: "Mon", instructions: "10 quick questions. Take your time and check each answer." },
+      { id: "e3", title: "Reading Log: 20 Minutes", course: "ela4", type: "Assignment", weight: 1, status: "today", due: "Due today", dueShort: "Today", day: "Mon", instructions: "Read any book for 20 minutes, then write the title and one thing that happened." },
+      { id: "e4", title: "Draw and Label Plant Parts", course: "sci4", type: "Project", weight: 5, status: "week", due: "Due Wed, Oct 14", dueShort: "Wed", day: "Wed", instructions: "Draw a plant and label the roots, stem, leaves, and flower." },
+      { id: "e5", title: "Arizona Regions Map", course: "ss4", type: "Assignment", weight: 4, status: "week", due: "Due Thu, Oct 15", dueShort: "Thu", day: "Thu", instructions: "Color the three regions of Arizona on your map and add a key." }
+    ],
+    graded: [
+      { id: "eg1", title: "Book Report: My Favorite Animal", course: "ela4", result: "Great work", graded: true, note: "Ms. Greene added a sticker" },
+      { id: "eg2", title: "Place Value Quiz", course: "math4", result: "9 of 10", graded: true, note: "Nice job, Maya!" },
+      { id: "eg3", title: "Seed Journal", course: "sci4", result: "Not graded yet", graded: false, note: "Turned in Thu, Oct 8" }
+    ],
+    today: [
+      { id: "es1", title: "Morning Meeting", host: "Ms. Greene", course: null, start: 545, end: 565 },
+      { id: "es2", title: "Math Small Group", host: "Ms. Greene", course: "math4", start: 600, end: 630 },
+      { id: "es3", title: "Art Live: Color Mixing", host: "Ms. Kaye", course: "art4", start: 780, end: 820 },
+      { id: "es4", title: "Read-Aloud Time", host: "Ms. Greene", course: "ela4", start: 840, end: 870 }
+    ],
+    otherSessions: [
+      { id: "es5", title: "Science Show and Tell", host: "Mr. Ortiz", time: "10:00\u201310:30 AM", day: "Tue", dateLabel: "Tue, Oct 13", when: "week", status: "Accepted" },
+      { id: "es6", title: "PE: Move and Groove", host: "Coach Lee", time: "11:00\u201311:30 AM", day: "Wed", dateLabel: "Wed, Oct 14", when: "week", status: "Accepted" },
+      { id: "es7", title: "Library Story Hour", host: "Mrs. Patel", time: "1:00\u20131:30 PM", day: "Thu", dateLabel: "Thu, Oct 15", when: "week", status: "Accepted" },
+      { id: "es8", title: "Fall Celebration", host: "Primavera", time: "1:00\u20132:00 PM", dateLabel: "Fri, Oct 23", when: "upcoming", status: "Invited" },
+      { id: "es9", title: "Math Small Group", host: "Ms. Greene", time: "10:00\u201310:30 AM", dateLabel: "Fri, Oct 9", when: "past", status: "Attended" }
+    ],
+    events: [
+      { day: "Wed", title: "PE day: wear sneakers", time: "All day" },
+      { day: "Thu", title: "Picture day", time: "All day" },
+      { day: "Fri", title: "Library books due back", time: "All day" }
+    ],
+    broadcasts: [
+      { id: "kb1", title: "Picture day is Thursday!", body: "Wear your favorite shirt and smile for your school photo." },
+      { id: "kb2", title: "Library books are due Friday", body: "Bring back your library books so you can pick new ones." }
+    ],
+    notices: [
+      { id: "kn1", kind: "feedback", time: "8:20 AM", title: "Ms. Greene sent you a note about your book report", body: "I loved your drawing of the sea otter!", course: "ela4", actionLabel: "Open class" },
+      { id: "kn2", kind: "reminder", time: "8:00 AM", title: "Don\u2019t forget your reading log today", body: "Read for 20 minutes, then tell us about it.", course: "ela4", actionLabel: "Open class" }
+    ],
+    attendance: { today: "Recorded present today at 8:01 AM", lastWeek: "5 of 5 days present last week" }
+  }
+};
+const DAYS = [["Mon", "12"], ["Tue", "13"], ["Wed", "14"], ["Thu", "15"], ["Fri", "16"]];
+const STATUS = {
+  pastdue: { label: "Past due", cls: "danger", cta: "Submit now" },
+  today: { label: "Due today", cls: "warn", cta: "Start" },
+  week: { label: "This week", cls: "neutral", cta: "Start" }
+};
+const TYPE_CLS = { Exam: "exam", Quiz: "quiz", Lab: "ok", Project: "ok", Assignment: "neutral" };
+const STUBS = {
+  attendance: { title: "Attendance", prd: "the Attendance PRD", body: "Full attendance history, absence explanations, and threshold alerts will live here. The home screen shows only today and last week." },
+  messages: { title: "Messages", prd: "the Messaging & Notifications PRD", body: "Your inbox, in-app messaging with teachers, and notification center will live here, with no email app needed." },
+  homeroom: { title: "Homeroom", prd: "the homeroom community work (pending school leadership input)", body: "Your class space with Ms. Greene: the morning message, class news, and your classmates, all in one place for every subject." },
+  counseling: { title: "Counseling", prd: "the Counseling Department PRD", body: "Find your counselor, see support resources, and book a time to talk, all inside Campus." }
+};
+const PREF_TYPES = [
+  ["due", "Assignment reminders", "Work due today and past due work"],
+  ["graded", "New grades and feedback", "When a teacher grades your work"],
+  ["session", "Live session starting", "10 minutes before a session you accepted"],
+  ["announce", "School announcements", "Important news from your school"],
+  ["messages", "Messages from teachers", "When someone messages you in Campus"],
+  ["attendance", "Attendance alerts", "If an absence needs your attention"]
+];
+const INTERESTS = ["Photography", "Coding", "Soccer", "Music", "Art", "Gaming", "Writing", "Science", "Animals", "Cooking"];
+const K5_TODAY = {
+  ela4: [
+    { id: "k-ela-1", t: "Watch: Story Elements", done: true },
+    { id: "k-ela-2", t: "Spelling Words: Week 6", assign: "e1" },
+    { id: "k-ela-3", t: "Reading Log: 20 Minutes", assign: "e3" }
+  ],
+  ss4: [
+    { id: "k-ss-1", t: "Sing: Arizona Regions Song", done: true },
+    { id: "k-ss-2", t: "Arizona Regions Map", assign: "e5" }
+  ],
+  sci4: [
+    { id: "k-sci-1", t: "Watch: Plant Parts", done: true },
+    { id: "k-sci-2", t: "Game: Match the Plant Parts" },
+    { id: "k-sci-3", t: "Draw and Label Plant Parts", assign: "e4" }
+  ],
+  math4: [
+    { id: "k-m-1", t: "Warm-Up: Arrays", done: true },
+    { id: "k-m-2", t: "Math Facts: Multiplying by 6", assign: "e2" },
+    { id: "k-m-3", t: "Game: Times Table Race" }
+  ]
+};
+const HOMEROOM_POSTS = [
+  { id: "p1", time: "Today, 7:45 AM", kind: "Morning message", text: "Good morning, friends! Today we start our plant unit in science. Bring a leaf from outside to Read-Aloud Time if you can find one.", likes: 12 },
+  { id: "p2", time: "Today, 7:30 AM", kind: "Reminder", text: "Picture day is Thursday! Wear your favorite shirt and get ready to smile.", likes: 9 },
+  { id: "p3", time: "Fri, Oct 9", kind: "Shout-out", text: "Our class read 1,200 minutes last week! You all earned a pajama read-aloud on Friday.", likes: 21 },
+  { id: "p4", time: "Thu, Oct 8", kind: "Reminder", text: "Library books are due back Friday so you can pick new ones.", likes: 6 }
+];
+const GRAD_PLAN = {
+  classOf: 2029,
+  required: 22,
+  counselor: { name: "Ms. Lopez", initials: "ML" },
+  areas: [
+    { name: "English", req: 4, earned: 1, inProgress: 1, now: "English 10" },
+    { name: "Math", req: 4, earned: 1, inProgress: 1, now: "Algebra II" },
+    { name: "Science", req: 3, earned: 1, inProgress: 1, now: "Biology" },
+    { name: "Social Studies", req: 3, earned: 1, inProgress: 1, now: "World History" },
+    { name: "Fine Arts or CTE", req: 1, earned: 0, inProgress: 0.5, now: "Digital Photography" },
+    { name: "Physical Education", req: 1, earned: 1, inProgress: 0 },
+    { name: "Electives", req: 6, earned: 2, inProgress: 1, now: "Spanish II" }
+  ],
+  next: [
+    "Choose your junior year courses with Ms. Lopez by March 1.",
+    "You still need 0.5 Fine Arts or CTE credit after Digital Photography.",
+    "Take the PSAT this fall to practice for college entrance tests."
+  ]
+};
+const { useState, useEffect, useRef } = React;
+const fmt = (m) => {
+  m = Math.floor(m);
+  let h = Math.floor(m / 60), mm = m % 60;
+  const ap = h >= 12 ? "PM" : "AM";
+  h = h % 12 || 12;
+  return `${h}:${String(mm).padStart(2, "0")} ${ap}`;
+};
+const subj = (p) => ({ "--subject": `var(--color-${p.fam}-base)`, "--subject-soft": `var(--color-${p.fam}-lighter)`, "--subject-ink": `var(--color-${p.fam}-darker)` });
+const gradeText = (g) => {
+  if (!g) return "Not graded yet";
+  const [l, pct] = g.split(", ");
+  return pct ? `${l} (${pct})` : g;
+};
+const fmtShort = (m) => fmt(m).replace(" AM", "").replace(" PM", "");
+const fmtRange = (a, b) => `${fmtShort(a)}\u2013${fmt(b)}`;
+const fmtHour = (m) => {
+  let h = Math.floor(m / 60);
+  const ap = h >= 12 ? "PM" : "AM";
+  h = h % 12 || 12;
+  return `${h} ${ap}`;
+};
+function sessionState(s, now) {
+  if (now >= s.end) return { key: "ended", label: "Ended", canJoin: false };
+  if (now >= s.start) return { key: "live", label: "Live now", canJoin: true };
+  const m = Math.ceil(s.start - now);
+  if (m <= 15) return { key: "soon", label: `Starts in ${m} min`, canJoin: m <= 10 };
+  return { key: "later", label: `Starts at ${fmt(s.start)}`, canJoin: false };
+}
+const Icon = ({ d, size = 20, sw = 1.8, label }) => /* @__PURE__ */ React.createElement(
+  "svg",
+  {
+    width: size,
+    height: size,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: sw,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    "aria-hidden": label ? void 0 : "true",
+    role: label ? "img" : void 0,
+    "aria-label": label
+  },
+  /* @__PURE__ */ React.createElement("path", { d })
+);
+const I = {
+  home: "M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z",
+  courses: "M4 5h6a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H4z M20 5h-6a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h6z",
+  week: "M4 6h16v14H4z M4 10h16 M8 3v4 M16 3v4",
+  sessions: "M3 7h12v10H3z M15 10l6-3v10l-6-3z",
+  attendance: "M9 11l3 3 8-8 M20 12v7a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h11",
+  messages: "M4 5h16v11H8l-4 4z",
+  counseling: "M12 20s-7-4.4-7-9.5A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.5C19 15.6 12 20 12 20z",
+  play: "M8 5v14l11-7z",
+  x: "M6 6l12 12 M18 6L6 18",
+  chev: "M6 9l6 6 6-6",
+  check: "M5 12l4 4 10-10",
+  back: "M15 18l-6-6 6-6",
+  warn: "M12 3l10 18H2z M12 10v5 M12 18h.01",
+  doc: "M6 3h8l4 4v14H6z M14 3v4h4",
+  mega: "M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z M15 9a4 4 0 0 1 0 6 M18 6a8 8 0 0 1 0 12",
+  bell: "M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9 M10 21h4",
+  grad: "M2 9l10-5 10 5-10 5z M6 11v5c3 2.5 9 2.5 12 0v-5 M22 9v6",
+  sliders: "M4 6h10 M18 6h2 M4 12h4 M12 12h8 M4 18h12 M20 18h0 M14 4v4 M8 10v4 M16 16v4"
+};
+const NOTICE_LABEL = { announce: "School announcement", feedback: "Teacher feedback", reminder: "Reminder" };
+const NOTICE_ICON = { announce: "M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z M15 9a4 4 0 0 1 0 6", feedback: "M4 5h16v11H8l-4 4z", reminder: "M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9 M10 21h4" };
+const K5_NAV = [
+  { id: "ela4", icon: "M3 5.5C5.5 4 8.5 4 12 6c3.5-2 6.5-2 9-.5V19c-2.5-1.5-5.5-1.5-9 .5-3.5-2-6.5-2-9-.5z M12 6v13.5" },
+  { id: "ss4", icon: "M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18z M3 12h18 M12 3c2.8 3 2.8 15 0 18 M12 3c-2.8 3-2.8 15 0 18" },
+  { id: "sci4", icon: "M9 3h6 M10 3v6l-5.5 9.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3 M7.2 15h9.6" },
+  { id: "math4", icon: "M7 4v6 M4 7h6 M14 7h6 M5 15l4 4 M9 15l-4 4 M14 16h6 M14 19h6" }
+];
+const K5_ICON = { ela4: "M3 5.5C5.5 4 8.5 4 12 6c3.5-2 6.5-2 9-.5V19c-2.5-1.5-5.5-1.5-9 .5-3.5-2-6.5-2-9-.5z M12 6v13.5", ss4: "M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18z M3 12h18 M12 3c2.8 3 2.8 15 0 18 M12 3c-2.8 3-2.8 15 0 18", sci4: "M9 3h6 M10 3v6l-5.5 9.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3 M7.2 15h9.6", math4: "M7 4v6 M4 7h6 M14 7h6 M5 15l4 4 M9 15l-4 4 M14 16h6 M14 19h6" };
+const CLASSES_ICON = "M4 4h7v7H4z M13 4h7v7h-7z M4 13h7v7H4z M13 13h7v7h-7z";
+const STAR = "M12 2.8l2.8 5.7 6.3.9-4.6 4.4 1.1 6.3L12 17.1l-5.6 3 1.1-6.3L2.9 9.4l6.3-.9z";
+const Star = ({ on, size = 18 }) => /* @__PURE__ */ React.createElement("svg", { width: size, height: size, viewBox: "0 0 24 24", "aria-hidden": "true", className: `star${on ? " is-on" : ""}` }, /* @__PURE__ */ React.createElement("path", { d: STAR }));
+const TeacherFace = ({ size = 40 }) => /* @__PURE__ */ React.createElement("svg", { width: size, height: size, viewBox: "0 0 48 48", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("circle", { cx: "24", cy: "24", r: "24", fill: "#B1E7E6" }), /* @__PURE__ */ React.createElement("path", { d: "M9 30c0-13 6-20 15-20s15 7 15 20c-2 0-3-1-4-3H13c-1 2-2 3-4 3z", fill: "#5C3A21" }), /* @__PURE__ */ React.createElement("circle", { cx: "24", cy: "25", r: "11", fill: "#F2C9A0" }), /* @__PURE__ */ React.createElement("path", { d: "M13 23c3-6 8-8 14-8 4 0 7 2 8 6-6 1-14 0-22 2z", fill: "#5C3A21" }), /* @__PURE__ */ React.createElement("circle", { cx: "20", cy: "26", r: "1.6", fill: "#2E1F1C" }), /* @__PURE__ */ React.createElement("circle", { cx: "28", cy: "26", r: "1.6", fill: "#2E1F1C" }), /* @__PURE__ */ React.createElement("path", { d: "M20.5 30.5c2 2 5 2 7 0", stroke: "#2E1F1C", strokeWidth: "1.6", fill: "none", strokeLinecap: "round" }), /* @__PURE__ */ React.createElement("path", { d: "M12 48c1-7 6-11 12-11s11 4 12 11z", fill: "#0CA3A1" }));
+const HOMEROOM_ICON = "M3 11l9-7 9 7 M5 9.5V20h14V9.5 M9.5 20v-4.5a2.5 2.5 0 0 1 5 0V20";
+function Timeline({ sessions, now, from, to, ppm, minH, onJoin }) {
+  const H = (to - from) * ppm;
+  const hours = [];
+  for (let h = Math.ceil(from / 60) * 60; h <= to; h += 60) hours.push(h);
+  const clamped = Math.min(Math.max(now, from), to);
+  const nowTop = (clamped - from) * ppm;
+  const showNow = now >= from && now <= to;
+  const sorted = [...sessions].sort((a, b) => a.start - b.start);
+  const nextId = (sorted.find((s) => s.end > now) || {}).id;
+  return /* @__PURE__ */ React.createElement("div", { className: "tl", style: { height: H + "px" } }, /* @__PURE__ */ React.createElement("div", { className: "tl-rail" }), /* @__PURE__ */ React.createElement("div", { className: "tl-rail-past", style: { height: nowTop + "px" } }), hours.map((h) => /* @__PURE__ */ React.createElement("div", { key: h, className: "tl-hour", style: { top: (h - from) * ppm + "px" } }, /* @__PURE__ */ React.createElement("span", null, fmtHour(h)))), sorted.map((s) => {
+    const st = sessionState(s, now);
+    const top = (s.start - from) * ppm;
+    const height = Math.max((s.end - s.start) * ppm, minH);
+    return /* @__PURE__ */ React.createElement("div", { key: s.id, className: `tl-block is-${st.key}${s.id === nextId ? " is-next" : ""}`, style: { top: top + "px", height: height + "px" } }, /* @__PURE__ */ React.createElement("span", { className: "tl-dot", "aria-hidden": "true" }), /* @__PURE__ */ React.createElement("div", { className: "tl-b-title" }, s.title), /* @__PURE__ */ React.createElement("div", { className: "tl-b-meta" }, fmtRange(s.start, s.end), ", ", s.host), /* @__PURE__ */ React.createElement("div", { className: "tl-b-foot" }, /* @__PURE__ */ React.createElement("span", { className: `tl-badge is-${st.key}` }, st.label), st.canJoin && /* @__PURE__ */ React.createElement("button", { className: "btn btn-join", onClick: () => onJoin(s) }, "Join")));
+  }), showNow && /* @__PURE__ */ React.createElement("div", { className: "tl-now", style: { top: nowTop + "px" }, "aria-label": `Current time ${fmt(now)}` }, /* @__PURE__ */ React.createElement("span", { className: "tl-now-label" }, fmt(now))));
+}
+const Chip = ({ cls, children }) => /* @__PURE__ */ React.createElement("span", { className: `chip chip-${cls}` }, children);
+function WorkRow({ a, onOpen }) {
+  const st = STATUS[a.status];
+  return /* @__PURE__ */ React.createElement("button", { className: "work-row", onClick: () => onOpen(a) }, /* @__PURE__ */ React.createElement("div", { className: "work-main" }, /* @__PURE__ */ React.createElement("div", { className: "work-title-line" }, /* @__PURE__ */ React.createElement(Chip, { cls: TYPE_CLS[a.type] || "neutral" }, a.type), /* @__PURE__ */ React.createElement("span", { className: "work-title" }, a.title)), /* @__PURE__ */ React.createElement("div", { className: "work-meta" }, a.courseName, ", worth ", a.weight, "% of your grade")), /* @__PURE__ */ React.createElement("div", { className: "work-side" }, /* @__PURE__ */ React.createElement("div", { className: `work-due tone-${st.cls}` }, a.dueShort), /* @__PURE__ */ React.createElement("div", { className: "work-cta" }, st.cta)));
+}
+function Player({ course, lessonIdx, setLessonIdx, onExit }) {
+  const p = PLAYER[course.id];
+  const [picked, setPicked] = useState(null);
+  useEffect(() => {
+    setPicked(null);
+  }, [lessonIdx, course.id]);
+  const lesson = p.lessons[lessonIdx];
+  const done = picked !== null;
+  const right = picked === p.answer;
+  return /* @__PURE__ */ React.createElement("div", { className: "player", style: subj(p) }, /* @__PURE__ */ React.createElement("div", { className: "player-bar" }, /* @__PURE__ */ React.createElement("button", { className: "btn btn-ghost-inv", onClick: onExit }, /* @__PURE__ */ React.createElement(Icon, { d: I.back }), " Back to Campus"), /* @__PURE__ */ React.createElement("div", { className: "player-bar-title" }, /* @__PURE__ */ React.createElement("span", { className: "subject-tile sm" }, p.tile), /* @__PURE__ */ React.createElement("span", null, course.name)), /* @__PURE__ */ React.createElement("div", { className: "player-bar-progress" }, "Lesson ", lessonIdx + 1, " of ", p.lessons.length)), /* @__PURE__ */ React.createElement("div", { className: "player-body" }, /* @__PURE__ */ React.createElement("nav", { className: "player-outline", "aria-label": "Lessons" }, /* @__PURE__ */ React.createElement("div", { className: "outline-head" }, course.name), p.lessons.map((l, i) => /* @__PURE__ */ React.createElement("button", { key: l, className: `outline-item${i === lessonIdx ? " is-current" : ""}`, "aria-current": i === lessonIdx ? "step" : void 0, onClick: () => setLessonIdx(i) }, /* @__PURE__ */ React.createElement("span", { className: `outline-mark${i < lessonIdx ? " is-done" : ""}`, "aria-hidden": "true" }, i < lessonIdx ? /* @__PURE__ */ React.createElement(Icon, { d: I.check, size: 14, sw: 2.6 }) : i + 1), /* @__PURE__ */ React.createElement("span", null, l)))), /* @__PURE__ */ React.createElement("article", { className: "player-content" }, /* @__PURE__ */ React.createElement("h1", { className: "player-h1" }, lesson), /* @__PURE__ */ React.createElement("p", { className: "player-lead" }, p.intro), /* @__PURE__ */ React.createElement("div", { className: "check-card" }, /* @__PURE__ */ React.createElement("h2", { className: "check-h" }, "Check your understanding"), /* @__PURE__ */ React.createElement("p", { className: "check-q" }, p.q), /* @__PURE__ */ React.createElement("div", { className: "check-opts" }, p.options.map((o, i) => {
+    let cls = "opt";
+    if (done && i === p.answer) cls += " is-right";
+    else if (done && i === picked) cls += " is-wrong";
+    return /* @__PURE__ */ React.createElement("button", { key: o, className: cls, onClick: () => setPicked(i), "aria-pressed": picked === i }, o);
+  })), done && /* @__PURE__ */ React.createElement("p", { className: `check-fb ${right ? "tone-ok" : "tone-danger"}`, role: "status" }, right ? "Correct. Nice work." : "Not quite. The highlighted answer is correct.")), /* @__PURE__ */ React.createElement("div", { className: "player-actions" }, lessonIdx > 0 && /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline", onClick: () => setLessonIdx(lessonIdx - 1) }, "Previous lesson"), lessonIdx < p.lessons.length - 1 ? /* @__PURE__ */ React.createElement("button", { className: "btn btn-subject", onClick: () => setLessonIdx(lessonIdx + 1) }, "Mark complete and continue") : /* @__PURE__ */ React.createElement("button", { className: "btn btn-subject", onClick: onExit }, "Finish and return to Campus")))));
+}
+function AnnouncementCarousel({ items, school, minimized, setMinimized }) {
+  const [i, setI] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [hover, setHover] = useState(false);
+  const n = items.length;
+  const idx = i % n;
+  useEffect(() => {
+    if (n < 2 || paused || hover || minimized) return;
+    const t = setInterval(() => setI((x) => (x + 1) % n), 6e3);
+    return () => clearInterval(t);
+  }, [n, paused, hover, minimized]);
+  if (minimized) {
+    return /* @__PURE__ */ React.createElement("div", { className: "ann-min" }, /* @__PURE__ */ React.createElement("span", { className: "ann-min-icon", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: NOTICE_ICON.announce, size: 16, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "grow" }, /* @__PURE__ */ React.createElement("strong", null, n, " school ", n === 1 ? "announcement" : "announcements"), /* @__PURE__ */ React.createElement("span", { className: "muted-sm" }, " from ", school)), /* @__PURE__ */ React.createElement("button", { className: "icon-btn sm", "aria-label": "Show announcements", onClick: () => setMinimized(false) }, /* @__PURE__ */ React.createElement(Icon, { d: "M12 5v14 M5 12h14", size: 18, sw: 2.2 })));
+  }
+  const it = items[idx];
+  return /* @__PURE__ */ React.createElement("section", { className: "ann", "aria-roledescription": "carousel", "aria-label": "School announcements", onMouseEnter: () => setHover(true), onMouseLeave: () => setHover(false), onFocus: () => setHover(true), onBlur: () => setHover(false) }, /* @__PURE__ */ React.createElement("span", { className: "ann-icon", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: NOTICE_ICON.announce, size: 22, sw: 2 })), /* @__PURE__ */ React.createElement("div", { className: "grow ann-slide", key: it.id, "aria-live": paused ? "polite" : "off" }, /* @__PURE__ */ React.createElement("div", { className: "ann-meta" }, "From ", school, n > 1 ? `, ${idx + 1} of ${n}` : ""), /* @__PURE__ */ React.createElement("div", { className: "ann-title" }, it.title), /* @__PURE__ */ React.createElement("div", { className: "ann-body" }, it.body), n > 1 && /* @__PURE__ */ React.createElement("div", { className: "ann-dots" }, items.map((x, k) => /* @__PURE__ */ React.createElement("button", { key: x.id, className: `ann-dot${k === idx ? " is-on" : ""}`, "aria-label": `Announcement ${k + 1}`, "aria-current": k === idx ? "true" : void 0, onClick: () => setI(k) }, /* @__PURE__ */ React.createElement("span", null))))), /* @__PURE__ */ React.createElement("div", { className: "ann-ctrls" }, n > 1 && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("button", { className: "icon-btn sm", "aria-label": "Previous announcement", onClick: () => setI((idx - 1 + n) % n) }, /* @__PURE__ */ React.createElement(Icon, { d: "M15 18l-6-6 6-6", size: 18, sw: 2 })), /* @__PURE__ */ React.createElement("button", { className: "icon-btn sm", "aria-label": paused ? "Play slideshow" : "Pause slideshow", onClick: () => setPaused(!paused) }, /* @__PURE__ */ React.createElement(Icon, { d: paused ? "M8 5v14l11-7z" : "M8 5v14 M16 5v14", size: 16, sw: 2.2 })), /* @__PURE__ */ React.createElement("button", { className: "icon-btn sm", "aria-label": "Next announcement", onClick: () => setI((idx + 1) % n) }, /* @__PURE__ */ React.createElement(Icon, { d: "M9 6l6 6-6 6", size: 18, sw: 2 }))), /* @__PURE__ */ React.createElement("button", { className: "icon-btn sm", "aria-label": "Minimize announcements", onClick: () => setMinimized(true) }, /* @__PURE__ */ React.createElement(Icon, { d: "M5 12h14", size: 18, sw: 2.2 }))));
+}
+function App() {
+  const [org, setOrg] = useState("g912");
+  const [screen, setScreen] = useState("home");
+  const [prev, setPrev] = useState("home");
+  const [orgMenu, setOrgMenu] = useState(false);
+  const [acctMenu, setAcctMenu] = useState(false);
+  const [tab, setTab] = useState("all");
+  const [dismissed, setDismissed] = useState({});
+  const [completed, setCompleted] = useState({});
+  const [acked, setAcked] = useState({});
+  const [openId, setOpenId] = useState(null);
+  const [draft, setDraft] = useState("");
+  const [justSubmitted, setJustSubmitted] = useState(false);
+  const [courseId, setCourseId] = useState(null);
+  const [sessTab, setSessTab] = useState("today");
+  const [joined, setJoined] = useState(null);
+  const [mic, setMic] = useState(false);
+  const [cam, setCam] = useState(false);
+  const [stub, setStub] = useState("attendance");
+  const [profile, setProfile] = useState({ bio: "10th grader into photography, soccer, and building small games in Python.", tz: "Arizona (MST, no daylight saving)", interests: ["Photography", "Coding", "Soccer"] });
+  const [pdraft, setPdraft] = useState(null);
+  const [prefs, setPrefs] = useState({ due: { e: true, s: true }, graded: { e: true, s: false }, session: { e: false, s: true }, announce: { e: true, s: false }, messages: { e: true, s: false }, attendance: { e: true, s: true } });
+  const [toast, setToast] = useState("");
+  const [snoozed, setSnoozed] = useState({});
+  const [annMin, setAnnMin] = useState(false);
+  const [sideMin, setSideMin] = useState(false);
+  const [coursesOpen, setCoursesOpen] = useState(true);
+  const [campusOpen, setCampusOpen] = useState(true);
+  const [k5done, setK5done] = useState({});
+  const [calDay, setCalDay] = useState("Mon");
+  const [liked, setLiked] = useState({});
+  const [bell, setBell] = useState(false);
+  const [skipped, setSkipped] = useState([]);
+  const [mode, setMode] = useState("normal");
+  const [now, setNow] = useState(595);
+  const [speed, setSpeed] = useState(10);
+  const [proto, setProto] = useState(false);
+  const [player, setPlayer] = useState(null);
+  const [launching, setLaunching] = useState(null);
+  const [lessonIdx, setLessonIdx] = useState({});
+  const toastT = useRef(null);
+  const O = ORGS[org];
+  const D = DATA[org];
+  const outage = mode === "outage";
+  const empty = mode === "empty";
+  const key = (id) => org + ":" + id;
+  useEffect(() => {
+    if (!speed) return;
+    const t = setInterval(() => setNow((n) => Math.min(n + speed * 0.25 / 60, 23 * 60 + 59)), 250);
+    return () => clearInterval(t);
+  }, [speed]);
+  const say = (m) => {
+    clearTimeout(toastT.current);
+    setToast(m);
+    toastT.current = setTimeout(() => setToast(""), 2800);
+  };
+  const go = (s) => {
+    setScreen(s);
+    setOrgMenu(false);
+    setAcctMenu(false);
+    setBell(false);
+    try {
+      window.scrollTo(0, 0);
+    } catch (e) {
+    }
+  };
+  const courseById = {};
+  D.courses.forEach((c) => {
+    courseById[c.id] = c;
+  });
+  const deco = (a) => ({ ...a, courseName: courseById[a.course].name, teacher: courseById[a.course].teacher });
+  const remaining = empty ? [] : D.assignments.filter((a) => !completed[key(a.id)]).map(deco);
+  const by = { pastdue: [], today: [], week: [] };
+  remaining.forEach((a) => by[a.status].push(a));
+  const todaySessions = empty ? [] : D.today;
+  const other = empty ? [] : D.otherSessions;
+  const openAssignment = (a) => {
+    setOpenId(a.id);
+    setDraft("");
+    setJustSubmitted(false);
+    go("assignment");
+  };
+  const goSessions = (tab2) => {
+    setSessTab(tab2);
+    go("week");
+    setTimeout(() => {
+      const el = document.getElementById("cal-sessions");
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 60);
+  };
+  const openCourse = (id) => {
+    setCourseId(id);
+    go("course");
+  };
+  const join = (s) => {
+    setPrev(screen);
+    setJoined(s);
+    setMic(false);
+    setCam(false);
+    go("room");
+  };
+  const launch = (c) => {
+    setLaunching(c);
+    setOrgMenu(false);
+    setAcctMenu(false);
+    setTimeout(() => {
+      setLaunching(null);
+      setPlayer(c.id);
+    }, 700);
+  };
+  const switchOrg = (id) => {
+    setOrgMenu(false);
+    if (id === org) return;
+    setOrg(id);
+    setScreen("home");
+    setK5done({});
+    setTab("all");
+    setSessTab("today");
+    setPlayer(null);
+    setSkipped([]);
+    setCompleted({});
+    say(`Now viewing grades ${ORGS[id].band} as ${ORGS[id].student}`);
+  };
+  const announcements = empty ? [] : D.broadcasts;
+  const notices = (empty ? [] : D.notices.map((n) => ({ ...n, action: n.course ? { label: n.actionLabel, run: () => {
+    setBell(false);
+    openCourse(n.course);
+  } } : null }))).filter((n) => !dismissed[key(n.id)] && !(snoozed[key(n.id)] && now < snoozed[key(n.id)])).map((n) => ({ ...n, resurfaced: !!snoozed[key(n.id)] }));
+  const ORDER = { pastdue: 0, today: 1, week: 2 };
+  const queue = [...remaining].sort((x, y) => ORDER[x.status] - ORDER[y.status] || y.weight - x.weight);
+  const unskipped = queue.filter((x) => !skipped.includes(key(x.id)));
+  const upNext = unskipped[0] || queue[0];
+  const DAYI = { Mon: 0, Tue: 1, Wed: 2, Thu: 3, Fri: 4 };
+  const rest = queue.filter((x) => !upNext || x.id !== upNext.id).sort((x, y) => {
+    var _a, _b;
+    return ORDER[x.status] - ORDER[y.status] || ((_a = DAYI[x.day]) != null ? _a : -1) - ((_b = DAYI[y.day]) != null ? _b : -1);
+  });
+  const upNextWhy = !upNext ? "" : upNext.status === "pastdue" ? O.weights ? "It\u2019s past due, so finishing it first stops it from costing you points." : "It\u2019s a little late, so let\u2019s finish it first." : upNext.status === "today" ? O.weights ? `It\u2019s due tonight and worth ${upNext.weight}% of your grade.` : "It\u2019s due today." : O.weights ? `It\u2019s your biggest item this week, worth ${upNext.weight}% of your grade.` : "It\u2019s coming up this week.";
+  const parts = [];
+  if (outage) parts.push("Some coursework can\u2019t load right now");
+  else if (!remaining.length) parts.push("Nothing due this week");
+  else {
+    if (by.pastdue.length) parts.push(`${by.pastdue.length} past due`);
+    if (by.today.length) parts.push(`${by.today.length} due today`);
+  }
+  const liveNow = todaySessions.find((s) => now >= s.start && now < s.end);
+  const nextS = todaySessions.find((s) => s.start > now);
+  if (liveNow) parts.push(`${liveNow.title} is live now`);
+  else if (nextS) parts.push(`next live session at ${fmt(nextS.start)}`);
+  const summary = parts.join(", ");
+  const greet = now < 720 ? "Good morning" : now < 1020 ? "Good afternoon" : "Good evening";
+  const navActive = { home: "home", assignment: "home", courses: "courses", course: "courses", week: "week", sessions: "week", room: "week", grad: "grad", stub }[screen];
+  const NAV = [["home", "Home"], ["week", "Calendar"], ["attendance", "Attendance"], ["grad", "Graduation plan"], ["counseling", "Counseling"]];
+  const navGo = (id) => {
+    if (id === "attendance" || id === "messages" || id === "counseling") {
+      setStub(id);
+      go("stub");
+    } else go(id);
+  };
+  const lessonOf = (cid) => {
+    var _a;
+    return (_a = lessonIdx[cid]) != null ? _a : PLAYER[cid].start;
+  };
+  if (player) {
+    const c = courseById[player] || D.courses[0];
+    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Player, { course: c, lessonIdx: lessonOf(c.id), setLessonIdx: (i) => setLessonIdx({ ...lessonIdx, [c.id]: i }), onExit: () => setPlayer(null) }), toast && /* @__PURE__ */ React.createElement("div", { className: "toast", role: "status", "aria-live": "polite" }, toast));
+  }
+  const graded = empty ? [] : [
+    ...D.assignments.filter((a) => completed[key(a.id)]).map((a) => ({ id: "sub-" + a.id, title: a.title, course: a.course, result: "Not graded yet", graded: false, note: "Submitted today" })),
+    ...D.graded
+  ].filter((g) => !acked[key(g.id)]);
+  const bellCount = (outage ? 0 : graded.length) + notices.length;
+  const sel = deco(D.assignments.find((a) => a.id === openId) || D.assignments[0]);
+  const nextUp = remaining.find((a) => a.id !== sel.id);
+  const course = courseById[courseId] || D.courses[0];
+  return /* @__PURE__ */ React.createElement("div", { className: "app" }, /* @__PURE__ */ React.createElement("header", { className: "topbar" }, /* @__PURE__ */ React.createElement("button", { className: "brand", onClick: () => go("home"), "aria-label": "Campus home" }, /* @__PURE__ */ React.createElement("span", { className: `brand-mark circle-${O.circle}` }, O.mark), /* @__PURE__ */ React.createElement("span", { className: "brand-text" }, /* @__PURE__ */ React.createElement("span", { className: "brand-name" }, "Campus"), /* @__PURE__ */ React.createElement("span", { className: "brand-org" }, O.name))), /* @__PURE__ */ React.createElement("div", { className: "pop-wrap" }, /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm", onClick: () => {
+    setOrgMenu(!orgMenu);
+    setAcctMenu(false);
+    setBell(false);
+  }, "aria-expanded": orgMenu, "aria-haspopup": "true" }, /* @__PURE__ */ React.createElement("span", { className: "band-k" }, "Grade band"), /* @__PURE__ */ React.createElement("strong", null, O.band), " ", /* @__PURE__ */ React.createElement(Icon, { d: I.chev, size: 16, sw: 2 })), orgMenu && /* @__PURE__ */ React.createElement("div", { className: "pop pop-left" }, ["k5", "g912"].map((id) => ORGS[id]).map((o) => /* @__PURE__ */ React.createElement("button", { key: o.id, className: `pop-org${o.id === org ? " is-current" : ""}`, onClick: () => switchOrg(o.id) }, /* @__PURE__ */ React.createElement("span", { className: "band-mark" }, o.band), /* @__PURE__ */ React.createElement("span", { className: "pop-org-text" }, /* @__PURE__ */ React.createElement("strong", null, "Grades ", o.band), /* @__PURE__ */ React.createElement("span", null, "Example student: ", o.sub)), o.id === org && /* @__PURE__ */ React.createElement(Icon, { d: I.check, size: 18, sw: 2.2, label: "Current grade band" }))))), /* @__PURE__ */ React.createElement("div", { className: "spacer" }), /* @__PURE__ */ React.createElement("div", { className: "pop-wrap" }, /* @__PURE__ */ React.createElement("button", { className: "icon-btn", "aria-label": `Notifications${bellCount ? `, ${bellCount} new` : ""}`, "aria-expanded": bell, onClick: () => {
+    setBell(!bell);
+    setOrgMenu(false);
+    setAcctMenu(false);
+  } }, /* @__PURE__ */ React.createElement(Icon, { d: I.bell, size: 22 }), bellCount > 0 && /* @__PURE__ */ React.createElement("span", { className: "dot" })), bell && /* @__PURE__ */ React.createElement("div", { className: "pop pop-right bell-pop", role: "dialog", "aria-label": "Notifications" }, /* @__PURE__ */ React.createElement("div", { className: "bell-head" }, /* @__PURE__ */ React.createElement("strong", null, "Notifications"), /* @__PURE__ */ React.createElement("span", { className: "muted-sm" }, bellCount ? `${bellCount} new` : "All caught up")), outage ? /* @__PURE__ */ React.createElement("p", { className: "muted-sm bell-empty" }, "Grades are temporarily unavailable. Try again shortly.") : /* @__PURE__ */ React.createElement(React.Fragment, null, graded.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "bell-sec" }, "New grades"), graded.map((g) => /* @__PURE__ */ React.createElement("div", { key: g.id, className: "bell-item" }, /* @__PURE__ */ React.createElement("div", { className: `grade-pill${g.graded ? " is-graded" : ""}` }, g.result), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "feed-title" }, g.title), /* @__PURE__ */ React.createElement("div", { className: "feed-meta" }, courseById[g.course].name, ". ", g.note)), g.graded && /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm", onClick: () => {
+    setAcked({ ...acked, [key(g.id)]: true });
+    say("Moved to your gradebook");
+  } }, "Got it"))), notices.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "bell-sec" }, "Updates"), notices.map((n) => /* @__PURE__ */ React.createElement("div", { key: n.id, className: `bell-item kind-${n.kind}` }, /* @__PURE__ */ React.createElement("span", { className: "feed-icon", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: NOTICE_ICON[n.kind], size: 16, sw: 2 })), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "feed-meta" }, n.resurfaced ? "Reminder" : NOTICE_LABEL[n.kind], ", ", n.time), /* @__PURE__ */ React.createElement("div", { className: "feed-title" }, n.title), n.body && /* @__PURE__ */ React.createElement("div", { className: "feed-body" }, n.body), /* @__PURE__ */ React.createElement("div", { className: "feed-actions" }, n.action && /* @__PURE__ */ React.createElement("button", { className: "link-btn", onClick: n.action.run }, n.action.label), /* @__PURE__ */ React.createElement("button", { className: "link-btn muted-link", onClick: () => {
+    setSnoozed({ ...snoozed, [key(n.id)]: now + 30 });
+    say(`We\u2019ll remind you at ${fmt(now + 30)}`);
+  } }, "Remind me later"))), /* @__PURE__ */ React.createElement("button", { className: "icon-btn sm", "aria-label": `Dismiss: ${n.title}`, onClick: () => setDismissed({ ...dismissed, [key(n.id)]: true }) }, /* @__PURE__ */ React.createElement(Icon, { d: I.x, size: 16, sw: 2 })))), !graded.length && !notices.length && /* @__PURE__ */ React.createElement("p", { className: "muted-sm bell-empty" }, "You\u2019re all caught up.")))), /* @__PURE__ */ React.createElement("button", { className: "icon-btn", "aria-label": "Messages, 1 unread", onClick: () => {
+    setStub("messages");
+    go("stub");
+  } }, /* @__PURE__ */ React.createElement(Icon, { d: I.messages, size: 22 }), /* @__PURE__ */ React.createElement("span", { className: "dot" })), /* @__PURE__ */ React.createElement("div", { className: "pop-wrap" }, /* @__PURE__ */ React.createElement("button", { className: "avatar", "aria-label": "Account menu", "aria-expanded": acctMenu, onClick: () => {
+    setAcctMenu(!acctMenu);
+    setOrgMenu(false);
+    setBell(false);
+  } }, O.initials), acctMenu && /* @__PURE__ */ React.createElement("div", { className: "pop pop-right" }, /* @__PURE__ */ React.createElement("div", { className: "pop-who" }, /* @__PURE__ */ React.createElement("strong", null, O.student), /* @__PURE__ */ React.createElement("span", null, O.grade, ", ", O.name)), /* @__PURE__ */ React.createElement("button", { className: "pop-item", onClick: () => {
+    setPdraft(null);
+    go("profile");
+  } }, "Profile"), /* @__PURE__ */ React.createElement("button", { className: "pop-item", onClick: () => go("prefs") }, "Communication preferences"), /* @__PURE__ */ React.createElement("button", { className: "pop-item muted", onClick: () => {
+    setAcctMenu(false);
+    say("Sign out isn\u2019t wired up in this prototype");
+  } }, "Sign out")))), /* @__PURE__ */ React.createElement("div", { className: "shell" }, /* @__PURE__ */ React.createElement("aside", { className: `side${sideMin ? " is-min" : ""}` }, /* @__PURE__ */ React.createElement("div", { className: "side-top" }, /* @__PURE__ */ React.createElement("button", { className: "icon-btn side-toggle", "data-tip": sideMin ? "Expand menu" : "Collapse menu", "aria-label": sideMin ? "Expand menu" : "Collapse menu", "aria-expanded": !sideMin, onClick: () => setSideMin(!sideMin) }, /* @__PURE__ */ React.createElement(Icon, { d: sideMin ? "M20 4v16 M4 12h11 M11 7l5 5-5 5" : "M4 4v16 M20 12H9 M13 7l-5 5 5 5", size: 20, sw: 1.9 }))), O.id === "k5" ? /* @__PURE__ */ React.createElement("nav", { "aria-label": "Main", className: "k5-nav" }, /* @__PURE__ */ React.createElement("button", { className: `k5-item${screen === "home" ? " is-active" : ""}`, style: { "--subject": "var(--prim-admin-blue-400)", "--subject-soft": "var(--prim-admin-blue-100)", "--subject-ink": "var(--prim-admin-blue-800)" }, "data-tip": "Learning", "aria-label": sideMin ? "Learning" : void 0, "aria-current": screen === "home" ? "page" : void 0, onClick: () => go("home") }, /* @__PURE__ */ React.createElement("span", { className: "k5-icon" }, /* @__PURE__ */ React.createElement(Icon, { d: CLASSES_ICON, size: 34, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "k5-label" }, "Learning")), /* @__PURE__ */ React.createElement("button", { className: `k5-item${screen === "homeroom" ? " is-active" : ""}`, style: { "--subject": "var(--color-secondary-base)", "--subject-soft": "var(--color-secondary-subtle)", "--subject-ink": "var(--color-secondary-darker)" }, "data-tip": "Homeroom", "aria-label": sideMin ? "Homeroom" : void 0, "aria-current": screen === "homeroom" ? "page" : void 0, onClick: () => go("homeroom") }, /* @__PURE__ */ React.createElement("span", { className: "k5-icon" }, /* @__PURE__ */ React.createElement(Icon, { d: HOMEROOM_ICON, size: 34, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "k5-label" }, "Homeroom"))) : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("nav", { "aria-label": "Campus", className: "side-nav is-first" }, /* @__PURE__ */ React.createElement("button", { className: "side-sec", "aria-expanded": campusOpen, "aria-controls": "side-campus", onClick: () => setCampusOpen(!campusOpen) }, /* @__PURE__ */ React.createElement("span", { className: "side-h" }, "Campus"), /* @__PURE__ */ React.createElement("span", { className: `side-chev${campusOpen ? " is-open" : ""}`, "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: I.chev, size: 16, sw: 2.2 }))), (campusOpen || sideMin) && /* @__PURE__ */ React.createElement("div", { className: "nav-list", id: "side-campus" }, NAV.map(([id, label]) => /* @__PURE__ */ React.createElement("button", { key: id, "data-tip": label, "aria-label": sideMin ? label : void 0, className: `nav-item${navActive === id ? " is-active" : ""}`, "aria-current": navActive === id ? "page" : void 0, onClick: () => navGo(id) }, /* @__PURE__ */ React.createElement(Icon, { d: I[id] }), /* @__PURE__ */ React.createElement("span", { className: "nav-label" }, label))))), /* @__PURE__ */ React.createElement("section", { className: "side-courses" }, /* @__PURE__ */ React.createElement("button", { className: "side-sec", "aria-expanded": coursesOpen, "aria-controls": "side-courses", onClick: () => setCoursesOpen(!coursesOpen) }, /* @__PURE__ */ React.createElement("span", { className: "side-h" }, "Quick launch"), /* @__PURE__ */ React.createElement("span", { className: `side-chev${coursesOpen ? " is-open" : ""}`, "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: I.chev, size: 16, sw: 2.2 }))), (coursesOpen || sideMin) && /* @__PURE__ */ React.createElement("div", { className: "launchers", id: "side-courses" }, D.courses.map((c) => {
+    const p = PLAYER[c.id];
+    return /* @__PURE__ */ React.createElement("button", { key: c.id, className: "launcher", "data-tip": `${c.name}: ${gradeText(c.grade)}`, style: subj(p), onClick: () => launch(c), "aria-label": `Open ${c.name}. Current grade ${gradeText(c.grade)}.` }, /* @__PURE__ */ React.createElement("span", { className: "subject-tile grade-tile", "data-grade-tip": c.grade ? c.grade.split(", ")[1] : "Not graded yet", "aria-hidden": "true" }, c.grade ? c.grade.split(", ")[0] : ""), /* @__PURE__ */ React.createElement("span", { className: "launcher-text" }, /* @__PURE__ */ React.createElement("span", { className: "launcher-name" }, c.name)), /* @__PURE__ */ React.createElement("span", { className: "launcher-play", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: I.play, size: 14, sw: 2 })));
+  }))))), /* @__PURE__ */ React.createElement("main", { className: "main" }, /* @__PURE__ */ React.createElement("div", { className: "wrap" }, screen === "home" && O.id === "k5" && (() => {
+    const actDone = (x) => x.assign ? !!completed[key(x.assign)] : x.done || !!k5done[key(x.id)];
+    const subjects = D.courses.filter((c) => K5_TODAY[c.id]).map((c) => {
+      const items = (empty ? [] : K5_TODAY[c.id]).map((x) => ({ ...x, isDone: actDone(x) }));
+      return { c, p: PLAYER[c.id], items, done: items.filter((x) => x.isDone).length };
+    });
+    const total = subjects.reduce((n, s) => n + s.items.length, 0);
+    const done = subjects.reduce((n, s) => n + s.done, 0);
+    const stars = (empty ? 0 : 9) + done;
+    const nextLive = todaySessions.find((s) => now < s.end);
+    const nls = nextLive && sessionState(nextLive, now);
+    return /* @__PURE__ */ React.createElement("div", { className: "stack-20 k5-home" }, /* @__PURE__ */ React.createElement("div", { className: "k5-hello" }, /* @__PURE__ */ React.createElement(TeacherFace, { size: 64 }), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("h1", { className: "k5-h1" }, greet, ", ", O.first, "!"), /* @__PURE__ */ React.createElement("p", { className: "k5-sub" }, total === 0 ? "No activities yet. Check back soon!" : done === total ? "You finished everything today. Amazing!" : `You\u2019ve done ${done} of ${total} activities today. Keep going!`)), /* @__PURE__ */ React.createElement("div", { className: "star-pill", "aria-label": `${stars} stars this week` }, /* @__PURE__ */ React.createElement(Star, { on: true, size: 26 }), /* @__PURE__ */ React.createElement("strong", null, stars), /* @__PURE__ */ React.createElement("span", null, "stars"))), total > 0 && /* @__PURE__ */ React.createElement("div", { className: "k5-day", "aria-label": `Today\u2019s progress: ${done} of ${total}` }, /* @__PURE__ */ React.createElement("span", { className: "k5-day-label" }, "Today\u2019s goal"), /* @__PURE__ */ React.createElement("div", { className: "k5-day-track" }, /* @__PURE__ */ React.createElement("span", { style: { width: done / total * 100 + "%" } })), /* @__PURE__ */ React.createElement("span", { className: "k5-day-n" }, done, "/", total)), nextLive && /* @__PURE__ */ React.createElement("div", { className: `k5-live is-${nls.key}` }, /* @__PURE__ */ React.createElement(TeacherFace, { size: 44 }), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "k5-live-when" }, nls.key === "live" ? "Happening now" : nls.key === "soon" ? `In ${Math.ceil(nextLive.start - now)} minutes` : `Later today at ${fmt(nextLive.start)}`), /* @__PURE__ */ React.createElement("div", { className: "k5-live-title" }, nextLive.title, " with ", nextLive.host)), nls.canJoin ? /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent btn-lg", onClick: () => join(nextLive) }, "Join class") : /* @__PURE__ */ React.createElement("span", { className: "k5-live-wait" }, "See you there!")), /* @__PURE__ */ React.createElement("div", { className: "k5-grid" }, subjects.map(({ c, p, items, done: d }) => {
+      const all = items.length > 0 && d === items.length;
+      return /* @__PURE__ */ React.createElement("section", { key: c.id, className: `k5-card${all ? " is-done" : ""}`, style: subj(p), "aria-labelledby": `k5c-${c.id}` }, /* @__PURE__ */ React.createElement("div", { className: "k5-card-top" }, /* @__PURE__ */ React.createElement("span", { className: "k5-card-icon" }, /* @__PURE__ */ React.createElement(Icon, { d: K5_ICON[c.id], size: 40, sw: 2 })), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("h2", { id: `k5c-${c.id}`, className: "k5-card-h" }, c.name), /* @__PURE__ */ React.createElement("div", { className: "k5-stars", "aria-label": `${d} of ${items.length} done` }, items.map((x) => /* @__PURE__ */ React.createElement(Star, { key: x.id, on: x.isDone, size: 22 })))), all && /* @__PURE__ */ React.createElement("span", { className: "k5-badge" }, "All done!")), /* @__PURE__ */ React.createElement("div", { className: "k5-bar" }, /* @__PURE__ */ React.createElement("span", { style: { width: items.length ? d / items.length * 100 + "%" : 0 } })), /* @__PURE__ */ React.createElement("ul", { className: "k5-acts" }, items.map((x) => /* @__PURE__ */ React.createElement("li", { key: x.id }, /* @__PURE__ */ React.createElement("button", { className: `k5-act${x.isDone ? " is-done" : ""}`, onClick: () => {
+        if (x.isDone) return;
+        if (x.assign) {
+          openAssignment(D.assignments.find((a2) => a2.id === x.assign));
+          return;
+        }
+        setK5done({ ...k5done, [key(x.id)]: true });
+        say("You earned a star!");
+      } }, /* @__PURE__ */ React.createElement("span", { className: "k5-check", "aria-hidden": "true" }, x.isDone && /* @__PURE__ */ React.createElement(Icon, { d: I.check, size: 16, sw: 3 })), /* @__PURE__ */ React.createElement("span", { className: "grow" }, x.t), !x.isDone && /* @__PURE__ */ React.createElement("span", { className: "k5-go", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: I.play, size: 14, sw: 2 })))))), /* @__PURE__ */ React.createElement("button", { className: "btn k5-play", onClick: () => launch(c) }, /* @__PURE__ */ React.createElement(Icon, { d: I.play, size: 16, sw: 2 }), " Let\u2019s go!"));
+    })));
+  })(), screen === "homeroom" && /* @__PURE__ */ React.createElement("div", { className: "homeroom" }, /* @__PURE__ */ React.createElement("div", { className: "hr-head" }, /* @__PURE__ */ React.createElement(TeacherFace, { size: 72 }), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("h1", { className: "k5-h1" }, "Ms. Greene\u2019s Homeroom"), /* @__PURE__ */ React.createElement("p", { className: "k5-sub" }, O.grade, " at ", O.name))), /* @__PURE__ */ React.createElement("div", { className: "hr-feed" }, HOMEROOM_POSTS.map((post) => {
+    const on = !!liked[key(post.id)];
+    return /* @__PURE__ */ React.createElement("article", { key: post.id, className: "hr-post" }, /* @__PURE__ */ React.createElement("div", { className: "hr-post-top" }, /* @__PURE__ */ React.createElement(TeacherFace, { size: 40 }), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("strong", null, "Ms. Greene"), /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, post.time)), /* @__PURE__ */ React.createElement("span", { className: `hr-kind kind-${post.kind.split(" ")[0].toLowerCase()}` }, post.kind)), /* @__PURE__ */ React.createElement("p", { className: "hr-text" }, post.text), /* @__PURE__ */ React.createElement("button", { className: `hr-like${on ? " is-on" : ""}`, "aria-pressed": on, onClick: () => setLiked({ ...liked, [key(post.id)]: !on }) }, /* @__PURE__ */ React.createElement(Icon, { d: "M12 20s-7-4.4-7-9.5A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.5C19 15.6 12 20 12 20z", size: 18, sw: 2 }), on ? "You liked this" : "Like", " ", /* @__PURE__ */ React.createElement("span", { className: "hr-n" }, post.likes + (on ? 1 : 0))));
+  }))), screen === "home" && O.id !== "k5" && /* @__PURE__ */ React.createElement("div", { className: "stack-20" }, announcements.length > 0 && /* @__PURE__ */ React.createElement(AnnouncementCarousel, { items: announcements, school: O.name, minimized: annMin, setMinimized: setAnnMin }), /* @__PURE__ */ React.createElement("div", { className: "greet" }, /* @__PURE__ */ React.createElement("h1", { className: "greet-h" }, greet, ", ", O.first, "!"), /* @__PURE__ */ React.createElement("p", { className: "greet-sub" }, "Monday, October 12. ", summary.charAt(0).toUpperCase() + summary.slice(1), ".")), !outage && remaining.length > 0 && upNext && (() => {
+    const p = PLAYER[upNext.course];
+    const st = STATUS[upNext.status];
+    return /* @__PURE__ */ React.createElement("section", { className: "upnext", style: subj(p), "aria-labelledby": "upnext-h" }, /* @__PURE__ */ React.createElement("div", { className: "upnext-top" }, /* @__PURE__ */ React.createElement("span", { className: "upnext-count" }, queue.length, " ", queue.length === 1 ? "thing" : "things", " to do this week"), /* @__PURE__ */ React.createElement("span", { className: "upnext-label", id: "upnext-h" }, "Up next"), /* @__PURE__ */ React.createElement("span", { className: "upnext-why" }, upNextWhy)), /* @__PURE__ */ React.createElement("div", { className: "upnext-body" }, /* @__PURE__ */ React.createElement("span", { className: "subject-tile upnext-tile" }, p.tile), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "chips" }, /* @__PURE__ */ React.createElement(Chip, { cls: TYPE_CLS[upNext.type] || "neutral" }, upNext.type), /* @__PURE__ */ React.createElement(Chip, { cls: st.cls }, upNext.due)), /* @__PURE__ */ React.createElement("h2", { className: "upnext-title" }, upNext.title), /* @__PURE__ */ React.createElement("div", { className: "upnext-sub" }, upNext.courseName, ", ", upNext.teacher, ".", O.weights ? ` Worth ${upNext.weight}% of your grade.` : ""))), /* @__PURE__ */ React.createElement("div", { className: "upnext-actions" }, /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent btn-lg", onClick: () => openAssignment(upNext) }, st.cta === "Submit now" ? "Finish and submit" : `Start ${upNext.type.toLowerCase()}`), queue.length > 1 && /* @__PURE__ */ React.createElement("button", { className: "btn btn-ghost", onClick: () => {
+      setSkipped([...skipped, key(upNext.id)]);
+      say("Okay. Here\u2019s the next thing to work on.");
+    } }, "Not now, show me another")));
+  })(), /* @__PURE__ */ React.createElement("div", { className: "cols" }, /* @__PURE__ */ React.createElement("div", { className: "col-main" }, /* @__PURE__ */ React.createElement("section", { className: "card", "aria-labelledby": "pw-h" }, /* @__PURE__ */ React.createElement("div", { className: "card-head" }, /* @__PURE__ */ React.createElement("h2", { id: "pw-h", className: "h2" }, remaining.length > 1 || outage || !remaining.length ? "Also on your list" : "Your assignments"), /* @__PURE__ */ React.createElement("span", { className: "fresh" }, "Updated 2 min ago")), outage ? /* @__PURE__ */ React.createElement("div", { className: "state-box warnbox", role: "status" }, /* @__PURE__ */ React.createElement("span", { className: "tone-warn" }, /* @__PURE__ */ React.createElement(Icon, { d: I.warn, size: 22, sw: 2 })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("strong", null, "Assignments temporarily unavailable"), /* @__PURE__ */ React.createElement("p", null, "We couldn\u2019t load your coursework right now. Your live sessions are still up to date."), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm", onClick: () => say("Still unavailable. Campus will keep trying in the background.") }, "Try again"))) : !remaining.length ? /* @__PURE__ */ React.createElement("div", { className: "state-box center" }, /* @__PURE__ */ React.createElement("strong", null, "You\u2019re all caught up"), /* @__PURE__ */ React.createElement("p", null, empty ? "New work will show up here as soon as it\u2019s assigned." : "Everything due this week is submitted.")) : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", { className: "rest-head" }, /* @__PURE__ */ React.createElement("div", { className: "tabs", role: "tablist", "aria-label": "Filter work" }, [["all", "All", rest.length], ["pastdue", "Past due", rest.filter((a) => a.status === "pastdue").length], ["today", "Due today", rest.filter((a) => a.status === "today").length], ["week", "This week", rest.filter((a) => a.status === "week").length]].map(([id, label, n]) => /* @__PURE__ */ React.createElement("button", { key: id, role: "tab", "aria-selected": tab === id, className: `tab${tab === id ? " is-on" : ""}`, onClick: () => setTab(id) }, label, /* @__PURE__ */ React.createElement("span", { className: "tab-n" }, n))))), /* @__PURE__ */ React.createElement("div", { className: "task-list" }, /* @__PURE__ */ React.createElement("div", { className: "pl-head", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("span", null, "#"), /* @__PURE__ */ React.createElement("span", null, "Assignment"), /* @__PURE__ */ React.createElement("span", null, "Type"), /* @__PURE__ */ React.createElement("span", null, "Due")), rest.filter((a) => tab === "all" || a.status === tab).map((a, idx) => {
+    const p = PLAYER[a.course];
+    const st = STATUS[a.status];
+    return /* @__PURE__ */ React.createElement("button", { key: a.id, className: "task pl-row", style: subj(p), onClick: () => openAssignment(a), "aria-label": `${idx + 1}. ${a.title}, ${a.courseName}, ${a.type}, ${a.due}` }, /* @__PURE__ */ React.createElement("span", { className: "pl-num", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("span", { className: "pl-n" }, idx + 1), /* @__PURE__ */ React.createElement("span", { className: "pl-play" }, /* @__PURE__ */ React.createElement(Icon, { d: I.play, size: 16, sw: 2 }))), /* @__PURE__ */ React.createElement("span", { className: "pl-track" }, /* @__PURE__ */ React.createElement("span", { className: "subject-tile" }, p.tile), /* @__PURE__ */ React.createElement("span", { className: "task-main" }, /* @__PURE__ */ React.createElement("span", { className: "task-title" }, a.title), /* @__PURE__ */ React.createElement("span", { className: "task-meta" }, a.courseName, O.weights ? `, ${a.weight}% of grade` : ""))), /* @__PURE__ */ React.createElement("span", { className: "pl-type" }, /* @__PURE__ */ React.createElement(Chip, { cls: TYPE_CLS[a.type] || "neutral" }, a.type)), /* @__PURE__ */ React.createElement("span", { className: `task-due due-${st.cls}` }, a.status === "today" ? "Today" : a.dueShort));
+  }), !rest.some((a) => tab === "all" || a.status === tab) && /* @__PURE__ */ React.createElement("div", { className: "state-box center" }, /* @__PURE__ */ React.createElement("p", null, "Nothing else in this view.")))))), /* @__PURE__ */ React.createElement("div", { className: "col-side" }, /* @__PURE__ */ React.createElement("section", { className: "card", "aria-labelledby": "ls-h" }, /* @__PURE__ */ React.createElement("div", { className: "card-head" }, /* @__PURE__ */ React.createElement("h2", { id: "ls-h", className: "h2" }, calDay === "Mon" ? "Live today" : `${calDay}, Oct ${DAYS.find((x) => x[0] === calDay)[1]}`), /* @__PURE__ */ React.createElement("button", { className: "link-btn", onClick: () => go("week") }, "Calendar")), /* @__PURE__ */ React.createElement("div", { className: "cal-strip", role: "tablist", "aria-label": "Pick a day" }, DAYS.map(([d, date], i) => {
+    const n = empty ? 0 : (i === 0 ? D.today.length : D.otherSessions.filter((s) => s.when === "week" && s.day === d).length) + remaining.filter((x) => x.day === d).length + D.events.filter((e) => e.day === d).length;
+    return /* @__PURE__ */ React.createElement("button", { key: d, role: "tab", "aria-selected": calDay === d, className: `cal-day${calDay === d ? " is-on" : ""}${i === 0 ? " is-today" : ""}`, onClick: () => setCalDay(d), "aria-label": `${d} Oct ${date}, ${n} items` }, /* @__PURE__ */ React.createElement("span", { className: "cal-d" }, d.slice(0, 1)), /* @__PURE__ */ React.createElement("span", { className: "cal-n" }, date), /* @__PURE__ */ React.createElement("span", { className: "cal-dots", "aria-hidden": "true" }, Array.from({ length: Math.min(n, 3) }).map((_, k) => /* @__PURE__ */ React.createElement("i", { key: k }))));
+  })), calDay === "Mon" ? todaySessions.length ? /* @__PURE__ */ React.createElement(Timeline, { sessions: todaySessions, now, from: 540, to: 990, ppm: 1.35, minH: 80, onJoin: join }) : /* @__PURE__ */ React.createElement("div", { className: "state-box center" }, /* @__PURE__ */ React.createElement("p", null, "No sessions scheduled today.")) : (() => {
+    const items = empty ? [] : [
+      ...D.otherSessions.filter((s) => s.when === "week" && s.day === calDay).map((s) => ({ k: s.id, kind: "Live session", cls: "info", time: s.time, title: s.title, sub: s.host, act: () => {
+        goSessions("week");
+      } })),
+      ...remaining.filter((x) => x.day === calDay).map((x) => ({ k: x.id, kind: x.type === "Exam" ? "Exam due" : "Due", cls: x.type === "Exam" ? "exam" : "warn", time: "11:59 PM", title: x.title, sub: x.courseName, act: () => openAssignment(x) })),
+      ...D.events.filter((e) => e.day === calDay).map((e) => ({ k: e.title, kind: "School event", cls: "ok", time: e.time, title: e.title, sub: O.name, act: () => say(`${e.title}, ${e.time}`) }))
+    ];
+    return items.length ? /* @__PURE__ */ React.createElement("div", { className: "day-list" }, items.map((it) => /* @__PURE__ */ React.createElement("button", { key: it.k, className: "day-item", onClick: it.act }, /* @__PURE__ */ React.createElement("div", { className: "day-item-top" }, /* @__PURE__ */ React.createElement(Chip, { cls: it.cls }, it.kind), /* @__PURE__ */ React.createElement("span", { className: "muted-sm" }, it.time)), /* @__PURE__ */ React.createElement("div", { className: "strong" }, it.title), /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, it.sub)))) : /* @__PURE__ */ React.createElement("div", { className: "state-box center" }, /* @__PURE__ */ React.createElement("p", null, "Nothing scheduled this day."));
+  })(), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm cal-all", onClick: () => go("week") }, "Open calendar"))))), screen === "assignment" && /* @__PURE__ */ React.createElement("div", { className: "stack-16" }, /* @__PURE__ */ React.createElement("nav", { className: "crumbs", "aria-label": "Breadcrumb" }, /* @__PURE__ */ React.createElement("button", { className: "link-btn", onClick: () => go("home") }, "Home"), /* @__PURE__ */ React.createElement("span", { "aria-hidden": "true" }, "/"), /* @__PURE__ */ React.createElement("button", { className: "link-btn", onClick: () => openCourse(sel.course) }, sel.courseName), /* @__PURE__ */ React.createElement("span", { "aria-hidden": "true" }, "/"), /* @__PURE__ */ React.createElement("span", null, sel.type)), !justSubmitted ? /* @__PURE__ */ React.createElement("section", { className: "card pad-24 stack-18" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "chips" }, /* @__PURE__ */ React.createElement(Chip, { cls: TYPE_CLS[sel.type] || "neutral" }, sel.type), /* @__PURE__ */ React.createElement(Chip, { cls: STATUS[sel.status].cls }, sel.due), O.weights && /* @__PURE__ */ React.createElement(Chip, { cls: "neutral" }, "Worth ", sel.weight, "% of your course grade")), /* @__PURE__ */ React.createElement("h1", { className: "h1 mt-12" }, sel.title), /* @__PURE__ */ React.createElement("p", { className: "lede" }, sel.courseName, ", ", sel.teacher)), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h2", { className: "h3" }, "Instructions"), /* @__PURE__ */ React.createElement("p", { className: "measure" }, sel.instructions)), /* @__PURE__ */ React.createElement("div", { className: "file-row" }, /* @__PURE__ */ React.createElement(Icon, { d: I.doc, size: 22 }), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "strong" }, "Lesson materials"), /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, "Opens in the ", sel.courseName, " player")), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm", onClick: () => launch(courseById[sel.course]) }, "Open in player")), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { htmlFor: "resp", className: "label" }, "Your response"), /* @__PURE__ */ React.createElement("textarea", { id: "resp", rows: 6, className: "input", placeholder: "Type your answer here", value: draft, onChange: (e) => setDraft(e.target.value) })), /* @__PURE__ */ React.createElement("div", { className: "row-wrap" }, /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent", onClick: () => {
+    if (!draft.trim()) {
+      say("Add a response before you submit");
+      return;
+    }
+    setCompleted({ ...completed, [key(sel.id)]: true });
+    setJustSubmitted(true);
+    setTab("all");
+  } }, "Submit"), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline", onClick: () => say("File picker would open here") }, "Attach a file"), /* @__PURE__ */ React.createElement("button", { className: "btn btn-ghost", onClick: () => say("Draft saved") }, "Save draft"))) : /* @__PURE__ */ React.createElement("section", { className: "card pad-32 stack-12", role: "status" }, /* @__PURE__ */ React.createElement("div", { className: "success-mark" }, /* @__PURE__ */ React.createElement(Icon, { d: I.check, size: 28, sw: 2.4 })), /* @__PURE__ */ React.createElement("h1", { className: "h1" }, "Submitted"), /* @__PURE__ */ React.createElement("p", { className: "measure" }, sel.title, " was sent to ", sel.teacher, " at ", fmt(now), ". It will show as ", /* @__PURE__ */ React.createElement("strong", null, "Not graded yet"), " until it\u2019s graded."), nextUp && /* @__PURE__ */ React.createElement("div", { className: "next-box" }, /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, "Up next"), /* @__PURE__ */ React.createElement("div", { className: "next-row" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "strong" }, nextUp.title), /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, nextUp.courseName, ", ", nextUp.due.toLowerCase())), /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent", onClick: () => openAssignment(nextUp) }, "Start"))), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline", onClick: () => go("home") }, "Back to home")))), screen === "courses" && /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h1", { className: "h1" }, "All courses"), /* @__PURE__ */ React.createElement("p", { className: "lede mb-20" }, O.name, ", fall semester"), /* @__PURE__ */ React.createElement("div", { className: "course-grid" }, D.courses.map((c) => {
+    const p = PLAYER[c.id];
+    const n = remaining.filter((a) => a.course === c.id).length;
+    return /* @__PURE__ */ React.createElement("div", { key: c.id, className: "course-card", style: subj(p) }, /* @__PURE__ */ React.createElement("div", { className: "course-card-top" }, /* @__PURE__ */ React.createElement("span", { className: "subject-tile" }, p.tile), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "strong" }, c.name), /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, c.teacher))), /* @__PURE__ */ React.createElement("div", { className: "kv" }, /* @__PURE__ */ React.createElement("span", { className: "muted-sm" }, "Current grade"), /* @__PURE__ */ React.createElement("strong", { className: c.grade ? "" : "muted" }, c.grade || "Not graded yet")), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "bar" }, /* @__PURE__ */ React.createElement("span", { style: { width: c.progress + "%" } })), /* @__PURE__ */ React.createElement("div", { className: "muted-xs" }, c.progress, "% complete, ", n ? `${n} due this week` : "nothing due")), /* @__PURE__ */ React.createElement("div", { className: "row-wrap" }, /* @__PURE__ */ React.createElement("button", { className: "btn btn-subject btn-sm", onClick: () => launch(c) }, /* @__PURE__ */ React.createElement(Icon, { d: I.play, size: 14, sw: 2 }), " Open player"), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm", onClick: () => openCourse(c.id) }, "Course details")));
+  }))), screen === "course" && (() => {
+    const p = PLAYER[course.id];
+    const work = remaining.filter((a) => a.course === course.id);
+    return /* @__PURE__ */ React.createElement("div", { className: "stack-16", style: subj(p) }, /* @__PURE__ */ React.createElement("nav", { className: "crumbs", "aria-label": "Breadcrumb" }, /* @__PURE__ */ React.createElement("button", { className: "link-btn", onClick: () => go("courses") }, "All courses"), /* @__PURE__ */ React.createElement("span", { "aria-hidden": "true" }, "/"), /* @__PURE__ */ React.createElement("span", null, course.name)), /* @__PURE__ */ React.createElement("section", { className: "card pad-24 course-hero" }, /* @__PURE__ */ React.createElement("span", { className: "subject-tile lg" }, p.tile), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("h1", { className: "h1" }, course.name), /* @__PURE__ */ React.createElement("p", { className: "lede" }, course.teacher), /* @__PURE__ */ React.createElement("div", { className: "bar mt-12" }, /* @__PURE__ */ React.createElement("span", { style: { width: course.progress + "%" } })), /* @__PURE__ */ React.createElement("div", { className: "muted-xs" }, course.progress, "% of the course complete")), /* @__PURE__ */ React.createElement("div", { className: "grade-box" }, /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, "Current grade"), /* @__PURE__ */ React.createElement("div", { className: `grade-big${course.grade ? "" : " muted"}` }, course.grade || "Not graded yet"))), /* @__PURE__ */ React.createElement("section", { className: "card continue" }, /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, "Continue where you left off"), /* @__PURE__ */ React.createElement("div", { className: "strong lg" }, p.lessons[lessonOf(course.id)])), /* @__PURE__ */ React.createElement("button", { className: "btn btn-subject", onClick: () => launch(course) }, /* @__PURE__ */ React.createElement(Icon, { d: I.play, size: 14, sw: 2 }), " Open player"), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline", onClick: () => {
+      setStub("messages");
+      go("stub");
+    } }, "Message ", course.teacher)), /* @__PURE__ */ React.createElement("section", { className: "card" }, /* @__PURE__ */ React.createElement("h2", { className: "h2 mb-12" }, "Upcoming in this course"), work.length ? /* @__PURE__ */ React.createElement("div", { className: "stack-8" }, work.map((a) => /* @__PURE__ */ React.createElement(WorkRow, { key: a.id, a, onOpen: openAssignment }))) : /* @__PURE__ */ React.createElement("div", { className: "state-box center" }, /* @__PURE__ */ React.createElement("p", null, "Nothing due in this course right now."))));
+  })(), screen === "week" && /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "page-head" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h1", { className: "h1" }, "Calendar"), /* @__PURE__ */ React.createElement("p", { className: "lede" }, "This week, October 12 to 16")), /* @__PURE__ */ React.createElement("div", { className: "chips" }, /* @__PURE__ */ React.createElement(Chip, { cls: "info" }, "Live session"), /* @__PURE__ */ React.createElement(Chip, { cls: "warn" }, "Due"), /* @__PURE__ */ React.createElement(Chip, { cls: "exam" }, "Exam"), /* @__PURE__ */ React.createElement(Chip, { cls: "ok" }, "School event"))), /* @__PURE__ */ React.createElement("div", { className: "scroll-x" }, /* @__PURE__ */ React.createElement("div", { className: "week-grid" }, DAYS.map(([d, date], i) => {
+    const items = [];
+    if (!empty) {
+      if (i === 0) D.today.forEach((s) => items.push({ k: "s" + s.id, kind: "Live", cls: "info", time: fmt(s.start), title: s.title, act: () => join(s) }));
+      D.otherSessions.filter((s) => s.when === "week" && s.day === d).forEach((s) => items.push({ k: "s" + s.id, kind: "Live", cls: "info", time: s.time.split("\u2013")[0], title: s.title, act: () => {
+        goSessions("week");
+      } }));
+      remaining.filter((a) => a.day === d).forEach((a) => items.push({ k: "a" + a.id, kind: a.type === "Exam" ? "Exam" : "Due", cls: a.type === "Exam" ? "exam" : "warn", time: "11:59 PM", title: a.title, act: () => openAssignment(a) }));
+      D.events.filter((e) => e.day === d).forEach((e) => items.push({ k: "e" + e.title, kind: "Event", cls: "ok", time: e.time, title: e.title, act: () => say(`${e.title}, ${e.time}`) }));
+    }
+    return /* @__PURE__ */ React.createElement("div", { key: d, className: `week-col${i === 0 ? " is-today" : ""}` }, /* @__PURE__ */ React.createElement("div", { className: "week-col-head" }, /* @__PURE__ */ React.createElement("strong", null, d), /* @__PURE__ */ React.createElement("span", { className: "muted-sm" }, "Oct ", date), i === 0 && /* @__PURE__ */ React.createElement("span", { className: "today-pill" }, "Today")), items.map((it) => /* @__PURE__ */ React.createElement("button", { key: it.k, className: `week-item chip-${it.cls}`, onClick: it.act }, /* @__PURE__ */ React.createElement("span", { className: "week-item-kind" }, it.kind, ", ", it.time), /* @__PURE__ */ React.createElement("span", { className: "week-item-title" }, it.title))), !items.length && /* @__PURE__ */ React.createElement("div", { className: "muted-sm pad-8" }, "Nothing scheduled"));
+  }))), /* @__PURE__ */ React.createElement("section", { id: "cal-sessions", className: "cal-sessions", "aria-labelledby": "cal-sess-h" }, /* @__PURE__ */ React.createElement("h2", { id: "cal-sess-h", className: "cal-sec-h" }, "Live sessions"), /* @__PURE__ */ React.createElement("div", { className: "tabs mb-16", role: "tablist", "aria-label": "Session timeframe" }, [["today", "Today"], ["week", "This week"], ["upcoming", "Upcoming"], ["past", "Past"]].map(([id, label]) => /* @__PURE__ */ React.createElement("button", { key: id, role: "tab", "aria-selected": sessTab === id, className: `tab${sessTab === id ? " is-on" : ""}`, onClick: () => setSessTab(id) }, label))), sessTab === "today" ? /* @__PURE__ */ React.createElement("section", { className: "card" }, /* @__PURE__ */ React.createElement("div", { className: "card-head" }, /* @__PURE__ */ React.createElement("h2", { className: "h2" }, "Today, Monday, October 12"), /* @__PURE__ */ React.createElement("span", { className: "fresh" }, todaySessions.length, " sessions")), todaySessions.length ? /* @__PURE__ */ React.createElement(Timeline, { sessions: todaySessions, now, from: 540, to: 1020, ppm: 1.8, minH: 80, onJoin: join }) : /* @__PURE__ */ React.createElement("div", { className: "state-box center" }, /* @__PURE__ */ React.createElement("p", null, "No sessions today."))) : /* @__PURE__ */ React.createElement("section", { className: "card list-card" }, other.filter((s) => s.when === sessTab).map((s) => {
+    const cls = s.status === "Attended" ? "ok" : s.status === "Missed" ? "danger" : s.status === "Invited" ? "warn" : "neutral";
+    return /* @__PURE__ */ React.createElement("div", { key: s.id, className: "sess-row" }, /* @__PURE__ */ React.createElement("div", { className: "sess-when" }, /* @__PURE__ */ React.createElement("strong", null, s.dateLabel), /* @__PURE__ */ React.createElement("span", { className: "muted-sm" }, s.time)), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "strong" }, s.title), /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, s.host)), /* @__PURE__ */ React.createElement(Chip, { cls }, s.status));
+  }), !other.some((s) => s.when === sessTab) && /* @__PURE__ */ React.createElement("div", { className: "state-box center" }, /* @__PURE__ */ React.createElement("p", null, "No sessions yet."))))), screen === "room" && joined && /* @__PURE__ */ React.createElement("div", { className: "stack-14" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "tone-ok strong" }, "Connected"), /* @__PURE__ */ React.createElement("h1", { className: "h1" }, joined.title), /* @__PURE__ */ React.createElement("p", { className: "lede" }, joined.host, ", ", fmtRange(joined.start, joined.end))), /* @__PURE__ */ React.createElement("div", { className: "stage" }, /* @__PURE__ */ React.createElement("div", { className: "stage-avatar" }, joined.host.replace(/^(Mr\.|Ms\.|Dr\.|Sr\.|Coach)\s+/, "").slice(0, 2).toUpperCase()), /* @__PURE__ */ React.createElement("div", { className: "strong" }, joined.host, " is presenting")), /* @__PURE__ */ React.createElement("div", { className: "row-wrap center" }, /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline", "aria-pressed": mic, onClick: () => setMic(!mic) }, mic ? "Mute" : "Unmute"), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline", "aria-pressed": cam, onClick: () => setCam(!cam) }, cam ? "Stop video" : "Start video"), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline", onClick: () => say(`Hand raised. ${joined.host} can see it.`) }, "Raise hand"), /* @__PURE__ */ React.createElement("button", { className: "btn btn-danger", onClick: () => {
+    go(prev === "room" ? "home" : prev);
+    say("You left the session");
+  } }, "Leave session"))), screen === "profile" && (() => {
+    const p = pdraft || profile;
+    const editing = !!pdraft;
+    return /* @__PURE__ */ React.createElement("div", { className: "narrow" }, /* @__PURE__ */ React.createElement("h1", { className: "h1 mb-16" }, "Profile"), /* @__PURE__ */ React.createElement("section", { className: "card pad-24 stack-20" }, /* @__PURE__ */ React.createElement("div", { className: "row-wrap align-center" }, /* @__PURE__ */ React.createElement("div", { className: "avatar xl" }, O.initials), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "strong lg" }, O.student), /* @__PURE__ */ React.createElement("div", { className: "muted" }, O.grade, ", ", O.name)), editing ? /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline", onClick: () => say("Photo picker would open here") }, "Change photo") : /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline", onClick: () => setPdraft({ ...profile, interests: [...profile.interests] }) }, "Edit profile")), !editing ? /* @__PURE__ */ React.createElement("div", { className: "stack-16" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "label" }, "About me"), /* @__PURE__ */ React.createElement("p", null, profile.bio)), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "label" }, "Time zone"), /* @__PURE__ */ React.createElement("p", null, profile.tz)), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "label" }, "Interests"), /* @__PURE__ */ React.createElement("div", { className: "chips" }, profile.interests.map((i) => /* @__PURE__ */ React.createElement(Chip, { key: i, cls: "quiz" }, i))))) : /* @__PURE__ */ React.createElement("div", { className: "stack-16" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { htmlFor: "bio", className: "label" }, "About me"), /* @__PURE__ */ React.createElement("textarea", { id: "bio", rows: 3, className: "input", value: p.bio, onChange: (e) => setPdraft({ ...p, bio: e.target.value }) })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { htmlFor: "tz", className: "label" }, "Time zone"), /* @__PURE__ */ React.createElement("select", { id: "tz", className: "input select", value: p.tz, onChange: (e) => setPdraft({ ...p, tz: e.target.value }) }, ["Arizona (MST, no daylight saving)", "Pacific Time", "Mountain Time", "Central Time", "Eastern Time"].map((t) => /* @__PURE__ */ React.createElement("option", { key: t }, t)))), /* @__PURE__ */ React.createElement("fieldset", { className: "fs" }, /* @__PURE__ */ React.createElement("legend", { className: "label" }, "Interests"), /* @__PURE__ */ React.createElement("div", { className: "chips" }, INTERESTS.map((i) => {
+      const on = p.interests.includes(i);
+      return /* @__PURE__ */ React.createElement("button", { key: i, className: `toggle-chip${on ? " is-on" : ""}`, "aria-pressed": on, onClick: () => setPdraft({ ...p, interests: on ? p.interests.filter((x) => x !== i) : [...p.interests, i] }) }, i);
+    }))), /* @__PURE__ */ React.createElement("div", { className: "row-wrap" }, /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent", onClick: () => {
+      setProfile(p);
+      setPdraft(null);
+      say("Profile saved");
+    } }, "Save changes"), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline", onClick: () => setPdraft(null) }, "Cancel")))));
+  })(), screen === "prefs" && /* @__PURE__ */ React.createElement("div", { className: "narrow" }, /* @__PURE__ */ React.createElement("h1", { className: "h1" }, "Communication preferences"), /* @__PURE__ */ React.createElement("p", { className: "lede mb-20" }, "Choose how Campus reaches you outside the app. You\u2019ll always see these inside Campus."), /* @__PURE__ */ React.createElement("section", { className: "card list-card" }, /* @__PURE__ */ React.createElement("div", { className: "pref-row pref-head" }, /* @__PURE__ */ React.createElement("span", { className: "grow" }, "Notification type"), /* @__PURE__ */ React.createElement("span", { className: "pref-col" }, "Email"), /* @__PURE__ */ React.createElement("span", { className: "pref-col" }, "Text")), PREF_TYPES.map(([id, label, desc]) => /* @__PURE__ */ React.createElement("div", { key: id, className: "pref-row" }, /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "strong" }, label), /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, desc)), ["e", "s"].map((ch) => {
+    const on = prefs[id][ch];
+    return /* @__PURE__ */ React.createElement("span", { key: ch, className: "pref-col" }, /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        role: "switch",
+        "aria-checked": on,
+        "aria-label": `${ch === "e" ? "Email" : "Text message"}: ${label}`,
+        className: `switch${on ? " is-on" : ""}`,
+        onClick: () => {
+          setPrefs({ ...prefs, [id]: { ...prefs[id], [ch]: !on } });
+          say(`${ch === "e" ? "Email" : "Text"} ${!on ? "on" : "off"} for ${label.toLowerCase()}`);
+        }
+      },
+      /* @__PURE__ */ React.createElement("span", null)
+    ));
+  }))), /* @__PURE__ */ React.createElement("p", { className: "muted-sm pad-14" }, "Texts go to the number ending in 47. Message and data rates may apply."))), screen === "grad" && (() => {
+    const G = GRAD_PLAN;
+    const earned = G.areas.reduce((n, x) => n + x.earned, 0);
+    const prog = G.areas.reduce((n, x) => n + x.inProgress, 0);
+    const pct = (v) => v / G.required * 100 + "%";
+    return /* @__PURE__ */ React.createElement("div", { className: "stack-20 grad" }, /* @__PURE__ */ React.createElement("div", { className: "page-head" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h1", { className: "h1" }, "Graduation plan"), /* @__PURE__ */ React.createElement("p", { className: "lede" }, O.student, ", class of ", G.classOf)), /* @__PURE__ */ React.createElement(Chip, { cls: "ok" }, "On track to graduate")), /* @__PURE__ */ React.createElement("section", { className: "card pad-24 grad-hero" }, /* @__PURE__ */ React.createElement("div", { className: "grad-nums" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "grad-big" }, earned), /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, "credits earned")), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "grad-big grad-prog-n" }, prog), /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, "in progress this year")), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "grad-big muted" }, G.required - earned - prog), /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, "still to plan")), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "grad-big" }, G.required), /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, "needed to graduate"))), /* @__PURE__ */ React.createElement("div", { className: "grad-bar", role: "img", "aria-label": `${earned} earned and ${prog} in progress out of ${G.required} credits` }, /* @__PURE__ */ React.createElement("span", { className: "seg-earned", style: { width: pct(earned) } }), /* @__PURE__ */ React.createElement("span", { className: "seg-prog", style: { width: pct(prog) } })), /* @__PURE__ */ React.createElement("div", { className: "grad-legend" }, /* @__PURE__ */ React.createElement("span", null, /* @__PURE__ */ React.createElement("i", { className: "seg-earned" }), "Earned"), /* @__PURE__ */ React.createElement("span", null, /* @__PURE__ */ React.createElement("i", { className: "seg-prog" }), "In progress"), /* @__PURE__ */ React.createElement("span", null, /* @__PURE__ */ React.createElement("i", { className: "seg-left" }), "Still to plan"))), /* @__PURE__ */ React.createElement("div", { className: "grad-cols" }, /* @__PURE__ */ React.createElement("section", { className: "card list-card", "aria-labelledby": "req-h" }, /* @__PURE__ */ React.createElement("div", { className: "card-head grad-card-head" }, /* @__PURE__ */ React.createElement("h2", { id: "req-h", className: "h2" }, "Requirements"), /* @__PURE__ */ React.createElement("span", { className: "fresh" }, "Credits")), G.areas.map((x) => /* @__PURE__ */ React.createElement("div", { key: x.name, className: "req-row" }, /* @__PURE__ */ React.createElement("div", { className: "req-top" }, /* @__PURE__ */ React.createElement("strong", null, x.name), /* @__PURE__ */ React.createElement("span", { className: "muted-sm" }, x.earned, " earned", x.inProgress ? `, ${x.inProgress} in progress` : "", " of ", x.req)), /* @__PURE__ */ React.createElement("div", { className: "grad-bar sm" }, /* @__PURE__ */ React.createElement("span", { className: "seg-earned", style: { width: x.earned / x.req * 100 + "%" } }), /* @__PURE__ */ React.createElement("span", { className: "seg-prog", style: { width: x.inProgress / x.req * 100 + "%" } })), x.now && /* @__PURE__ */ React.createElement("div", { className: "muted-xs" }, "This year: ", x.now)))), /* @__PURE__ */ React.createElement("div", { className: "stack-20" }, /* @__PURE__ */ React.createElement("section", { className: "card" }, /* @__PURE__ */ React.createElement("div", { className: "card-head" }, /* @__PURE__ */ React.createElement("h2", { className: "h2" }, "Next steps")), /* @__PURE__ */ React.createElement("ul", { className: "next-steps" }, G.next.map((n) => /* @__PURE__ */ React.createElement("li", { key: n }, /* @__PURE__ */ React.createElement("span", { className: "ns-dot", "aria-hidden": "true" }), n)))), /* @__PURE__ */ React.createElement("section", { className: "card" }, /* @__PURE__ */ React.createElement("div", { className: "card-head" }, /* @__PURE__ */ React.createElement("h2", { className: "h2" }, "Your counselor")), /* @__PURE__ */ React.createElement("div", { className: "row-wrap align-center" }, /* @__PURE__ */ React.createElement("span", { className: "avatar" }, G.counselor.initials), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "strong" }, G.counselor.name), /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, "School counselor"))), /* @__PURE__ */ React.createElement("div", { className: "row-wrap mt-12" }, /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent btn-sm", onClick: () => say("Booking would open here, inside Campus") }, "Book a time"), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm", onClick: () => {
+      setStub("messages");
+      go("stub");
+    } }, "Send a message"))))));
+  })(), screen === "stub" && /* @__PURE__ */ React.createElement("div", { className: "narrow" }, /* @__PURE__ */ React.createElement("h1", { className: "h1 mb-16" }, STUBS[stub].title), /* @__PURE__ */ React.createElement("section", { className: "card dashed pad-28" }, /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, "Covered by ", STUBS[stub].prd), /* @__PURE__ */ React.createElement("p", { className: "mt-8" }, STUBS[stub].body), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline mt-16", onClick: () => go("home") }, "Back to home")))))), launching && /* @__PURE__ */ React.createElement("div", { className: "launch-overlay", role: "status", style: subj(PLAYER[launching.id]) }, /* @__PURE__ */ React.createElement("span", { className: "subject-tile xl" }, PLAYER[launching.id].tile), /* @__PURE__ */ React.createElement("div", { className: "strong lg" }, "Opening ", launching.name), /* @__PURE__ */ React.createElement("div", { className: "launch-bar" }, /* @__PURE__ */ React.createElement("span", null))), /* @__PURE__ */ React.createElement("div", { className: "proto" }, proto && /* @__PURE__ */ React.createElement("div", { className: "proto-panel", role: "dialog", "aria-label": "Prototype controls" }, /* @__PURE__ */ React.createElement("div", { className: "proto-h" }, "Prototype controls"), /* @__PURE__ */ React.createElement("div", { className: "label" }, "Data scenario"), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [["normal", "Normal"], ["outage", "Player API outage"], ["empty", "Empty new term"]].map(([id, l]) => /* @__PURE__ */ React.createElement("button", { key: id, className: mode === id ? "is-on" : "", "aria-pressed": mode === id, onClick: () => setMode(id) }, l))), /* @__PURE__ */ React.createElement("div", { className: "label mt-12" }, "Clock: ", fmt(now)), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [[0, "Paused"], [1, "Real time"], [10, "10\xD7"], [60, "60\xD7"]].map(([v, l]) => /* @__PURE__ */ React.createElement("button", { key: l, className: speed === v ? "is-on" : "", "aria-pressed": speed === v, onClick: () => setSpeed(v) }, l))), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm mt-12", onClick: () => setNow(595) }, "Reset clock to 9:55 AM")), /* @__PURE__ */ React.createElement("button", { className: "proto-btn", "aria-expanded": proto, onClick: () => setProto(!proto) }, /* @__PURE__ */ React.createElement(Icon, { d: I.sliders, size: 18 }), " Prototype")), toast && /* @__PURE__ */ React.createElement("div", { className: "toast", role: "status", "aria-live": "polite" }, toast));
+}
+ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(App, null));
+
+</script>
+</body>
+</html>
