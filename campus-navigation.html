@@ -1746,6 +1746,29 @@ body{color:var(--ink)}
 .lq-head{padding:0 2px}
 .lq-list{margin-top:4px;padding:18px 2px 4px;border:0;border-top:1px solid var(--line);border-radius:0;background:transparent}
 
+/* ===== Live today: plan vs all times, optional + conflict states ===== */
+.lth-side{gap:6px}
+.lth-mode{display:flex;gap:2px;margin-top:6px;padding:2px;border-radius:999px;background:rgba(255,255,255,.1)}
+.lth-mode button{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:4px;min-height:26px;padding:2px 8px;border:0;border-radius:999px;background:transparent;color:#CBD5E1;font-size:11.5px;font-weight:800;white-space:nowrap}
+.lth-mode button.is-on{background:#fff;color:#0F172A}
+.lth-mode-n{padding:0 5px;border-radius:999px;background:#3B82F6;color:#fff;font-size:10px}
+.lth-mode button.is-on .lth-mode-n{background:#DBEAFE;color:#1E3A8A}
+.lth-track{transition:height .25s ease}
+.pill.is-option{background:#fff;border:2px dashed var(--p-base);box-shadow:none}
+.pill.is-option .pill-badge{box-shadow:none;border:2px solid var(--p-soft)}
+.pill.is-option .pill-meta{font-weight:700}
+.pill-add{background:var(--p-soft)!important;color:var(--p-ink)!important;box-shadow:none!important}
+.pill-add:hover{background:var(--p-ink)!important;color:#fff!important}
+.pill.is-clash{outline:2px solid #DE5D46;outline-offset:1px}
+.pill.is-clash .pill-meta{color:#A3261B;opacity:1}
+.pill-x{position:relative;flex-shrink:0;width:24px;height:24px;border:0;border-radius:50%;background:rgba(255,255,255,.7);color:var(--p-ink);display:inline-flex;align-items:center;justify-content:center}
+.pill-x:hover{background:#fff}
+.pill.is-option.is-ended{opacity:.35}
+/* equal rhythm: greeting -> Live today -> learning queue */
+.greet{margin-bottom:12px}
+.lth-card{margin-bottom:12px!important}
+.bulletin,.ann-min{margin-bottom:12px}
+
 </style>
 </head>
 <body>
@@ -1996,6 +2019,11 @@ const DATA = {
       { id: "s3", title: "Homeroom Check-in", host: "Ms. Alvarez", course: null, start: 780, end: 800 },
       { id: "s4", title: "Spanish II Conversation Lab", host: "Sr. Ruiz", course: "spa", start: 870, end: 900 },
       { id: "s5", title: "Photography Critique Circle", host: "Mr. Hale", course: "pho", start: 930, end: 975 }
+    ],
+    optional: [
+      { id: "o1", title: "English 10 Writing Help", host: "Ms. Alvarez", course: "eng", start: 660, end: 705 },
+      { id: "o2", title: "Algebra II Live Help", host: "Mr. Chen", course: "alg", start: 780, end: 825 },
+      { id: "o3", title: "Biology Lab Q&A", host: "Dr. Okafor", course: "bio", start: 870, end: 900 }
     ],
     otherSessions: [
       { id: "s6", title: "Biology Lab Review", host: "Dr. Okafor", time: "11:00\u201311:40 AM", day: "Tue", dateLabel: "Tue, Oct 13", when: "week", status: "Accepted" },
@@ -2390,7 +2418,7 @@ function Timeline({ sessions, now, from, to, ppm, minH, onJoin }) {
     return /* @__PURE__ */ React.createElement("div", { key: s.id, className: `tl-block is-${st.key}${s.id === nextId ? " is-next" : ""}`, style: { top: top + "px", height: height + "px" } }, /* @__PURE__ */ React.createElement("span", { className: "tl-dot", "aria-hidden": "true" }), /* @__PURE__ */ React.createElement("div", { className: "tl-b-title" }, s.title), /* @__PURE__ */ React.createElement("div", { className: "tl-b-meta" }, fmtRange(s.start, s.end), ", ", s.host), /* @__PURE__ */ React.createElement("div", { className: "tl-b-foot" }, /* @__PURE__ */ React.createElement("span", { className: `tl-badge is-${st.key}` }, st.label), st.canJoin && /* @__PURE__ */ React.createElement("button", { className: "btn btn-join", onClick: () => onJoin(s) }, "Join")));
   }), showNow && /* @__PURE__ */ React.createElement("div", { className: "tl-now", style: { top: nowTop + "px" }, "aria-label": `Current time ${fmt(now)}` }, /* @__PURE__ */ React.createElement("span", { className: "tl-now-label" }, fmt(now))));
 }
-function TimelineH({ sessions, now, from, to, onJoin }) {
+function TimelineH({ sessions, options = [], now, from, to, onJoin, onRsvp }) {
   const PXH = 210;
   const span = to - from;
   const W = span / 60 * PXH;
@@ -2398,15 +2426,22 @@ function TimelineH({ sessions, now, from, to, onJoin }) {
   const hours = [];
   for (let h = Math.ceil(from / 60) * 60; h <= to; h += 60) hours.push(h);
   const MINVIS = 60;
+  const overlaps = (a, b) => a.start < b.end && b.start < a.end;
+  const conflict = /* @__PURE__ */ new Set();
+  sessions.forEach((a) => sessions.forEach((b) => {
+    if (a.id !== b.id && overlaps(a, b)) conflict.add(a.id);
+  }));
+  const all = [...sessions.map((s) => ({ s, opt: false })), ...options.map((s) => ({ s, opt: true }))].sort((a, b) => a.opt - b.opt || a.s.start - b.s.start);
   const laneEnds = [];
-  const placed = [...sessions].sort((a, b) => a.start - b.start).map((s) => {
-    const visEnd = Math.max(s.end, s.start + (sessionState(s, now).canJoin ? 80 : MINVIS));
+  const placed = all.map(({ s, opt }) => {
+    const nextStart = Math.min(...all.filter((o) => o.opt === opt && o.s.start > s.start).map((o) => o.s.start), Infinity);
+    const visEnd = Math.max(s.end, Math.min(s.start + (!opt && sessionState(s, now).canJoin ? 80 : MINVIS), nextStart));
     let lane = laneEnds.findIndex((v) => v <= s.start);
     if (lane === -1) {
       lane = laneEnds.length;
       laneEnds.push(visEnd);
     } else laneEnds[lane] = visEnd;
-    return { s, lane, w: x(Math.min(visEnd, to)) - x(s.start) };
+    return { s, opt, lane, w: x(Math.min(visEnd, to)) - x(s.start) };
   });
   const lanes = Math.max(1, laneEnds.length);
   const showNow = now >= from && now <= to;
@@ -2422,23 +2457,27 @@ function TimelineH({ sessions, now, from, to, onJoin }) {
     userAt.current = Date.now();
   }, onPointerDown: () => {
     userAt.current = Date.now();
-  } }, /* @__PURE__ */ React.createElement("div", { className: "lth", style: { width: W + "px" } }, /* @__PURE__ */ React.createElement("div", { className: "lth-axis" }, hours.map((h) => /* @__PURE__ */ React.createElement("span", { key: h, className: "lth-hour", style: { left: x(h) + "px" } }, fmtHour(h)))), /* @__PURE__ */ React.createElement("div", { className: "lth-track", style: { "--rows": lanes } }, hours.map((h) => /* @__PURE__ */ React.createElement("span", { key: h, className: "lth-grid", style: { left: x(h) + "px" } })), /* @__PURE__ */ React.createElement("span", { className: "lth-past", style: { width: (showNow ? x(now) : now > to ? W : 0) + "px" } }), placed.map(({ s, lane, w }) => {
+  } }, /* @__PURE__ */ React.createElement("div", { className: "lth", style: { width: W + "px" } }, /* @__PURE__ */ React.createElement("div", { className: "lth-axis" }, hours.map((h) => /* @__PURE__ */ React.createElement("span", { key: h, className: "lth-hour", style: { left: x(h) + "px" } }, fmtHour(h)))), /* @__PURE__ */ React.createElement("div", { className: "lth-track", style: { "--rows": lanes } }, hours.map((h) => /* @__PURE__ */ React.createElement("span", { key: h, className: "lth-grid", style: { left: x(h) + "px" } })), /* @__PURE__ */ React.createElement("span", { className: "lth-past", style: { width: (showNow ? x(now) : now > to ? W : 0) + "px" } }), placed.map(({ s, opt, lane, w }) => {
     const st = sessionState(s, now);
     const p = s.course && PLAYER[s.course];
     const fam = p ? p.fam : "secondary";
-    const prog = st.key === "ended" ? 100 : st.key === "live" ? Math.round((now - s.start) / (s.end - s.start) * 100) : 0;
+    const clash = !opt && conflict.has(s.id);
+    const prog = opt ? 0 : st.key === "ended" ? 100 : st.key === "live" ? Math.round((now - s.start) / (s.end - s.start) * 100) : 0;
+    const pastOpt = opt && st.key === "ended";
     return /* @__PURE__ */ React.createElement(
       "div",
       {
         key: s.id,
-        className: `pill is-${st.key}`,
-        title: `${s.title} with ${s.host}, ${fmtRange(s.start, s.end)}`,
+        className: `pill is-${st.key}${opt ? " is-option" : ""}${clash ? " is-clash" : ""}`,
+        title: `${s.title} with ${s.host}, ${fmtRange(s.start, s.end)}${opt ? " (optional time, not in your plan)" : ""}${clash ? ". Overlaps another session in your plan." : ""}`,
         style: { left: x(s.start) + "px", width: w - 6 + "px", top: `calc(${lane} * 50px + 5px)`, "--p-base": `var(--color-${fam}-base)`, "--p-soft": `var(--color-${fam}-lighter)`, "--p-ink": `var(--color-${fam}-darker)` }
       },
-      /* @__PURE__ */ React.createElement("span", { className: "pill-fill", style: { width: `max(${prog}%, 38px)` } }),
+      !opt && /* @__PURE__ */ React.createElement("span", { className: "pill-fill", style: { width: `max(${prog}%, 38px)` } }),
       /* @__PURE__ */ React.createElement("span", { className: "pill-badge" }, p ? p.tile : "HR"),
-      /* @__PURE__ */ React.createElement("span", { className: "pill-text" }, /* @__PURE__ */ React.createElement("span", { className: "pill-title" }, s.title), /* @__PURE__ */ React.createElement("span", { className: "pill-meta" }, st.key === "soon" ? `In ${Math.ceil(s.start - now)} min` : st.key === "live" ? "Live now" : st.key === "ended" ? "Done" : fmtRange(s.start, s.end))),
-      st.canJoin && /* @__PURE__ */ React.createElement("button", { className: "pill-join", onClick: () => onJoin(s) }, "Join")
+      /* @__PURE__ */ React.createElement("span", { className: "pill-text" }, /* @__PURE__ */ React.createElement("span", { className: "pill-title" }, s.title), /* @__PURE__ */ React.createElement("span", { className: "pill-meta" }, clash ? "Overlaps" : opt ? `Optional, ${fmtShort(s.start)}` : st.key === "soon" ? `In ${Math.ceil(s.start - now)} min` : st.key === "live" ? "Live now" : st.key === "ended" ? "Done" : fmtRange(s.start, s.end))),
+      opt && !pastOpt && /* @__PURE__ */ React.createElement("button", { className: "pill-join pill-add", onClick: () => onRsvp && onRsvp(s, true), "aria-label": `Add ${s.title} at ${fmt(s.start)} to my plan` }, "+ Add"),
+      !opt && s.optionalPick && /* @__PURE__ */ React.createElement("button", { className: "pill-x", onClick: () => onRsvp && onRsvp(s, false), "aria-label": `Remove ${s.title} at ${fmt(s.start)} from my plan` }, /* @__PURE__ */ React.createElement(Icon, { d: I.x, size: 12, sw: 2.6 })),
+      !opt && st.canJoin && /* @__PURE__ */ React.createElement("button", { className: "pill-join", onClick: () => onJoin(s) }, "Join")
     );
   }), showNow && /* @__PURE__ */ React.createElement("div", { className: "lth-now", style: { left: x(now) + "px" } }, /* @__PURE__ */ React.createElement("span", null, fmt(now))))));
 }
@@ -2600,6 +2639,8 @@ function App() {
   const [calTab, setCalTab] = useState("calendar");
   const [upAnim, setUpAnim] = useState("");
   const [featId, setFeatId] = useState(null);
+  const [rsvp, setRsvp] = useState({});
+  const [tlMode, setTlMode] = useState("mine");
   const [showAnn, setShowAnn] = useState(true);
   const [bulletinMode, setBulletinMode] = useState("drawer");
   const [drawerOpen, setDrawerOpen] = useState(true);
@@ -2673,7 +2714,9 @@ function App() {
   const remaining = empty ? [] : D.assignments.filter((a) => !completed[key(a.id)]).map(deco);
   const by = { pastdue: [], today: [], week: [] };
   remaining.forEach((a) => by[a.status].push(a));
-  const todaySessions = empty ? [] : D.today;
+  const optionalToday = empty ? [] : D.optional || [];
+  const todaySessions = empty ? [] : [...D.today, ...optionalToday.filter((s) => rsvp[key(s.id)]).map((s) => ({ ...s, optionalPick: true }))].sort((x, y) => x.start - y.start);
+  const openOptions = optionalToday.filter((s) => !rsvp[key(s.id)]);
   const other = empty ? [] : D.otherSessions;
   const liveCand = screen === "room" ? null : todaySessions.find((s) => now >= s.start - 10 && now < s.end && !liveDismissed[`${org}:${s.id}:${now >= s.start ? "live" : "soon"}`]);
   const livePhase = liveCand ? now >= liveCand.start ? "live" : "soon" : null;
@@ -2890,7 +2933,26 @@ function App() {
         return /* @__PURE__ */ React.createElement("div", { key: it.k, className: `k5-ag kind-${it.kind}${st && st.key === "ended" ? " is-ended" : ""}` }, /* @__PURE__ */ React.createElement("span", { className: "k5-ag-icon", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: KIND[it.kind].icon, size: 28, sw: 2 })), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "k5-ag-time" }, KIND[it.kind].label, ", ", it.time), /* @__PURE__ */ React.createElement("div", { className: "k5-ag-title" }, it.title), /* @__PURE__ */ React.createElement("div", { className: "k5-ag-sub" }, it.sub)), st && st.canJoin && /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent btn-lg", onClick: () => join(it.s) }, "Join class"), st && st.key === "ended" && /* @__PURE__ */ React.createElement("span", { className: "k5-ag-done" }, "All done"), it.a && /* @__PURE__ */ React.createElement("button", { className: "btn k5-play sm", onClick: () => openAssignment(it.a) }, /* @__PURE__ */ React.createElement(Icon, { d: I.play, size: 14, sw: 2 }), " Start"));
       }), !items.length && /* @__PURE__ */ React.createElement("div", { className: "state-box center" }, /* @__PURE__ */ React.createElement("p", null, "Nothing planned this day. Enjoy!"))));
     })());
-  })(), screen === "homeroom" && /* @__PURE__ */ React.createElement("div", { className: "homeroom" }, /* @__PURE__ */ React.createElement("div", { className: "hr-head" }, /* @__PURE__ */ React.createElement("span", { className: "hr-head-face" }, /* @__PURE__ */ React.createElement(TeacherFace, { size: 64 })), /* @__PURE__ */ React.createElement("h1", { className: "k5-h1" }, "Ms. Greene\u2019s Homeroom"), /* @__PURE__ */ React.createElement("p", { className: "k5-sub" }, O.grade, " at ", O.name)), /* @__PURE__ */ React.createElement(HomeroomWheel, { posts: HOMEROOM_POSTS, liked: (id) => liked[key(id)], onLike: (id, v) => setLiked({ ...liked, [key(id)]: v }) }), /* @__PURE__ */ React.createElement("p", { className: "hrw-hint" }, "Scroll or use the arrows to see older messages")), screen === "home" && O.id !== "k5" && /* @__PURE__ */ React.createElement("div", { className: "stack-20" }, /* @__PURE__ */ React.createElement("div", { className: "greet" }, /* @__PURE__ */ React.createElement("h1", { className: "greet-h" }, greet, ", ", O.first, "!"), /* @__PURE__ */ React.createElement("p", { className: "greet-sub" }, "It\u2019s Monday, October 12. You\u2019re going to do great today.")), announcements.length > 0 && bulletinMode === "banner" && /* @__PURE__ */ React.createElement(AnnouncementCarousel, { items: announcements, school: O.name, minimized: annMin, setMinimized: setAnnMin }), /* @__PURE__ */ React.createElement("section", { className: "card lth-card", "aria-labelledby": "lth-h" }, /* @__PURE__ */ React.createElement("div", { className: "lth-side" }, /* @__PURE__ */ React.createElement("h2", { id: "lth-h", className: "lth-label" }, /* @__PURE__ */ React.createElement("span", { className: "live-dot", "aria-hidden": "true" }), "Live today"), /* @__PURE__ */ React.createElement("button", { className: "link-btn lth-cal", onClick: () => go("week") }, "View calendar")), todaySessions.length ? /* @__PURE__ */ React.createElement(TimelineH, { sessions: todaySessions, now, from: 480, to: 1020, onJoin: join }) : /* @__PURE__ */ React.createElement("div", { className: "state-box center lth-empty" }, /* @__PURE__ */ React.createElement("p", null, "No live sessions scheduled today."))), /* @__PURE__ */ React.createElement("section", { className: "lq", "aria-labelledby": "lq-h" }, outage ? /* @__PURE__ */ React.createElement("div", { className: "state-box warnbox", role: "status" }, /* @__PURE__ */ React.createElement("span", { className: "tone-warn" }, /* @__PURE__ */ React.createElement(Icon, { d: I.warn, size: 22, sw: 2 })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("strong", null, "Assignments temporarily unavailable"), /* @__PURE__ */ React.createElement("p", null, "We couldn\u2019t load your coursework right now. Your live sessions are still up to date."), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm", onClick: () => say("Still unavailable. Campus will keep trying in the background.") }, "Try again"))) : !queue.length ? /* @__PURE__ */ React.createElement("div", { className: "state-box center" }, /* @__PURE__ */ React.createElement("strong", null, "You\u2019re all caught up"), /* @__PURE__ */ React.createElement("p", null, empty ? "New work will show up here as soon as it\u2019s assigned." : "Everything due this week is submitted.")) : (() => {
+  })(), screen === "homeroom" && /* @__PURE__ */ React.createElement("div", { className: "homeroom" }, /* @__PURE__ */ React.createElement("div", { className: "hr-head" }, /* @__PURE__ */ React.createElement("span", { className: "hr-head-face" }, /* @__PURE__ */ React.createElement(TeacherFace, { size: 64 })), /* @__PURE__ */ React.createElement("h1", { className: "k5-h1" }, "Ms. Greene\u2019s Homeroom"), /* @__PURE__ */ React.createElement("p", { className: "k5-sub" }, O.grade, " at ", O.name)), /* @__PURE__ */ React.createElement(HomeroomWheel, { posts: HOMEROOM_POSTS, liked: (id) => liked[key(id)], onLike: (id, v) => setLiked({ ...liked, [key(id)]: v }) }), /* @__PURE__ */ React.createElement("p", { className: "hrw-hint" }, "Scroll or use the arrows to see older messages")), screen === "home" && O.id !== "k5" && /* @__PURE__ */ React.createElement("div", { className: "stack-20" }, /* @__PURE__ */ React.createElement("div", { className: "greet" }, /* @__PURE__ */ React.createElement("h1", { className: "greet-h" }, greet, ", ", O.first, "!"), /* @__PURE__ */ React.createElement("p", { className: "greet-sub" }, "It\u2019s Monday, October 12. You\u2019re going to do great today.")), announcements.length > 0 && bulletinMode === "banner" && /* @__PURE__ */ React.createElement(AnnouncementCarousel, { items: announcements, school: O.name, minimized: annMin, setMinimized: setAnnMin }), /* @__PURE__ */ React.createElement("section", { className: "card lth-card", "aria-labelledby": "lth-h" }, /* @__PURE__ */ React.createElement("div", { className: "lth-side" }, /* @__PURE__ */ React.createElement("h2", { id: "lth-h", className: "lth-label" }, /* @__PURE__ */ React.createElement("span", { className: "live-dot", "aria-hidden": "true" }), "Live today"), /* @__PURE__ */ React.createElement("button", { className: "link-btn lth-cal", onClick: () => go("week") }, "View calendar"), optionalToday.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "lth-mode", role: "group", "aria-label": "Which sessions to show" }, /* @__PURE__ */ React.createElement("button", { className: tlMode === "mine" ? "is-on" : "", "aria-pressed": tlMode === "mine", onClick: () => setTlMode("mine") }, "My plan"), /* @__PURE__ */ React.createElement("button", { className: tlMode === "all" ? "is-on" : "", "aria-pressed": tlMode === "all", onClick: () => setTlMode("all") }, "All times", openOptions.length ? /* @__PURE__ */ React.createElement("span", { className: "lth-mode-n" }, "+", openOptions.length) : null))), todaySessions.length || tlMode === "all" && openOptions.length ? /* @__PURE__ */ React.createElement(
+    TimelineH,
+    {
+      sessions: todaySessions,
+      options: tlMode === "all" ? openOptions : [],
+      now,
+      from: 480,
+      to: 1020,
+      onJoin: join,
+      onRsvp: (s, v) => {
+        setRsvp({ ...rsvp, [key(s.id)]: v });
+        if (!v) {
+          say(`Removed ${s.title} at ${fmt(s.start)} from your plan`);
+          return;
+        }
+        const clash = todaySessions.find((t) => t.start < s.end && s.start < t.end);
+        say(clash ? `Added. Heads up: it overlaps ${clash.title} at ${fmt(clash.start)}.` : `Added ${s.title} at ${fmt(s.start)} to your plan`);
+      }
+    }
+  ) : /* @__PURE__ */ React.createElement("div", { className: "state-box center lth-empty" }, /* @__PURE__ */ React.createElement("p", null, "No live sessions scheduled today."))), /* @__PURE__ */ React.createElement("section", { className: "lq", "aria-labelledby": "lq-h" }, outage ? /* @__PURE__ */ React.createElement("div", { className: "state-box warnbox", role: "status" }, /* @__PURE__ */ React.createElement("span", { className: "tone-warn" }, /* @__PURE__ */ React.createElement(Icon, { d: I.warn, size: 22, sw: 2 })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("strong", null, "Assignments temporarily unavailable"), /* @__PURE__ */ React.createElement("p", null, "We couldn\u2019t load your coursework right now. Your live sessions are still up to date."), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm", onClick: () => say("Still unavailable. Campus will keep trying in the background.") }, "Try again"))) : !queue.length ? /* @__PURE__ */ React.createElement("div", { className: "state-box center" }, /* @__PURE__ */ React.createElement("strong", null, "You\u2019re all caught up"), /* @__PURE__ */ React.createElement("p", null, empty ? "New work will show up here as soon as it\u2019s assigned." : "Everything due this week is submitted.")) : (() => {
     const pos = Math.max(0, queue.findIndex((x) => x.id === featId));
     const f = queue[pos];
     const pal = LQ_PAL[f.course] || LQ_PAL.default;
