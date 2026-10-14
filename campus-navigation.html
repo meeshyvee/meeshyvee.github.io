@@ -2108,6 +2108,171 @@ body{color:var(--ink)}
 .k5-card.has-art{gap:10px}
 .k5-card.has-art .k5-bar{height:10px}
 
+/* Learning queue featured card: light subject gradient (no longer dark) */
+.lq-card{background:linear-gradient(115deg,color-mix(in srgb,var(--lq-art) 70%,#fff) 0%,color-mix(in srgb,var(--lq-art) 30%,#fff) 55%,#fff 100%)!important;color:var(--ink);border:1px solid color-mix(in srgb,var(--lq-art) 80%,#fff);box-shadow:0 10px 28px -18px rgba(15,23,42,.35)}
+.lq-art{background:#fff;color:var(--lq-ink);box-shadow:0 0 0 6px color-mix(in srgb,var(--lq-art) 60%,#fff),0 10px 20px -12px rgba(15,23,42,.3)}
+.lq-up{color:var(--lq-ink)}
+.lq-title{color:var(--ink)}
+.lq-sub{color:var(--ink-2)}
+.lq-due{color:var(--ink-2)}
+.lq-due-dot{background:var(--prim-slate-400)}
+.lq-due.due-pastdue{color:var(--alert-error-dark)}.lq-due.due-pastdue .lq-due-dot{background:#DE5D46}
+.lq-due.due-today{color:var(--alert-warning-dark)}.lq-due.due-today .lq-due-dot{background:#E59700}
+.lq-foot-l{color:var(--ink-2)}
+.lq-foot-l svg{color:var(--lq-ink)}
+.lq-nav{color:var(--ink-2)}
+.lq-nav:hover{background:rgba(15,23,42,.06);color:var(--ink)}
+.lq-shuffle{background:#fff;color:var(--lq-ink);border:1px solid color-mix(in srgb,var(--lq-art) 80%,#fff)!important;box-shadow:0 4px 10px -6px rgba(15,23,42,.25)}
+.lq-shuffle:hover{background:color-mix(in srgb,var(--lq-art) 25%,#fff)}
+.lq-play{background:var(--lq-ink);color:#fff;box-shadow:0 10px 20px -8px color-mix(in srgb,var(--lq-ink) 70%,transparent)}
+.lq-ctrls button:focus-visible{outline-color:var(--lq-ink)}
+/* My Courses: progress reveals on hover / keyboard focus */
+.launcher-hover{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .2s ease,opacity .2s ease,margin .2s ease}
+.launcher-hover > *{min-height:0;overflow:hidden}
+.launcher:hover .launcher-hover,.launcher:focus-visible .launcher-hover{grid-template-rows:auto auto;opacity:1;margin-top:4px}
+.launcher-hbar{display:block;height:5px;border-radius:99px;background:var(--prim-slate-100)}
+.launcher-hbar span{display:block;height:100%;border-radius:99px;background:var(--subject-ink);opacity:.75}
+.launcher-hmeta{display:block;margin-top:3px;font-size:11.5px;font-weight:700;color:var(--muted);white-space:nowrap;text-overflow:ellipsis}
+.launcher:hover{background:color-mix(in srgb,var(--subject-soft) 45%,#fff)!important;border-color:var(--subject-soft)!important}
+.side.is-min .launcher-hover{display:none}
+@media (prefers-reduced-motion:reduce){.launcher-hover{transition:none}}
+.launcher-hover{grid-template-rows:0fr 0fr}
+.launcher .launcher-text{gap:0}
+.launcher-hover{display:none}
+.launcher:hover .launcher-hover,.launcher:focus-visible .launcher-hover{display:grid;animation:fadein .2s ease-out}
+.side.is-min .launcher:hover .launcher-hover{display:none}
+/* grade tiles with a small "GRADE" label */
+.launcher .grade-tile{width:48px;height:50px;border-radius:12px;flex-direction:column;gap:1px;line-height:1}
+.gt-k{font-family:var(--body);font-size:8.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+.gt-v{font-family:var(--display);font-size:18px;font-weight:800}
+.side.is-min .launcher .grade-tile{width:44px;height:46px}
+.side.is-min .gt-v{font-size:16px}
+/* revert grade tile to letter only; info tooltip by "My Courses" */
+.launcher .grade-tile{width:40px;height:40px;flex-direction:row;gap:0;font-size:15px}
+.side.is-min .launcher .grade-tile{width:36px;height:36px}
+.side-sec-row{display:flex;align-items:center;gap:2px}
+.side-sec-row .side-sec{width:auto;padding-right:6px}
+.info-tip{position:relative;display:inline-flex}
+.info-btn{width:28px;height:28px;border:0;border-radius:50%;background:transparent;color:var(--muted);display:inline-flex;align-items:center;justify-content:center;cursor:help}
+.info-btn:hover,.info-btn:focus-visible{background:var(--hover);color:var(--ink)}
+.info-pop{position:absolute;left:-8px;top:calc(100% + 8px);z-index:40;width:250px;padding:12px 14px;border-radius:12px;background:var(--tooltip-tooltip-dark-bg);color:var(--tooltip-tooltip-dark-text);font-size:13px;line-height:1.45;box-shadow:var(--shadow);opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .15s,transform .15s,visibility 0s linear .15s;pointer-events:none}
+.info-pop strong{display:block;font-size:14px;margin-bottom:3px}
+.info-tip:hover .info-pop,.info-btn:focus-visible + .info-pop{opacity:1;visibility:visible;transform:none;transition:opacity .15s,transform .15s}
+.side.is-min .side-sec-row{display:none}
+/* bulletin: simple smooth slide (no blinds) */
+.bl-window{transition:grid-template-rows .42s cubic-bezier(.25,.8,.3,1)}
+.bl-panel{transform:translateY(-14px);opacity:0;transition:transform .42s cubic-bezier(.25,.8,.3,1),opacity .3s ease}
+.bl-wrap.is-open .bl-panel{transform:none;opacity:1}
+
+/* My Courses: grade square fills row height and grows on hover */
+.launcher{align-items:stretch}
+.launcher .grade-tile{align-self:stretch;height:auto;min-height:40px;transition:min-height .2s}
+.launcher .launcher-text{align-self:center}
+.launcher .launcher-play{align-self:center}
+/* info icon closer to the heading */
+.side-sec-row{gap:0}
+.side-sec-row .side-sec{padding-right:0}
+.side-sec-row .side-sec .side-h{margin-right:4px}
+.info-btn{width:24px;height:24px}
+
+/* sequencing / locked work */
+.lq-lock{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:4px;padding:8px 10px 8px 8px;border-radius:12px;background:rgba(255,255,255,.75);border:1px dashed color-mix(in srgb,var(--lq-ink) 35%,#fff);font-size:14px;color:var(--ink-2);align-self:flex-start}
+.lq-lock-ic{width:26px;height:26px;border-radius:8px;background:var(--lq-ink);color:#fff;display:inline-flex;align-items:center;justify-content:center}
+.lq-lock-go{display:inline-flex;align-items:center;gap:4px;border:0;background:transparent;padding:2px 4px;font-weight:800;font-size:14px;color:var(--lq-ink);cursor:pointer}
+.lq-lock-go:hover{text-decoration:underline}
+.lq-play.is-locked{background:#fff;color:var(--lq-ink);border:2px solid color-mix(in srgb,var(--lq-ink) 40%,#fff)}
+.lq-row.is-locked .lq-row-title{display:inline-flex;align-items:center;gap:6px;color:var(--ink-2)}
+.lq-row.is-locked .lq-row-sub{color:var(--color-primary-dark);font-weight:700}
+.lq-row.is-locked .lq-ico{opacity:.55}
+.lq-row-play.is-locked{border-style:dashed}
+.gate{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.gate-ic{width:60px;height:60px;border-radius:18px;background:var(--color-primary-subtle);color:var(--color-primary-darker);display:inline-flex;align-items:center;justify-content:center}
+.gate .lede{max-width:60ch;font-size:16px}
+.gate-steps{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:6px 0 4px}
+.gate-step{display:inline-flex;align-items:center;gap:8px;padding:8px 14px 8px 8px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);font-weight:700;font-size:14px;color:var(--muted)}
+.gate-step span{width:26px;height:26px;border-radius:50%;background:var(--prim-slate-200);color:var(--ink-2);display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:800}
+.gate-step.is-now{border-color:var(--color-primary-base);background:var(--color-primary-subtle);color:var(--color-primary-darker)}
+.gate-step.is-now span{background:var(--color-primary-dark);color:#fff}
+.gate-arrow{color:var(--muted);display:inline-flex}
+.lq-row-play.is-locked svg{fill:none!important;margin-left:0}
+/* connect the pull tab to the bulletin panel */
+.bl-panel{margin:0;background:linear-gradient(180deg,#EEF4FF,#F6F9FF)}
+.bl-pull{right:28px;bottom:-37px;background:#F6F9FF;border-color:var(--brand-blue-line);border-top:0;box-shadow:0 10px 16px -12px rgba(30,58,138,.35)}
+.bl-wrap.is-closed .bl-pull{bottom:-37px;background:linear-gradient(180deg,#EEF4FF,#F6F9FF)}
+.bl-pull::before{content:"";position:absolute;left:0;right:0;top:-2px;height:3px;background:#F6F9FF}
+.bl-wrap.is-closed .bl-pull::before{background:#EEF4FF}
+.bl-wrap:not(.is-closed) + .greet{margin-top:22px}
+/* learning queue: Spotify-style scroll after ~15 rows */
+.lq-rows.is-scroll{max-height:calc(15 * 58px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--prim-slate-300) transparent;-webkit-mask-image:linear-gradient(180deg,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(180deg,#000 calc(100% - 40px),transparent);padding-bottom:30px}
+.lq-rows.is-scroll:focus-visible{outline:2px solid var(--prim-admin-blue-300);outline-offset:4px;border-radius:12px}
+.lq-row-due.due-later{color:var(--muted)}
+/* My Courses: one unified tile color instead of per-subject colors */
+.side .launcher .grade-tile{background:var(--brand-blue-soft)!important;color:var(--prim-admin-blue-900)!important;box-shadow:inset 0 0 0 1px var(--brand-blue-line)}
+.side .launcher:hover{background:var(--prim-slate-50)!important;border-color:var(--line)!important}
+.side .launcher-hbar span{background:var(--prim-admin-blue-500)}
+.side .launcher:hover .lp-ring,.side .launcher:focus-visible .lp-ring{fill:var(--prim-admin-blue-600);stroke:var(--prim-admin-blue-600)}
+
+/* ===== Study playlists + combined filters ===== */
+.lq-list-head{align-items:flex-start}
+.lq-filters{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.lq-clear{margin-left:10px;font-size:13px;padding:0}
+.pl-dd{position:relative;display:inline-flex;align-items:center}
+.pl-trigger{display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:6px 12px;border-radius:var(--r-tag);border:1px dashed var(--line-2);background:var(--surface);color:var(--ink-2);font-size:14px;font-weight:700}
+.pl-trigger:hover{background:var(--hover)}
+.pl-trigger.is-set{border-style:solid;padding-right:34px}
+.pl-trigger.tone-coral{background:var(--color-accent-color-2-subtle);border-color:var(--color-accent-color-2-light);color:var(--color-accent-color-2-darker)}
+.pl-trigger.tone-yellow{background:var(--color-accent-color-3-subtle);border-color:var(--color-accent-color-3-light);color:var(--color-accent-color-3-darker)}
+.pl-trigger.tone-purple{background:var(--color-primary-subtle);border-color:var(--color-primary-light);color:var(--color-primary-darker)}
+.pl-trigger.tone-teal{background:var(--color-secondary-subtle);border-color:var(--color-secondary-light);color:var(--color-secondary-darker)}
+.pl-x{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:24px;height:24px;border:0;border-radius:50%;background:rgba(255,255,255,.8);color:inherit;display:inline-flex;align-items:center;justify-content:center}
+.pl-x:hover{background:#fff}
+.pl-backdrop{position:fixed;inset:0;z-index:30}
+.pl-menu{position:absolute;right:0;top:calc(100% + 8px);z-index:31;width:320px;padding:8px;border-radius:16px;background:var(--surface);border:1px solid var(--line);box-shadow:0 18px 40px -16px rgba(15,23,42,.3);animation:fadein .15s ease-out}
+.pl-menu-h{padding:6px 10px 8px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pl-item{display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;border:0;border-radius:10px;background:transparent;text-align:left;color:var(--ink)}
+.pl-item:hover,.pl-item:focus-visible{background:var(--hover);outline:none}
+.pl-item.is-on{background:var(--prim-slate-100)}
+.pl-item-ic{width:32px;height:32px;flex-shrink:0;border-radius:10px;display:inline-flex;align-items:center;justify-content:center}
+.pl-item.tone-slate .pl-item-ic{background:var(--prim-slate-100);color:var(--prim-slate-700)}
+.pl-item.tone-coral .pl-item-ic{background:var(--color-accent-color-2-subtle);color:var(--color-accent-color-2-darker)}
+.pl-item.tone-yellow .pl-item-ic{background:var(--color-accent-color-3-subtle);color:var(--color-accent-color-3-darker)}
+.pl-item.tone-purple .pl-item-ic{background:var(--color-primary-subtle);color:var(--color-primary-darker)}
+.pl-item.tone-teal .pl-item-ic{background:var(--color-secondary-subtle);color:var(--color-secondary-darker)}
+.pl-item .grow{display:flex;flex-direction:column}
+.pl-item-name{font-weight:800;font-size:14.5px}
+.pl-item-desc{font-size:12.5px;color:var(--muted)}
+.pl-item-n{min-width:24px;padding:1px 7px;border-radius:99px;background:var(--prim-slate-100);font-size:12px;font-weight:800;text-align:center;color:var(--ink-2)}
+.pl-menu-note{margin:6px 4px 2px;padding:8px 10px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+.lq-up-pl{margin-left:8px;padding:1px 8px;border-radius:99px;background:rgba(255,255,255,.75);font-size:11px;letter-spacing:.02em;text-transform:none;font-weight:700}
+.lq-nav:disabled,.lq-shuffle:disabled{opacity:.35;cursor:default}
+.lq-next-step .lq-title{font-size:20px}
+.lq-row{position:relative}
+.lk-pop{position:absolute;z-index:20;left:90px;top:calc(100% - 4px);width:330px;padding:14px 16px;border-radius:14px;background:var(--surface);border:1px solid var(--color-primary-light);box-shadow:0 16px 34px -14px rgba(15,23,42,.35);animation:fadein .15s ease-out}
+.lk-pop-h{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:800;font-size:16px}
+.lk-pop-ic{width:26px;height:26px;border-radius:8px;background:var(--color-primary-subtle);color:var(--color-primary-darker);display:inline-flex;align-items:center;justify-content:center}
+.lk-pop p{margin:6px 0 10px;font-size:14px;color:var(--ink-2)}
+.lq-rows.is-scroll{overflow-x:visible}
+.lq-empty{display:flex;flex-direction:column;align-items:center;gap:6px;padding:28px 12px;text-align:center}
+.lq-empty-h{font-family:var(--display);font-weight:900;font-size:20px}
+.lq-empty p{color:var(--muted)}
+.lq-row.is-locked .lq-row-play{cursor:pointer}
+/* My Courses: names styled like Campus links; grade tiles share a fill, outline in course color */
+.side .launcher-name{font-family:var(--body);font-size:15px;font-weight:500;color:var(--ink-2)}
+.side .launcher:hover .launcher-name{color:var(--ink)}
+.side .launcher .grade-tile{background:#fff!important;color:var(--subject-ink)!important;box-shadow:inset 0 0 0 2px var(--subject),0 2px 0 var(--subject-soft);font-weight:900}
+.side .launcher:hover .grade-tile{background:var(--subject-soft)!important}
+.side .launcher-hbar span{background:var(--subject)}
+/* Coming up: title + playlists on one row, date filters below */
+.lq-list-head{flex-direction:column;align-items:stretch;gap:12px}
+.lq-head-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.lq-filters{justify-content:flex-start}
+/* My Courses hover: tile stays put; the course outline wraps the whole row */
+.side .launcher{border:2px solid transparent!important;align-items:center}
+.side .launcher .grade-tile{align-self:center;height:40px;min-height:0}
+.side .launcher:hover,.side .launcher:focus-visible{background:color-mix(in srgb,var(--subject-soft) 45%,#fff)!important;border-color:var(--subject)!important;box-shadow:0 3px 0 var(--subject-soft)}
+.side .launcher:hover .grade-tile,.side .launcher:focus-visible .grade-tile{background:#fff!important}
+.side .launcher:hover .lp-ring,.side .launcher:focus-visible .lp-ring{fill:var(--subject-ink);stroke:var(--subject-ink)}
+
 </style>
 </head>
 <body>
@@ -2340,11 +2505,11 @@ const DATA = {
       { id: "pho", name: "Digital Photography", teacher: "Mr. Hale", grade: null, progress: 12 }
     ],
     assignments: [
-      { id: "a1", title: "Unit 3 Lab Report: Enzyme Activity", course: "bio", type: "Lab", weight: 8, status: "pastdue", due: "Was due Fri, Oct 9", dueShort: "Fri, Oct 9", day: null, instructions: "Write up your enzyme activity lab using the template. Include your hypothesis, a data table, a graph of reaction rate vs. temperature, and a 150\u2013250 word conclusion." },
-      { id: "a2", title: "Quiz 4.2: Rational Expressions", course: "alg", type: "Quiz", weight: 5, status: "today", due: "Due today, 11:59 PM", dueShort: "11:59 PM", day: "Mon", instructions: "10 questions, 30 minutes. One retake is allowed and your higher score counts." },
-      { id: "a3", title: "Chapter 7 Reading Response", course: "eng", type: "Assignment", weight: 2, status: "today", due: "Due today, 11:59 PM", dueShort: "11:59 PM", day: "Mon", instructions: "Read Chapter 7 and write about 200 words: which character changes the most, and what causes the change? Use one quote as evidence." },
-      { id: "a4", title: "Vocabulary Set 5", course: "spa", type: "Assignment", weight: 1, status: "week", due: "Due Wed, Oct 14", dueShort: "Wed", day: "Wed", instructions: "Complete the 20-word matching set, then use five of the words in original sentences." },
-      { id: "a5", title: "Unit 4 Exam: Age of Revolutions", course: "his", type: "Exam", weight: 15, status: "week", due: "Due Thu, Oct 15", dueShort: "Thu", day: "Thu", instructions: "Covers lessons 4.1\u20134.6: 40 multiple-choice questions and 2 short answers. Review session Wednesday at 1:00 PM." },
+      { id: "a1", mins: 45, title: "Unit 3 Lab Report: Enzyme Activity", course: "bio", type: "Lab", weight: 8, status: "pastdue", due: "Was due Fri, Oct 9", dueShort: "Fri, Oct 9", day: null, instructions: "Write up your enzyme activity lab using the template. Include your hypothesis, a data table, a graph of reaction rate vs. temperature, and a 150\u2013250 word conclusion." },
+      { id: "a2", mins: 20, title: "Quiz 4.2: Rational Expressions", course: "alg", requires: { assign: "x3" }, type: "Quiz", weight: 5, status: "today", due: "Due today, 11:59 PM", dueShort: "11:59 PM", day: "Mon", instructions: "10 questions, 30 minutes. One retake is allowed and your higher score counts." },
+      { id: "a3", mins: 25, title: "Chapter 7 Reading Response", course: "eng", type: "Assignment", weight: 2, status: "today", due: "Due today, 11:59 PM", dueShort: "11:59 PM", day: "Mon", instructions: "Read Chapter 7 and write about 200 words: which character changes the most, and what causes the change? Use one quote as evidence." },
+      { id: "a4", mins: 10, title: "Vocabulary Set 5", course: "spa", type: "Assignment", weight: 1, status: "week", due: "Due Wed, Oct 14", dueShort: "Wed", day: "Wed", instructions: "Complete the 20-word matching set, then use five of the words in original sentences." },
+      { id: "a5", mins: 60, title: "Unit 4 Exam: Age of Revolutions", course: "his", requires: { course: "his", lesson: 3 }, type: "Exam", weight: 15, status: "week", due: "Due Thu, Oct 15", dueShort: "Thu", day: "Thu", instructions: "Covers lessons 4.1\u20134.6: 40 multiple-choice questions and 2 short answers. Review session Wednesday at 1:00 PM." },
       { id: "a6", title: "Portfolio: Rule of Thirds", course: "pho", type: "Project", weight: 10, status: "week", due: "Due Fri, Oct 16", dueShort: "Fri", day: "Fri", instructions: "Submit five original photos that use the rule of thirds, each with a one-sentence caption." }
     ],
     graded: [
@@ -2491,7 +2656,8 @@ const DAYS = [["Mon", "12"], ["Tue", "13"], ["Wed", "14"], ["Thu", "15"], ["Fri"
 const STATUS = {
   pastdue: { label: "Past due", cls: "danger", cta: "Submit now" },
   today: { label: "Due today", cls: "warn", cta: "Start" },
-  week: { label: "This week", cls: "neutral", cta: "Start" }
+  week: { label: "This week", cls: "neutral", cta: "Start" },
+  later: { label: "Next week", cls: "neutral", cta: "Start" }
 };
 const TYPE_CLS = { Exam: "exam", Quiz: "quiz", Lab: "ok", Project: "ok", Assignment: "neutral" };
 const STUBS = {
@@ -2637,6 +2803,28 @@ const K5_HELPERS = [
 const SUPPORT_TEAM = [
   { id: "advisor", name: "Jaime Alexander", role: "Academic Advisor", initials: "JA", hours: "Check-ins on Mondays, 1\u20133 PM", help: "Keeps your classes, credits, and grades on track, and helps you pick next year\u2019s courses." },
   { id: "counselor", name: "Ms. Lopez", role: "School Counselor", initials: "ML", hours: "Mon\u2013Fri, 8 AM\u20134 PM", help: "Here for college and career planning, stress, and anything that feels hard right now." }
+];
+const EXTRA_912 = [
+  { id: "x1", mins: 15, title: "Quiz 7.1: Figurative Language", course: "eng", type: "Quiz", weight: 3, status: "week", due: "Due Tue, Oct 13", dueShort: "Tue", day: "Tue", instructions: "Follow the steps in your course for this quiz." },
+  { id: "x2", mins: 10, title: "Vocabulary in Context: Ch. 7", course: "eng", type: "Assignment", weight: 1, status: "week", due: "Due Wed, Oct 14", dueShort: "Wed", day: "Wed", instructions: "Follow the steps in your course for this assignment." },
+  { id: "x3", mins: 15, title: "Practice Set 4.3: Adding Rational Expressions", course: "alg", type: "Assignment", weight: 2, status: "week", due: "Due Tue, Oct 13", dueShort: "Tue", day: "Tue", instructions: "Follow the steps in your course for this assignment." },
+  { id: "x4", mins: 30, title: "Lab Prep: Cell Membranes", course: "bio", type: "Lab", weight: 3, status: "week", due: "Due Wed, Oct 14", dueShort: "Wed", day: "Wed", instructions: "Follow the steps in your course for this lab." },
+  { id: "x5", mins: 25, title: "Map Activity: Revolutions in the Americas", course: "his", type: "Assignment", weight: 2, status: "week", due: "Due Tue, Oct 13", dueShort: "Tue", day: "Tue", instructions: "Follow the steps in your course for this assignment." },
+  { id: "x6", mins: 10, title: "Listening Check: El Pret\xE9rito", course: "spa", type: "Quiz", weight: 2, status: "week", due: "Due Thu, Oct 15", dueShort: "Thu", day: "Thu", instructions: "Follow the steps in your course for this quiz." },
+  { id: "x7", mins: 40, title: "Photo Walk: Leading Lines", course: "pho", type: "Project", weight: 4, status: "week", due: "Due Thu, Oct 15", dueShort: "Thu", day: "Thu", instructions: "Follow the steps in your course for this project." },
+  { id: "x8", mins: 15, title: "Discussion Post: Who Changes Most?", course: "eng", type: "Assignment", weight: 2, status: "week", due: "Due Fri, Oct 16", dueShort: "Fri", day: "Fri", instructions: "Follow the steps in your course for this assignment." },
+  { id: "x9", mins: 20, title: "Quiz 4.3: Complex Fractions", course: "alg", type: "Quiz", weight: 5, status: "week", due: "Due Fri, Oct 16", dueShort: "Fri", day: "Fri", instructions: "Follow the steps in your course for this quiz." },
+  { id: "x10", title: "Reading Notes: Bol\xEDvar\u2019s Letters", course: "his", type: "Assignment", weight: 1, status: "week", due: "Due Wed, Oct 14", dueShort: "Wed", day: "Wed", instructions: "Follow the steps in your course for this assignment." },
+  { id: "x11", mins: 35, title: "Essay Outline: Character Change", course: "eng", type: "Assignment", weight: 4, status: "later", due: "Due Mon, Oct 19", dueShort: "Mon, Oct 19", day: null, instructions: "Follow the steps in your course for this assignment." },
+  { id: "x12", mins: 50, title: "Unit 4 Test: Rational Expressions", course: "alg", type: "Exam", weight: 15, status: "later", due: "Due Tue, Oct 20", dueShort: "Tue, Oct 20", day: null, instructions: "Follow the steps in your course for this exam." },
+  { id: "x13", mins: 45, title: "Lab Report: Osmosis in Potato Cells", course: "bio", type: "Lab", weight: 8, status: "later", due: "Due Wed, Oct 21", dueShort: "Wed, Oct 21", day: null, instructions: "Follow the steps in your course for this lab." },
+  { id: "x14", mins: 10, title: "Unit 5 Kickoff: Industrial Revolution", course: "his", type: "Assignment", weight: 1, status: "later", due: "Due Mon, Oct 19", dueShort: "Mon, Oct 19", day: null, instructions: "Follow the steps in your course for this assignment." },
+  { id: "x15", title: "Oral Presentation: Mi Fin de Semana", course: "spa", type: "Project", weight: 10, status: "later", due: "Due Thu, Oct 22", dueShort: "Thu, Oct 22", day: null, instructions: "Follow the steps in your course for this project." },
+  { id: "x16", mins: 40, title: "Portfolio: Leading Lines", course: "pho", type: "Project", weight: 10, status: "later", due: "Due Fri, Oct 23", dueShort: "Fri, Oct 23", day: null, instructions: "Follow the steps in your course for this project." },
+  { id: "x17", mins: 15, title: "Quiz 3.8: Cell Transport", course: "bio", type: "Quiz", weight: 5, status: "later", due: "Due Thu, Oct 22", dueShort: "Thu, Oct 22", day: null, instructions: "Follow the steps in your course for this quiz." },
+  { id: "x18", mins: 20, title: "Practice Set 5.1: Rational Equations", course: "alg", type: "Assignment", weight: 2, status: "later", due: "Due Wed, Oct 21", dueShort: "Wed, Oct 21", day: null, instructions: "Follow the steps in your course for this assignment." },
+  { id: "x19", mins: 20, title: "Peer Review: Essay Outlines", course: "eng", type: "Assignment", weight: 2, status: "later", due: "Due Thu, Oct 22", dueShort: "Thu, Oct 22", day: null, instructions: "Follow the steps in your course for this assignment." },
+  { id: "x20", mins: 10, title: "Vocabulary Set 6", course: "spa", type: "Assignment", weight: 1, status: "later", due: "Due Fri, Oct 23", dueShort: "Fri, Oct 23", day: null, instructions: "Follow the steps in your course for this assignment." }
 ];
 const { useState, useEffect, useRef } = React;
 const fmt = (m) => {
@@ -2961,15 +3149,12 @@ function BulletinBlinds({ items, news, school, onAllNews }) {
   }, [phase]);
   const openIt = () => {
     setPhase("opening");
-    later(() => setPhase("open"), 380);
+    later(() => setPhase("open"), 30);
   };
   const closeIt = () => {
-    setPhase("closing");
-    later(() => {
-      setPhase("closed");
-      setShine(false);
-      later(() => setShine(true), 80);
-    }, 460);
+    setPhase("closed");
+    setShine(false);
+    later(() => setShine(true), 420);
   };
   const expanded = phase !== "closed";
   const posts = [
@@ -2986,7 +3171,7 @@ function BulletinBlinds({ items, news, school, onAllNews }) {
   } }, /* @__PURE__ */ React.createElement("div", { className: "bl-window", "aria-hidden": !expanded }, /* @__PURE__ */ React.createElement("div", { className: "bl-window-inner" }, /* @__PURE__ */ React.createElement("div", { className: "bl-panel" }, /* @__PURE__ */ React.createElement("div", { className: "bl-panel-head" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "bl-k" }, "What\u2019s happening at ", school), /* @__PURE__ */ React.createElement("h2", { className: "bl-h" }, "Campus bulletin")), /* @__PURE__ */ React.createElement("div", { className: "bl-nav" }, /* @__PURE__ */ React.createElement("button", { className: "icon-btn sm", tabIndex: phase === "open" ? 0 : -1, "aria-label": "Scroll left", onClick: () => nudge(-1) }, /* @__PURE__ */ React.createElement(Icon, { d: "M15 18l-6-6 6-6", size: 18, sw: 2.2 })), /* @__PURE__ */ React.createElement("button", { className: "icon-btn sm", tabIndex: phase === "open" ? 0 : -1, "aria-label": "Scroll right", onClick: () => nudge(1) }, /* @__PURE__ */ React.createElement(Icon, { d: "M9 6l6 6-6 6", size: 18, sw: 2.2 })), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm", tabIndex: phase === "open" ? 0 : -1, onClick: () => {
     closeIt();
     onAllNews();
-  } }, "All school news"))), /* @__PURE__ */ React.createElement("div", { className: "bl-row", ref: rowRef }, posts.map((p) => /* @__PURE__ */ React.createElement("button", { key: p.id, className: `bl-card${p.fresh ? " is-fresh" : ""}`, tabIndex: phase === "open" ? 0 : -1, onClick: () => setReadIdx(posts.indexOf(p)), "aria-label": `Read: ${p.title}`, style: { "--c-soft": `var(--color-${p.fam}-lighter)`, "--c-ink": `var(--color-${p.fam}-darker)` } }, /* @__PURE__ */ React.createElement("span", { className: "bl-card-top" }, /* @__PURE__ */ React.createElement("span", { className: "bl-card-icon", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: p.icon, size: 20, sw: 1.9 })), /* @__PURE__ */ React.createElement("span", { className: "bp-card-kind" }, p.kind), /* @__PURE__ */ React.createElement("span", { className: "bl-when" }, p.when), p.fresh && /* @__PURE__ */ React.createElement("span", { className: "bp-new" }, "New")), /* @__PURE__ */ React.createElement("span", { className: "bl-card-title" }, p.title), /* @__PURE__ */ React.createElement("span", { className: "bl-card-body" }, (p.full || p.body).split("\n\n")[0]), /* @__PURE__ */ React.createElement("span", { className: "bl-more" }, p.full ? "Read full message" : "Read more", " ", /* @__PURE__ */ React.createElement(Icon, { d: "M5 12h14 M13 6l6 6-6 6", size: 14, sw: 2.2 })))))), /* @__PURE__ */ React.createElement("div", { className: "bl-slats", "aria-hidden": "true" }, Array.from({ length: 7 }).map((_, i) => /* @__PURE__ */ React.createElement("span", { key: i, style: { "--i": i } }))))), /* @__PURE__ */ React.createElement("button", { className: `bl-pull${shine && phase === "closed" ? " is-shine" : ""}`, "aria-expanded": phase === "open" || phase === "opening", onClick: () => phase === "closed" ? openIt() : phase === "open" ? closeIt() : null }, /* @__PURE__ */ React.createElement("span", { className: "bl-pull-icon" }, /* @__PURE__ */ React.createElement(Icon, { d: NOTICE_ICON.announce, size: 16, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "bl-pull-text" }, expanded ? "Close bulletin" : "Campus bulletin"), !expanded && /* @__PURE__ */ React.createElement("span", { className: "bp-peek-n" }, items.length, " new"), /* @__PURE__ */ React.createElement("span", { className: `bl-pull-chev${expanded ? " is-up" : ""}`, "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: "M6 9l6 6 6-6", size: 16, sw: 2.4 })), /* @__PURE__ */ React.createElement("span", { className: "bl-cord", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("i", null))), readIdx !== null && /* @__PURE__ */ React.createElement(BulletinReader, { posts, idx: readIdx, setIdx: setReadIdx, onClose: () => setReadIdx(null) }));
+  } }, "All school news"))), /* @__PURE__ */ React.createElement("div", { className: "bl-row", ref: rowRef }, posts.map((p) => /* @__PURE__ */ React.createElement("button", { key: p.id, className: `bl-card${p.fresh ? " is-fresh" : ""}`, tabIndex: phase === "open" ? 0 : -1, onClick: () => setReadIdx(posts.indexOf(p)), "aria-label": `Read: ${p.title}`, style: { "--c-soft": `var(--color-${p.fam}-lighter)`, "--c-ink": `var(--color-${p.fam}-darker)` } }, /* @__PURE__ */ React.createElement("span", { className: "bl-card-top" }, /* @__PURE__ */ React.createElement("span", { className: "bl-card-icon", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: p.icon, size: 20, sw: 1.9 })), /* @__PURE__ */ React.createElement("span", { className: "bp-card-kind" }, p.kind), /* @__PURE__ */ React.createElement("span", { className: "bl-when" }, p.when), p.fresh && /* @__PURE__ */ React.createElement("span", { className: "bp-new" }, "New")), /* @__PURE__ */ React.createElement("span", { className: "bl-card-title" }, p.title), /* @__PURE__ */ React.createElement("span", { className: "bl-card-body" }, (p.full || p.body).split("\n\n")[0]), /* @__PURE__ */ React.createElement("span", { className: "bl-more" }, p.full ? "Read full message" : "Read more", " ", /* @__PURE__ */ React.createElement(Icon, { d: "M5 12h14 M13 6l6 6-6 6", size: 14, sw: 2.2 })))))))), /* @__PURE__ */ React.createElement("button", { className: `bl-pull${shine && phase === "closed" ? " is-shine" : ""}`, "aria-expanded": phase === "open" || phase === "opening", onClick: () => phase === "closed" ? openIt() : phase === "open" ? closeIt() : null }, /* @__PURE__ */ React.createElement("span", { className: "bl-pull-icon" }, /* @__PURE__ */ React.createElement(Icon, { d: NOTICE_ICON.announce, size: 16, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "bl-pull-text" }, expanded ? "Close bulletin" : "Campus bulletin"), !expanded && /* @__PURE__ */ React.createElement("span", { className: "bp-peek-n" }, items.length, " new"), /* @__PURE__ */ React.createElement("span", { className: `bl-pull-chev${expanded ? " is-up" : ""}`, "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: "M6 9l6 6 6-6", size: 16, sw: 2.4 })), /* @__PURE__ */ React.createElement("span", { className: "bl-cord", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("i", null))), readIdx !== null && /* @__PURE__ */ React.createElement(BulletinReader, { posts, idx: readIdx, setIdx: setReadIdx, onClose: () => setReadIdx(null) }));
 }
 function BulletinReader({ posts, idx, setIdx, onClose }) {
   const p = posts[idx];
@@ -3092,6 +3277,12 @@ function App() {
   const [rsvp, setRsvp] = useState({});
   const [tlMode, setTlMode] = useState("mine");
   const [showAnn, setShowAnn] = useState(true);
+  const [seqOn, setSeqOn] = useState(true);
+  const [bigQueue, setBigQueue] = useState(true);
+  const [plist, setPlist] = useState("full");
+  const [plOpen, setPlOpen] = useState(false);
+  const [lockPop, setLockPop] = useState(null);
+  const [featPin, setFeatPin] = useState(null);
   const [bulletinMode, setBulletinMode] = useState("blinds");
   const [drawerOpen, setDrawerOpen] = useState(true);
   const [evPage, setEvPage] = useState(0);
@@ -3161,8 +3352,9 @@ function App() {
     courseById[c.id] = c;
   });
   const deco = (a) => ({ ...a, courseName: courseById[a.course].name, teacher: courseById[a.course].teacher });
-  const remaining = empty ? [] : D.assignments.filter((a) => !completed[key(a.id)]).map(deco);
-  const by = { pastdue: [], today: [], week: [] };
+  const allAssignments = O.id === "g912" && bigQueue ? [...D.assignments, ...EXTRA_912] : D.assignments;
+  const remaining = empty ? [] : allAssignments.filter((a) => !completed[key(a.id)]).map(deco);
+  const by = { pastdue: [], today: [], week: [], later: [] };
   remaining.forEach((a) => by[a.status].push(a));
   const optionalToday = empty ? [] : D.optional || [];
   const todaySessions = empty ? [] : [...D.today, ...optionalToday.filter((s) => rsvp[key(s.id)]).map((s) => ({ ...s, optionalPick: true }))].sort((x, y) => x.start - y.start);
@@ -3226,12 +3418,16 @@ function App() {
     setBell(false);
     openCourse(n.course);
   } } : null }))).filter((n) => !dismissed[key(n.id)] && !(snoozed[key(n.id)] && now < snoozed[key(n.id)])).map((n) => ({ ...n, resurfaced: !!snoozed[key(n.id)] }));
-  const ORDER = { pastdue: 0, today: 1, week: 2 };
+  const ORDER = { pastdue: 0, today: 1, week: 2, later: 3 };
   const DAYQ = { Mon: 0, Tue: 1, Wed: 2, Thu: 3, Fri: 4 };
-  const queue = [...remaining].sort((x, y) => {
-    var _a, _b;
-    return ORDER[x.status] - ORDER[y.status] || ((_a = DAYQ[x.day]) != null ? _a : -1) - ((_b = DAYQ[y.day]) != null ? _b : -1) || y.weight - x.weight;
-  });
+  const dateNum = (x) => {
+    var _a;
+    const m = /Oct (\d+)/.exec(x.due || "");
+    if (m) return +m[1];
+    if (x.status === "today") return 12;
+    return 12 + ((_a = DAYQ[x.day]) != null ? _a : 0);
+  };
+  const queue = [...remaining].sort((x, y) => ORDER[x.status] - ORDER[y.status] || dateNum(x) - dateNum(y) || y.weight - x.weight);
   const unskipped = queue.filter((x) => !skipped.includes(key(x.id)));
   const upNext = unskipped[0] || queue[0];
   const DAYI = { Mon: 0, Tue: 1, Wed: 2, Thu: 3, Fri: 4 };
@@ -3265,16 +3461,53 @@ function App() {
     var _a;
     return (_a = lessonIdx[cid]) != null ? _a : PLAYER[cid].start;
   };
+  const lockOf = (x) => {
+    if (!seqOn || !x || !x.requires) return null;
+    const r = x.requires;
+    if (r.assign) {
+      const pre = allAssignments.find((y) => y.id === r.assign);
+      if (!pre || completed[key(r.assign)]) return null;
+      return { ...r, label: pre.title, kind: "assignment", pre: deco(pre) };
+    }
+    if (lessonOf(r.course) > r.lesson) return null;
+    return { ...r, label: PLAYER[r.course].lessons[r.lesson], kind: "lesson" };
+  };
+  const goPrereq = (r) => {
+    setLockPop(null);
+    if (r.kind === "lesson") {
+      goLesson(r);
+      return;
+    }
+    setFeatId(r.assign);
+    setFeatPin(r.assign);
+    say(`Featured: ${r.label}. Open it when you\u2019re ready.`);
+    try {
+      const el = document.querySelector(".lq");
+      if (el) el.scrollIntoView({ behavior: reducedMotion() ? "auto" : "smooth", block: "start" });
+    } catch (e) {
+    }
+  };
+  const goLesson = (r) => {
+    setLessonIdx({ ...lessonIdx, [r.course]: r.lesson });
+    launch(D.courses.find((c) => c.id === r.course));
+  };
+  const advanceLesson = (cid, i) => {
+    const before = D.assignments.filter((x) => lockOf(x));
+    const next = { ...lessonIdx, [cid]: i };
+    setLessonIdx(next);
+    const unlocked = before.filter((x) => x.requires.course === cid && i > x.requires.lesson);
+    if (unlocked.length) say(`Unlocked: ${unlocked.map((x) => x.title).join(", ")}`);
+  };
   if (player) {
     const c = courseById[player] || D.courses[0];
-    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Player, { course: c, lessonIdx: lessonOf(c.id), setLessonIdx: (i) => setLessonIdx({ ...lessonIdx, [c.id]: i }), onExit: () => setPlayer(null) }), toast && /* @__PURE__ */ React.createElement("div", { className: "toast", role: "status", "aria-live": "polite" }, toast));
+    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Player, { course: c, lessonIdx: lessonOf(c.id), setLessonIdx: (i) => advanceLesson(c.id, i), onExit: () => setPlayer(null) }), toast && /* @__PURE__ */ React.createElement("div", { className: "toast", role: "status", "aria-live": "polite" }, toast));
   }
   const graded = empty ? [] : [
     ...D.assignments.filter((a) => completed[key(a.id)]).map((a) => ({ id: "sub-" + a.id, title: a.title, course: a.course, result: "Not graded yet", graded: false, note: "Submitted today" })),
     ...D.graded
   ].filter((g) => !acked[key(g.id)]);
   const bellCount = (outage ? 0 : graded.length) + notices.length;
-  const sel = deco(D.assignments.find((a) => a.id === openId) || D.assignments[0]);
+  const sel = deco(allAssignments.find((a) => a.id === openId) || D.assignments[0]);
   const nextUp = remaining.find((a) => a.id !== sel.id);
   const course = courseById[courseId] || D.courses[0];
   return /* @__PURE__ */ React.createElement("div", { className: "app" }, /* @__PURE__ */ React.createElement("header", { className: "topbar" }, /* @__PURE__ */ React.createElement("button", { className: "brand", onClick: () => go("home"), "aria-label": "Campus home" }, /* @__PURE__ */ React.createElement("span", { className: `brand-mark circle-${O.circle}` }, O.mark), /* @__PURE__ */ React.createElement("span", { className: "brand-text" }, /* @__PURE__ */ React.createElement("span", { className: "brand-name" }, "Campus"), /* @__PURE__ */ React.createElement("span", { className: "brand-org" }, O.name))), /* @__PURE__ */ React.createElement("div", { className: "pop-wrap" }, /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm", onClick: () => {
@@ -3324,9 +3557,9 @@ function App() {
   } }, /* @__PURE__ */ React.createElement(Icon, { d: I.helpers, size: 18 }), /* @__PURE__ */ React.createElement("span", { className: "grow" }, "Your school team", /* @__PURE__ */ React.createElement("span", { className: "nav-fly-sub" }, "Teachers, advisor, counselor"))), /* @__PURE__ */ React.createElement("button", { role: "menuitem", className: `nav-fly-item${screen === "deptlist" || screen === "dept" ? " is-on" : ""}`, onClick: () => {
     setSchoolHover(false);
     go("deptlist");
-  } }, /* @__PURE__ */ React.createElement(Icon, { d: I.school, size: 18 }), /* @__PURE__ */ React.createElement("span", { className: "grow" }, "Departments", /* @__PURE__ */ React.createElement("span", { className: "nav-fly-sub" }, "Administration, counseling, registrar, testing")))))), /* @__PURE__ */ React.createElement("section", { className: "side-courses" }, /* @__PURE__ */ React.createElement("button", { className: "side-sec", "aria-expanded": coursesOpen, "aria-controls": "side-courses", onClick: () => setCoursesOpen(!coursesOpen) }, /* @__PURE__ */ React.createElement("span", { className: "side-h" }, "My Courses")), (coursesOpen || sideMin) && /* @__PURE__ */ React.createElement("div", { className: "launchers", id: "side-courses" }, D.courses.map((c) => {
+  } }, /* @__PURE__ */ React.createElement(Icon, { d: I.school, size: 18 }), /* @__PURE__ */ React.createElement("span", { className: "grow" }, "Departments", /* @__PURE__ */ React.createElement("span", { className: "nav-fly-sub" }, "Administration, counseling, registrar, testing")))))), /* @__PURE__ */ React.createElement("section", { className: "side-courses" }, /* @__PURE__ */ React.createElement("div", { className: "side-sec-row" }, /* @__PURE__ */ React.createElement("button", { className: "side-sec", "aria-expanded": coursesOpen, "aria-controls": "side-courses", onClick: () => setCoursesOpen(!coursesOpen) }, /* @__PURE__ */ React.createElement("span", { className: "side-h" }, "My Courses")), /* @__PURE__ */ React.createElement("span", { className: "info-tip" }, /* @__PURE__ */ React.createElement("button", { className: "info-btn", "aria-label": "About course grades", "aria-describedby": "grades-tip" }, /* @__PURE__ */ React.createElement(Icon, { d: "M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18z M12 11v5 M12 8h.01", size: 16, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "info-pop", role: "tooltip", id: "grades-tip" }, /* @__PURE__ */ React.createElement("strong", null, "Course grades"), "These letters show your current grade in each course, based on graded work so far. Hover a letter to see the percentage."))), (coursesOpen || sideMin) && /* @__PURE__ */ React.createElement("div", { className: "launchers", id: "side-courses" }, D.courses.map((c) => {
     const p = PLAYER[c.id];
-    return /* @__PURE__ */ React.createElement("button", { key: c.id, className: "launcher", "data-tip": `${c.name}: ${gradeText(c.grade)}`, style: subj(p), onClick: () => launch(c), "aria-label": `Open ${c.name}. Current grade ${gradeText(c.grade)}.` }, /* @__PURE__ */ React.createElement("span", { className: "subject-tile grade-tile", "data-grade-tip": c.grade ? c.grade.split(", ")[1] : "Not graded yet", "aria-hidden": "true" }, c.grade ? c.grade.split(", ")[0] : ""), /* @__PURE__ */ React.createElement("span", { className: "launcher-text" }, /* @__PURE__ */ React.createElement("span", { className: "launcher-name" }, c.name)), /* @__PURE__ */ React.createElement("span", { className: "launcher-play", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("svg", { width: "28", height: "28", viewBox: "0 0 28 28" }, /* @__PURE__ */ React.createElement("circle", { cx: "14", cy: "14", r: "12.5", className: "lp-ring" }), /* @__PURE__ */ React.createElement("path", { d: "M11.5 9.2v9.6l7.6-4.8z", className: "lp-tri" }))));
+    return /* @__PURE__ */ React.createElement("button", { key: c.id, className: "launcher", "data-tip": `${c.name}: ${gradeText(c.grade)}`, style: subj(p), onClick: () => launch(c), "aria-label": `Open ${c.name}. Current grade ${gradeText(c.grade)}. ${c.progress}% of course complete.` }, /* @__PURE__ */ React.createElement("span", { className: "subject-tile grade-tile", "data-grade-tip": c.grade ? c.grade.split(", ")[1] : "Not graded yet", "aria-hidden": "true" }, c.grade ? c.grade.split(", ")[0] : ""), /* @__PURE__ */ React.createElement("span", { className: "launcher-text" }, /* @__PURE__ */ React.createElement("span", { className: "launcher-name" }, c.name), /* @__PURE__ */ React.createElement("span", { className: "launcher-hover", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("span", { className: "launcher-hbar" }, /* @__PURE__ */ React.createElement("span", { style: { width: c.progress + "%" } })), /* @__PURE__ */ React.createElement("span", { className: "launcher-hmeta" }, c.progress, "% done \xB7 ", p.lessons[lessonOf(c.id)].replace(/^[\d.]+\s/, "")))), /* @__PURE__ */ React.createElement("span", { className: "launcher-play", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("svg", { width: "28", height: "28", viewBox: "0 0 28 28" }, /* @__PURE__ */ React.createElement("circle", { cx: "14", cy: "14", r: "12.5", className: "lp-ring" }), /* @__PURE__ */ React.createElement("path", { d: "M11.5 9.2v9.6l7.6-4.8z", className: "lp-tri" }))));
   }))))), /* @__PURE__ */ React.createElement("main", { className: "main" }, /* @__PURE__ */ React.createElement("div", { className: "wrap" }, screen === "home" && O.id === "k5" && (() => {
     const actDone = (x) => x.assign ? !!completed[key(x.assign)] : x.done || !!k5done[key(x.id)];
     const subjects = D.courses.filter((c) => K5_TODAY[c.id]).map((c) => {
@@ -3431,32 +3664,86 @@ function App() {
       }
     }
   ) : /* @__PURE__ */ React.createElement("div", { className: "state-box center lth-empty" }, /* @__PURE__ */ React.createElement("p", null, "No live sessions scheduled today."))), /* @__PURE__ */ React.createElement("section", { className: "lq", "aria-labelledby": "lq-h" }, outage ? /* @__PURE__ */ React.createElement("div", { className: "state-box warnbox", role: "status" }, /* @__PURE__ */ React.createElement("span", { className: "tone-warn" }, /* @__PURE__ */ React.createElement(Icon, { d: I.warn, size: 22, sw: 2 })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("strong", null, "Assignments temporarily unavailable"), /* @__PURE__ */ React.createElement("p", null, "We couldn\u2019t load your coursework right now. Your live sessions are still up to date."), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm", onClick: () => say("Still unavailable. Campus will keep trying in the background.") }, "Try again"))) : !queue.length ? /* @__PURE__ */ React.createElement("div", { className: "state-box center" }, /* @__PURE__ */ React.createElement("strong", null, "You\u2019re all caught up"), /* @__PURE__ */ React.createElement("p", null, empty ? "New work will show up here as soon as it\u2019s assigned." : "Everything due this week is submitted.")) : (() => {
-    const pos = Math.max(0, queue.findIndex((x) => x.id === featId));
-    const f = queue[pos];
-    const pal = LQ_PAL[f.course] || LQ_PAL.default;
+    const LOCK = "M7 11V8a5 5 0 0 1 10 0v3 M5 11h14v10H5z M12 15v2";
+    const PLAYLISTS = [
+      { id: "full", name: "The Full Mix", desc: "All your assignments", icon: "M3 6h13 M3 12h13 M3 18h9 M19 8v10 M19 18a2 2 0 1 1-2-2", tone: "slate", test: () => true },
+      { id: "clock", name: "On the Clock", desc: "Due today or past due", icon: "M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18z M12 7v5l3 2", tone: "coral", test: (x) => x.status === "today" || x.status === "pastdue" },
+      { id: "quick", name: "Quick Wins", desc: "Short assignments, 20 minutes or less", icon: "M13 2L4 14h7l-1 8 9-12h-7z", tone: "yellow", test: (x) => x.mins != null && x.mins <= 20 },
+      { id: "testy", name: "Feeling Testy?", desc: "Quizzes and exams", icon: "M9 4h6v3H9z M7 5H5v16h14V5h-2 M8.5 13l2 2 4-4", tone: "purple", test: (x) => x.type === "Quiz" || x.type === "Exam" },
+      { id: "focus", name: "Focus Mode", desc: "Longer work, 30 minutes or more", icon: "M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18z M12 8a4 4 0 1 0 0 8a4 4 0 0 0 0-8z M12 11.5v1", tone: "teal", test: (x) => x.mins != null && x.mins >= 30 }
+    ];
+    const PL = PLAYLISTS.find((p) => p.id === plist) || PLAYLISTS[0];
+    const inPl = queue.filter(PL.test);
+    const rows = inPl.map((x) => ({ x, i: queue.indexOf(x) })).filter(({ x }) => tab === "all" || x.status === tab);
+    const counts = { all: inPl.length, pastdue: inPl.filter((x) => x.status === "pastdue").length, today: inPl.filter((x) => x.status === "today").length, week: inPl.filter((x) => x.status === "week").length, later: inPl.filter((x) => x.status === "later").length };
+    const matching = rows.map((r) => r.x);
+    const avail = matching.filter((x) => !lockOf(x));
+    const pinned = featPin && remaining.find((x) => x.id === featPin && !lockOf(x));
+    const f = pinned || avail.find((x) => x.id === featId) || avail[0] || null;
+    const pos = f ? avail.findIndex((x) => x.id === f.id) : -1;
+    const filtersOn = plist !== "full" || tab !== "all";
+    const clearAll = () => {
+      setPlist("full");
+      setTab("all");
+      setFeatPin(null);
+    };
     const goTo = (i) => {
-      const n = (i + queue.length) % queue.length;
-      if (n === pos || upAnim) return;
-      if (reducedMotion()) {
-        setFeatId(queue[n].id);
+      if (!avail.length) return;
+      const n = (i % avail.length + avail.length) % avail.length;
+      const target = avail[n];
+      if (f && target.id === f.id) return;
+      setFeatPin(null);
+      if (upAnim || reducedMotion()) {
+        setFeatId(target.id);
         return;
       }
       setUpAnim("out");
       setTimeout(() => {
-        setFeatId(queue[n].id);
+        setFeatId(target.id);
         setUpAnim("in");
         setTimeout(() => setUpAnim(""), 260);
       }, 160);
     };
-    const dueText = (x) => x.status === "pastdue" ? `Past due \xB7 ${x.dueShort.replace(/^\w+, /, "")}` : x.status === "today" ? "Due today" : `Due ${{ Wed: "Wednesday", Thu: "Thursday", Fri: "Friday", Mon: "Monday", Tue: "Tuesday" }[x.day] || x.dueShort}`;
-    const rows = queue.map((x, i) => ({ x, i })).filter(({ x }) => tab === "all" || x.status === tab);
-    const counts = { all: queue.length, pastdue: queue.filter((x) => x.status === "pastdue").length, today: queue.filter((x) => x.status === "today").length, week: queue.filter((x) => x.status === "week").length };
-    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", { className: "lq-head" }, /* @__PURE__ */ React.createElement("h2", { id: "lq-h", className: "lq-h" }, "Your learning queue"), /* @__PURE__ */ React.createElement("span", { className: "lq-head-r" }, /* @__PURE__ */ React.createElement("button", { className: "lq-courses", onClick: () => go("courses") }, /* @__PURE__ */ React.createElement(Icon, { d: I.courses, size: 16, sw: 2 }), " View all courses"), /* @__PURE__ */ React.createElement("span", { className: "lq-count", "aria-live": "polite" }, pos + 1, " of ", queue.length))), /* @__PURE__ */ React.createElement("div", { className: "lq-card", style: { "--lq-bg": pal.bg, "--lq-art": pal.art, "--lq-ink": pal.ink, "--lq-accent": pal.accent } }, /* @__PURE__ */ React.createElement("div", { className: `lq-main is-${upAnim || "idle"}`, key: f.id }, /* @__PURE__ */ React.createElement("div", { className: "lq-art", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: LQ_ICON[f.course] || I.doc, size: 44, sw: 1.8 })), /* @__PURE__ */ React.createElement("div", { className: "lq-info" }, /* @__PURE__ */ React.createElement("div", { className: "lq-up" }, /* @__PURE__ */ React.createElement(Icon, { d: "M4 20h4L19 9l-4-4L4 16z M14 6l4 4", size: 18, sw: 2 }), " Up next"), /* @__PURE__ */ React.createElement("h3", { className: "lq-title" }, f.title), /* @__PURE__ */ React.createElement("div", { className: "lq-sub" }, f.courseName, " \xB7 ", f.type, O.weights ? ` \xB7 ${f.weight}% of grade` : ""), /* @__PURE__ */ React.createElement("div", { className: `lq-due due-${f.status}` }, /* @__PURE__ */ React.createElement("span", { className: "lq-due-dot", "aria-hidden": "true" }), dueText(f)))), /* @__PURE__ */ React.createElement("div", { className: "lq-foot" }, /* @__PURE__ */ React.createElement("div", { className: "lq-foot-l" }, /* @__PURE__ */ React.createElement(Icon, { d: "M3 6l1.5 1.5L7 5 M3 12l1.5 1.5L7 11 M10 6h11 M10 12h11 M10 18h11 M3.5 18h3", size: 20, sw: 1.8 }), " Your next assignment"), /* @__PURE__ */ React.createElement("div", { className: "lq-ctrls" }, /* @__PURE__ */ React.createElement("button", { className: "lq-nav", "aria-label": "Previous assignment", "data-tip": "Previous", onClick: () => goTo(pos - 1) }, /* @__PURE__ */ React.createElement(Icon, { d: "M15 18l-6-6 6-6", size: 18, sw: 2.2 })), /* @__PURE__ */ React.createElement("button", { className: "lq-nav", "aria-label": "Next assignment", "data-tip": "Next", onClick: () => goTo(pos + 1) }, /* @__PURE__ */ React.createElement(Icon, { d: "M9 6l6 6-6 6", size: 18, sw: 2.2 })), /* @__PURE__ */ React.createElement("button", { className: "lq-shuffle", "aria-label": "Try another assignment", "data-tip": "Try another assignment", onClick: () => goTo(pos + 1) }, /* @__PURE__ */ React.createElement(Icon, { d: "M16 3h5v5 M4 20L21 3 M21 16v5h-5 M15 15l6 6 M4 4l5 5", size: 20, sw: 2 })), /* @__PURE__ */ React.createElement("button", { className: "lq-play", "aria-label": `Start assignment: ${f.title}`, "data-tip": "Start assignment", onClick: () => openAssignment(f) }, /* @__PURE__ */ React.createElement("svg", { width: "30", height: "30", viewBox: "0 0 24 24", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("path", { d: "M8.5 5.8v12.4L18.5 12z" })))))), /* @__PURE__ */ React.createElement("div", { className: "lq-list" }, /* @__PURE__ */ React.createElement("div", { className: "lq-list-head" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h2", { className: "lq-list-h" }, "Coming up"), /* @__PURE__ */ React.createElement("p", { className: "muted-sm" }, "Pick what you want to work on next.")), /* @__PURE__ */ React.createElement("div", { className: "tabs", role: "tablist", "aria-label": "Filter assignments" }, [["all", "All"], ["pastdue", "Past due"], ["today", "Due today"], ["week", "This week"]].map(([id, label]) => /* @__PURE__ */ React.createElement("button", { key: id, role: "tab", "aria-selected": tab === id, className: `tab${tab === id ? " is-on" : ""}`, onClick: () => setTab(id) }, label, /* @__PURE__ */ React.createElement("span", { className: "tab-n" }, counts[id]))))), /* @__PURE__ */ React.createElement("div", { className: "lq-rows", role: "list" }, rows.map(({ x, i }) => {
+    const dueText = (x) => x.status === "later" ? `Due ${x.dueShort}` : x.status === "pastdue" ? `Past due \xB7 ${x.dueShort.replace(/^\w+, /, "")}` : x.status === "today" ? "Due today" : `Due ${{ Wed: "Wednesday", Thu: "Thursday", Fri: "Friday", Mon: "Monday", Tue: "Tuesday" }[x.day] || x.dueShort}`;
+    const firstLockedPre = !f && matching.length ? lockOf(matching.find((x) => lockOf(x))) : null;
+    const pal = f ? LQ_PAL[f.course] || LQ_PAL.default : LQ_PAL.default;
+    const lockedPop = (x) => {
+      const r = lockOf(x);
+      return /* @__PURE__ */ React.createElement("div", { className: "lk-pop", role: "dialog", "aria-label": "Locked assignment", onClick: (e) => e.stopPropagation() }, /* @__PURE__ */ React.createElement("div", { className: "lk-pop-h" }, /* @__PURE__ */ React.createElement("span", { className: "lk-pop-ic", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: LOCK, size: 16, sw: 2.2 })), "One thing first!"), /* @__PURE__ */ React.createElement("p", null, "Complete \u201C", r.label, "\u201D to unlock this ", x.type.toLowerCase(), "."), /* @__PURE__ */ React.createElement("div", { className: "row-wrap" }, /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent btn-sm", autoFocus: true, onClick: () => goPrereq(r) }, "Go to prerequisite"), /* @__PURE__ */ React.createElement("button", { className: "btn btn-ghost btn-sm", onClick: () => setLockPop(null) }, "Got it")));
+    };
+    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", { className: "lq-head" }, /* @__PURE__ */ React.createElement("h2", { id: "lq-h", className: "lq-h" }, "Your learning queue"), /* @__PURE__ */ React.createElement("span", { className: "lq-head-r" }, /* @__PURE__ */ React.createElement("button", { className: "lq-courses", onClick: () => go("courses") }, /* @__PURE__ */ React.createElement(Icon, { d: I.courses, size: 16, sw: 2 }), " View all courses"))), f ? /* @__PURE__ */ React.createElement("div", { className: "lq-card", style: { "--lq-bg": pal.bg, "--lq-art": pal.art, "--lq-ink": pal.ink, "--lq-accent": pal.accent } }, /* @__PURE__ */ React.createElement("div", { className: `lq-main is-${upAnim || "idle"}`, key: f.id }, /* @__PURE__ */ React.createElement("div", { className: "lq-art", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: LQ_ICON[f.course] || I.doc, size: 44, sw: 1.8 })), /* @__PURE__ */ React.createElement("div", { className: "lq-info" }, /* @__PURE__ */ React.createElement("div", { className: "lq-up" }, /* @__PURE__ */ React.createElement(Icon, { d: "M4 20h4L19 9l-4-4L4 16z M14 6l4 4", size: 18, sw: 2 }), " Up next", plist !== "full" ? /* @__PURE__ */ React.createElement("span", { className: "lq-up-pl" }, "from ", PL.name) : null), /* @__PURE__ */ React.createElement("h3", { className: "lq-title" }, f.title), /* @__PURE__ */ React.createElement("div", { className: "lq-sub" }, f.courseName, " \xB7 ", f.type, O.weights ? ` \xB7 ${f.weight}% of grade` : "", f.mins ? ` \xB7 ${f.mins} min` : ""), /* @__PURE__ */ React.createElement("div", { className: `lq-due due-${f.status}` }, /* @__PURE__ */ React.createElement("span", { className: "lq-due-dot", "aria-hidden": "true" }), dueText(f)))), /* @__PURE__ */ React.createElement("div", { className: "lq-foot" }, /* @__PURE__ */ React.createElement("div", { className: "lq-foot-l" }, /* @__PURE__ */ React.createElement(Icon, { d: "M3 6l1.5 1.5L7 5 M3 12l1.5 1.5L7 11 M10 6h11 M10 12h11 M10 18h11 M3.5 18h3", size: 20, sw: 1.8 }), " ", avail.length > 1 ? `${pos + 1} of ${avail.length} ready to start` : "Your next assignment"), /* @__PURE__ */ React.createElement("div", { className: "lq-ctrls" }, /* @__PURE__ */ React.createElement("button", { className: "lq-nav", "aria-label": "Previous assignment", "data-tip": "Previous", disabled: avail.length < 2, onClick: () => goTo(pos - 1) }, /* @__PURE__ */ React.createElement(Icon, { d: "M15 18l-6-6 6-6", size: 18, sw: 2.2 })), /* @__PURE__ */ React.createElement("button", { className: "lq-nav", "aria-label": "Next assignment", "data-tip": "Next", disabled: avail.length < 2, onClick: () => goTo(pos + 1) }, /* @__PURE__ */ React.createElement(Icon, { d: "M9 6l6 6-6 6", size: 18, sw: 2.2 })), /* @__PURE__ */ React.createElement("button", { className: "lq-shuffle", "aria-label": "Try another assignment", "data-tip": "Try another assignment", disabled: avail.length < 2, onClick: () => goTo(pos + 1 + Math.floor(Math.random() * Math.max(1, avail.length - 1))) }, /* @__PURE__ */ React.createElement(Icon, { d: "M16 3h5v5 M4 20L21 3 M21 16v5h-5 M15 15l6 6 M4 4l5 5", size: 20, sw: 2 })), /* @__PURE__ */ React.createElement("button", { className: "lq-play", "aria-label": `Start assignment: ${f.title}`, "data-tip": "Start assignment", onClick: () => openAssignment(f) }, /* @__PURE__ */ React.createElement("svg", { width: "30", height: "30", viewBox: "0 0 24 24", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("path", { d: "M8.5 5.8v12.4L18.5 12z" })))))) : firstLockedPre ? /* @__PURE__ */ React.createElement("div", { className: "lq-card lq-next-step", style: { "--lq-art": "#E0CEED", "--lq-ink": "#3B2466" } }, /* @__PURE__ */ React.createElement("div", { className: "lq-main" }, /* @__PURE__ */ React.createElement("div", { className: "lq-art", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: LOCK, size: 40, sw: 1.8 })), /* @__PURE__ */ React.createElement("div", { className: "lq-info" }, /* @__PURE__ */ React.createElement("div", { className: "lq-up" }, "Your next step is ready"), /* @__PURE__ */ React.createElement("h3", { className: "lq-title" }, "Complete a prerequisite to unlock the assignments in this playlist."), /* @__PURE__ */ React.createElement("div", { className: "lq-sub" }, "Start with \u201C", firstLockedPre.label, "\u201D."), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent mt-8", onClick: () => goPrereq(firstLockedPre) }, "Open the prerequisite"))))) : null, /* @__PURE__ */ React.createElement("div", { className: "lq-list" }, /* @__PURE__ */ React.createElement("div", { className: "lq-list-head" }, /* @__PURE__ */ React.createElement("div", { className: "lq-head-row" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h2", { className: "lq-list-h" }, "Coming up"), /* @__PURE__ */ React.createElement("p", { className: "muted-sm", "aria-live": "polite" }, filtersOn ? `Showing ${rows.length} of ${queue.length} assignments` : "Pick what you want to work on next.", rows.length > 15 ? " Scroll for more." : "", filtersOn && /* @__PURE__ */ React.createElement("button", { className: "link-btn lq-clear", onClick: clearAll }, "Clear filters"))), /* @__PURE__ */ React.createElement("div", { className: "pl-dd", onKeyDown: (e) => {
+      if (e.key === "Escape") setPlOpen(false);
+    } }, /* @__PURE__ */ React.createElement("button", { className: `pl-trigger${plist !== "full" ? " is-set tone-" + PL.tone : ""}`, "aria-haspopup": "true", "aria-expanded": plOpen, onClick: () => setPlOpen(!plOpen) }, /* @__PURE__ */ React.createElement(Icon, { d: plist !== "full" ? PL.icon : PLAYLISTS[0].icon, size: 16, sw: 2 }), /* @__PURE__ */ React.createElement("span", null, plist !== "full" ? PL.name : "Study playlists"), /* @__PURE__ */ React.createElement(Icon, { d: "M6 9l6 6 6-6", size: 14, sw: 2.4 })), plist !== "full" && /* @__PURE__ */ React.createElement("button", { className: "pl-x", "aria-label": `Remove ${PL.name} playlist`, onClick: () => {
+      setPlist("full");
+      setFeatPin(null);
+    } }, /* @__PURE__ */ React.createElement(Icon, { d: I.x, size: 13, sw: 2.6 })), plOpen && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", { className: "pl-backdrop", onClick: () => setPlOpen(false) }), /* @__PURE__ */ React.createElement("div", { className: "pl-menu", role: "menu", "aria-label": "Study playlists" }, /* @__PURE__ */ React.createElement("div", { className: "pl-menu-h" }, "Study playlists"), PLAYLISTS.map((p, k) => {
+      const n = queue.filter(p.test).length;
+      return /* @__PURE__ */ React.createElement("button", { key: p.id, role: "menuitemradio", "aria-checked": plist === p.id, autoFocus: plist === p.id, className: `pl-item tone-${p.tone}${plist === p.id ? " is-on" : ""}`, onClick: () => {
+        setPlist(p.id);
+        setPlOpen(false);
+        setFeatPin(null);
+      } }, /* @__PURE__ */ React.createElement("span", { className: "pl-item-ic", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: p.icon, size: 16, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "grow" }, /* @__PURE__ */ React.createElement("span", { className: "pl-item-name" }, p.name), /* @__PURE__ */ React.createElement("span", { className: "pl-item-desc" }, p.desc)), /* @__PURE__ */ React.createElement("span", { className: "pl-item-n" }, n), plist === p.id && /* @__PURE__ */ React.createElement(Icon, { d: I.check, size: 16, sw: 2.6 }));
+    }), /* @__PURE__ */ React.createElement("div", { className: "pl-menu-note" }, "Locked work still shows up. It just can\u2019t start until its prerequisite is done."))))), /* @__PURE__ */ React.createElement("div", { className: "lq-filters" }, /* @__PURE__ */ React.createElement("div", { className: "tabs", role: "tablist", "aria-label": "Filter by due date" }, [["all", "All"], ["pastdue", "Past due"], ["today", "Due today"], ["week", "This week"], ["later", "Next week"]].filter(([id]) => id !== "later" || queue.some((x) => x.status === "later")).map(([id, label]) => /* @__PURE__ */ React.createElement("button", { key: id, role: "tab", "aria-selected": tab === id, className: `tab${tab === id ? " is-on" : ""}`, onClick: () => {
+      setTab(id);
+      setFeatPin(null);
+    } }, label, /* @__PURE__ */ React.createElement("span", { className: "tab-n" }, counts[id])))))), /* @__PURE__ */ React.createElement("div", { className: `lq-rows${rows.length > 15 ? " is-scroll" : ""}`, role: "list", tabIndex: rows.length > 15 ? 0 : void 0, "aria-label": rows.length > 15 ? `${rows.length} assignments, scrollable list` : void 0 }, rows.map(({ x }, idx) => {
       const pl = LQ_PAL[x.course] || LQ_PAL.default;
-      const on = x.id === f.id;
-      return /* @__PURE__ */ React.createElement("div", { key: x.id, role: "listitem", className: `lq-row${on ? " is-on" : ""}` }, /* @__PURE__ */ React.createElement("button", { className: "lq-row-main", onClick: () => goTo(i), "aria-current": on ? "true" : void 0, "aria-label": `${on ? "Featured: " : "Feature "}${x.title}` }, /* @__PURE__ */ React.createElement("span", { className: "lq-n" }, on ? /* @__PURE__ */ React.createElement(Icon, { d: "M4 20h4L19 9l-4-4L4 16z M14 6l4 4", size: 16, sw: 2.2 }) : i + 1), /* @__PURE__ */ React.createElement("span", { className: "lq-ico", style: { background: pl.art, color: pl.ink } }, /* @__PURE__ */ React.createElement(Icon, { d: LQ_ICON[x.course] || I.doc, size: 18, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "lq-row-text" }, /* @__PURE__ */ React.createElement("span", { className: "lq-row-title" }, x.title), /* @__PURE__ */ React.createElement("span", { className: "lq-row-sub" }, x.courseName, O.weights ? ` \xB7 ${x.weight}% of grade` : "")), /* @__PURE__ */ React.createElement("span", { className: "lq-type" }, /* @__PURE__ */ React.createElement(Chip, { cls: TYPE_CLS[x.type] || "neutral" }, x.type)), /* @__PURE__ */ React.createElement("span", { className: `lq-row-due due-${x.status}` }, x.status === "pastdue" ? `Past due, ${x.dueShort.replace(/^\w+, /, "")}` : x.status === "today" ? "Today" : { Wed: "Wednesday", Thu: "Thursday", Fri: "Friday" }[x.day] || x.dueShort)), /* @__PURE__ */ React.createElement("button", { className: "lq-row-play", "aria-label": `Open ${x.title}`, "data-tip": "Open", onClick: () => openAssignment(x) }, /* @__PURE__ */ React.createElement("svg", { width: "14", height: "14", viewBox: "0 0 24 24", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("path", { d: "M8 5.5v13l11-6.5z" }))));
-    }), !rows.length && /* @__PURE__ */ React.createElement("div", { className: "state-box center" }, /* @__PURE__ */ React.createElement("p", null, "Nothing in this view right now.")))));
-  })())), screen === "assignment" && /* @__PURE__ */ React.createElement("div", { className: "stack-16" }, /* @__PURE__ */ React.createElement("nav", { className: "crumbs", "aria-label": "Breadcrumb" }, /* @__PURE__ */ React.createElement("button", { className: "link-btn", onClick: () => go("home") }, O.id === "k5" ? "Home" : "Learning queue"), /* @__PURE__ */ React.createElement("span", { "aria-hidden": "true" }, "/"), /* @__PURE__ */ React.createElement("button", { className: "link-btn", onClick: () => openCourse(sel.course) }, sel.courseName), /* @__PURE__ */ React.createElement("span", { "aria-hidden": "true" }, "/"), /* @__PURE__ */ React.createElement("span", null, sel.type)), !justSubmitted ? /* @__PURE__ */ React.createElement("section", { className: "card pad-24 stack-18" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "chips" }, /* @__PURE__ */ React.createElement(Chip, { cls: TYPE_CLS[sel.type] || "neutral" }, sel.type), /* @__PURE__ */ React.createElement(Chip, { cls: STATUS[sel.status].cls }, sel.due), O.weights && /* @__PURE__ */ React.createElement(Chip, { cls: "neutral" }, "Worth ", sel.weight, "% of your course grade")), /* @__PURE__ */ React.createElement("h1", { className: "h1 mt-12" }, sel.title), /* @__PURE__ */ React.createElement("p", { className: "lede" }, sel.courseName, ", ", sel.teacher)), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h2", { className: "h3" }, "Instructions"), /* @__PURE__ */ React.createElement("p", { className: "measure" }, sel.instructions)), /* @__PURE__ */ React.createElement("div", { className: "file-row" }, /* @__PURE__ */ React.createElement(Icon, { d: I.doc, size: 22 }), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "strong" }, "Lesson materials"), /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, "Opens in the ", sel.courseName, " player")), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm", onClick: () => launch(courseById[sel.course]) }, "Open in player")), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { htmlFor: "resp", className: "label" }, "Your response"), /* @__PURE__ */ React.createElement("textarea", { id: "resp", rows: 6, className: "input", placeholder: "Type your answer here", value: draft, onChange: (e) => setDraft(e.target.value) })), /* @__PURE__ */ React.createElement("div", { className: "row-wrap" }, /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent", onClick: () => {
+      const lk = lockOf(x);
+      const on = f && x.id === f.id;
+      return /* @__PURE__ */ React.createElement("div", { key: x.id, role: "listitem", className: `lq-row${on ? " is-on" : ""}${lk ? " is-locked" : ""}` }, /* @__PURE__ */ React.createElement("button", { className: "lq-row-main", onClick: () => {
+        if (lk) {
+          setLockPop(lockPop === x.id ? null : x.id);
+          return;
+        }
+        setFeatPin(null);
+        setFeatId(x.id);
+      }, "aria-current": on ? "true" : void 0, "aria-label": lk ? `${x.title}. Locked. Unlocks after ${lk.label}` : `${on ? "Featured: " : "Feature "}${x.title}`, "aria-expanded": lk ? lockPop === x.id : void 0 }, /* @__PURE__ */ React.createElement("span", { className: "lq-n" }, on ? /* @__PURE__ */ React.createElement(Icon, { d: "M4 20h4L19 9l-4-4L4 16z M14 6l4 4", size: 16, sw: 2.2 }) : idx + 1), /* @__PURE__ */ React.createElement("span", { className: "lq-ico", style: { background: pl.art, color: pl.ink } }, /* @__PURE__ */ React.createElement(Icon, { d: LQ_ICON[x.course] || I.doc, size: 18, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "lq-row-text" }, /* @__PURE__ */ React.createElement("span", { className: "lq-row-title" }, lk && /* @__PURE__ */ React.createElement(Icon, { d: LOCK, size: 13, sw: 2.4 }), x.title), /* @__PURE__ */ React.createElement("span", { className: "lq-row-sub" }, lk ? `Unlocks after ${lk.label}` : `${x.courseName}${O.weights ? ` \xB7 ${x.weight}% of grade` : ""}${x.mins ? ` \xB7 ${x.mins} min` : ""}`)), /* @__PURE__ */ React.createElement("span", { className: "lq-type" }, /* @__PURE__ */ React.createElement(Chip, { cls: TYPE_CLS[x.type] || "neutral" }, x.type)), /* @__PURE__ */ React.createElement("span", { className: `lq-row-due due-${x.status}` }, x.status === "later" ? x.dueShort : x.status === "pastdue" ? `Past due, ${x.dueShort.replace(/^\w+, /, "")}` : x.status === "today" ? "Today" : { Mon: "Monday", Tue: "Tuesday", Wed: "Wednesday", Thu: "Thursday", Fri: "Friday" }[x.day] || x.dueShort)), lk ? /* @__PURE__ */ React.createElement("button", { className: "lq-row-play is-locked", "aria-label": `Locked: ${x.title}. Show what unlocks it`, "aria-disabled": "true", "data-tip": "Locked", onClick: () => setLockPop(lockPop === x.id ? null : x.id) }, /* @__PURE__ */ React.createElement(Icon, { d: LOCK, size: 14, sw: 2.2 })) : /* @__PURE__ */ React.createElement("button", { className: "lq-row-play", "aria-label": `Open ${x.title}`, "data-tip": "Open", onClick: () => openAssignment(x) }, /* @__PURE__ */ React.createElement("svg", { width: "14", height: "14", viewBox: "0 0 24 24", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("path", { d: "M8 5.5v13l11-6.5z" }))), lk && lockPop === x.id && lockedPop(x));
+    }), !rows.length && /* @__PURE__ */ React.createElement("div", { className: "lq-empty" }, /* @__PURE__ */ React.createElement("div", { className: "lq-empty-h" }, "Nothing in this mix!"), /* @__PURE__ */ React.createElement("p", null, "Try another playlist or switch up your due-date filter."), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm", onClick: clearAll }, "Clear filters")))));
+  })())), screen === "assignment" && /* @__PURE__ */ React.createElement("div", { className: "stack-16" }, /* @__PURE__ */ React.createElement("nav", { className: "crumbs", "aria-label": "Breadcrumb" }, /* @__PURE__ */ React.createElement("button", { className: "link-btn", onClick: () => go("home") }, O.id === "k5" ? "Home" : "Learning queue"), /* @__PURE__ */ React.createElement("span", { "aria-hidden": "true" }, "/"), /* @__PURE__ */ React.createElement("button", { className: "link-btn", onClick: () => openCourse(sel.course) }, sel.courseName), /* @__PURE__ */ React.createElement("span", { "aria-hidden": "true" }, "/"), /* @__PURE__ */ React.createElement("span", null, sel.type)), !justSubmitted && lockOf(sel) ? /* @__PURE__ */ React.createElement("section", { className: "card pad-32 gate" }, /* @__PURE__ */ React.createElement("span", { className: "gate-ic", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: "M7 11V8a5 5 0 0 1 10 0v3 M5 11h14v10H5z M12 15v2", size: 30, sw: 2 })), /* @__PURE__ */ React.createElement("h1", { className: "h1" }, sel.title), /* @__PURE__ */ React.createElement("p", { className: "lede" }, "This ", sel.type.toLowerCase(), " unlocks after you finish ", /* @__PURE__ */ React.createElement("strong", null, lockOf(sel).label), ". Your teacher set this order so you\u2019re ready for it."), /* @__PURE__ */ React.createElement("div", { className: "gate-steps" }, /* @__PURE__ */ React.createElement("div", { className: "gate-step is-now" }, /* @__PURE__ */ React.createElement("span", null, "1"), lockOf(sel).label), /* @__PURE__ */ React.createElement("div", { className: "gate-arrow", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: "M5 12h14 M13 6l6 6-6 6", size: 18, sw: 2 })), /* @__PURE__ */ React.createElement("div", { className: "gate-step" }, /* @__PURE__ */ React.createElement("span", null, "2"), sel.title)), /* @__PURE__ */ React.createElement("div", { className: "row-wrap" }, /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent", onClick: () => {
+    const r = lockOf(sel);
+    if (r.kind === "lesson") goLesson(r);
+    else openAssignment(r.pre);
+  } }, lockOf(sel).kind === "lesson" ? "Start the lesson" : "Open the prerequisite"), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline", onClick: () => go("home") }, "Back to learning queue"))) : !justSubmitted ? /* @__PURE__ */ React.createElement("section", { className: "card pad-24 stack-18" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "chips" }, /* @__PURE__ */ React.createElement(Chip, { cls: TYPE_CLS[sel.type] || "neutral" }, sel.type), /* @__PURE__ */ React.createElement(Chip, { cls: STATUS[sel.status].cls }, sel.due), O.weights && /* @__PURE__ */ React.createElement(Chip, { cls: "neutral" }, "Worth ", sel.weight, "% of your course grade")), /* @__PURE__ */ React.createElement("h1", { className: "h1 mt-12" }, sel.title), /* @__PURE__ */ React.createElement("p", { className: "lede" }, sel.courseName, ", ", sel.teacher)), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h2", { className: "h3" }, "Instructions"), /* @__PURE__ */ React.createElement("p", { className: "measure" }, sel.instructions)), /* @__PURE__ */ React.createElement("div", { className: "file-row" }, /* @__PURE__ */ React.createElement(Icon, { d: I.doc, size: 22 }), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "strong" }, "Lesson materials"), /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, "Opens in the ", sel.courseName, " player")), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm", onClick: () => launch(courseById[sel.course]) }, "Open in player")), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { htmlFor: "resp", className: "label" }, "Your response"), /* @__PURE__ */ React.createElement("textarea", { id: "resp", rows: 6, className: "input", placeholder: "Type your answer here", value: draft, onChange: (e) => setDraft(e.target.value) })), /* @__PURE__ */ React.createElement("div", { className: "row-wrap" }, /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent", onClick: () => {
     if (!draft.trim()) {
       say("Add a response before you submit");
       return;
@@ -3468,7 +3755,11 @@ function App() {
     }
     setCompleted({ ...completed, [key(sel.id)]: true });
     setJustSubmitted(true);
-    setTab("all");
+    setFeatPin(null);
+    {
+      const freed = allAssignments.filter((y) => y.requires && y.requires.assign === sel.id && !completed[key(y.id)]);
+      if (freed.length && seqOn) setTimeout(() => say(`Nice work! ${freed.map((y) => y.title.split(":")[0]).join(", ")} ${freed.length === 1 ? "is" : "are"} now unlocked.`), 50);
+    }
   } }, "Submit"), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline", onClick: () => say("File picker would open here") }, "Attach a file"), /* @__PURE__ */ React.createElement("button", { className: "btn btn-ghost", onClick: () => say("Draft saved") }, "Save draft"))) : /* @__PURE__ */ React.createElement("section", { className: "card pad-32 stack-12", role: "status" }, /* @__PURE__ */ React.createElement("div", { className: "success-mark" }, /* @__PURE__ */ React.createElement(Icon, { d: I.check, size: 28, sw: 2.4 })), /* @__PURE__ */ React.createElement("h1", { className: "h1" }, "Submitted"), /* @__PURE__ */ React.createElement("p", { className: "measure" }, sel.title, " was sent to ", sel.teacher, " at ", fmt(now), ". It will show as ", /* @__PURE__ */ React.createElement("strong", null, "Not graded yet"), " until it\u2019s graded."), nextUp && /* @__PURE__ */ React.createElement("div", { className: "next-box" }, /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, "Up next"), /* @__PURE__ */ React.createElement("div", { className: "next-row" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "strong" }, nextUp.title), /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, nextUp.courseName, ", ", nextUp.due.toLowerCase())), /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent", onClick: () => openAssignment(nextUp) }, "Start"))), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline", onClick: () => go("home") }, O.id === "k5" ? "Back to home" : "Back to learning queue")))), screen === "courses" && /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h1", { className: "h1" }, "All courses"), /* @__PURE__ */ React.createElement("p", { className: "lede mb-20" }, O.name, ", fall semester"), /* @__PURE__ */ React.createElement("div", { className: "course-grid" }, D.courses.map((c) => {
     const p = PLAYER[c.id];
     const n = remaining.filter((a) => a.course === c.id).length;
@@ -3613,7 +3904,7 @@ function App() {
   })(), screen === "stub" && /* @__PURE__ */ React.createElement("div", { className: "narrow" }, /* @__PURE__ */ React.createElement("h1", { className: "h1 mb-16" }, STUBS[stub].title), /* @__PURE__ */ React.createElement("section", { className: "card dashed pad-28" }, /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, "Covered by ", STUBS[stub].prd), /* @__PURE__ */ React.createElement("p", { className: "mt-8" }, STUBS[stub].body), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline mt-16", onClick: () => go("home") }, "Back to home")))))), launching && /* @__PURE__ */ React.createElement("div", { className: "launch-overlay", role: "status", style: subj(PLAYER[launching.id]) }, /* @__PURE__ */ React.createElement("span", { className: "subject-tile xl" }, PLAYER[launching.id].tile), /* @__PURE__ */ React.createElement("div", { className: "strong lg" }, "Opening ", launching.name), /* @__PURE__ */ React.createElement("div", { className: "launch-bar" }, /* @__PURE__ */ React.createElement("span", null))), /* @__PURE__ */ React.createElement("div", { className: "proto" }, proto && /* @__PURE__ */ React.createElement("div", { className: "proto-panel", role: "dialog", "aria-label": "Prototype controls" }, /* @__PURE__ */ React.createElement("div", { className: "proto-h" }, "Prototype controls"), /* @__PURE__ */ React.createElement("div", { className: "label" }, "Data scenario"), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [["normal", "Normal"], ["outage", "Player API outage"], ["empty", "Empty new term"]].map(([id, l]) => /* @__PURE__ */ React.createElement("button", { key: id, className: mode === id ? "is-on" : "", "aria-pressed": mode === id, onClick: () => setMode(id) }, l))), /* @__PURE__ */ React.createElement("div", { className: "label mt-12" }, "Bulletin style (6-12)"), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [["blinds", "Pull-down"], ["peek", "Peekaboo"], ["drawer", "Side drawer"], ["banner", "Banner"]].map(([v, l]) => /* @__PURE__ */ React.createElement("button", { key: v, className: bulletinMode === v ? "is-on" : "", "aria-pressed": bulletinMode === v, onClick: () => {
     setBulletinMode(v);
     setDrawerOpen(true);
-  } }, l))), /* @__PURE__ */ React.createElement("div", { className: "label mt-12" }, "Announcements"), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [[true, "Yes"], [false, "No"]].map(([v, l]) => /* @__PURE__ */ React.createElement("button", { key: l, className: showAnn === v ? "is-on" : "", "aria-pressed": showAnn === v, onClick: () => setShowAnn(v) }, l))), /* @__PURE__ */ React.createElement("div", { className: "label mt-12" }, "Clock: ", fmt(now)), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [[0, "Paused"], [1, "Real time"], [10, "10\xD7"], [60, "60\xD7"]].map(([v, l]) => /* @__PURE__ */ React.createElement("button", { key: l, className: speed === v ? "is-on" : "", "aria-pressed": speed === v, onClick: () => setSpeed(v) }, l))), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm mt-12", onClick: () => setNow(595) }, "Reset clock to 9:55 AM")), /* @__PURE__ */ React.createElement("button", { className: "proto-btn", "aria-expanded": proto, onClick: () => setProto(!proto) }, /* @__PURE__ */ React.createElement(Icon, { d: I.sliders, size: 18 }), " Prototype")), O.id !== "k5" && bulletinMode === "peek" && announcements.length > 0 && screen === "home" && /* @__PURE__ */ React.createElement(BulletinPeek, { items: announcements, news: MS.news, school: O.name, onAllNews: () => go("school") }), O.id !== "k5" && bulletinMode === "drawer" && announcements.length > 0 && screen !== "room" && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("button", { className: `bd-tab${drawerOpen ? " is-hidden" : ""}`, onClick: () => setDrawerOpen(true), "aria-expanded": drawerOpen, "aria-controls": "bulletin-drawer", "aria-label": `Open campus bulletin, ${announcements.length} posts` }, /* @__PURE__ */ React.createElement("span", { className: "bd-tab-icon" }, /* @__PURE__ */ React.createElement(Icon, { d: NOTICE_ICON.announce, size: 18, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "bd-tab-n" }, announcements.length), /* @__PURE__ */ React.createElement("span", { className: "bd-tab-text" }, "Bulletin")), /* @__PURE__ */ React.createElement("aside", { id: "bulletin-drawer", className: `bd${drawerOpen ? " is-open" : ""}`, "aria-label": "Campus bulletin", "aria-hidden": !drawerOpen, onKeyDown: (e) => {
+  } }, l))), /* @__PURE__ */ React.createElement("div", { className: "label mt-12" }, "Learning queue size (6-12)"), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [[false, "6 assignments"], [true, "26 assignments"]].map(([v, l]) => /* @__PURE__ */ React.createElement("button", { key: l, className: bigQueue === v ? "is-on" : "", "aria-pressed": bigQueue === v, onClick: () => setBigQueue(v) }, l))), /* @__PURE__ */ React.createElement("div", { className: "label mt-12" }, "Lesson order (6-12)"), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [[true, "Required"], [false, "Any order"]].map(([v, l]) => /* @__PURE__ */ React.createElement("button", { key: l, className: seqOn === v ? "is-on" : "", "aria-pressed": seqOn === v, onClick: () => setSeqOn(v) }, l))), /* @__PURE__ */ React.createElement("div", { className: "label mt-12" }, "Announcements"), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [[true, "Yes"], [false, "No"]].map(([v, l]) => /* @__PURE__ */ React.createElement("button", { key: l, className: showAnn === v ? "is-on" : "", "aria-pressed": showAnn === v, onClick: () => setShowAnn(v) }, l))), /* @__PURE__ */ React.createElement("div", { className: "label mt-12" }, "Clock: ", fmt(now)), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [[0, "Paused"], [1, "Real time"], [10, "10\xD7"], [60, "60\xD7"]].map(([v, l]) => /* @__PURE__ */ React.createElement("button", { key: l, className: speed === v ? "is-on" : "", "aria-pressed": speed === v, onClick: () => setSpeed(v) }, l))), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm mt-12", onClick: () => setNow(595) }, "Reset clock to 9:55 AM")), /* @__PURE__ */ React.createElement("button", { className: "proto-btn", "aria-expanded": proto, onClick: () => setProto(!proto) }, /* @__PURE__ */ React.createElement(Icon, { d: I.sliders, size: 18 }), " Prototype")), O.id !== "k5" && bulletinMode === "peek" && announcements.length > 0 && screen === "home" && /* @__PURE__ */ React.createElement(BulletinPeek, { items: announcements, news: MS.news, school: O.name, onAllNews: () => go("school") }), O.id !== "k5" && bulletinMode === "drawer" && announcements.length > 0 && screen !== "room" && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("button", { className: `bd-tab${drawerOpen ? " is-hidden" : ""}`, onClick: () => setDrawerOpen(true), "aria-expanded": drawerOpen, "aria-controls": "bulletin-drawer", "aria-label": `Open campus bulletin, ${announcements.length} posts` }, /* @__PURE__ */ React.createElement("span", { className: "bd-tab-icon" }, /* @__PURE__ */ React.createElement(Icon, { d: NOTICE_ICON.announce, size: 18, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "bd-tab-n" }, announcements.length), /* @__PURE__ */ React.createElement("span", { className: "bd-tab-text" }, "Bulletin")), /* @__PURE__ */ React.createElement("aside", { id: "bulletin-drawer", className: `bd${drawerOpen ? " is-open" : ""}`, "aria-label": "Campus bulletin", "aria-hidden": !drawerOpen, onKeyDown: (e) => {
     if (e.key === "Escape") setDrawerOpen(false);
   } }, /* @__PURE__ */ React.createElement("div", { className: "bd-head" }, /* @__PURE__ */ React.createElement("span", { className: "bd-head-icon" }, /* @__PURE__ */ React.createElement(Icon, { d: NOTICE_ICON.announce, size: 20, sw: 2 })), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("h2", { className: "bd-title" }, "Campus bulletin"), /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, announcements.length, " posts from ", O.name)), /* @__PURE__ */ React.createElement("button", { className: "icon-btn sm", tabIndex: drawerOpen ? 0 : -1, "aria-label": "Close campus bulletin", onClick: () => setDrawerOpen(false) }, /* @__PURE__ */ React.createElement(Icon, { d: "M9 6l6 6-6 6", size: 20, sw: 2.2 }))), /* @__PURE__ */ React.createElement("div", { className: "bd-list" }, announcements.map((b, i) => /* @__PURE__ */ React.createElement("article", { key: b.id, className: "bd-post" }, /* @__PURE__ */ React.createElement("div", { className: "bd-post-meta" }, i === 0 ? /* @__PURE__ */ React.createElement("span", { className: "bd-new" }, "New") : null, /* @__PURE__ */ React.createElement("span", null, ["Today", "Yesterday", "Fri, Oct 9"][i] || "Earlier")), /* @__PURE__ */ React.createElement("h3", { className: "bd-post-title" }, b.title), /* @__PURE__ */ React.createElement("p", { className: "bd-post-body" }, b.body)))), /* @__PURE__ */ React.createElement("button", { className: "link-btn bd-more", tabIndex: drawerOpen ? 0 : -1, onClick: () => {
     setDrawerOpen(false);
