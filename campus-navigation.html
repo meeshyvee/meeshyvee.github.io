@@ -2522,6 +2522,68 @@ body{color:var(--ink)}
 .lq-thread-more:hover{background:var(--hover)}
 .lq-thread-more-dots{width:14px;height:4px;background:radial-gradient(circle,var(--prim-slate-400) 1.5px,transparent 2px) 0 0/5px 4px repeat-x}
 .lq-step.is-goal .lq-row-title{font-weight:800}
+.lq-thread .lq-row.is-locked .lq-row-title{color:var(--prim-slate-400);opacity:1}.lq-thread .lq-row.is-locked .lq-row-title svg{color:var(--prim-slate-400)}
+/* grade tiles show percentages */
+.side .launcher .grade-tile{font-size:12.5px;letter-spacing:-.01em}
+/* progress caption: smaller, clearly about the bar */
+.launcher-hmeta{font-size:10.5px!important;font-weight:600!important}
+/* done-today tracker */
+.greet{position:relative}
+.done-wrap{position:absolute;right:0;top:50%;transform:translateY(-50%)}
+.done-chip{display:inline-flex;align-items:center;gap:7px;min-height:32px;padding:4px 12px 4px 5px;border-radius:999px;border:1px solid #9ED9B0;background:#EAF8EE;color:#1F6B3A;font-size:13px;font-weight:800}
+.done-chip:hover{background:#DDF3E4}
+.done-chip.is-pop{animation:donePop .6s cubic-bezier(.2,1.6,.4,1)}
+@keyframes donePop{0%{transform:scale(.8)}60%{transform:scale(1.08)}100%{transform:scale(1)}}
+.done-ic{width:22px;height:22px;border-radius:50%;background:#2F9E5B;color:#fff;display:inline-flex;align-items:center;justify-content:center}
+.done-pop{position:absolute;right:0;top:calc(100% + 8px);z-index:31;width:320px;padding:12px;border-radius:16px;background:#fff;border:1px solid var(--line);box-shadow:0 18px 40px -16px rgba(15,23,42,.3);animation:fadein .15s ease-out}
+.done-pop-h{display:flex;align-items:center;gap:8px;padding:2px 4px 8px;font-weight:800;font-size:14px}
+.done-pop-h span{padding:0 8px;border-radius:99px;background:#EAF8EE;color:#1F6B3A;font-size:12px}
+.done-item{display:flex;align-items:center;gap:10px;padding:8px;border-radius:10px}
+.done-item:hover{background:var(--hover)}
+.done-item-ic{width:22px;height:22px;flex-shrink:0;border-radius:50%;background:var(--subject-soft);color:var(--subject-ink);display:inline-flex;align-items:center;justify-content:center}
+.done-item .grow{display:flex;flex-direction:column;min-width:0}
+.done-item-t{font-size:13.5px;font-weight:700;color:var(--ink-2);text-decoration:line-through;text-decoration-color:var(--prim-slate-300)}
+.done-item-m{font-size:12px;color:var(--muted)}
+.done-pop-f{margin-top:6px;padding:8px 6px 2px;border-top:1px solid var(--line);font-size:12.5px;color:#1F6B3A;font-weight:700}
+@media (prefers-reduced-motion:reduce){.done-chip.is-pop{animation:none}}
+.greet{display:flex;align-items:center;flex-wrap:wrap;column-gap:12px}
+.done-wrap{position:relative;right:auto;top:auto;transform:none;order:3}
+.done-pop{left:0;right:auto}
+/* 6-12 My Courses: percentages not bold */
+.side .launcher .grade-tile{font-weight:500!important;font-family:var(--body)}
+/* K-5 course cards: grade level 1–3 in the badge */
+.k5-level{flex-direction:column;gap:0;line-height:1}
+.k5-level-k{font-family:var(--body);font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--subject-ink);opacity:.7}
+.k5-level-n{font-family:var(--display);font-size:36px;font-weight:900;color:var(--subject-ink)}
+/* numbers: dark subject color on a light subject fill */
+.side .launcher .grade-tile{background:var(--subject-soft)!important;color:var(--subject-ink)!important;box-shadow:none!important;font-weight:600!important}
+.side .launcher:hover .grade-tile,.side .launcher:focus-visible .grade-tile{background:#fff!important}
+.side .launcher .grade-tile.is-low{background:#FFEFD2!important;color:#9A4A06!important}
+.k5-card.has-art .k5-level{background:var(--subject-soft)!important;border-color:#fff!important}
+.k5-level-n,.k5-level-k{color:var(--subject-ink)}
+.side .launcher .grade-tile.is-low{box-shadow:none!important}
+
+/* ===== Version: greeting + live sessions as one block; learning queue stands alone ===== */
+.greet-combo{border-radius:24px;background:var(--surface);border:1px solid var(--line);box-shadow:0 2px 10px rgba(15,23,42,.05);overflow:visible}
+.greet-combo .greet{margin:0!important;padding:18px 22px 14px;border-bottom:1px solid var(--line);background:linear-gradient(120deg,#F5F8FF,#fff 60%);border-radius:24px 24px 0 0}
+.greet-combo .lth-card{border:0!important;border-radius:0 0 24px 24px!important;background:transparent!important;box-shadow:none!important;margin:0!important}
+.greet-combo .lth-card .lth-side{border-radius:0 0 0 24px}
+.greet-combo + .lq{margin-top:12px!important;border-radius:26px!important;border:1px solid var(--line)!important;box-shadow:0 18px 40px -22px rgba(15,23,42,.35),0 2px 6px rgba(15,23,42,.04)!important}
+.home-612:has(.bl-wrap) .greet-combo{margin-top:22px}
+.k5-level-n{font-size:40px}
+/* session details modal */
+.si .br-icon{background:var(--c-soft)}
+.si-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:4px 0 14px}
+@media (max-width:560px){.si-facts{grid-template-columns:1fr}}
+.si-fact{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-2)}
+.si-fact div{display:flex;flex-direction:column}
+.si-fact strong{color:var(--ink);font-size:15px}
+.si-fact span{font-size:13px;color:var(--muted)}
+.si-av{width:34px;height:34px;flex-shrink:0;border-radius:50%;background:var(--c-soft);color:var(--c-ink);display:inline-flex!important;align-items:center;justify-content:center;font-weight:800;font-size:13px!important}
+.si-sub{margin:6px 0 2px;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.si .br-body p{font-size:15.5px}
+.pill{cursor:pointer}
+.pill:focus-visible{outline:3px solid var(--prim-admin-blue-400);outline-offset:2px}
 
 </style>
 </head>
@@ -2856,11 +2918,11 @@ const DATA = {
   },
   k5: {
     courses: [
-      { id: "ela4", name: "English", teacher: "Ms. Greene", grade: "On track", progress: 44 },
-      { id: "ss4", name: "Social Studies", teacher: "Ms. Greene", grade: "On track", progress: 30 },
-      { id: "sci4", name: "Science", teacher: "Mr. Ortiz", grade: "Great work", progress: 36 },
-      { id: "math4", name: "Math", teacher: "Ms. Greene", grade: "On track", progress: 40 },
-      { id: "pe4", name: "P.E.", teacher: "Coach Lee", grade: "Great work", progress: 55 }
+      { id: "ela4", level: 1, name: "English", teacher: "Ms. Greene", grade: "On track", progress: 44 },
+      { id: "ss4", level: 2, name: "Social Studies", teacher: "Ms. Greene", grade: "On track", progress: 30 },
+      { id: "sci4", level: 1, name: "Science", teacher: "Mr. Ortiz", grade: "Great work", progress: 36 },
+      { id: "math4", level: 2, name: "Math", teacher: "Ms. Greene", grade: "On track", progress: 40 },
+      { id: "pe4", level: 1, name: "P.E.", teacher: "Coach Lee", grade: "Great work", progress: 55 }
     ],
     assignments: [
       { id: "e1", title: "Spelling Words: Week 6", course: "ela4", type: "Assignment", weight: 2, status: "pastdue", due: "Was due Fri, Oct 9", dueShort: "Fri, Oct 9", day: null, instructions: "Practice your 12 spelling words, then type each one in a sentence." },
@@ -3079,6 +3141,16 @@ const EXTRA_912 = [
   { id: "x21", mins: 15, title: "Practice Set 4.4: Complex Fractions", course: "alg", requires: { assign: "a2" }, type: "Assignment", weight: 2, status: "week", due: "Due Wed, Oct 14", dueShort: "Wed", day: "Wed", instructions: "Simplify each complex fraction and show your steps." },
   { id: "x22", mins: 30, title: "Unit 4 Study Guide", course: "alg", requires: { assign: "x18" }, type: "Assignment", weight: 2, status: "later", due: "Due Mon, Oct 19", dueShort: "Mon, Oct 19", day: null, instructions: "Work through the study guide before the Unit 4 Test." }
 ];
+const SESSION_ABOUT = {
+  s1: { about: "Open help for anything in Unit 4. Bring questions on adding rational expressions and complex fractions, and we\u2019ll work problems together.", bring: "Your practice set and any problems you got stuck on", kind: "Drop-in help" },
+  s2: { about: "Questions about the Unit 3 Enzyme lab? We\u2019ll walk through data tables, graphs, and how to write a strong conclusion.", bring: "Your lab data and draft report", kind: "Q&A" },
+  s3: { about: "A quick weekly check-in with your homeroom: announcements, a goal for the week, and a chance to ask anything.", bring: "Nothing, just yourself", kind: "Homeroom" },
+  s4: { about: "Small-group speaking practice using this week\u2019s vocabulary. Cameras and mics on for this one.", bring: "Vocabulary Set 5", kind: "Speaking practice" },
+  s5: { about: "Share two photos using leading lines and give and get feedback from classmates.", bring: "Two photos for your Rule of Thirds portfolio", kind: "Critique" },
+  o1: { about: "Optional writing help. Bring a paragraph you\u2019re working on and get one-on-one feedback.", bring: "A draft paragraph", kind: "Optional help" },
+  o2: { about: "A second Algebra II help block for students who can\u2019t make the morning time.", bring: "Your practice set", kind: "Optional help" },
+  o3: { about: "An afternoon repeat of Biology Lab Q&A for anyone who missed the earlier one.", bring: "Your lab data", kind: "Optional help" }
+};
 const { useState, useEffect, useRef } = React;
 const fmt = (m) => {
   m = Math.floor(m);
@@ -3203,7 +3275,7 @@ function Timeline({ sessions, now, from, to, ppm, minH, onJoin }) {
     return /* @__PURE__ */ React.createElement("div", { key: s.id, className: `tl-block is-${st.key}${s.id === nextId ? " is-next" : ""}`, style: { top: top + "px", height: height + "px" } }, /* @__PURE__ */ React.createElement("span", { className: "tl-dot", "aria-hidden": "true" }), /* @__PURE__ */ React.createElement("div", { className: "tl-b-title" }, s.title), /* @__PURE__ */ React.createElement("div", { className: "tl-b-meta" }, fmtRange(s.start, s.end), ", ", s.host), /* @__PURE__ */ React.createElement("div", { className: "tl-b-foot" }, /* @__PURE__ */ React.createElement("span", { className: `tl-badge is-${st.key}` }, st.label), st.canJoin && /* @__PURE__ */ React.createElement("button", { className: "btn btn-join", onClick: () => onJoin(s) }, "Join")));
   }), showNow && /* @__PURE__ */ React.createElement("div", { className: "tl-now", style: { top: nowTop + "px" }, "aria-label": `Current time ${fmt(now)}` }, /* @__PURE__ */ React.createElement("span", { className: "tl-now-label" }, fmt(now))));
 }
-function TimelineH({ sessions, options = [], now, from, to, onJoin, onRsvp }) {
+function TimelineH({ sessions, options = [], now, from, to, onJoin, onRsvp, onInfo }) {
   const PXH = 210;
   const span = to - from;
   const W = span / 60 * PXH;
@@ -3253,6 +3325,16 @@ function TimelineH({ sessions, options = [], now, from, to, onJoin, onRsvp }) {
       "div",
       {
         key: s.id,
+        role: "button",
+        tabIndex: 0,
+        onClick: () => onInfo && onInfo(s, opt),
+        onKeyDown: (e) => {
+          if ((e.key === "Enter" || e.key === " ") && e.target === e.currentTarget) {
+            e.preventDefault();
+            onInfo && onInfo(s, opt);
+          }
+        },
+        "aria-label": `${s.title}, ${fmtRange(s.start, s.end)}. Show details`,
         className: `pill is-${st.key}${opt ? " is-option" : ""}${clash ? " is-clash" : ""}`,
         title: `${s.title} with ${s.host}, ${fmtRange(s.start, s.end)}${opt ? " (optional time, not in your plan)" : ""}${clash ? ". Overlaps another session in your plan." : ""}`,
         style: { left: x(s.start) + "px", width: w - 6 + "px", top: `calc(${lane} * 50px + 5px)`, "--p-base": `var(--color-${fam}-base)`, "--p-soft": `var(--color-${fam}-lighter)`, "--p-ink": `var(--color-${fam}-darker)` }
@@ -3260,9 +3342,18 @@ function TimelineH({ sessions, options = [], now, from, to, onJoin, onRsvp }) {
       !opt && /* @__PURE__ */ React.createElement("span", { className: "pill-fill", style: { width: `max(${prog}%, 38px)` } }),
       /* @__PURE__ */ React.createElement("span", { className: "pill-badge" }, p ? p.tile : "HR"),
       /* @__PURE__ */ React.createElement("span", { className: "pill-text" }, /* @__PURE__ */ React.createElement("span", { className: "pill-title" }, s.title), /* @__PURE__ */ React.createElement("span", { className: "pill-meta" }, clash ? "Overlaps" : opt ? `Optional, ${fmtShort(s.start)}` : st.key === "soon" ? `In ${Math.ceil(s.start - now)} min` : st.key === "live" ? "Live now" : st.key === "ended" ? "Done" : fmtRange(s.start, s.end))),
-      opt && !pastOpt && /* @__PURE__ */ React.createElement("button", { className: "pill-join pill-add", onClick: () => onRsvp && onRsvp(s, true), "aria-label": `Add ${s.title} at ${fmt(s.start)} to my plan` }, "+ Add"),
-      !opt && s.optionalPick && /* @__PURE__ */ React.createElement("button", { className: "pill-x", onClick: () => onRsvp && onRsvp(s, false), "aria-label": `Remove ${s.title} at ${fmt(s.start)} from my plan` }, /* @__PURE__ */ React.createElement(Icon, { d: I.x, size: 12, sw: 2.6 })),
-      !opt && st.canJoin && /* @__PURE__ */ React.createElement("button", { className: "pill-join", onClick: () => onJoin(s) }, "Join")
+      opt && !pastOpt && /* @__PURE__ */ React.createElement("button", { className: "pill-join pill-add", onClick: (e) => {
+        e.stopPropagation();
+        onRsvp && onRsvp(s, true);
+      }, "aria-label": `Add ${s.title} at ${fmt(s.start)} to my plan` }, "+ Add"),
+      !opt && s.optionalPick && /* @__PURE__ */ React.createElement("button", { className: "pill-x", onClick: (e) => {
+        e.stopPropagation();
+        onRsvp && onRsvp(s, false);
+      }, "aria-label": `Remove ${s.title} at ${fmt(s.start)} from my plan` }, /* @__PURE__ */ React.createElement(Icon, { d: I.x, size: 12, sw: 2.6 })),
+      !opt && st.canJoin && /* @__PURE__ */ React.createElement("button", { className: "pill-join", onClick: (e) => {
+        e.stopPropagation();
+        onJoin(s);
+      } }, "Join")
     );
   }), showNow && /* @__PURE__ */ React.createElement("div", { className: "lth-now", style: { left: x(now) + "px" } }, /* @__PURE__ */ React.createElement("span", null, fmt(now))))));
 }
@@ -3629,6 +3720,16 @@ function App() {
   const [mood, setMood] = useState(null);
   const [ciFlash, setCiFlash] = useState(0);
   const [chainOpen, setChainOpen] = useState({});
+  const [greetCombo, setGreetCombo] = useState(true);
+  const [sessInfo, setSessInfo] = useState(null);
+  const [doneToday, setDoneToday] = useState([]);
+  const [doneFlash, setDoneFlash] = useState(0);
+  const [doneOpen, setDoneOpen] = useState(false);
+  useEffect(() => {
+    if (!doneFlash || screen !== "home") return;
+    const t = setTimeout(() => setDoneFlash(0), 6e3);
+    return () => clearTimeout(t);
+  }, [doneFlash, screen]);
   useEffect(() => {
     if (!ciFlash) return;
     const t = setTimeout(() => setCiFlash(0), 6e3);
@@ -3919,14 +4020,14 @@ function App() {
   } }, /* @__PURE__ */ React.createElement(Icon, { d: I.helpers, size: 18 }), /* @__PURE__ */ React.createElement("span", { className: "grow" }, "Your school team", /* @__PURE__ */ React.createElement("span", { className: "nav-fly-sub" }, "Teachers, advisor, counselor"))), /* @__PURE__ */ React.createElement("button", { role: "menuitem", className: `nav-fly-item${screen === "deptlist" || screen === "dept" ? " is-on" : ""}`, onClick: () => {
     setSchoolHover(false);
     go("deptlist");
-  } }, /* @__PURE__ */ React.createElement(Icon, { d: I.school, size: 18 }), /* @__PURE__ */ React.createElement("span", { className: "grow" }, "Departments", /* @__PURE__ */ React.createElement("span", { className: "nav-fly-sub" }, "Administration, counseling, registrar, testing")))))), /* @__PURE__ */ React.createElement("section", { className: "side-courses" }, /* @__PURE__ */ React.createElement("div", { className: "side-sec-row" }, /* @__PURE__ */ React.createElement("button", { className: "side-sec", "aria-expanded": coursesOpen, "aria-controls": "side-courses", onClick: () => setCoursesOpen(!coursesOpen) }, /* @__PURE__ */ React.createElement("span", { className: "side-h" }, "My Courses")), /* @__PURE__ */ React.createElement("span", { className: "info-tip" }, /* @__PURE__ */ React.createElement("button", { className: "info-btn", "aria-label": "About course grades", "aria-describedby": "grades-tip" }, /* @__PURE__ */ React.createElement(Icon, { d: "M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18z M12 11v5 M12 8h.01", size: 16, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "info-pop", role: "tooltip", id: "grades-tip" }, /* @__PURE__ */ React.createElement("strong", null, "Course grades"), "These letters show your current grade in each course, based on graded work so far. Hover a letter to see the percentage."))), (coursesOpen || sideMin) && /* @__PURE__ */ React.createElement("div", { className: "launchers", id: "side-courses" }, D.courses.map((c) => {
+  } }, /* @__PURE__ */ React.createElement(Icon, { d: I.school, size: 18 }), /* @__PURE__ */ React.createElement("span", { className: "grow" }, "Departments", /* @__PURE__ */ React.createElement("span", { className: "nav-fly-sub" }, "Administration, counseling, registrar, testing")))))), /* @__PURE__ */ React.createElement("section", { className: "side-courses" }, /* @__PURE__ */ React.createElement("div", { className: "side-sec-row" }, /* @__PURE__ */ React.createElement("button", { className: "side-sec", "aria-expanded": coursesOpen, "aria-controls": "side-courses", onClick: () => setCoursesOpen(!coursesOpen) }, /* @__PURE__ */ React.createElement("span", { className: "side-h" }, "My Courses")), /* @__PURE__ */ React.createElement("span", { className: "info-tip" }, /* @__PURE__ */ React.createElement("button", { className: "info-btn", "aria-label": "About course grades", "aria-describedby": "grades-tip" }, /* @__PURE__ */ React.createElement(Icon, { d: "M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18z M12 11v5 M12 8h.01", size: 16, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "info-pop", role: "tooltip", id: "grades-tip" }, /* @__PURE__ */ React.createElement("strong", null, "Course grades"), "The percentage in each box is your current grade, based on graded work so far. On hover, the bar shows how much of the course you\u2019ve completed."))), (coursesOpen || sideMin) && /* @__PURE__ */ React.createElement("div", { className: "launchers", id: "side-courses" }, D.courses.map((c) => {
     const p = PLAYER[c.id];
     return /* @__PURE__ */ React.createElement("button", { key: c.id, className: "launcher", "data-tip": `${c.name}: ${gradeText(c.grade)}`, style: subj(p), onClick: () => launch(c), "aria-label": `Open ${c.name}. Current grade ${gradeText(c.grade)}. ${c.progress}% of course complete.` }, (() => {
       const g = c.grade ? c.grade.split(", ")[0] : "";
       const low = /^[DF]/.test(g);
-      return /* @__PURE__ */ React.createElement("span", { className: `subject-tile grade-tile${low ? " is-low" : ""}`, "data-grade-tip": c.grade ? low ? `${c.grade.split(", ")[1]}
-Let\u2019s get back on track: review your assignments` : c.grade.split(", ")[1] : "Not graded yet", "aria-hidden": "true" }, low ? /* @__PURE__ */ React.createElement(Icon, { d: "M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18z M12 7.5v5.5 M12 16.5h.01", size: 20, sw: 2.4 }) : g);
-    })(), /* @__PURE__ */ React.createElement("span", { className: "launcher-text" }, /* @__PURE__ */ React.createElement("span", { className: "launcher-name" }, c.name), /* @__PURE__ */ React.createElement("span", { className: "launcher-hover", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("span", { className: "launcher-hbar" }, /* @__PURE__ */ React.createElement("span", { style: { width: c.progress + "%" } })), /* @__PURE__ */ React.createElement("span", { className: "launcher-hmeta" }, c.progress, "% done \xB7 ", p.lessons[lessonOf(c.id)].replace(/^[\d.]+\s/, "")))), /* @__PURE__ */ React.createElement("span", { className: "launcher-play", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("svg", { width: "28", height: "28", viewBox: "0 0 28 28" }, /* @__PURE__ */ React.createElement("circle", { cx: "14", cy: "14", r: "12.5", className: "lp-ring" }), /* @__PURE__ */ React.createElement("path", { d: "M11.5 9.2v9.6l7.6-4.8z", className: "lp-tri" }))));
+      return /* @__PURE__ */ React.createElement("span", { className: `subject-tile grade-tile${low ? " is-low" : ""}`, "data-grade-tip": c.grade ? low ? `Current grade: ${c.grade.split(", ")[1]}
+Let\u2019s get back on track: review your assignments` : `Current grade: ${c.grade.split(", ")[1]}` : "Not graded yet", "aria-hidden": "true" }, low ? /* @__PURE__ */ React.createElement(Icon, { d: "M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18z M12 7.5v5.5 M12 16.5h.01", size: 20, sw: 2.4 }) : c.grade ? c.grade.split(", ")[1] : "");
+    })(), /* @__PURE__ */ React.createElement("span", { className: "launcher-text" }, /* @__PURE__ */ React.createElement("span", { className: "launcher-name" }, c.name), /* @__PURE__ */ React.createElement("span", { className: "launcher-hover", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("span", { className: "launcher-hbar" }, /* @__PURE__ */ React.createElement("span", { style: { width: c.progress + "%" } })), /* @__PURE__ */ React.createElement("span", { className: "launcher-hmeta" }, c.progress, "% of course complete"))), /* @__PURE__ */ React.createElement("span", { className: "launcher-play", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("svg", { width: "28", height: "28", viewBox: "0 0 28 28" }, /* @__PURE__ */ React.createElement("circle", { cx: "14", cy: "14", r: "12.5", className: "lp-ring" }), /* @__PURE__ */ React.createElement("path", { d: "M11.5 9.2v9.6l7.6-4.8z", className: "lp-tri" }))));
   }))))), /* @__PURE__ */ React.createElement("main", { className: "main" }, /* @__PURE__ */ React.createElement("div", { className: "wrap" }, screen === "home" && O.id === "k5" && (() => {
     const actDone = (x) => x.assign ? !!completed[key(x.assign)] : x.done || !!k5done[key(x.id)];
     const subjects = D.courses.filter((c) => K5_TODAY[c.id]).map((c) => {
@@ -4008,7 +4109,7 @@ Let\u2019s get back on track: review your assignments` : c.grade.split(", ")[1] 
       const doneSubs = subjects.filter(isFinished);
       const renderCard = ({ c, p, items, done: d }) => {
         const all = items.length > 0 && d === items.length;
-        return /* @__PURE__ */ React.createElement("section", { key: c.id, className: `k5-card has-art${all ? " is-done" : ""}`, style: subj(p), "aria-labelledby": `k5c-${c.id}` }, /* @__PURE__ */ React.createElement("button", { className: "k5-art", onClick: () => launch(c), "aria-label": `Open ${c.name}`, tabIndex: -1 }, /* @__PURE__ */ React.createElement("img", { src: K5_ART[c.id], alt: "" }), /* @__PURE__ */ React.createElement("span", { className: "k5-art-play", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("svg", { width: "34", height: "34", viewBox: "0 0 24 24" }, /* @__PURE__ */ React.createElement("path", { d: "M8 5.5v13l11-6.5z" }))), all && /* @__PURE__ */ React.createElement("span", { className: "k5-art-done" }, "All done!")), /* @__PURE__ */ React.createElement("div", { className: "k5-card-top" }, /* @__PURE__ */ React.createElement("span", { className: "k5-card-icon" }, /* @__PURE__ */ React.createElement(Icon, { d: K5_ICON[c.id], size: 40, sw: 2 })), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("h2", { id: `k5c-${c.id}`, className: "k5-card-h" }, c.name), /* @__PURE__ */ React.createElement("div", { className: "k5-stars", "aria-label": `${d} of ${items.length} done` }, items.map((x) => /* @__PURE__ */ React.createElement(Star, { key: x.id, on: x.isDone, size: 22 }))))), /* @__PURE__ */ React.createElement("div", { className: "k5-bar" }, /* @__PURE__ */ React.createElement("span", { style: { width: items.length ? d / items.length * 100 + "%" : 0 } })), /* @__PURE__ */ React.createElement("ul", { className: "k5-acts" }, items.map((x) => /* @__PURE__ */ React.createElement("li", { key: x.id }, /* @__PURE__ */ React.createElement("button", { className: `k5-act${x.isDone ? " is-done" : ""}`, onClick: () => {
+        return /* @__PURE__ */ React.createElement("section", { key: c.id, className: `k5-card has-art${all ? " is-done" : ""}`, style: subj(p), "aria-labelledby": `k5c-${c.id}` }, /* @__PURE__ */ React.createElement("button", { className: "k5-art", onClick: () => launch(c), "aria-label": `Open ${c.name}`, tabIndex: -1 }, /* @__PURE__ */ React.createElement("img", { src: K5_ART[c.id], alt: "" }), /* @__PURE__ */ React.createElement("span", { className: "k5-art-play", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("svg", { width: "34", height: "34", viewBox: "0 0 24 24" }, /* @__PURE__ */ React.createElement("path", { d: "M8 5.5v13l11-6.5z" }))), all && /* @__PURE__ */ React.createElement("span", { className: "k5-art-done" }, "All done!")), /* @__PURE__ */ React.createElement("div", { className: "k5-card-top" }, /* @__PURE__ */ React.createElement("span", { className: "k5-card-icon k5-level", title: `${c.level}: ${{ 1: "Excellent (like an A)", 2: "Good (like a B)", 3: "Keep practicing (like a C)" }[c.level]}`, "aria-label": `${c.level} out of 3, ${{ 1: "excellent", 2: "good", 3: "keep practicing" }[c.level]}` }, /* @__PURE__ */ React.createElement("span", { className: "k5-level-n" }, c.level)), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("h2", { id: `k5c-${c.id}`, className: "k5-card-h" }, c.name), /* @__PURE__ */ React.createElement("div", { className: "k5-stars", "aria-label": `${d} of ${items.length} done` }, items.map((x) => /* @__PURE__ */ React.createElement(Star, { key: x.id, on: x.isDone, size: 22 }))))), /* @__PURE__ */ React.createElement("div", { className: "k5-bar" }, /* @__PURE__ */ React.createElement("span", { style: { width: items.length ? d / items.length * 100 + "%" : 0 } })), /* @__PURE__ */ React.createElement("ul", { className: "k5-acts" }, items.map((x) => /* @__PURE__ */ React.createElement("li", { key: x.id }, /* @__PURE__ */ React.createElement("button", { className: `k5-act${x.isDone ? " is-done" : ""}`, onClick: () => {
           if (x.isDone) return;
           if (x.assign) {
             openAssignment(D.assignments.find((a2) => a2.id === x.assign));
@@ -4033,12 +4134,12 @@ Let\u2019s get back on track: review your assignments` : c.grade.split(", ")[1] 
         return /* @__PURE__ */ React.createElement("div", { key: it.k, className: `k5-ag kind-${it.kind}${st && st.key === "ended" ? " is-ended" : ""}` }, /* @__PURE__ */ React.createElement("span", { className: "k5-ag-icon", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: KIND[it.kind].icon, size: 28, sw: 2 })), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "k5-ag-time" }, KIND[it.kind].label, ", ", it.time), /* @__PURE__ */ React.createElement("div", { className: "k5-ag-title" }, it.title), /* @__PURE__ */ React.createElement("div", { className: "k5-ag-sub" }, it.sub)), st && st.canJoin && /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent btn-lg", onClick: () => join(it.s) }, "Join class"), st && st.key === "ended" && /* @__PURE__ */ React.createElement("span", { className: "k5-ag-done" }, "All done"), it.a && /* @__PURE__ */ React.createElement("button", { className: "btn k5-play sm", onClick: () => openAssignment(it.a) }, /* @__PURE__ */ React.createElement(Icon, { d: I.play, size: 14, sw: 2 }), " Start"));
       }), !items.length && /* @__PURE__ */ React.createElement("div", { className: "state-box center" }, /* @__PURE__ */ React.createElement("p", null, "Nothing planned this day. Enjoy!"))));
     })());
-  })(), screen === "homeroom" && /* @__PURE__ */ React.createElement("div", { className: "homeroom" }, /* @__PURE__ */ React.createElement("div", { className: "hr-head" }, /* @__PURE__ */ React.createElement("span", { className: "hr-head-face" }, /* @__PURE__ */ React.createElement(TeacherFace, { size: 64 })), /* @__PURE__ */ React.createElement("h1", { className: "k5-h1" }, "Ms. Greene\u2019s Homeroom"), /* @__PURE__ */ React.createElement("p", { className: "k5-sub" }, O.grade, " at ", O.name)), /* @__PURE__ */ React.createElement(HomeroomWheel, { posts: HOMEROOM_POSTS, liked: (id) => liked[key(id)], onLike: (id, v) => setLiked({ ...liked, [key(id)]: v }) }), /* @__PURE__ */ React.createElement("p", { className: "hrw-hint" }, "Scroll or use the arrows to see older messages")), screen === "home" && O.id !== "k5" && /* @__PURE__ */ React.createElement("div", { className: `stack-20 home-612${checkinOn && !mood ? " is-checkin" : ""}` }, bulletinMode === "blinds" && announcements.length > 0 && /* @__PURE__ */ React.createElement(BulletinBlinds, { items: announcements, news: MS.news, school: O.name, onAllNews: () => go("school") }), /* @__PURE__ */ React.createElement("div", { className: "greet" }, /* @__PURE__ */ React.createElement("h1", { className: "greet-h" }, greet, ", ", O.first, "!"), /* @__PURE__ */ React.createElement("p", { className: "greet-sub", "aria-live": "polite", key: mood || "none" }, "It\u2019s Monday, October 12. ", {
+  })(), screen === "homeroom" && /* @__PURE__ */ React.createElement("div", { className: "homeroom" }, /* @__PURE__ */ React.createElement("div", { className: "hr-head" }, /* @__PURE__ */ React.createElement("span", { className: "hr-head-face" }, /* @__PURE__ */ React.createElement(TeacherFace, { size: 64 })), /* @__PURE__ */ React.createElement("h1", { className: "k5-h1" }, "Ms. Greene\u2019s Homeroom"), /* @__PURE__ */ React.createElement("p", { className: "k5-sub" }, O.grade, " at ", O.name)), /* @__PURE__ */ React.createElement(HomeroomWheel, { posts: HOMEROOM_POSTS, liked: (id) => liked[key(id)], onLike: (id, v) => setLiked({ ...liked, [key(id)]: v }) }), /* @__PURE__ */ React.createElement("p", { className: "hrw-hint" }, "Scroll or use the arrows to see older messages")), screen === "home" && O.id !== "k5" && /* @__PURE__ */ React.createElement("div", { className: `stack-20 home-612${checkinOn && !mood ? " is-checkin" : ""}` }, bulletinMode === "blinds" && announcements.length > 0 && /* @__PURE__ */ React.createElement(BulletinBlinds, { items: announcements, news: MS.news, school: O.name, onAllNews: () => go("school") }), !greetCombo && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", { className: "greet" }, doneToday.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "done-wrap" }, /* @__PURE__ */ React.createElement("button", { className: `done-chip${doneFlash ? " is-pop" : ""}`, key: doneToday.length, "aria-expanded": doneOpen, onClick: () => setDoneOpen(!doneOpen) }, /* @__PURE__ */ React.createElement("span", { className: "done-ic", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: I.check, size: 13, sw: 3 })), doneToday.length, " done today"), doneOpen && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", { className: "pl-backdrop", onClick: () => setDoneOpen(false) }), /* @__PURE__ */ React.createElement("div", { className: "done-pop", role: "dialog", "aria-label": "Finished today" }, /* @__PURE__ */ React.createElement("div", { className: "done-pop-h" }, "Finished today ", /* @__PURE__ */ React.createElement("span", null, doneToday.length)), doneToday.map((d) => /* @__PURE__ */ React.createElement("div", { key: d.id, className: "done-item", style: subj(PLAYER[d.course]) }, /* @__PURE__ */ React.createElement("span", { className: "done-item-ic", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: I.check, size: 12, sw: 3 })), /* @__PURE__ */ React.createElement("span", { className: "grow" }, /* @__PURE__ */ React.createElement("span", { className: "done-item-t" }, d.title), /* @__PURE__ */ React.createElement("span", { className: "done-item-m" }, d.courseName, " \xB7 submitted ", fmt(d.at))))), /* @__PURE__ */ React.createElement("div", { className: "done-pop-f" }, doneToday.length === 1 ? "Great start. Every one counts." : doneToday.length < 4 ? "You\u2019re on a roll. Keep it steady." : "Look at you go! Remember to take a break too.")))), /* @__PURE__ */ React.createElement("h1", { className: "greet-h" }, greet, ", ", O.first, "!"), /* @__PURE__ */ React.createElement("p", { className: "greet-sub", "aria-live": "polite", key: mood || "none" }, "It\u2019s Monday, October 12. ", {
     progress: "You\u2019re ready, and it shows. Let\u2019s keep that momentum going.",
     behind: "Catching up is totally doable. We\u2019ll start small and build from there.",
     ahead: "Love that energy. Let\u2019s get a head start together.",
     overwhelmed: "Take a breath. One small win at a time is plenty for today."
-  }[mood] || "You\u2019re going to do great today.")), checkinOn && (() => {
+  }[mood] || "You\u2019re going to do great today."))), doneFlash > 0 && doneToday.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "ci-chip ci-flash tone-green", role: "status", key: "d" + doneFlash }, /* @__PURE__ */ React.createElement("span", { className: "ci-face sm", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("svg", { width: "26", height: "26", viewBox: "0 0 24 24" }, /* @__PURE__ */ React.createElement("circle", { cx: "12", cy: "12", r: "10" }), /* @__PURE__ */ React.createElement("path", { d: "M8 12.5l2.5 2.5 5.5-5.5" }))), /* @__PURE__ */ React.createElement("span", null, /* @__PURE__ */ React.createElement("strong", null, "Nice work!"), " That\u2019s ", doneToday.length, " ", doneToday.length === 1 ? "assignment" : "assignments", " done today."), /* @__PURE__ */ React.createElement("button", { className: "ci-x", "aria-label": "Dismiss", onClick: () => setDoneFlash(0) }, /* @__PURE__ */ React.createElement(Icon, { d: I.x, size: 14, sw: 2.4 })), /* @__PURE__ */ React.createElement("span", { className: "ci-timer", "aria-hidden": "true" })), checkinOn && (() => {
     const MOODS = [
       { id: "progress", label: "Ready to make progress", sub: "Show me what\u2019s due next", pl: "full", face: "M8.5 10h.01 M15.5 10h.01 M8 14.5c2 2.2 6 2.2 8 0", tone: "green" },
       { id: "behind", label: "A little behind", sub: "Help me catch up, easy start", pl: "catchup", face: "M8.5 10h.01 M15.5 10h.01 M9 15.5h6", tone: "amber" },
@@ -4061,7 +4162,12 @@ Let\u2019s get back on track: review your assignments` : c.grade.split(", ")[1] 
       setCiFlash(0);
       setMood(null);
     } }, "Change"), /* @__PURE__ */ React.createElement("button", { className: "ci-x", "aria-label": "Dismiss", onClick: () => setCiFlash(0) }, /* @__PURE__ */ React.createElement(Icon, { d: I.x, size: 14, sw: 2.4 })), /* @__PURE__ */ React.createElement("span", { className: "ci-timer", "aria-hidden": "true" })) : null;
-  })(), announcements.length > 0 && bulletinMode === "banner" && /* @__PURE__ */ React.createElement(AnnouncementCarousel, { items: announcements, school: O.name, minimized: annMin, setMinimized: setAnnMin }), /* @__PURE__ */ React.createElement("section", { className: "card lth-card", "aria-labelledby": "lth-h" }, /* @__PURE__ */ React.createElement("div", { className: "lth-side" }, /* @__PURE__ */ React.createElement("h2", { id: "lth-h", className: "lth-label" }, /* @__PURE__ */ React.createElement("span", { className: "live-dot", "aria-hidden": "true" }), "Live sessions"), /* @__PURE__ */ React.createElement("button", { className: "link-btn lth-cal", onClick: () => go("week") }, "View events"), optionalToday.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "lth-mode", role: "group", "aria-label": "Which sessions to show" }, /* @__PURE__ */ React.createElement("button", { className: tlMode === "mine" ? "is-on" : "", "aria-pressed": tlMode === "mine", onClick: () => setTlMode("mine") }, "My plan"), /* @__PURE__ */ React.createElement("button", { className: tlMode === "all" ? "is-on" : "", "aria-pressed": tlMode === "all", onClick: () => setTlMode("all") }, "All times", openOptions.length ? /* @__PURE__ */ React.createElement("span", { className: "lth-mode-n" }, "+", openOptions.length) : null))), todaySessions.length || tlMode === "all" && openOptions.length ? /* @__PURE__ */ React.createElement(
+  })(), announcements.length > 0 && bulletinMode === "banner" && /* @__PURE__ */ React.createElement(AnnouncementCarousel, { items: announcements, school: O.name, minimized: annMin, setMinimized: setAnnMin }), greetCombo ? /* @__PURE__ */ React.createElement("div", { className: "greet-combo" }, /* @__PURE__ */ React.createElement("div", { className: "greet" }, doneToday.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "done-wrap" }, /* @__PURE__ */ React.createElement("button", { className: `done-chip${doneFlash ? " is-pop" : ""}`, key: doneToday.length, "aria-expanded": doneOpen, onClick: () => setDoneOpen(!doneOpen) }, /* @__PURE__ */ React.createElement("span", { className: "done-ic", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: I.check, size: 13, sw: 3 })), doneToday.length, " done today"), doneOpen && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", { className: "pl-backdrop", onClick: () => setDoneOpen(false) }), /* @__PURE__ */ React.createElement("div", { className: "done-pop", role: "dialog", "aria-label": "Finished today" }, /* @__PURE__ */ React.createElement("div", { className: "done-pop-h" }, "Finished today ", /* @__PURE__ */ React.createElement("span", null, doneToday.length)), doneToday.map((d) => /* @__PURE__ */ React.createElement("div", { key: d.id, className: "done-item", style: subj(PLAYER[d.course]) }, /* @__PURE__ */ React.createElement("span", { className: "done-item-ic", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: I.check, size: 12, sw: 3 })), /* @__PURE__ */ React.createElement("span", { className: "grow" }, /* @__PURE__ */ React.createElement("span", { className: "done-item-t" }, d.title), /* @__PURE__ */ React.createElement("span", { className: "done-item-m" }, d.courseName, " \xB7 submitted ", fmt(d.at))))), /* @__PURE__ */ React.createElement("div", { className: "done-pop-f" }, doneToday.length === 1 ? "Great start. Every one counts." : doneToday.length < 4 ? "You\u2019re on a roll. Keep it steady." : "Look at you go! Remember to take a break too.")))), /* @__PURE__ */ React.createElement("h1", { className: "greet-h" }, greet, ", ", O.first, "!"), /* @__PURE__ */ React.createElement("p", { className: "greet-sub", "aria-live": "polite", key: mood || "none" }, "It\u2019s Monday, October 12. ", {
+    progress: "You\u2019re ready, and it shows. Let\u2019s keep that momentum going.",
+    behind: "Catching up is totally doable. We\u2019ll start small and build from there.",
+    ahead: "Love that energy. Let\u2019s get a head start together.",
+    overwhelmed: "Take a breath. One small win at a time is plenty for today."
+  }[mood] || "You\u2019re going to do great today.")), /* @__PURE__ */ React.createElement("section", { className: "card lth-card", "aria-labelledby": "lth-h" }, /* @__PURE__ */ React.createElement("div", { className: "lth-side" }, /* @__PURE__ */ React.createElement("h2", { id: "lth-h", className: "lth-label" }, /* @__PURE__ */ React.createElement("span", { className: "live-dot", "aria-hidden": "true" }), "Live sessions"), /* @__PURE__ */ React.createElement("button", { className: "link-btn lth-cal", onClick: () => go("week") }, "View events"), optionalToday.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "lth-mode", role: "group", "aria-label": "Which sessions to show" }, /* @__PURE__ */ React.createElement("button", { className: tlMode === "mine" ? "is-on" : "", "aria-pressed": tlMode === "mine", onClick: () => setTlMode("mine") }, "My plan"), /* @__PURE__ */ React.createElement("button", { className: tlMode === "all" ? "is-on" : "", "aria-pressed": tlMode === "all", onClick: () => setTlMode("all") }, "All times", openOptions.length ? /* @__PURE__ */ React.createElement("span", { className: "lth-mode-n" }, "+", openOptions.length) : null))), todaySessions.length || tlMode === "all" && openOptions.length ? /* @__PURE__ */ React.createElement(
     TimelineH,
     {
       sessions: todaySessions,
@@ -4070,6 +4176,7 @@ Let\u2019s get back on track: review your assignments` : c.grade.split(", ")[1] 
       from: 480,
       to: 1020,
       onJoin: join,
+      onInfo: (s, opt) => setSessInfo({ s, opt }),
       onRsvp: (s, v) => {
         setRsvp({ ...rsvp, [key(s.id)]: v });
         if (!v) {
@@ -4080,7 +4187,27 @@ Let\u2019s get back on track: review your assignments` : c.grade.split(", ")[1] 
         say(clash ? `Added. Heads up: it overlaps ${clash.title} at ${fmt(clash.start)}.` : `Added ${s.title} at ${fmt(s.start)} to your plan`);
       }
     }
-  ) : /* @__PURE__ */ React.createElement("div", { className: "state-box center lth-empty" }, /* @__PURE__ */ React.createElement("p", null, "No live sessions scheduled today."))), /* @__PURE__ */ React.createElement("section", { className: "lq", "aria-labelledby": "lq-h" }, outage ? /* @__PURE__ */ React.createElement("div", { className: "state-box warnbox", role: "status" }, /* @__PURE__ */ React.createElement("span", { className: "tone-warn" }, /* @__PURE__ */ React.createElement(Icon, { d: I.warn, size: 22, sw: 2 })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("strong", null, "Assignments temporarily unavailable"), /* @__PURE__ */ React.createElement("p", null, "We couldn\u2019t load your coursework right now. Your live sessions are still up to date."), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm", onClick: () => say("Still unavailable. Campus will keep trying in the background.") }, "Try again"))) : !queue.length ? /* @__PURE__ */ React.createElement("div", { className: "state-box center" }, /* @__PURE__ */ React.createElement("strong", null, "You\u2019re all caught up"), /* @__PURE__ */ React.createElement("p", null, empty ? "New work will show up here as soon as it\u2019s assigned." : "Everything due this week is submitted.")) : (() => {
+  ) : /* @__PURE__ */ React.createElement("div", { className: "state-box center lth-empty" }, /* @__PURE__ */ React.createElement("p", null, "No live sessions scheduled today.")))) : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("section", { className: "card lth-card", "aria-labelledby": "lth-h" }, /* @__PURE__ */ React.createElement("div", { className: "lth-side" }, /* @__PURE__ */ React.createElement("h2", { id: "lth-h", className: "lth-label" }, /* @__PURE__ */ React.createElement("span", { className: "live-dot", "aria-hidden": "true" }), "Live sessions"), /* @__PURE__ */ React.createElement("button", { className: "link-btn lth-cal", onClick: () => go("week") }, "View events"), optionalToday.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "lth-mode", role: "group", "aria-label": "Which sessions to show" }, /* @__PURE__ */ React.createElement("button", { className: tlMode === "mine" ? "is-on" : "", "aria-pressed": tlMode === "mine", onClick: () => setTlMode("mine") }, "My plan"), /* @__PURE__ */ React.createElement("button", { className: tlMode === "all" ? "is-on" : "", "aria-pressed": tlMode === "all", onClick: () => setTlMode("all") }, "All times", openOptions.length ? /* @__PURE__ */ React.createElement("span", { className: "lth-mode-n" }, "+", openOptions.length) : null))), todaySessions.length || tlMode === "all" && openOptions.length ? /* @__PURE__ */ React.createElement(
+    TimelineH,
+    {
+      sessions: todaySessions,
+      options: tlMode === "all" ? openOptions : [],
+      now,
+      from: 480,
+      to: 1020,
+      onJoin: join,
+      onInfo: (s, opt) => setSessInfo({ s, opt }),
+      onRsvp: (s, v) => {
+        setRsvp({ ...rsvp, [key(s.id)]: v });
+        if (!v) {
+          say(`Removed ${s.title} at ${fmt(s.start)} from your plan`);
+          return;
+        }
+        const clash = todaySessions.find((t) => t.start < s.end && s.start < t.end);
+        say(clash ? `Added. Heads up: it overlaps ${clash.title} at ${fmt(clash.start)}.` : `Added ${s.title} at ${fmt(s.start)} to your plan`);
+      }
+    }
+  ) : /* @__PURE__ */ React.createElement("div", { className: "state-box center lth-empty" }, /* @__PURE__ */ React.createElement("p", null, "No live sessions scheduled today.")))), /* @__PURE__ */ React.createElement("section", { className: "lq", "aria-labelledby": "lq-h" }, outage ? /* @__PURE__ */ React.createElement("div", { className: "state-box warnbox", role: "status" }, /* @__PURE__ */ React.createElement("span", { className: "tone-warn" }, /* @__PURE__ */ React.createElement(Icon, { d: I.warn, size: 22, sw: 2 })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("strong", null, "Assignments temporarily unavailable"), /* @__PURE__ */ React.createElement("p", null, "We couldn\u2019t load your coursework right now. Your live sessions are still up to date."), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm", onClick: () => say("Still unavailable. Campus will keep trying in the background.") }, "Try again"))) : !queue.length ? /* @__PURE__ */ React.createElement("div", { className: "state-box center" }, /* @__PURE__ */ React.createElement("strong", null, "You\u2019re all caught up"), /* @__PURE__ */ React.createElement("p", null, empty ? "New work will show up here as soon as it\u2019s assigned." : "Everything due this week is submitted.")) : (() => {
     const LOCK = "M7 11V8a5 5 0 0 1 10 0v3 M5 11h14v10H5z M12 15v2";
     const PLAYLISTS = [
       { id: "full", name: "The Full Mix", desc: "All your assignments", icon: "M3 6h13 M3 12h13 M3 18h9 M19 8v10 M19 18a2 2 0 1 1-2-2", tone: "slate", test: () => true },
@@ -4236,6 +4363,8 @@ Let\u2019s get back on track: review your assignments` : c.grade.split(", ")[1] 
     setCompleted({ ...completed, [key(sel.id)]: true });
     setJustSubmitted(true);
     setFeatPin(null);
+    setDoneToday((d) => [...d, { id: sel.id, title: sel.title, course: sel.course, courseName: sel.courseName, at: now }]);
+    setDoneFlash(Date.now());
     {
       const freed = allAssignments.filter((y) => y.requires && y.requires.assign === sel.id && !completed[key(y.id)]);
       if (freed.length && seqOn) setTimeout(() => say(`Nice work! ${freed.map((y) => y.title.split(":")[0]).join(", ")} ${freed.length === 1 ? "is" : "are"} now unlocked.`), 50);
@@ -4384,7 +4513,7 @@ Let\u2019s get back on track: review your assignments` : c.grade.split(", ")[1] 
   })(), screen === "stub" && /* @__PURE__ */ React.createElement("div", { className: "narrow" }, /* @__PURE__ */ React.createElement("h1", { className: "h1 mb-16" }, STUBS[stub].title), /* @__PURE__ */ React.createElement("section", { className: "card dashed pad-28" }, /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, "Covered by ", STUBS[stub].prd), /* @__PURE__ */ React.createElement("p", { className: "mt-8" }, STUBS[stub].body), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline mt-16", onClick: () => go("home") }, "Back to home")))))), launching && /* @__PURE__ */ React.createElement("div", { className: "launch-overlay", role: "status", style: subj(PLAYER[launching.id]) }, /* @__PURE__ */ React.createElement("span", { className: "subject-tile xl" }, PLAYER[launching.id].tile), /* @__PURE__ */ React.createElement("div", { className: "strong lg" }, "Opening ", launching.name), /* @__PURE__ */ React.createElement("div", { className: "launch-bar" }, /* @__PURE__ */ React.createElement("span", null))), /* @__PURE__ */ React.createElement("div", { className: "proto" }, proto && /* @__PURE__ */ React.createElement("div", { className: "proto-panel", role: "dialog", "aria-label": "Prototype controls" }, /* @__PURE__ */ React.createElement("div", { className: "proto-h" }, "Prototype controls"), /* @__PURE__ */ React.createElement("div", { className: "label" }, "Data scenario"), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [["normal", "Normal"], ["outage", "Player API outage"], ["empty", "Empty new term"]].map(([id, l]) => /* @__PURE__ */ React.createElement("button", { key: id, className: mode === id ? "is-on" : "", "aria-pressed": mode === id, onClick: () => setMode(id) }, l))), /* @__PURE__ */ React.createElement("div", { className: "label mt-12" }, "Bulletin style (6-12)"), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [["blinds", "Pull-down"], ["peek", "Peekaboo"], ["drawer", "Side drawer"], ["banner", "Banner"]].map(([v, l]) => /* @__PURE__ */ React.createElement("button", { key: v, className: bulletinMode === v ? "is-on" : "", "aria-pressed": bulletinMode === v, onClick: () => {
     setBulletinMode(v);
     setDrawerOpen(true);
-  } }, l))), /* @__PURE__ */ React.createElement("div", { className: "label mt-12" }, "Daily check-in (6-12)"), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [[true, "On"], [false, "Off"]].map(([v, l]) => /* @__PURE__ */ React.createElement("button", { key: l, className: checkinOn === v ? "is-on" : "", "aria-pressed": checkinOn === v, onClick: () => {
+  } }, l))), /* @__PURE__ */ React.createElement("div", { className: "label mt-12" }, "Top of dashboard (6-12)"), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [[true, "Greeting + sessions"], [false, "Separate"]].map(([v, l]) => /* @__PURE__ */ React.createElement("button", { key: l, className: greetCombo === v ? "is-on" : "", "aria-pressed": greetCombo === v, onClick: () => setGreetCombo(v) }, l))), /* @__PURE__ */ React.createElement("div", { className: "label mt-12" }, "Daily check-in (6-12)"), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [[true, "On"], [false, "Off"]].map(([v, l]) => /* @__PURE__ */ React.createElement("button", { key: l, className: checkinOn === v ? "is-on" : "", "aria-pressed": checkinOn === v, onClick: () => {
     setCheckinOn(v);
     setMood(null);
     if (!v) setPlist("full");
@@ -4396,7 +4525,28 @@ Let\u2019s get back on track: review your assignments` : c.grade.split(", ")[1] 
   } }, /* @__PURE__ */ React.createElement("div", { className: "bd-head" }, /* @__PURE__ */ React.createElement("span", { className: "bd-head-icon" }, /* @__PURE__ */ React.createElement(Icon, { d: NOTICE_ICON.announce, size: 20, sw: 2 })), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("h2", { className: "bd-title" }, "Campus bulletin"), /* @__PURE__ */ React.createElement("div", { className: "muted-sm" }, announcements.length, " posts from ", O.name)), /* @__PURE__ */ React.createElement("button", { className: "icon-btn sm", tabIndex: drawerOpen ? 0 : -1, "aria-label": "Close campus bulletin", onClick: () => setDrawerOpen(false) }, /* @__PURE__ */ React.createElement(Icon, { d: "M9 6l6 6-6 6", size: 20, sw: 2.2 }))), /* @__PURE__ */ React.createElement("div", { className: "bd-list" }, announcements.map((b, i) => /* @__PURE__ */ React.createElement("article", { key: b.id, className: "bd-post" }, /* @__PURE__ */ React.createElement("div", { className: "bd-post-meta" }, i === 0 ? /* @__PURE__ */ React.createElement("span", { className: "bd-new" }, "New") : null, /* @__PURE__ */ React.createElement("span", null, ["Today", "Yesterday", "Fri, Oct 9"][i] || "Earlier")), /* @__PURE__ */ React.createElement("h3", { className: "bd-post-title" }, b.title), /* @__PURE__ */ React.createElement("p", { className: "bd-post-body" }, b.body)))), /* @__PURE__ */ React.createElement("button", { className: "link-btn bd-more", tabIndex: drawerOpen ? 0 : -1, onClick: () => {
     setDrawerOpen(false);
     go("school");
-  } }, "See all school news"))), O.id === "k5" && k5Live && screen !== "room" && !(screen === "home" && k5tab === "calendar") && (() => {
+  } }, "See all school news"))), sessInfo && (() => {
+    const s = sessInfo.s;
+    const st = sessionState(s, now);
+    const p = s.course && PLAYER[s.course];
+    const pal = LQ_PAL[s.course] || { art: "#B7E8E6", ink: "#0F4F4C" };
+    const info = SESSION_ABOUT[s.id] || {};
+    const course2 = D.courses.find((c) => c.id === s.course);
+    const mins = s.end - s.start;
+    return /* @__PURE__ */ React.createElement("div", { className: "br-scrim", onClick: () => setSessInfo(null), onKeyDown: (e) => {
+      if (e.key === "Escape") setSessInfo(null);
+    } }, /* @__PURE__ */ React.createElement("div", { className: "br si", role: "dialog", "aria-modal": "true", "aria-labelledby": "si-h", onClick: (e) => e.stopPropagation(), style: { "--c-soft": pal.art, "--c-ink": pal.ink } }, /* @__PURE__ */ React.createElement("div", { className: "br-head" }, /* @__PURE__ */ React.createElement("span", { className: "br-icon", "aria-hidden": "true" }, p ? /* @__PURE__ */ React.createElement(Icon, { d: LQ_ICON[s.course] || I.sessions, size: 22, sw: 1.9 }) : /* @__PURE__ */ React.createElement(Icon, { d: I.sessions, size: 22, sw: 1.9 })), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "br-meta" }, /* @__PURE__ */ React.createElement("span", { className: "bp-card-kind" }, info.kind || "Live session"), sessInfo.opt ? /* @__PURE__ */ React.createElement("span", null, "Optional time") : /* @__PURE__ */ React.createElement("span", null, "In your plan"))), /* @__PURE__ */ React.createElement("button", { className: "icon-btn sm", autoFocus: true, "aria-label": "Close", onClick: () => setSessInfo(null) }, /* @__PURE__ */ React.createElement(Icon, { d: I.x, size: 18, sw: 2.2 }))), /* @__PURE__ */ React.createElement("div", { className: "br-body" }, /* @__PURE__ */ React.createElement("h2", { id: "si-h", className: "br-title" }, s.title), /* @__PURE__ */ React.createElement("div", { className: "si-facts" }, /* @__PURE__ */ React.createElement("div", { className: "si-fact" }, /* @__PURE__ */ React.createElement(Icon, { d: "M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18z M12 7v5l3 2", size: 18, sw: 2 }), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("strong", null, fmtRange(s.start, s.end)), /* @__PURE__ */ React.createElement("span", null, mins, " minutes \xB7 ", st.key === "live" ? "happening now" : st.key === "ended" ? "already ended" : st.key === "soon" ? `starts in ${Math.ceil(s.start - now)} min` : "later today"))), /* @__PURE__ */ React.createElement("div", { className: "si-fact" }, /* @__PURE__ */ React.createElement("span", { className: "si-av" }, s.host.replace(/^(Mr\.|Ms\.|Mrs\.|Dr\.|Sr\.)\s+/, "").slice(0, 2).toUpperCase()), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("strong", null, s.host), /* @__PURE__ */ React.createElement("span", null, course2 ? `${course2.name} teacher` : "Homeroom teacher")))), /* @__PURE__ */ React.createElement("h3", { className: "si-sub" }, "What it\u2019s about"), /* @__PURE__ */ React.createElement("p", null, info.about || "Live time with your teacher to ask questions and work together."), info.bring && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("h3", { className: "si-sub" }, "What to bring"), /* @__PURE__ */ React.createElement("p", null, info.bring))), /* @__PURE__ */ React.createElement("div", { className: "br-foot" }, /* @__PURE__ */ React.createElement("button", { className: "btn btn-ghost btn-sm", onClick: () => {
+      setSessInfo(null);
+      goSessions("today");
+    } }, "See all events"), sessInfo.opt ? /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent btn-sm", onClick: () => {
+      setRsvp({ ...rsvp, [key(s.id)]: true });
+      setSessInfo(null);
+      say(`Added ${s.title} at ${fmt(s.start)} to your plan`);
+    } }, "Add to my plan") : st.canJoin ? /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent btn-sm", onClick: () => {
+      setSessInfo(null);
+      join(s);
+    } }, "Join session") : /* @__PURE__ */ React.createElement("span", { className: "muted-sm" }, st.key === "ended" ? "This session has ended" : `You can join at ${fmt(s.start - 10)}`))));
+  })(), O.id === "k5" && k5Live && screen !== "room" && !(screen === "home" && k5tab === "calendar") && (() => {
     const st = sessionState(k5Live, now);
     const live = st.key === "live";
     const mins = Math.ceil(k5Live.start - now);
