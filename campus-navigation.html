@@ -3232,6 +3232,34 @@ html.k5-cursor input,html.k5-cursor textarea,html.k5-cursor [contenteditable]{cu
 .star-pill.streak-pill{background:#FFF1EE;border-color:#F6A99A;color:#9F1D10}
 .star-pill.streak-pill strong{color:#9F1D10}
 .star-pill.streak-pill span{color:#B42318}
+
+/* K-5 greeting uses the same letter wave as 6-12 */
+.k5-h1.is-wave .wave-word{display:inline-block;white-space:nowrap}
+.k5-h1.is-wave .wave-ch{display:inline-block;animation:greetWave .7s cubic-bezier(.3,.7,.4,1) both}
+@media (prefers-reduced-motion:reduce){.k5-h1.is-wave .wave-ch{animation:none}}
+
+/* 6-12 up-next: Start activity grows a little with a soft shadow on hover */
+.lq-hero-start{transition:transform .18s ease,box-shadow .18s ease,background .15s}
+.lq-hero-start:hover{transform:scale(1.04);box-shadow:0 10px 20px -10px rgba(15,23,42,.55)}
+.lq-hero-start:active{transform:scale(1.01)}
+@media (prefers-reduced-motion:reduce){.lq-hero-start:hover{transform:none}}
+
+/* K-5 class cards: very subtle grow + tilt on hover */
+.k5-card.k5c{transition:transform .25s ease,box-shadow .25s ease}
+.k5-grid:not(.k5-scatter) .k5-card.k5c:hover{transform:scale(1.02) rotate(-.8deg)}
+@media (prefers-reduced-motion:reduce){.k5-grid .k5-card.k5c:hover{transform:none}}
+
+/* 6-12 home: containers slide up in order, top first, with a small bounce into place */
+@keyframes slideBounce{0%{opacity:0;transform:translateY(40px)}60%{transform:translateY(-6px)}80%{transform:translateY(2px)}100%{transform:none}}
+.home-612 > :not(.bl-wrap){animation:slideBounce .7s cubic-bezier(.25,.9,.3,1) both}
+.home-612 > :not(.bl-wrap):nth-child(2){animation-delay:0s}
+.home-612 > :not(.bl-wrap):nth-child(3){animation-delay:.12s}
+.home-612 > :not(.bl-wrap):nth-child(4){animation-delay:.24s}
+.home-612 > :not(.bl-wrap):nth-child(5){animation-delay:.36s}
+@media (prefers-reduced-motion:reduce){.home-612 > :not(.bl-wrap){animation:none}}
+
+/* Hide-locked mode: the ready step says what it unlocks */
+.lq-unlocks{display:inline-flex;align-items:center;gap:4px;margin-left:2px;color:var(--prim-admin-blue-700);font-weight:700}
 </style>
 </head>
 <body>
@@ -4623,6 +4651,7 @@ function App() {
   const [sessInfo, setSessInfo] = useState(null);
   const [doneToday, setDoneToday] = useState([]);
   const [gradeMode, setGradeMode] = useState("mixed");
+  const [hideLocked, setHideLocked] = useState(false);
   const [doneFlash, setDoneFlash] = useState(0);
   const [doneOpen, setDoneOpen] = useState(false);
   useEffect(() => {
@@ -4996,7 +5025,10 @@ Let\u2019s get back on track: review your assignments` : `Current grade: ${c.gra
         say("You earned a star!");
         if (sound) chime();
       };
-      return /* @__PURE__ */ React.createElement("section", { className: "k5-quest", "aria-labelledby": "quest-h" }, /* @__PURE__ */ React.createElement("div", { className: "k5-quest-head" }, /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("h1", { id: "quest-h", className: "k5-h1" }, total > 0 && done === total ? `Way to go, ${O.first}!` : `${greet}, ${O.first}!`), /* @__PURE__ */ React.createElement("p", { className: "k5-sub" }, total === 0 ? "No activities yet. Check back soon!" : done === total ? "You finished everything for today. Amazing work!" : `Today you have ${total} things to do. You\u2019re on step ${done + 1}!`))), /* @__PURE__ */ React.createElement("div", { className: "k5-quest-card" }, /* @__PURE__ */ React.createElement("div", { className: "k5-card-badges" }, /* @__PURE__ */ React.createElement("div", { className: "star-pill streak-pill", "aria-label": "4 day streak" }, /* @__PURE__ */ React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("path", { d: "M12.6 2.5c.5 3.2 3.9 4.9 4.9 8.4 1.1 3.9-1.4 8.6-5.5 8.6-3.6 0-6-2.7-6-6 0-2.4 1.3-4 2.6-5.1.2 1.6 1 2.6 2.1 2.9-.5-3.3.6-6.7 1.9-8.8z", fill: "#F05A3C", stroke: "#B42318", strokeWidth: "1.3", strokeLinejoin: "round" }), /* @__PURE__ */ React.createElement("path", { d: "M12.2 12.3c1.6 1.3 2.8 2.7 2.4 4.4-.3 1.3-1.4 2-2.6 2-1.5 0-2.6-1-2.6-2.4 0-1.5 1.3-2.4 2.8-4z", fill: "#FFC85A" })), /* @__PURE__ */ React.createElement("strong", null, "4"), /* @__PURE__ */ React.createElement("span", null, "streak")), /* @__PURE__ */ React.createElement("div", { className: "star-pill", "aria-label": `${stars} stars this week` }, /* @__PURE__ */ React.createElement(Star, { on: true, size: 26 }), /* @__PURE__ */ React.createElement("strong", null, stars), /* @__PURE__ */ React.createElement("span", null, "stars"))), n > 0 && mapStyle === "desk" && (() => {
+      return /* @__PURE__ */ React.createElement("section", { className: "k5-quest", "aria-labelledby": "quest-h" }, /* @__PURE__ */ React.createElement("div", { className: "k5-quest-head" }, /* @__PURE__ */ React.createElement("div", { className: "grow" }, (() => {
+        const t = total > 0 && done === total ? `Way to go, ${O.first}!` : `${greet}, ${O.first}!`;
+        return /* @__PURE__ */ React.createElement("h1", { id: "quest-h", key: t, className: "k5-h1 is-wave", "aria-label": t }, /* @__PURE__ */ React.createElement(WaveText, { text: t }));
+      })(), /* @__PURE__ */ React.createElement("p", { className: "k5-sub" }, total === 0 ? "No activities yet. Check back soon!" : done === total ? "You finished everything for today. Amazing work!" : `Today you have ${total} things to do. You\u2019re on step ${done + 1}!`))), /* @__PURE__ */ React.createElement("div", { className: "k5-quest-card" }, /* @__PURE__ */ React.createElement("div", { className: "k5-card-badges" }, /* @__PURE__ */ React.createElement("div", { className: "star-pill streak-pill", "aria-label": "4 day streak" }, /* @__PURE__ */ React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("path", { d: "M12.6 2.5c.5 3.2 3.9 4.9 4.9 8.4 1.1 3.9-1.4 8.6-5.5 8.6-3.6 0-6-2.7-6-6 0-2.4 1.3-4 2.6-5.1.2 1.6 1 2.6 2.1 2.9-.5-3.3.6-6.7 1.9-8.8z", fill: "#F05A3C", stroke: "#B42318", strokeWidth: "1.3", strokeLinejoin: "round" }), /* @__PURE__ */ React.createElement("path", { d: "M12.2 12.3c1.6 1.3 2.8 2.7 2.4 4.4-.3 1.3-1.4 2-2.6 2-1.5 0-2.6-1-2.6-2.4 0-1.5 1.3-2.4 2.8-4z", fill: "#FFC85A" })), /* @__PURE__ */ React.createElement("strong", null, "4"), /* @__PURE__ */ React.createElement("span", null, "streak")), /* @__PURE__ */ React.createElement("div", { className: "star-pill", "aria-label": `${stars} stars this week` }, /* @__PURE__ */ React.createElement(Star, { on: true, size: 26 }), /* @__PURE__ */ React.createElement("strong", null, stars), /* @__PURE__ */ React.createElement("span", null, "stars"))), n > 0 && mapStyle === "desk" && (() => {
         const PATH = [[192, 352], [280, 387], [360, 381], [440, 368], [520, 372], [600, 401], [680, 443], [760, 471], [840, 476], [920, 461], [1e3, 445], [1080, 442], [1160, 458], [1240, 496], [1320, 537], [1400, 557], [1480, 563], [1560, 560], [1640, 551], [1720, 533], [1800, 507], [1880, 482], [2e3, 468]];
         const N = n + 1;
         const segL = PATH.slice(1).map((q, k) => Math.hypot(q[0] - PATH[k][0], q[1] - PATH[k][1]));
@@ -5037,7 +5069,7 @@ Let\u2019s get back on track: review your assignments` : `Current grade: ${c.gra
         const nx = acts[at];
         const np = PLAYER[subjects.find((sb) => sb.items.some((it) => it.id === nx.id)).c.id];
         const isLate = nx.assign && (D.assignments.find((y) => y.id === nx.assign) || {}).status === "pastdue";
-        return /* @__PURE__ */ React.createElement("div", { className: "k5-upnext", style: subj(np) }, /* @__PURE__ */ React.createElement("span", { className: "k5-upnext-tag" }, "Up next"), /* @__PURE__ */ React.createElement("span", { className: "k5-upnext-icon", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: K5_ICON[np === PLAYER.ela4 ? "ela4" : Object.keys(PLAYER).find((k) => PLAYER[k] === np)] || I.play, size: 22, sw: 2 })), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "k5-upnext-title" }, nx.t), /* @__PURE__ */ React.createElement("div", { className: "k5-upnext-sub" }, nx.cname, isLate ? ", a little late" : "", ", step ", at + 1)), /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent k5-upnext-go", onClick: () => startAct(nx) }, /* @__PURE__ */ React.createElement(Icon, { d: I.play, size: 14, sw: 2 }), " Let\u2019s go!"));
+        return /* @__PURE__ */ React.createElement("div", { className: "k5-upnext", style: subj(np) }, /* @__PURE__ */ React.createElement("span", { className: "k5-upnext-tag" }, "Up next"), /* @__PURE__ */ React.createElement("span", { className: "k5-upnext-icon", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: K5_ICON[np === PLAYER.ela4 ? "ela4" : Object.keys(PLAYER).find((k) => PLAYER[k] === np)] || I.play, size: 22, sw: 2 })), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "k5-upnext-title" }, nx.t), /* @__PURE__ */ React.createElement("div", { className: "k5-upnext-sub" }, nx.cname)), /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent k5-upnext-go", onClick: () => startAct(nx) }, /* @__PURE__ */ React.createElement(Icon, { d: I.play, size: 14, sw: 2 }), " Let\u2019s go!"));
       })()));
     })(), k5tab === "calendar" && (() => {
       const s = todaySessions.find((x) => now >= x.start && now < x.end) || todaySessions.find((x) => now < x.start);
@@ -5304,6 +5336,27 @@ Let\u2019s get back on track: review your assignments` : `Current grade: ${c.gra
         });
       });
       const drawn = /* @__PURE__ */ new Set();
+      const subOf = (x) => `${x.courseName}${O.weights ? ` \xB7 ${x.weight}% of grade` : ""}${x.mins ? ` \xB7 ${x.mins} min` : ""}`;
+      const unlockNote = (base, nxt) => /* @__PURE__ */ React.createElement(React.Fragment, null, base, /* @__PURE__ */ React.createElement("span", { className: "lq-unlocks" }, /* @__PURE__ */ React.createElement(Icon, { d: "M7 11V8a5 5 0 0 1 9.6-2 M5 11h14v10H5z M12 15v2", size: 12, sw: 2.4 }), " Do this first \xB7 unlocks ", nxt.title));
+      if (hideLocked) {
+        const drawnH = /* @__PURE__ */ new Set();
+        return rows.map(({ x }) => {
+          const cid = chainOf[x.id];
+          if (!cid) return lockOf(x) ? null : plainRow(x);
+          if (drawnH.has(cid)) return null;
+          drawnH.add(cid);
+          const steps = chains.find((c) => c.id === cid).steps;
+          return steps.map((st, i) => {
+            const nxt = steps[i + 1] && steps[i + 1].x;
+            if (st.lesson) {
+              const pl = LQ_PAL[st.lesson.course] || LQ_PAL.default;
+              return /* @__PURE__ */ React.createElement("div", { key: "l" + i + cid, role: "listitem", className: "lq-row" }, /* @__PURE__ */ React.createElement("div", { className: "lq-row-main is-static" }, /* @__PURE__ */ React.createElement("span", { className: "lq-ico", style: { background: pl.art, color: pl.ink } }, /* @__PURE__ */ React.createElement(Icon, { d: LQ_ICON[st.lesson.course] || I.doc, size: 18, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "lq-row-text" }, /* @__PURE__ */ React.createElement("span", { className: "lq-row-title" }, "Lesson ", st.lesson.label), /* @__PURE__ */ React.createElement("span", { className: "lq-row-sub" }, nxt ? unlockNote("Course lesson \xB7 ", nxt) : "Course lesson \xB7 start anytime")), /* @__PURE__ */ React.createElement("span", { className: "lq-type" }, /* @__PURE__ */ React.createElement(Chip, { cls: "neutral" }, "Lesson")), /* @__PURE__ */ React.createElement("span", { className: "lq-row-due" }, "Anytime")), /* @__PURE__ */ React.createElement("button", { className: "lq-row-open", onClick: () => goLesson(st.lesson) }, "Start ", /* @__PURE__ */ React.createElement(Icon, { d: "M5 12h14 M13 6l6 6-6 6", size: 14, sw: 2.4 })));
+            }
+            if (lockOf(st.x)) return null;
+            return /* @__PURE__ */ React.createElement(React.Fragment, { key: st.x.id }, rowCore(st.x, nxt && lockOf(nxt) ? unlockNote(subOf(st.x) + " \xB7 ", nxt) : subOf(st.x)));
+          });
+        });
+      }
       return rows.map(({ x }) => {
         const cid = chainOf[x.id];
         if (!cid) return plainRow(x);
@@ -5558,7 +5611,7 @@ Let\u2019s get back on track: review your assignments` : `Current grade: ${c.gra
   } }, l)), checkinOn && /* @__PURE__ */ React.createElement("button", { onClick: () => {
     setMood(null);
     setPlist("full");
-  } }, "Ask again")), /* @__PURE__ */ React.createElement("div", { className: "label mt-12" }, "Grading after submit (6-12)"), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [["mixed", "Quizzes instant"], ["graded", "All graded"], ["waiting", "All waiting"]].map(([v, l]) => /* @__PURE__ */ React.createElement("button", { key: v, className: gradeMode === v ? "is-on" : "", "aria-pressed": gradeMode === v, onClick: () => setGradeMode(v) }, l))), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm mt-8", onClick: () => {
+  } }, "Ask again")), /* @__PURE__ */ React.createElement("div", { className: "label mt-12" }, "Locked assignments (6-12)"), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [[false, "Show path"], [true, "Hide locked"]].map(([v, l]) => /* @__PURE__ */ React.createElement("button", { key: l, className: hideLocked === v ? "is-on" : "", "aria-pressed": hideLocked === v, onClick: () => setHideLocked(v) }, l))), /* @__PURE__ */ React.createElement("div", { className: "label mt-12" }, "Grading after submit (6-12)"), /* @__PURE__ */ React.createElement("div", { className: "seg" }, [["mixed", "Quizzes instant"], ["graded", "All graded"], ["waiting", "All waiting"]].map(([v, l]) => /* @__PURE__ */ React.createElement("button", { key: v, className: gradeMode === v ? "is-on" : "", "aria-pressed": gradeMode === v, onClick: () => setGradeMode(v) }, l))), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline btn-sm mt-8", onClick: () => {
     const pick = queue.filter((x) => !lockOf(x)).slice(0, 3);
     if (!pick.length) return;
     const add = {};
