@@ -2824,6 +2824,13 @@ h1.player-h1,h2.check-h,h2.h3,h2.lq-h,h3.lq-title{font-weight:600!important}
 @media (prefers-reduced-motion:reduce){.lq-hero{transition:none}.lq-hero:hover{transform:none}}
 /* Sparks start slate-200; on hover they take the lesson's subject color */
 .lq-hero:hover::before,.lq-hero:hover::after{background:color-mix(in srgb,var(--lq-art) 55%,var(--lq-ink));filter:saturate(2.2) brightness(1.12)}
+/* Sparks start small and pop to full size on hover (ta-da) */
+.lq-hero::before,.lq-hero::after{transition:transform .5s cubic-bezier(.3,1.9,.5,1),background-color .25s ease,filter .25s ease}
+.lq-hero::before{transform:scale(.55)}
+.lq-hero::after{transform:scaleX(-1) scale(.55)}
+.lq-hero:hover::before{transform:scale(1.12)}
+.lq-hero:hover::after{transform:scaleX(-1) scale(1.12)}
+@media (prefers-reduced-motion:reduce){.lq-hero::before,.lq-hero:hover::before{transform:none}.lq-hero::after,.lq-hero:hover::after{transform:scaleX(-1)}}
 
 /* Up-next card stroke: slate at rest; on hover the subject gradient fades in and sweeps around the border */
 @property --lq-k{syntax:'<number>';inherits:false;initial-value:0}
@@ -3151,11 +3158,73 @@ h2.ac-name{font-size:18px}
 .lq-hero-art.has-img{position:relative;overflow:hidden;padding:0;background:var(--lq-art)}
 .lq-hero-art.has-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .lq-hero-art.has-img{flex:0 0 180px;width:180px;height:180px;min-height:0;aspect-ratio:1 / 1;align-self:center}
+/* Learning queue: gradient stroke around the whole container */
+.lq,.greet-combo + .lq{border:1.5px solid transparent!important;background:linear-gradient(var(--surface),var(--surface)) padding-box,linear-gradient(120deg,#CDBEF7 0%,#B9C6FA 50%,#A6DFE8 100%) border-box}
+
+/* Greeting: letters ripple in a quick wave when the dashboard loads */
+.greet-h.is-wave .wave-word{display:inline-block;white-space:nowrap}
+.greet-h.is-wave .wave-ch{display:inline-block;animation:greetWave .7s cubic-bezier(.3,.7,.4,1) both}
+@keyframes greetWave{0%{transform:translateY(0)}30%{transform:translateY(-9px)}60%{transform:translateY(2px)}100%{transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){.greet-h.is-wave .wave-ch{animation:none}}
 .lq-hero-badge{position:absolute;left:10px;bottom:10px;width:36px;height:36px;border-radius:11px;background:var(--lq-art);color:var(--lq-ink);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 0 0 2.5px #fff,0 4px 10px -4px rgba(15,23,42,.4)}
 /* K-5 card titles and icons a bit smaller so long names fit */
 .k5c-icon{width:48px;height:48px;border-radius:15px}
 h2.k5c-h{font-size:21px;line-height:1.15}
 .k5c-head{gap:12px}
+
+/* K-5 class cards: start scattered, fall into place when scrolled into view */
+.k5-scatter > .k5c{transition:transform .85s cubic-bezier(.2,1.35,.4,1),opacity .5s ease;will-change:transform}
+.k5-scatter:not(.is-in) > .k5c{opacity:.9}
+.k5-scatter:not(.is-in) > .k5c:nth-child(6n+1){transform:translate(-28px,46px) rotate(-6deg) scale(.93)}
+.k5-scatter:not(.is-in) > .k5c:nth-child(6n+2){transform:translate(12px,70px) rotate(4deg) scale(.93)}
+.k5-scatter:not(.is-in) > .k5c:nth-child(6n+3){transform:translate(34px,38px) rotate(7deg) scale(.93)}
+.k5-scatter:not(.is-in) > .k5c:nth-child(6n+4){transform:translate(-18px,64px) rotate(5deg) scale(.93)}
+.k5-scatter:not(.is-in) > .k5c:nth-child(6n+5){transform:translate(24px,52px) rotate(-5deg) scale(.93)}
+.k5-scatter:not(.is-in) > .k5c:nth-child(6n){transform:translate(-30px,44px) rotate(3deg) scale(.93)}
+.k5-scatter.is-in > .k5c{transform:none;opacity:1}
+.k5-scatter.is-in > .k5c:nth-child(2){transition-delay:.09s}
+.k5-scatter.is-in > .k5c:nth-child(3){transition-delay:.18s}
+.k5-scatter.is-in > .k5c:nth-child(4){transition-delay:.27s}
+.k5-scatter.is-in > .k5c:nth-child(5){transition-delay:.36s}
+.k5-scatter.is-in > .k5c:nth-child(6){transition-delay:.45s}
+@media (prefers-reduced-motion:reduce){.k5-scatter > .k5c{transform:none!important;opacity:1!important;transition:none!important}}
+
+/* K-5: playful oversized cursor everywhere except text fields */
+html.k5-cursor,html.k5-cursor *{cursor:url("data:image/svg+xml,%3C%3Fxml version=%221.0%22 encoding=%22UTF-8%22%3F%3E %3Csvg width=%2244%22 height=%2244%22 xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1125.34 1115.46%22%3E %3Cdefs%3E %3Cstyle%3E .cls-1 %7B fill: %23f8d9fc; %7D .cls-2 %7B fill: %2365b7fa; %7D .cls-3 %7B fill: %23a23aeb; %7D .cls-4 %7B fill: %23fdc95a; %7D .cls-5 %7B fill: %23fd7e7b; %7D %3C/style%3E %3C/defs%3E %3Cpath class=%22cls-5%22 d=%22M117.88,171.61c12.17,9.82,28.05,8.59,37.27-3.19s5.38-27.19-6.12-36.47l-70.23-56.67c-6.77-5.46-16.86-6.01-24.72-2.53-8.33,3.69-13.68,12.45-14.36,20.15-.91,10.34,3.38,18.37,11,24.52l67.15,54.19Z%22/%3E %3Cpath class=%22cls-2%22 d=%22M17.36,236.88c-12.85,2.93-19.09,16.74-16.95,28.44,2.07,11.29,13.28,22.94,25.98,20.14l78.1-17.24c6.4-1.41,11.02-5.4,14.41-10.59,5.79-8.88,5.41-19.8-.11-27.96-6.16-9.12-16.72-12.09-27.58-9.62l-73.85,16.82Z%22/%3E %3Cpath class=%22cls-4%22 d=%22M199.9,101.68c4.45,14.26,18.04,22.6,31.63,18.02,13.99-4.72,19.38-19.1,14.93-32.96l-21.86-68.15c-4.21-13.13-16.31-21.06-29.46-17.89-12.91,3.12-21.51,16.74-17.46,29.73l22.23,71.25Z%22/%3E %3Cg%3E %3Cpath class=%22cls-3%22 d=%22M940.59,1115.32c-26.48-1.26-53.16-9.55-72.75-28.31l-142.89-136.82-90.08-85.75-12.35-11.5-57.46,75.71c-9.48,12.48-19.16,23.19-32.13,31.79-52.45,34.8-122.15,25.51-164.1-21.47-12.54-14.05-21.91-30.7-27.61-49.2L175.29,351.15l-14.45-49.51c-7.3-31.1-2.55-62.33,13.49-89.59,27.96-47.52,85.85-71.17,138.83-53.68l307.9,101.65,280.78,92.8c33.9,11.21,61.71,31.7,77.1,64.63,14.16,30.3,16.48,64.21,3.52,95.9-8.54,21.12-21.61,41.11-41.13,53.62l-92.18,59.08,131.28,122.55,100.27,93.68c20.62,19.27,36.28,40.81,42.17,69.05,7.47,35.79-1.99,73.03-27.44,99.92l-61.42,64.9c-24.73,26.13-57.47,40.87-93.41,39.16ZM1053.48,982.54c28.24-26.89,27.28-68.8-1.08-95.22l-188.17-175.33-70.02-64.94c-6.65-6.17-11.8-12.72-12.14-21.66-.31-7.97,2.28-18.64,10.16-23.57l108.71-68.04c25.55-15.99,41.35-42.08,38.02-72.67-3.12-28.73-23.63-52.14-51.84-61.49l-249.21-82.61-334.35-110.36c-24.47-8.08-49.54-5.4-69.11,12.2-17.1,15.38-28.52,41.75-21,66.16l92.49,300.15,88.65,291.11c6.4,21.01,22.47,37.55,41.78,46.35,26.67,12.15,60.68,7.3,79.7-15.82l86.17-112.52c11.47-14.98,30.36-9.78,42.17,1.6l261.51,251.96c22.95,22.11,61.73,21.31,84.45.02l63.1-65.32Z%22/%3E %3Cpath class=%22cls-1%22 d=%22M990.39,1047.86l63.1-65.32c28.24-26.89,27.28-68.8-1.08-95.22l-188.17-175.33-70.02-64.94c-6.65-6.17-11.8-12.72-12.14-21.66-.31-7.97,2.28-18.64,10.16-23.57l108.71-68.04c25.55-15.99,41.35-42.08,38.02-72.67-3.12-28.73-23.63-52.14-51.84-61.49l-249.21-82.61-334.35-110.36c-24.47-8.08-49.54-5.4-69.11,12.2-17.1,15.38-28.52,41.75-21,66.16l92.49,300.15,88.65,291.11c6.4,21.01,22.47,37.55,41.78,46.35,26.67,12.15,60.68,7.3,79.7-15.82l86.17-112.52c11.47-14.98,30.36-9.78,42.17,1.6l261.51,251.96c22.95,22.11,61.73,21.31,84.45.02Z%22/%3E %3C/g%3E %3C/svg%3E") 8 7,auto!important}
+html.k5-cursor input,html.k5-cursor textarea,html.k5-cursor [contenteditable]{cursor:text!important}
+
+/* ===== K-5 sky: blue gradient, sun and clouds that the dashboard slides over (parallax) ===== */
+.k5-sky{--sy:0;position:absolute;left:0;right:0;top:0;height:560px;z-index:0;pointer-events:none;overflow:hidden}
+.k5-sky-grad{position:absolute;inset:0;background:linear-gradient(180deg,#A9DDF9 0%,#C5E8FB 38%,#E7F4FD 68%,rgba(248,250,252,0) 100%);opacity:calc(1 - var(--sy) / 520)}
+.k5-sky-far,.k5-sky-near{position:absolute;inset:0}
+.k5-sky-far{transform:translateY(calc(var(--sy) * .7px));opacity:calc(1 - var(--sy) / 380)}
+.k5-sky-near{transform:translateY(calc(var(--sy) * .45px));opacity:calc(1 - var(--sy) / 460)}
+.k5-sun{position:absolute;right:12%;top:-6px}
+.k5-cloud{position:absolute;display:block;filter:drop-shadow(0 6px 10px rgba(120,170,210,.18))}
+.k5-cloud svg{display:block}
+.k5-cloud.c1{left:38%;top:96px}
+.k5-cloud.c4{left:4%;top:40px;opacity:.9}
+.k5-cloud.c2{right:calc(12% + 150px);top:176px}
+.k5-cloud.c3{right:2%;top:190px}
+.k5-cloud.c5{right:calc(12% - 10px);top:206px}
+.main:has(.k5-sky) .k5-home{position:relative;z-index:1}
+/* Greeting sits on the sky; the map + Up next become the white card that slides over it */
+.k5-quest{background:transparent!important;border:0!important;padding:0!important;overflow:visible!important;box-shadow:none!important}
+.k5-quest-head{padding:118px 6px 20px}
+.k5-quest .k5-h1{font-size:clamp(28px,3.2vw,40px)}
+.k5-quest-card{position:relative;padding:14px 14px 6px;border-radius:28px;background:#fff;border:1.5px solid var(--prim-slate-200);box-shadow:0 18px 44px -24px rgba(40,90,140,.35);overflow:hidden}
+.k5-quest-card .meadow{margin:0}
+@media (prefers-reduced-motion:reduce){.k5-sky-far,.k5-sky-near{transform:none}}
+.k5-card-stars{position:absolute;top:26px;right:26px;z-index:4;box-shadow:0 4px 12px -4px rgba(0,0,0,.25)}
+.k5-sky{height:640px}
+/* K-5 sky: single sun-and-clouds graphic (parallax unchanged) */
+.k5-sky-art{position:absolute;right:3%;top:42px;width:min(640px,58%);height:auto;display:block}
+
+/* K-5 sound (on): brand purple with a clear hard shadow, matching the chunky scrollbar buttons */
+.side .k5-sound.is-on{background:var(--color-primary-dark)!important;border:2px solid #7A47A0!important;box-shadow:0 4px 0 #5E3482!important}
+.side .k5-sound.is-on .k5-sound-icon{color:#fff!important}
+.side .k5-sound.is-on:hover{background:#7A47A0!important}
+.side .k5-sound.is-on:active{transform:translateY(3px);box-shadow:0 1px 0 #5E3482!important}
 </style>
 </head>
 <body>
@@ -3177,6 +3246,7 @@ const LQ_ART_IMG = {
 const LQ_ART_MAP = { eng: "ela", ela7: "ela", alg: "math", math7: "math", bio: "sci", sci7: "sci", his: "ss", ss7: "ss", spa: "spa", pe7: "pe" };
 const lqArt = (course) => LQ_ART_IMG[LQ_ART_MAP[course] || "elective"];
 Object.assign(K5_ART, { ela4: LQ_ART_IMG.ela, math4: LQ_ART_IMG.math, sci4: LQ_ART_IMG.sci, ss4: LQ_ART_IMG.ss, pe4: LQ_ART_IMG.pe, art4: LQ_ART_IMG.elective });
+const K5_SKY_ART = "data:image/svg+xml,%3C%3Fxml version=%221.0%22 encoding=%22UTF-8%22%3F%3E %3Csvg id=%22Layer_1%22 data-name=%22Layer 1%22 xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1781.5 671.15%22%3E %3Cdefs%3E %3Cstyle%3E .cls-1 %7B fill: %230f1e2e; %7D .cls-2 %7B stroke-width: 1.16px; %7D .cls-2, .cls-3 %7B fill: %23f5c04c; stroke: %23f5c04c; stroke-miterlimit: 10; %7D .cls-4 %7B fill: %23eff7fd; %7D %3C/style%3E %3C/defs%3E %3Cpath class=%22cls-2%22 d=%22M989.19,148.55c-165.13,0-299,133.87-299,299,0,54,14.32,104.64,39.36,148.37h519.29c25.04-43.72,39.36-94.37,39.36-148.37,0-165.13-133.87-299-299-299Z%22/%3E %3Cg%3E %3Cpath class=%22cls-3%22 d=%22M1346.48,363.08c-9.58,3.27-18.27-.11-22.35-8.64-3.23-6.75-1.28-19.17,7.68-22.31l101.99-35.63c9.77-3.41,19.35.43,23.18,9.47,3.56,8.39-.34,19.54-9.65,22.72l-100.86,34.39Z%22/%3E %3Cpath class=%22cls-3%22 d=%22M1252.8,200.16c-7.19,6.26-17.88,2.63-23.13-3.19-4.58-5.09-7.02-16.76-.29-22.82l71.64-64.51c8.05-7.25,21.17-2.76,26.01,4.65,6.15,9.41,2.21,19.32-5.84,26.32l-68.4,59.56Z%22/%3E %3Cpath class=%22cls-3%22 d=%22M779.21,147.48c6.73,8.29,8.58,17.82.97,25.67-6.04,6.24-18.41,7.44-24.85-.27l-58.63-70.15c-7.24-8.66-6.58-20.59,2.11-26.98,9.28-6.83,19.5-3.3,26.5,5.33l53.89,66.4Z%22/%3E %3Cpath class=%22cls-3%22 d=%22M1003.83,112.94c-9.42-.36-17.03-7.66-16.58-16.93l3.63-74.89c.57-11.86,8.72-21.48,20.64-20.55s18.34,11.08,17.51,22.79l-5.24,73.44c-.71,9.93-9.65,16.55-19.96,16.15Z%22/%3E %3Cpath class=%22cls-4%22 d=%22M1674.17,638.79c11.82-17.31,14.52-37.7,7.92-57.55-6.02-18.84-16.97-34.94-31.25-48.61-35.73-34.17-86.74-47.32-134.82-32.08-28.41-86.34-149.34-105.6-227.21-84.96-39.48,10.46-75.8,31.85-104.85,60.47-19.66,19.37-54.98,60.21-61.9,92.61-.65,3.03-4.69,3.64-6.15.91-27.56-51.64-107.08-29.09-107.75-31.25-51.76-166.08-214.55-112.06-214.12-102.33-2.4-53.82-28.25-100.78-69.87-133.77l-14.51-9.61c-23.67-15.68-50.57-24.4-78.96-28.83-34.67-5.41-69.6-3.22-103.25,7.19-60.83,18.82-111.83,61.06-142.15,116.68-1.22,2.24-1.46,3.96-3.8,4.22-45.45-30.7-103.16-39.77-156.08-23.03-51.12,16.17-91.3,55.71-101.88,109.56-44.7-9.6-88.51,12.78-111.46,51.11-23.57,40.76-11.65,85.63,26.72,111.22,26.01,17.34,56.23,24.69,87.75,24.43l1498.43-.62c19.49,0,37.92-9.37,48.96-25.43.07-.1.14-.21.21-.31Z%22/%3E %3C/g%3E %3Cpath class=%22cls-1%22 d=%22M957.83,336.87c12.45,0,24.41-3.98,34.66-11.56,9.83-7.27,17.47-17.29,22.09-29,1.53-3.86-.37-8.23-4.23-9.76-3.86-1.53-8.23.37-9.76,4.23-7.61,19.27-24.78,31.46-43.72,31.03-19.38-.43-37.73-13.17-44.61-30.98-1.5-3.87-5.85-5.8-9.73-4.31-3.87,1.5-5.8,5.85-4.31,9.73,9.02,23.34,32.99,40.04,58.3,40.6.43,0,.87.01,1.3.01Z%22/%3E %3Cpath class=%22cls-1%22 d=%22M902.71,235.74c5.35,0,9.69,4.34,9.69,9.69v13.7c0,5.35-4.34,9.69-9.69,9.69s-9.69-4.34-9.69-9.69v-13.7c0-5.35,4.34-9.69,9.69-9.69Z%22/%3E %3Cpath class=%22cls-1%22 d=%22M1010.59,235.74h0c5.35,0,9.69,4.34,9.69,9.69v13.7c0,5.35-4.34,9.69-9.69,9.69h0c-5.35,0-9.69-4.34-9.69-9.69v-13.7c0-5.35,4.34-9.69,9.69-9.69Z%22/%3E %3C/svg%3E";
 const ORGS = {
   k5: { id: "k5", band: "K-5", name: "Primavera", mark: "P", circle: "primary", student: "Maya Torres", first: "Maya", initials: "MT", grade: "Grade 4", sub: "Maya Torres, Grade 4", weights: false },
   g68: { id: "g68", band: "6-8", name: "Primavera", mark: "P", circle: "primary", student: "Leo Park", first: "Leo", initials: "LP", grade: "Grade 7", sub: "Leo Park, Grade 7", weights: true },
@@ -3973,6 +4043,36 @@ function TimelineH({ sessions, options = [], now, from, to, onJoin, onRsvp, onIn
     );
   }), showNow && /* @__PURE__ */ React.createElement("div", { className: "lth-now", style: { left: x(now) + "px" } }, /* @__PURE__ */ React.createElement("span", null, fmt(now))))));
 }
+function WaveText({ text }) {
+  let i = 0;
+  return /* @__PURE__ */ React.createElement("span", { "aria-hidden": "true" }, text.split(" ").map((w, wi, arr) => /* @__PURE__ */ React.createElement("span", { key: wi, className: "wave-word" }, [...w].map((ch) => {
+    const k = i++;
+    return /* @__PURE__ */ React.createElement("span", { key: k, className: "wave-ch", style: { animationDelay: `${0.15 + k * 0.035}s` } }, ch);
+  }), wi < arr.length - 1 ? "\xA0" : "")));
+}
+function K5Sky() {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return void 0;
+    let raf = 0;
+    const upd = () => {
+      el.style.setProperty("--sy", Math.min(window.scrollY, 900));
+    };
+    const on = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(upd);
+    };
+    upd();
+    window.addEventListener("scroll", on, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", on);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+  const cloud = (w, h) => /* @__PURE__ */ React.createElement("svg", { width: w, height: h, viewBox: "0 0 300 140", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("path", { d: "M40 132 Q8 132 8 104 Q8 78 36 74 Q38 40 72 34 Q96 30 112 46 Q128 8 170 10 Q214 12 226 54 Q246 42 266 52 Q292 66 286 96 Q298 106 294 120 Q290 132 272 132 Z", fill: "#FFFFFF" }), /* @__PURE__ */ React.createElement("path", { d: "M30 120 Q60 128 120 126 Q200 130 284 118 Q290 128 272 132 L40 132 Q22 132 30 120 Z", fill: "#E6F3FC" }));
+  return /* @__PURE__ */ React.createElement("div", { className: "k5-sky", ref, "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("div", { className: "k5-sky-grad" }), /* @__PURE__ */ React.createElement("div", { className: "k5-sky-near" }, /* @__PURE__ */ React.createElement("img", { className: "k5-sky-art", src: K5_SKY_ART, alt: "" })));
+}
 function ChunkyScrollbar() {
   const [m, setM] = useState({ top: 0, size: 1, can: false });
   const trackRef = useRef(null);
@@ -4456,6 +4556,43 @@ function App() {
   const [k5done, setK5done] = useState({});
   const [k5open, setK5open] = useState({});
   const [k5AllDone, setK5AllDone] = useState(false);
+  const [k5Fall, setK5Fall] = useState("scatter");
+  const k5GridRef = useRef(null);
+  useEffect(() => {
+    document.documentElement.classList.toggle("k5-cursor", org === "k5");
+    return () => document.documentElement.classList.remove("k5-cursor");
+  }, [org]);
+  useEffect(() => {
+    setK5Fall("scatter");
+  }, [org]);
+  const k5Obs = useRef({ el: null, io: null, t: 0 });
+  useEffect(() => {
+    const el = k5GridRef.current;
+    const st = k5Obs.current;
+    if (el === st.el) return;
+    if (st.io) st.io.disconnect();
+    st.el = el;
+    st.io = null;
+    if (!el) return;
+    if (reducedMotion() || typeof IntersectionObserver === "undefined") {
+      setK5Fall("done");
+      return;
+    }
+    st.io = new IntersectionObserver((es) => {
+      const e = es[es.length - 1];
+      clearTimeout(st.t);
+      if (e.isIntersecting) {
+        setK5Fall("in");
+        st.t = setTimeout(() => setK5Fall("done"), 1700);
+      } else if (e.boundingClientRect.top > 0) setK5Fall("scatter");
+    }, { rootMargin: "0px 0px -30% 0px", threshold: 0 });
+    st.io.observe(el);
+  });
+  useEffect(() => () => {
+    const st = k5Obs.current;
+    if (st.io) st.io.disconnect();
+    clearTimeout(st.t);
+  }, []);
   const [hsAllDone, setHsAllDone] = useState(false);
   const [calDay, setCalDay] = useState("Mon");
   const [sound, setSound] = useState(true);
@@ -4813,7 +4950,7 @@ function App() {
       return /* @__PURE__ */ React.createElement("span", { className: `subject-tile grade-tile${low ? " is-low" : ""}`, "data-grade-tip": c.grade ? low ? `Current grade: ${c.grade.split(", ")[1]}
 Let\u2019s get back on track: review your assignments` : `Current grade: ${c.grade.split(", ")[1]}` : "Not graded yet", "aria-hidden": "true" }, low ? /* @__PURE__ */ React.createElement(Icon, { d: "M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18z M12 7.5v5.5 M12 16.5h.01", size: 20, sw: 2.4 }) : c.grade ? c.grade.split(", ")[1] : "");
     })(), /* @__PURE__ */ React.createElement("span", { className: "launcher-text" }, /* @__PURE__ */ React.createElement("span", { className: "launcher-name" }, c.name), /* @__PURE__ */ React.createElement("span", { className: "launcher-hover", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("span", { className: "launcher-hbar" }, /* @__PURE__ */ React.createElement("span", { style: { width: c.progress + "%" } })), /* @__PURE__ */ React.createElement("span", { className: "launcher-hmeta" }, c.progress, "% of course complete"))), /* @__PURE__ */ React.createElement("span", { className: "launcher-play", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("svg", { width: "28", height: "28", viewBox: "0 0 28 28" }, /* @__PURE__ */ React.createElement("circle", { cx: "14", cy: "14", r: "12.5", className: "lp-ring" }), /* @__PURE__ */ React.createElement("path", { d: "M11.5 9.2v9.6l7.6-4.8z", className: "lp-tri" }))));
-  }))))), O.id === "k5" && /* @__PURE__ */ React.createElement(ChunkyScrollbar, null), /* @__PURE__ */ React.createElement("main", { className: `main${screen === "home" ? " has-deco" : ""}`, ref: mainRef }, /* @__PURE__ */ React.createElement("div", { className: "wrap" }, screen === "home" && O.id === "k5" && (() => {
+  }))))), O.id === "k5" && /* @__PURE__ */ React.createElement(ChunkyScrollbar, null), /* @__PURE__ */ React.createElement("main", { className: `main${screen === "home" ? " has-deco" : ""}`, ref: mainRef }, O.id === "k5" && screen === "home" && /* @__PURE__ */ React.createElement(K5Sky, null), /* @__PURE__ */ React.createElement("div", { className: "wrap" }, screen === "home" && O.id === "k5" && (() => {
     const actDone = (x) => k5AllDone || (x.assign ? !!completed[key(x.assign)] : x.done || !!k5done[key(x.id)]);
     const subjects = D.courses.filter((c) => K5_TODAY[c.id]).map((c) => {
       const forToday = (x) => {
@@ -4852,7 +4989,7 @@ Let\u2019s get back on track: review your assignments` : `Current grade: ${c.gra
         say("You earned a star!");
         if (sound) chime();
       };
-      return /* @__PURE__ */ React.createElement("section", { className: "k5-quest", "aria-labelledby": "quest-h" }, /* @__PURE__ */ React.createElement("div", { className: "k5-quest-head" }, /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("h1", { id: "quest-h", className: "k5-h1" }, total > 0 && done === total ? `Way to go, ${O.first}!` : `${greet}, ${O.first}!`), /* @__PURE__ */ React.createElement("p", { className: "k5-sub" }, total === 0 ? "No activities yet. Check back soon!" : done === total ? "You finished everything for today. Amazing work!" : `Today you have ${total} things to do. You\u2019re on step ${done + 1}!`)), /* @__PURE__ */ React.createElement("div", { className: "star-pill", "aria-label": `${stars} stars this week` }, /* @__PURE__ */ React.createElement(Star, { on: true, size: 26 }), /* @__PURE__ */ React.createElement("strong", null, stars), /* @__PURE__ */ React.createElement("span", null, "stars"))), n > 0 && mapStyle === "desk" && (() => {
+      return /* @__PURE__ */ React.createElement("section", { className: "k5-quest", "aria-labelledby": "quest-h" }, /* @__PURE__ */ React.createElement("div", { className: "k5-quest-head" }, /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("h1", { id: "quest-h", className: "k5-h1" }, total > 0 && done === total ? `Way to go, ${O.first}!` : `${greet}, ${O.first}!`), /* @__PURE__ */ React.createElement("p", { className: "k5-sub" }, total === 0 ? "No activities yet. Check back soon!" : done === total ? "You finished everything for today. Amazing work!" : `Today you have ${total} things to do. You\u2019re on step ${done + 1}!`))), /* @__PURE__ */ React.createElement("div", { className: "k5-quest-card" }, /* @__PURE__ */ React.createElement("div", { className: "star-pill k5-card-stars", "aria-label": `${stars} stars this week` }, /* @__PURE__ */ React.createElement(Star, { on: true, size: 26 }), /* @__PURE__ */ React.createElement("strong", null, stars), /* @__PURE__ */ React.createElement("span", null, "stars")), n > 0 && mapStyle === "desk" && (() => {
         const PATH = [[192, 352], [280, 387], [360, 381], [440, 368], [520, 372], [600, 401], [680, 443], [760, 471], [840, 476], [920, 461], [1e3, 445], [1080, 442], [1160, 458], [1240, 496], [1320, 537], [1400, 557], [1480, 563], [1560, 560], [1640, 551], [1720, 533], [1800, 507], [1880, 482], [2e3, 468]];
         const N = n + 1;
         const segL = PATH.slice(1).map((q, k) => Math.hypot(q[0] - PATH[k][0], q[1] - PATH[k][1]));
@@ -4894,7 +5031,7 @@ Let\u2019s get back on track: review your assignments` : `Current grade: ${c.gra
         const np = PLAYER[subjects.find((sb) => sb.items.some((it) => it.id === nx.id)).c.id];
         const isLate = nx.assign && (D.assignments.find((y) => y.id === nx.assign) || {}).status === "pastdue";
         return /* @__PURE__ */ React.createElement("div", { className: "k5-upnext", style: subj(np) }, /* @__PURE__ */ React.createElement("span", { className: "k5-upnext-tag" }, "Up next"), /* @__PURE__ */ React.createElement("span", { className: "k5-upnext-icon", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: K5_ICON[np === PLAYER.ela4 ? "ela4" : Object.keys(PLAYER).find((k) => PLAYER[k] === np)] || I.play, size: 22, sw: 2 })), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "k5-upnext-title" }, nx.t), /* @__PURE__ */ React.createElement("div", { className: "k5-upnext-sub" }, nx.cname, isLate ? ", a little late" : "", ", step ", at + 1)), /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent k5-upnext-go", onClick: () => startAct(nx) }, /* @__PURE__ */ React.createElement(Icon, { d: I.play, size: 14, sw: 2 }), " Let\u2019s go!"));
-      })());
+      })()));
     })(), k5tab === "calendar" && (() => {
       const s = todaySessions.find((x) => now >= x.start && now < x.end) || todaySessions.find((x) => now < x.start);
       if (!s) return /* @__PURE__ */ React.createElement("section", { className: "k5-tv is-none", "aria-label": "Live classes" }, /* @__PURE__ */ React.createElement("div", { className: "k5-tv-screen" }, /* @__PURE__ */ React.createElement(TeacherFace, { size: 96 }), /* @__PURE__ */ React.createElement("span", { className: "k5-tv-zz" }, "Live classes are done for today. See you tomorrow!")));
@@ -4930,7 +5067,7 @@ Let\u2019s get back on track: review your assignments` : `Current grade: ${c.gra
           } }, /* @__PURE__ */ React.createElement("span", { className: "k5c-check", "aria-hidden": "true" }, x.isDone && /* @__PURE__ */ React.createElement(Icon, { d: I.check, size: 14, sw: 3.2 })), /* @__PURE__ */ React.createElement("span", { className: "k5c-t" }, /* @__PURE__ */ React.createElement("span", { className: "k5c-tt" }, x.t), !x.isDone && x.mins && /* @__PURE__ */ React.createElement("span", { className: "k5c-min" }, x.mins, " min"))));
         })))), /* @__PURE__ */ React.createElement("div", { className: "k5c-cta" }, /* @__PURE__ */ React.createElement("button", { className: "btn k5c-play", onClick: () => launch(c) }, /* @__PURE__ */ React.createElement("svg", { width: "22", height: "22", viewBox: "0 0 24 24", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("path", { d: "M7 4.5v15l12.5-7.5z" })), " Let\u2019s go!"), /* @__PURE__ */ React.createElement("span", { className: "k5c-spark", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("i", null), /* @__PURE__ */ React.createElement("i", null), /* @__PURE__ */ React.createElement("i", null)))));
       };
-      return /* @__PURE__ */ React.createElement(React.Fragment, null, activeSubs.length > 0 ? /* @__PURE__ */ React.createElement("div", { className: "k5-grid is-3up" }, activeSubs.map(renderCard)) : total > 0 ? null : /* @__PURE__ */ React.createElement("div", { className: "k5-alldone" }, /* @__PURE__ */ React.createElement("span", { className: "k5-alldone-art", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Star, { on: true, size: 56 })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "k5-alldone-h" }, "You finished every class today!"), /* @__PURE__ */ React.createElement("p", null, "Amazing work, ", O.first, ". Take a stretch, then check your events."))), doneSubs.length > 0 && /* @__PURE__ */ React.createElement("section", { className: "k5-shelf", "aria-label": "Finished for today" }, /* @__PURE__ */ React.createElement("div", { className: "k5-shelf-head" }, /* @__PURE__ */ React.createElement("span", { className: "k5-shelf-check", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: I.check, size: 18, sw: 3 })), /* @__PURE__ */ React.createElement("span", { className: "k5-shelf-h" }, "Finished for today"), /* @__PURE__ */ React.createElement("div", { className: "k5-shelf-chips" }, doneSubs.map(({ c, p }) => /* @__PURE__ */ React.createElement("span", { key: c.id, className: "k5-shelf-chip", style: subj(p) }, /* @__PURE__ */ React.createElement(Icon, { d: K5_ICON[c.id], size: 16, sw: 2.2 }), c.name, /* @__PURE__ */ React.createElement(Star, { on: true, size: 14 })))), /* @__PURE__ */ React.createElement("button", { className: `k5-shelf-toggle${k5ShowDone ? " is-open" : ""}`, "aria-expanded": k5ShowDone, "aria-label": k5ShowDone ? "Hide finished classes" : "Show finished classes", "data-tip": k5ShowDone ? "Hide them" : "Show them", onClick: () => setK5ShowDone(!k5ShowDone) }, /* @__PURE__ */ React.createElement(Icon, { d: "M6 9l6 6 6-6", size: 22, sw: 3 }))), k5ShowDone && /* @__PURE__ */ React.createElement("div", { className: "k5-grid is-3up k5-grid-done" }, doneSubs.map(renderCard))));
+      return /* @__PURE__ */ React.createElement(React.Fragment, null, activeSubs.length > 0 ? /* @__PURE__ */ React.createElement("div", { ref: k5GridRef, className: `k5-grid is-3up${k5Fall === "done" ? "" : " k5-scatter"}${k5Fall === "in" ? " is-in" : ""}` }, activeSubs.map(renderCard)) : total > 0 ? null : /* @__PURE__ */ React.createElement("div", { className: "k5-alldone" }, /* @__PURE__ */ React.createElement("span", { className: "k5-alldone-art", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Star, { on: true, size: 56 })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "k5-alldone-h" }, "You finished every class today!"), /* @__PURE__ */ React.createElement("p", null, "Amazing work, ", O.first, ". Take a stretch, then check your events."))), doneSubs.length > 0 && /* @__PURE__ */ React.createElement("section", { className: "k5-shelf", "aria-label": "Finished for today" }, /* @__PURE__ */ React.createElement("div", { className: "k5-shelf-head" }, /* @__PURE__ */ React.createElement("span", { className: "k5-shelf-check", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: I.check, size: 18, sw: 3 })), /* @__PURE__ */ React.createElement("span", { className: "k5-shelf-h" }, "Finished for today"), /* @__PURE__ */ React.createElement("div", { className: "k5-shelf-chips" }, doneSubs.map(({ c, p }) => /* @__PURE__ */ React.createElement("span", { key: c.id, className: "k5-shelf-chip", style: subj(p) }, /* @__PURE__ */ React.createElement(Icon, { d: K5_ICON[c.id], size: 16, sw: 2.2 }), c.name, /* @__PURE__ */ React.createElement(Star, { on: true, size: 14 })))), /* @__PURE__ */ React.createElement("button", { className: `k5-shelf-toggle${k5ShowDone ? " is-open" : ""}`, "aria-expanded": k5ShowDone, "aria-label": k5ShowDone ? "Hide finished classes" : "Show finished classes", "data-tip": k5ShowDone ? "Hide them" : "Show them", onClick: () => setK5ShowDone(!k5ShowDone) }, /* @__PURE__ */ React.createElement(Icon, { d: "M6 9l6 6 6-6", size: 22, sw: 3 }))), k5ShowDone && /* @__PURE__ */ React.createElement("div", { className: "k5-grid is-3up k5-grid-done" }, doneSubs.map(renderCard))));
     })()), k5tab === "calendar" && (() => {
       const dayItems = (d) => empty ? [] : [
         ...d === "Mon" ? D.today.map((s) => ({ k: s.id, kind: "live", time: fmt(s.start), sort: s.start, title: s.title, sub: `with ${s.host}`, s })) : D.otherSessions.filter((s) => s.when === "week" && s.day === d).map((s) => ({ k: s.id, kind: "live", time: s.time.split("\u2013")[0], sort: 0, title: s.title, sub: `with ${s.host}` })),
@@ -4944,7 +5081,7 @@ Let\u2019s get back on track: review your assignments` : `Current grade: ${c.gra
         return /* @__PURE__ */ React.createElement("div", { key: it.k, className: `k5-ag kind-${it.kind}${st && st.key === "ended" ? " is-ended" : ""}` }, /* @__PURE__ */ React.createElement("span", { className: "k5-ag-icon", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: KIND[it.kind].icon, size: 28, sw: 2 })), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("div", { className: "k5-ag-time" }, KIND[it.kind].label, ", ", it.time), /* @__PURE__ */ React.createElement("div", { className: "k5-ag-title" }, it.title), /* @__PURE__ */ React.createElement("div", { className: "k5-ag-sub" }, it.sub)), st && st.canJoin && /* @__PURE__ */ React.createElement("button", { className: "btn btn-accent btn-lg", onClick: () => join(it.s) }, "Join class"), st && st.key === "ended" && /* @__PURE__ */ React.createElement("span", { className: "k5-ag-done" }, "All done"), it.a && /* @__PURE__ */ React.createElement("button", { className: "btn k5-play sm", onClick: () => openAssignment(it.a) }, /* @__PURE__ */ React.createElement(Icon, { d: I.play, size: 14, sw: 2 }), " Start"));
       }), !items.length && /* @__PURE__ */ React.createElement("div", { className: "state-box center" }, /* @__PURE__ */ React.createElement("p", null, "Nothing planned this day. Enjoy!"))));
     })());
-  })(), screen === "homeroom" && /* @__PURE__ */ React.createElement("div", { className: "homeroom" }, /* @__PURE__ */ React.createElement("div", { className: "hr-head" }, /* @__PURE__ */ React.createElement("span", { className: "hr-head-face" }, /* @__PURE__ */ React.createElement(TeacherFace, { size: 64 })), /* @__PURE__ */ React.createElement("h1", { className: "k5-h1" }, "Ms. Greene\u2019s Homeroom"), /* @__PURE__ */ React.createElement("p", { className: "k5-sub" }, O.grade, " at ", O.name)), /* @__PURE__ */ React.createElement(HomeroomWheel, { posts: HOMEROOM_POSTS, liked: (id) => liked[key(id)], onLike: (id, v) => setLiked({ ...liked, [key(id)]: v }) }), /* @__PURE__ */ React.createElement("p", { className: "hrw-hint" }, "Scroll or use the arrows to see older messages")), screen === "home" && O.id !== "k5" && /* @__PURE__ */ React.createElement("div", { className: `stack-20 home-612${checkinOn && !mood ? " is-checkin" : ""}` }, bulletinMode === "blinds" && announcements.length > 0 && /* @__PURE__ */ React.createElement(BulletinBlinds, { items: announcements, news: MS.news, school: O.name, onAllNews: () => go("school") }), !greetCombo && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", { className: "greet" }, false, /* @__PURE__ */ React.createElement("h1", { className: "greet-h" }, greet, ", ", /* @__PURE__ */ React.createElement("span", { className: "greet-name" }, O.first, "!")), /* @__PURE__ */ React.createElement("p", { className: "greet-sub", "aria-live": "polite", key: mood || "none" }, "It\u2019s Monday, October 12. ", {
+  })(), screen === "homeroom" && /* @__PURE__ */ React.createElement("div", { className: "homeroom" }, /* @__PURE__ */ React.createElement("div", { className: "hr-head" }, /* @__PURE__ */ React.createElement("span", { className: "hr-head-face" }, /* @__PURE__ */ React.createElement(TeacherFace, { size: 64 })), /* @__PURE__ */ React.createElement("h1", { className: "k5-h1" }, "Ms. Greene\u2019s Homeroom"), /* @__PURE__ */ React.createElement("p", { className: "k5-sub" }, O.grade, " at ", O.name)), /* @__PURE__ */ React.createElement(HomeroomWheel, { posts: HOMEROOM_POSTS, liked: (id) => liked[key(id)], onLike: (id, v) => setLiked({ ...liked, [key(id)]: v }) }), /* @__PURE__ */ React.createElement("p", { className: "hrw-hint" }, "Scroll or use the arrows to see older messages")), screen === "home" && O.id !== "k5" && /* @__PURE__ */ React.createElement("div", { className: `stack-20 home-612${checkinOn && !mood ? " is-checkin" : ""}` }, bulletinMode === "blinds" && announcements.length > 0 && /* @__PURE__ */ React.createElement(BulletinBlinds, { items: announcements, news: MS.news, school: O.name, onAllNews: () => go("school") }), !greetCombo && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", { className: "greet" }, false, /* @__PURE__ */ React.createElement("h1", { key: checkinOn && !mood ? "wave-wait" : "wave-go", className: "greet-h is-wave", "aria-label": `${greet}, ${O.first}!` }, /* @__PURE__ */ React.createElement(WaveText, { text: `${greet}, ${O.first}!` })), /* @__PURE__ */ React.createElement("p", { className: "greet-sub", "aria-live": "polite", key: mood || "none" }, "It\u2019s Monday, October 12. ", {
     progress: "You\u2019re ready, and it shows. Let\u2019s keep that momentum going.",
     behind: "Catching up is totally doable. We\u2019ll start small and build from there.",
     ahead: "Love that energy. Let\u2019s get a head start together.",
@@ -4977,7 +5114,7 @@ Let\u2019s get back on track: review your assignments` : `Current grade: ${c.gra
       setCiFlash(0);
       setMood(null);
     } }, "Change"), /* @__PURE__ */ React.createElement("button", { className: "ci-x", "aria-label": "Dismiss", onClick: () => setCiFlash(0) }, /* @__PURE__ */ React.createElement(Icon, { d: I.x, size: 14, sw: 2.4 })), /* @__PURE__ */ React.createElement("span", { className: "ci-timer", "aria-hidden": "true" })) : null;
-  })(), announcements.length > 0 && bulletinMode === "banner" && /* @__PURE__ */ React.createElement(AnnouncementCarousel, { items: announcements, school: O.name, minimized: annMin, setMinimized: setAnnMin }), greetCombo ? /* @__PURE__ */ React.createElement("div", { className: "greet-combo" }, /* @__PURE__ */ React.createElement("div", { className: "greet" }, false, /* @__PURE__ */ React.createElement("h1", { className: "greet-h" }, greet, ", ", /* @__PURE__ */ React.createElement("span", { className: "greet-name" }, O.first, "!")), /* @__PURE__ */ React.createElement("span", { className: "greet-div", "aria-hidden": "true" }), /* @__PURE__ */ React.createElement("p", { className: "greet-sub", "aria-live": "polite", key: mood || "none" }, {
+  })(), announcements.length > 0 && bulletinMode === "banner" && /* @__PURE__ */ React.createElement(AnnouncementCarousel, { items: announcements, school: O.name, minimized: annMin, setMinimized: setAnnMin }), greetCombo ? /* @__PURE__ */ React.createElement("div", { className: "greet-combo" }, /* @__PURE__ */ React.createElement("div", { className: "greet" }, false, /* @__PURE__ */ React.createElement("h1", { key: checkinOn && !mood ? "wave-wait" : "wave-go", className: "greet-h is-wave", "aria-label": `${greet}, ${O.first}!` }, /* @__PURE__ */ React.createElement(WaveText, { text: `${greet}, ${O.first}!` })), /* @__PURE__ */ React.createElement("span", { className: "greet-div", "aria-hidden": "true" }), /* @__PURE__ */ React.createElement("p", { className: "greet-sub", "aria-live": "polite", key: mood || "none" }, {
     progress: "You\u2019re ready, and it shows. Let\u2019s keep that momentum going.",
     behind: "Catching up is totally doable. We\u2019ll start small and build from there.",
     ahead: "Love that energy. Let\u2019s get a head start together.",
