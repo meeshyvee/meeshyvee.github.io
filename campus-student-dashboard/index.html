@@ -3792,6 +3792,90 @@ html{overflow-anchor:none}
 .onb-v2 .onb-wave-big:hover{animation:onbWaveHover 1s ease-in-out}
 @keyframes onbWaveHover{0%,100%{transform:rotate(0)}15%{transform:rotate(18deg)}30%{transform:rotate(-10deg)}45%{transform:rotate(16deg)}60%{transform:rotate(-6deg)}75%{transform:rotate(10deg)}}
 @media (prefers-reduced-motion:reduce){.onb-v2 .onb-wave-big:hover{animation:none}}
+
+/* All caught up: "Get a head start" breaks out past the card edges and floats above it; all cards equal */
+.hs-done.hs-v2{overflow:visible}
+.hs-v2 .hs-ahead{position:relative;z-index:2;margin:6px -44px 0;padding:26px 28px;border-radius:26px;background:#fff;border:1px solid #DED6FA;box-shadow:0 26px 54px -26px rgba(76,29,149,.45),0 6px 14px -8px rgba(15,23,42,.14)}
+.hs-v2 .hs-ahead::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1.5px;background:linear-gradient(120deg,#C4B5FD,#A5B4FC 50%,#99E2E0);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.hs-v2 .hs-ah-card{border:1px solid var(--line);box-shadow:0 10px 24px -16px rgba(15,23,42,.35);transition:transform .25s cubic-bezier(.3,1.6,.5,1),box-shadow .25s ease}
+.hs-v2 .hs-ah-card:hover{transform:translateY(-6px);box-shadow:0 18px 30px -16px rgba(76,29,149,.4)}
+.hs-v2 .hs-turned{margin-top:22px}
+@media (max-width:900px){.hs-v2 .hs-ahead{margin:6px -12px 0}}
+@media (prefers-reduced-motion:reduce){.hs-v2 .hs-ah-card:hover{transform:none}}
+/* Smaller checkmark ring; flat bolt tile */
+.hs-v2 .hs-done-ring{width:64px;height:64px;flex:0 0 64px}
+.hs-v2 .hs-done-ring > svg{width:64px;height:64px}
+.hs-v2 .hs-done-check svg{width:24px;height:24px}
+.hs-ahead-ic{box-shadow:none!important}
+.hs-v2 .hs-done-h{margin:0;line-height:1.1}.hs-v2 .hs-done-sub{margin:4px 0 0}
+
+/* All caught up v3: smaller header, callout pills instead of stats, "Get a head start" as a shuffled deck */
+.hs-v2 .hs-done-top{gap:16px;flex-wrap:wrap}
+.hs-v2 .hs-done-ring,.hs-v2 .hs-done-ring > svg{width:52px;height:52px;flex:0 0 52px}
+.hs-v2 .hs-done-check svg{width:26px;height:26px}
+.hs-v2 .hs-done-h{font-size:clamp(22px,2.1vw,26px)}
+.hs-v2 .hs-done-sub{font-size:15px}
+.hs-callouts{display:flex;gap:8px;flex-wrap:wrap}
+.hs-callout{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border-radius:999px;font-size:14px;font-weight:700;white-space:nowrap}
+.hs-callout.is-done{background:#DCFCE7;color:#166534}
+.hs-callout.is-streak{background:#FEF3C7;color:#92400E}
+.hs-v2 .hs-ahead{margin-top:22px}
+.hs-v2 .hs-ahead-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;margin-bottom:26px}
+.hs-v2 .hs-ahead-h{display:inline-flex;align-items:center;gap:12px;font-size:clamp(24px,2.4vw,30px)}
+.hs-v2 .hs-ahead-sub{margin:0;max-width:52ch}
+.hs-spark{flex:0 0 auto;fill:none;stroke:#A78BFA;stroke-width:3;stroke-linecap:round}
+.hs-spark.is-l{transform:scaleX(-1)}
+.hs-spark path{stroke-dasharray:14;stroke-dashoffset:14;animation:hsSparkDraw .5s .35s ease-out forwards}
+@keyframes hsSparkDraw{to{stroke-dashoffset:0}}
+.hs-ahead-foot{display:flex;justify-content:center;margin-top:22px}
+/* deck layout */
+.hs-v2 .hs-deck{display:flex;justify-content:center;align-items:flex-start;gap:0;padding:10px 0 14px}
+.hs-v2 .hs-deck-card{position:relative;flex:0 1 270px;min-width:0;min-height:300px;cursor:pointer;transform:translateY(var(--dy,0)) rotate(var(--rot,0deg));transition:transform .3s cubic-bezier(.3,1.5,.5,1),box-shadow .25s ease}
+.hs-v2 .hs-deck-card + .hs-deck-card{margin-left:-26px}
+.hs-v2 .hs-deck-card.is-0{--rot:-5deg;--dy:14px;z-index:1}
+.hs-v2 .hs-deck-card.is-1{--rot:3deg;--dy:0px;z-index:2}
+.hs-v2 .hs-deck-card.is-2{--rot:-2deg;--dy:18px;z-index:1}
+.hs-v2 .hs-deck-card:hover,.hs-v2 .hs-deck-card:focus-within{z-index:5;transform:translateY(calc(var(--dy,0px) - 10px)) rotate(0deg) scale(1.05);box-shadow:0 26px 40px -20px rgba(76,29,149,.45)}
+.hs-v2 .hs-deck-card .hs-ah-btn{transform-origin:left center;transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.hs-v2 .hs-deck-card:hover .hs-ah-btn,.hs-v2 .hs-deck-card:focus-within .hs-ah-btn{transform:scale(1.1)}
+.hs-v2 .hs-deck-card:active .hs-ah-btn{transform:scale(1.16)}
+@media (max-width:700px){.hs-v2 .hs-deck{flex-direction:column;align-items:stretch;gap:12px}.hs-v2 .hs-deck-card + .hs-deck-card{margin-left:0}.hs-v2 .hs-deck-card{flex:none;min-height:0;--rot:0deg!important;--dy:0px!important}}
+@media (prefers-reduced-motion:reduce){.hs-v2 .hs-deck-card,.hs-v2 .hs-deck-card .hs-ah-btn{transition:none}.hs-v2 .hs-deck-card:hover,.hs-v2 .hs-deck-card:focus-within{transform:translateY(var(--dy,0)) rotate(0deg)}.hs-v2 .hs-deck-card:hover .hs-ah-btn{transform:none}.hs-spark path{animation:none;stroke-dashoffset:0}}
+
+/* All caught up v3.1: stats instead of pills, roomier check badge, yellow spark doodles */
+.hs-v2 .hs-done-ring,.hs-v2 .hs-done-ring > svg{width:64px;height:64px;flex:0 0 64px}
+.hs-v2 .hs-done-check{inset:13px}
+.hs-v2 .hs-done-check svg{width:22px;height:22px}
+.hs-topstats{display:flex;align-items:center;margin:0}
+.hs-topstats > div{display:flex;flex-direction:column;align-items:center;gap:2px;padding:0 22px}
+.hs-topstats > div + div{border-left:1px solid rgba(15,23,42,.1)}
+.hs-topstats > div:last-child{padding-right:6px}
+.hs-topstats dd{margin:0;font-family:var(--headline);font-size:28px;font-weight:600;line-height:1.15;color:var(--prim-slate-900)}
+.hs-topstats dt{font-size:14px;color:var(--prim-slate-600);white-space:nowrap}
+.hs-topstats .is-streak dd{color:#B45309}
+.hs-spark{width:19px;height:auto;fill:none;stroke:none}
+.hs-spark.is-l{transform:scaleX(-1)}
+.hs-v2 .hs-ahead-h{gap:14px}
+.hs-spark{animation:hsSparkPop .45s .35s cubic-bezier(.3,1.6,.5,1) both}
+.hs-spark.is-l{animation-name:hsSparkPopL}
+@keyframes hsSparkPop{from{opacity:0;transform:rotate(9deg) scale(.5)}to{opacity:1;transform:rotate(9deg) scale(1)}}
+@keyframes hsSparkPopL{from{opacity:0;transform:scaleX(-1) rotate(9deg) scale(.5)}to{opacity:1;transform:scaleX(-1) rotate(9deg) scale(1)}}
+/* level the spark so its middle ray points straight out from the title */
+@media (prefers-reduced-motion:reduce){.hs-spark.is-r{transform:rotate(9deg)}.hs-spark.is-l{transform:scaleX(-1) rotate(9deg)}}
+@media (prefers-reduced-motion:reduce){.hs-spark{animation:none}}
+
+/* Get a head start v3.2: gradient title, slate sparks (recolored in JSX), moving gradient stroke + soft glow */
+@property --hs-ah-a{syntax:'<angle>';inherits:false;initial-value:0deg}
+.hs-v2 .hs-ahead-h > span{background:linear-gradient(95deg,#7C3AED 0%,#C026D3 35%,#3B82F6 70%,#0EA5A4 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;padding-bottom:.08em}
+.hs-v2 .hs-ahead::before{padding:2px;inset:-2px;background:conic-gradient(from var(--hs-ah-a),#A78BFA,#F0ABFC,#93C5FD,#5EEAD4,#C4B5FD,#A78BFA);animation:hsAheadSpin 6s linear infinite}
+@keyframes hsAheadSpin{to{--hs-ah-a:360deg}}
+.hs-v2 .hs-ahead{box-shadow:0 22px 44px -24px rgba(124,58,237,.5),0 14px 34px -22px rgba(59,130,246,.35),0 8px 26px -20px rgba(20,184,166,.35)}
+@media (prefers-reduced-motion:reduce){.hs-v2 .hs-ahead::before{animation:none}}
+
+/* v3.3: softer title gradient in the bulletin palette (periwinkle → blue → cyan, deepened for contrast); bulletin tab is a solid soft blue */
+.hs-v2 .hs-ahead-h > span{background:linear-gradient(95deg,#7064D6 0%,#4F7BE8 55%,#1E96B0 100%);-webkit-background-clip:text;background-clip:text}
+.bl-pull,.bl-wrap.is-closed .bl-pull{background:#DBEAFE!important}
+.bl-pull::before,.bl-wrap.is-closed .bl-pull::before{background:#DBEAFE}
 </style>
 </head>
 <body>
@@ -5977,10 +6061,13 @@ Let\u2019s get back on track: review your assignments` : `Current grade: ${c.gra
     const dayOrder = { Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5 };
     const upcoming = allAssignments.filter((a) => a.status === "week").map(deco).sort((a, b) => (dayOrder[a.day] || 9) - (dayOrder[b.day] || 9)).slice(0, 3);
     const hrs = Math.floor(mins / 60), mm = mins % 60;
-    return /* @__PURE__ */ React.createElement("section", { className: "hs-done hs-v2", "aria-labelledby": "hs-done-h" }, /* @__PURE__ */ React.createElement(Confetti, { key: "hs-done" }), /* @__PURE__ */ React.createElement("div", { className: "hs-done-top" }, /* @__PURE__ */ React.createElement("div", { className: "hs-done-ring", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("svg", { width: "88", height: "88", viewBox: "0 0 88 88" }, /* @__PURE__ */ React.createElement("circle", { cx: "44", cy: "44", r: "38", className: "hs-ring-bg" }), /* @__PURE__ */ React.createElement("circle", { cx: "44", cy: "44", r: "38", className: "hs-ring-fg" })), /* @__PURE__ */ React.createElement("span", { className: "hs-done-check" }, /* @__PURE__ */ React.createElement(Icon, { d: I.check, size: 34, sw: 3 }))), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("h2", { id: "hs-done-h", className: "hs-done-h" }, "You\u2019re all caught up!"), /* @__PURE__ */ React.createElement("p", { className: "hs-done-sub" }, "Everything due today is done. Nice work, ", O.first, "!"))), /* @__PURE__ */ React.createElement("hr", { className: "hs-rule" }), /* @__PURE__ */ React.createElement("dl", { className: "hs-stats2" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("dd", null, fin.length), /* @__PURE__ */ React.createElement("dt", null, "Done today")), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("dd", null, hrs ? `${hrs}h ` : "", mm, "m"), /* @__PURE__ */ React.createElement("dt", null, "Time spent")), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("dd", null, courseSet.length), /* @__PURE__ */ React.createElement("dt", null, "Classes worked on")), /* @__PURE__ */ React.createElement("div", { className: "is-streak" }, /* @__PURE__ */ React.createElement("dd", null, "4 days"), /* @__PURE__ */ React.createElement("dt", null, "On-time streak"))), /* @__PURE__ */ React.createElement("hr", { className: "hs-rule hs-rule-stats" }), /* @__PURE__ */ React.createElement("section", { className: "hs-ahead", "aria-labelledby": "hs-ahead-h" }, /* @__PURE__ */ React.createElement("div", { className: "hs-ahead-head" }, /* @__PURE__ */ React.createElement("span", { className: "hs-ahead-ic", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: "M13 3L4 14h7l-1 7 9-11h-7z", size: 22, sw: 2 })), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("h3", { id: "hs-ahead-h", className: "hs-ahead-h" }, "Get a head start"), /* @__PURE__ */ React.createElement("p", { className: "hs-ahead-sub" }, "Nothing else is due today. Knock out something from later this week and give future you a break.")), /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline hs-ahead-all", onClick: () => go("courses") }, "View my grades")), /* @__PURE__ */ React.createElement("div", { className: "hs-ahead-grid" }, upcoming.map((a, k) => {
+    return /* @__PURE__ */ React.createElement("section", { className: "hs-done hs-v2", "aria-labelledby": "hs-done-h" }, /* @__PURE__ */ React.createElement(Confetti, { key: "hs-done" }), /* @__PURE__ */ React.createElement("div", { className: "hs-done-top" }, /* @__PURE__ */ React.createElement("div", { className: "hs-done-ring", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("svg", { width: "88", height: "88", viewBox: "0 0 88 88" }, /* @__PURE__ */ React.createElement("circle", { cx: "44", cy: "44", r: "38", className: "hs-ring-bg" }), /* @__PURE__ */ React.createElement("circle", { cx: "44", cy: "44", r: "38", className: "hs-ring-fg" })), /* @__PURE__ */ React.createElement("span", { className: "hs-done-check" }, /* @__PURE__ */ React.createElement(Icon, { d: I.check, size: 34, sw: 3 }))), /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement("h2", { id: "hs-done-h", className: "hs-done-h" }, "You\u2019re all caught up!"), /* @__PURE__ */ React.createElement("p", { className: "hs-done-sub" }, "Everything due today is done. Nice work, ", O.first, "!")), /* @__PURE__ */ React.createElement("dl", { className: "hs-topstats" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("dd", null, fin.length), /* @__PURE__ */ React.createElement("dt", null, "Done today")), /* @__PURE__ */ React.createElement("div", { className: "is-streak" }, /* @__PURE__ */ React.createElement("dd", null, "4 days"), /* @__PURE__ */ React.createElement("dt", null, "On-time streak")))), /* @__PURE__ */ React.createElement("section", { className: "hs-ahead", "aria-labelledby": "hs-ahead-h" }, /* @__PURE__ */ React.createElement("div", { className: "hs-ahead-head" }, /* @__PURE__ */ React.createElement("h3", { id: "hs-ahead-h", className: "hs-ahead-h" }, /* @__PURE__ */ React.createElement("img", { className: "hs-spark is-l", src: ONB_SPARK.replace("f5c04c", "94A3B8"), width: "26", height: "35", alt: "", "aria-hidden": "true" }), /* @__PURE__ */ React.createElement("span", null, "Get a head start"), /* @__PURE__ */ React.createElement("img", { className: "hs-spark is-r", src: ONB_SPARK.replace("f5c04c", "94A3B8"), width: "26", height: "35", alt: "", "aria-hidden": "true" })), /* @__PURE__ */ React.createElement("p", { className: "hs-ahead-sub" }, "Nothing else is due today. Knock out something from later this week and give future you a break.")), /* @__PURE__ */ React.createElement("div", { className: "hs-ahead-grid hs-deck" }, upcoming.map((a, k) => {
       const pal = LQ_PAL[a.course] || LQ_PAL.default;
-      return /* @__PURE__ */ React.createElement("article", { key: a.id, className: `hs-ah-card${k === 0 ? " is-first" : ""}`, style: { "--lq-art": pal.art, "--lq-ink": pal.ink } }, /* @__PURE__ */ React.createElement("div", { className: "hs-ah-art", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(TypeArt, { type: a.type }), /* @__PURE__ */ React.createElement("span", { className: "hs-ah-type" }, a.type)), /* @__PURE__ */ React.createElement("div", { className: "hs-ah-body" }, k === 0 && /* @__PURE__ */ React.createElement("span", { className: "hs-ah-pick" }, "Best next pick"), /* @__PURE__ */ React.createElement("h4", { className: "hs-ah-t" }, a.title), /* @__PURE__ */ React.createElement("p", { className: "hs-ah-m" }, a.courseName, " \xB7 ", a.mins, " min \xB7 due ", { Mon: "Monday", Tue: "Tuesday", Wed: "Wednesday", Thu: "Thursday", Fri: "Friday" }[a.day] || a.dueShort), /* @__PURE__ */ React.createElement("button", { className: `btn ${k === 0 ? "hs-go" : "btn-outline"} hs-ah-btn`, onClick: () => openAssignment(a) }, "Start early ", /* @__PURE__ */ React.createElement(Icon, { d: "M5 12h14 M13 6l6 6-6 6", size: 16, sw: 2.2 }))));
-    }))), /* @__PURE__ */ React.createElement("div", { className: "hs-panel hs-turned" }, /* @__PURE__ */ React.createElement("h3", { className: "hs-panel-h" }, "Turned in today"), /* @__PURE__ */ React.createElement("ul", { className: "hs-fin" }, fin.map((a) => {
+      return /* @__PURE__ */ React.createElement("article", { key: a.id, className: `hs-ah-card hs-deck-card is-${k}`, style: { "--lq-art": pal.art, "--lq-ink": pal.ink }, onClick: () => openAssignment(a) }, /* @__PURE__ */ React.createElement("div", { className: "hs-ah-art", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(TypeArt, { type: a.type }), /* @__PURE__ */ React.createElement("span", { className: "hs-ah-type" }, a.type)), /* @__PURE__ */ React.createElement("div", { className: "hs-ah-body" }, /* @__PURE__ */ React.createElement("h4", { className: "hs-ah-t" }, a.title), /* @__PURE__ */ React.createElement("p", { className: "hs-ah-m" }, a.courseName, " \xB7 ", a.mins, " min \xB7 due ", { Mon: "Monday", Tue: "Tuesday", Wed: "Wednesday", Thu: "Thursday", Fri: "Friday" }[a.day] || a.dueShort), /* @__PURE__ */ React.createElement("button", { className: "btn hs-go hs-ah-btn", onClick: (e) => {
+        e.stopPropagation();
+        openAssignment(a);
+      } }, "Start early ", /* @__PURE__ */ React.createElement(Icon, { d: "M5 12h14 M13 6l6 6-6 6", size: 16, sw: 2.2 }))));
+    })), /* @__PURE__ */ React.createElement("div", { className: "hs-ahead-foot" }, /* @__PURE__ */ React.createElement("button", { className: "btn btn-outline hs-ahead-all", onClick: () => go("courses") }, "View my grades"))), /* @__PURE__ */ React.createElement("div", { className: "hs-panel hs-turned" }, /* @__PURE__ */ React.createElement("h3", { className: "hs-panel-h" }, "Turned in today"), /* @__PURE__ */ React.createElement("ul", { className: "hs-fin" }, fin.map((a) => {
       const pal = LQ_PAL[a.course] || LQ_PAL.default;
       return /* @__PURE__ */ React.createElement("li", { key: a.id }, /* @__PURE__ */ React.createElement("span", { className: "hs-fin-ic", style: { background: pal.art, color: pal.ink }, "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(Icon, { d: LQ_ICON[a.course] || I.check, size: 16, sw: 2 })), /* @__PURE__ */ React.createElement("span", { className: "grow" }, /* @__PURE__ */ React.createElement("span", { className: "hs-fin-t" }, a.title), /* @__PURE__ */ React.createElement("span", { className: "hs-fin-c" }, a.courseName)), /* @__PURE__ */ React.createElement("span", { className: "hs-fin-ok" }, /* @__PURE__ */ React.createElement(Icon, { d: I.check, size: 14, sw: 3 }), " Submitted"));
     }))));
